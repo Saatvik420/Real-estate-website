@@ -56,9 +56,10 @@ public class AuthController {
                 System.out.println(">>> [DIAGNOSTIC] authenticationManager.authenticate() SUCCESS");
             } catch (org.springframework.security.core.AuthenticationException e) {
                 System.err.println(">>> [DIAGNOSTIC] AUTHENTICATION FAILED: " + e.getMessage());
+                // Return the specific error message to help debug on deployment
                 return ResponseEntity.status(401).body(AuthResponse.builder()
                         .success(false)
-                        .message("Invalid email or password")
+                        .message("Authentication failed: " + e.getMessage())
                         .build());
             }
 
