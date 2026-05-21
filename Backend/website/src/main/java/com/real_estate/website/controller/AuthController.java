@@ -36,9 +36,12 @@ public class AuthController {
             String email = request.getEmail() != null ? request.getEmail().trim() : null;
             String password = request.getPassword();
             
-            System.out.println(">>> LOGIN ATTEMPT: Email=" + email);
+            System.out.println(">>> [DIAGNOSTIC] LOGIN ATTEMPT START");
+            System.out.println(">>> [DIAGNOSTIC] Email: [" + email + "]");
+            System.out.println(">>> [DIAGNOSTIC] Password present: " + (password != null && !password.isEmpty()));
             
             if (email == null || password == null) {
+                System.err.println(">>> [DIAGNOSTIC] REJECTED: Missing credentials");
                 return ResponseEntity.badRequest().body(AuthResponse.builder()
                         .success(false)
                         .message("Email and password are required")
@@ -46,24 +49,30 @@ public class AuthController {
             }
 
             try {
+                System.out.println(">>> [DIAGNOSTIC] Calling authenticationManager.authenticate()...");
                 authenticationManager.authenticate(
                         new UsernamePasswordAuthenticationToken(email, password)
                 );
+                System.out.println(">>> [DIAGNOSTIC] authenticationManager.authenticate() SUCCESS");
             } catch (org.springframework.security.core.AuthenticationException e) {
-                System.err.println(">>> AUTHENTICATION FAILED: " + e.getMessage());
+                System.err.println(">>> [DIAGNOSTIC] AUTHENTICATION FAILED: " + e.getMessage());
                 return ResponseEntity.status(401).body(AuthResponse.builder()
                         .success(false)
                         .message("Invalid email or password")
                         .build());
             }
 
+            System.out.println(">>> [DIAGNOSTIC] Loading UserDetails...");
             UserDetails userDetails = userDetailsService.loadUserByUsername(email);
+            
+            System.out.println(">>> [DIAGNOSTIC] Fetching user from repository...");
             User user = userRepository.findByEmail(email)
                     .orElseThrow(() -> new RuntimeException("User record missing after authentication"));
             
+            System.out.println(">>> [DIAGNOSTIC] Generating JWT token...");
             String token = jwtUtil.generateToken(userDetails);
             
-            System.out.println(">>> LOGIN SUCCESS: " + email + " (Role: " + user.getRole() + ")");
+            System.out.println(">>> [DIAGNOSTIC] LOGIN SUCCESS: " + email + " (Role: " + user.getRole() + ")");
             return ResponseEntity.ok(AuthResponse.builder()
                     .token(token)
                     .user(user)

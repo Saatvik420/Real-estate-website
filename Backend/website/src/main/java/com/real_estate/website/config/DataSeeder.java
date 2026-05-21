@@ -23,32 +23,35 @@ public class DataSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        System.out.println("DEBUG: DataSeeder execution started...");
         try {
             System.out.println("--- DATA SEEDING STARTED ---");
             
-            // Ensure Admin user always exists and has the correct credentials
-            User admin = userRepository.findByEmail("admin@bharatestates.com").orElse(null);
-            if (admin == null) {
-                System.out.println("Seeding Admin user...");
-                admin = User.builder()
-                        .email("admin@bharatestates.com")
-                        .password(passwordEncoder.encode("admin123"))
-                        .name("System Admin")
-                        .role("ADMIN")
-                        .active(true)
-                        .build();
-                userRepository.save(admin);
-                System.out.println("Admin user created: admin@bharatestates.com / admin123");
-            } else {
-                System.out.println("Admin user exists. Force resetting credentials to ensure synchronization...");
-                admin.setPassword(passwordEncoder.encode("admin123"));
-                admin.setRole("ADMIN");
-                admin.setActive(true);
-                userRepository.save(admin);
-                System.out.println("Admin user credentials synchronized.");
+            String adminEmail = "admin@bharatestates.com";
+            String adminPass = "admin123";
+
+            // Clean up any existing admin to ensure fresh credentials
+            List<User> existingAdmins = userRepository.findAll().stream()
+                    .filter(u -> adminEmail.equalsIgnoreCase(u.getEmail()))
+                    .toList();
+            
+            if (!existingAdmins.isEmpty()) {
+                System.out.println("Found " + existingAdmins.size() + " existing admin(s). Deleting for fresh start...");
+                userRepository.deleteAll(existingAdmins);
             }
 
-            if (userRepository.count() <= 1) { // Only admin might exist
+            System.out.println("Creating fresh Admin user: " + adminEmail);
+            User admin = User.builder()
+                    .email(adminEmail)
+                    .password(passwordEncoder.encode(adminPass))
+                    .name("System Admin")
+                    .role("ADMIN")
+                    .active(true)
+                    .build();
+            userRepository.save(admin);
+            System.out.println("Admin user successfully seeded.");
+
+            if (userRepository.count() <= 1) {
                 seedOtherUsers();
             }
             if (agentRepository.count() == 0) {
