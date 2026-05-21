@@ -22,32 +22,30 @@ public class DataSeeder implements CommandLineRunner {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public void run(String... args) throws Exception {
-        if (userRepository.findByEmail("admin@bharatestates.com").isEmpty()) {
-            User admin = User.builder()
-                    .email("admin@bharatestates.com")
-                    .password(passwordEncoder.encode("admin123"))
-                    .name("System Admin")
-                    .role("ADMIN")
-                    .active(true)
-                    .build();
-            userRepository.save(admin);
-        }
-        if (userRepository.count() <= 1) { // Seed others if only admin exists or empty
-            seedUsers();
-        }
-        if (agentRepository.count() == 0) {
-            seedAgents();
-        }
-        if (stateRepository.count() == 0) {
-            seedLocations();
-        }
-        if (propertyRepository.count() == 0) {
-            seedProperties();
+    public void run(String... args) {
+        try {
+            System.out.println("--- DATA SEEDING STARTED ---");
+            if (userRepository.count() == 0) {
+                seedUsers();
+            }
+            if (agentRepository.count() == 0) {
+                seedAgents();
+            }
+            if (stateRepository.count() == 0) {
+                seedLocations();
+            }
+            if (propertyRepository.count() == 0) {
+                seedProperties();
+            }
+            System.out.println("--- DATA SEEDING COMPLETED ---");
+        } catch (Exception e) {
+            System.err.println("--- DATA SEEDING FAILED: " + e.getMessage() + " ---");
+            e.printStackTrace();
         }
     }
 
     private void seedUsers() {
+        System.out.println("Seeding users...");
         User admin = User.builder()
                 .email("admin@bharatestates.com")
                 .password(passwordEncoder.encode("admin123"))
