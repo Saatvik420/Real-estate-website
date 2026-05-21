@@ -26,10 +26,11 @@ public class DataSeeder implements CommandLineRunner {
         try {
             System.out.println("--- DATA SEEDING STARTED ---");
             
-            // Ensure Admin user always exists
-            if (userRepository.findByEmail("admin@bharatestates.com").isEmpty()) {
+            // Ensure Admin user always exists and has the correct credentials
+            User admin = userRepository.findByEmail("admin@bharatestates.com").orElse(null);
+            if (admin == null) {
                 System.out.println("Seeding Admin user...");
-                User admin = User.builder()
+                admin = User.builder()
                         .email("admin@bharatestates.com")
                         .password(passwordEncoder.encode("admin123"))
                         .name("System Admin")
@@ -39,7 +40,12 @@ public class DataSeeder implements CommandLineRunner {
                 userRepository.save(admin);
                 System.out.println("Admin user created: admin@bharatestates.com / admin123");
             } else {
-                System.out.println("Admin user already exists.");
+                System.out.println("Admin user exists. Force resetting credentials to ensure synchronization...");
+                admin.setPassword(passwordEncoder.encode("admin123"));
+                admin.setRole("ADMIN");
+                admin.setActive(true);
+                userRepository.save(admin);
+                System.out.println("Admin user credentials synchronized.");
             }
 
             if (userRepository.count() <= 1) { // Only admin might exist

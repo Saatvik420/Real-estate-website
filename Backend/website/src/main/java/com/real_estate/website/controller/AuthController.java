@@ -33,9 +33,12 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
         try {
-            System.out.println(">>> LOGIN ATTEMPT: Email=" + request.getEmail());
+            String email = request.getEmail() != null ? request.getEmail().trim() : null;
+            String password = request.getPassword();
             
-            if (request.getEmail() == null || request.getPassword() == null) {
+            System.out.println(">>> LOGIN ATTEMPT: Email=" + email);
+            
+            if (email == null || password == null) {
                 return ResponseEntity.badRequest().body(AuthResponse.builder()
                         .success(false)
                         .message("Email and password are required")
@@ -44,7 +47,7 @@ public class AuthController {
 
             try {
                 authenticationManager.authenticate(
-                        new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
+                        new UsernamePasswordAuthenticationToken(email, password)
                 );
             } catch (org.springframework.security.core.AuthenticationException e) {
                 System.err.println(">>> AUTHENTICATION FAILED: " + e.getMessage());
@@ -54,13 +57,13 @@ public class AuthController {
                         .build());
             }
 
-            UserDetails userDetails = userDetailsService.loadUserByUsername(request.getEmail());
-            User user = userRepository.findByEmail(request.getEmail())
+            UserDetails userDetails = userDetailsService.loadUserByUsername(email);
+            User user = userRepository.findByEmail(email)
                     .orElseThrow(() -> new RuntimeException("User record missing after authentication"));
             
             String token = jwtUtil.generateToken(userDetails);
             
-            System.out.println(">>> LOGIN SUCCESS: " + request.getEmail() + " (Role: " + user.getRole() + ")");
+            System.out.println(">>> LOGIN SUCCESS: " + email + " (Role: " + user.getRole() + ")");
             return ResponseEntity.ok(AuthResponse.builder()
                     .token(token)
                     .user(user)
