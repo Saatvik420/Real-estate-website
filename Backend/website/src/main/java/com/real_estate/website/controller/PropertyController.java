@@ -12,7 +12,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/properties")
 @RequiredArgsConstructor
-@CrossOrigin(originPatterns = {"http://localhost:*", "http://127.0.0.1:*"})
 public class PropertyController {
 
     private final PropertyRepository propertyRepository;
