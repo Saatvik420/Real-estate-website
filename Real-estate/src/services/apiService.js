@@ -27,6 +27,9 @@ const handleResponse = async (response) => {
         }
 
         if (!response.ok) {
+            // Priority 1: Backend provided message (e.g., 'Authentication failed: User not found')
+            // Priority 2: Standard 401 message
+            // Priority 3: Generic server error
             const errorMessage = data?.message || (response.status === 401 ? 'Invalid credentials.' : `Server error: ${response.status}`);
             return { success: false, data: null, error: errorMessage };
         }
