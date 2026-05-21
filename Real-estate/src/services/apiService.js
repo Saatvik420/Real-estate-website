@@ -6,7 +6,7 @@ import { plots as localPlots } from '../data/plots';
 import { companies as localCompanies } from '../data/companies';
 
 // ── CORE CONFIGURATION ──────────────────────────────────────────────────────
-const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
 
 // ── UTILITY: STANDARDIZED API WRAPPER ────────────────────────────────────────
 const handleResponse = async (response) => {
