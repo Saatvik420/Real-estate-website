@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BharatEstates — Premium Real Estate Across India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Nunito+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito Sans',sans-serif;background:var(--bg-main);color:var(--text);line-height:1.6}
+
+/* ── COLOR TOKENS (Premium Slate & Sand) ── */
+:root{
+  --ink: #1a1c20;         
+  --ink2: #26292f;
+  --ink3: #32363d;
+  --gold: #bda871;        
+  --gold2: #d6c496;
+  --gold3: #ebdcb5;
+  --gold4: #f4edd9;
+  --bg-main: #faf9f7;     
+  --cream2: #f2efe9;
+  --cream3: #e6e0d4;
+  --text: #22252a;
+  --muted: #6b707a;
+  --muted2: #9297a1;
+  --white: #ffffff;
+  --red: #c23b22;
+  --green: #247547;
+}
+
+/* ═══════════════════════════════
+   NAV & CITY SELECTOR
+═══════════════════════════════ */
+.nav{
+  position:sticky;top:0;z-index:999;
+  background:rgba(26, 28, 32, 0.97);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(189, 168, 113, 0.2);
+  padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:72px;
+}
+.logo{font-family:'Playfair Display',serif;font-size:24px;color:var(--gold2);font-weight:700;letter-spacing:.02em;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo-mark{width:36px;height:36px;background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--ink);font-size:18px;font-weight:800}
+.logo em{color:#e8e4dc;font-style:normal;font-weight:400}
+.nav-center{display:flex;align-items:center;gap:4px}
+.nav-link{color:#a0aaba;font-size:13px;font-weight:500;text-decoration:none;padding:6px 14px;border-radius:4px;transition:all .2s;white-space:nowrap}
+.nav-link:hover,.nav-link.active{color:#fff;background:rgba(255,255,255,.06)}
+.nav-right{display:flex;align-items:center;gap:16px}
+
+.city-selector-wrap { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.08); padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); }
+.city-selector-wrap select { background: transparent; border: none; color: #fff; font-family: 'Nunito Sans', sans-serif; font-weight: 600; outline: none; cursor: pointer; font-size: 13px; }
+.city-selector-wrap select option { background: var(--ink); color: #fff; }
+
+.nav-btn-ghost{background:transparent;border:1px solid rgba(189,168,113,.4);color:var(--gold2);padding:7px 16px;border-radius:4px;font-family:'Nunito Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.04em;cursor:pointer;transition:all .2s}
+.nav-btn-ghost:hover{background:rgba(189,168,113,.1)}
+.nav-btn-solid{background:var(--gold2);border:none;color:var(--ink);padding:8px 20px;border-radius:4px;font-family:'Nunito Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:all .2s}
+.nav-btn-solid:hover{background:var(--gold3)}
+
+/* ═══════════════════════════════
+   HERO
+═══════════════════════════════ */
+.hero{
+  position:relative;min-height:720px;display:flex;align-items:center;
+  background:#111;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070');
+  background-size:cover;background-position:center;
+  filter:brightness(0.4) saturate(0.8);
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(26,28,32,0.8) 0%,rgba(26,28,32,0.4) 50%,rgba(15,16,18,0.9) 100%);
+}
+.hero-glow{position:absolute;bottom:-80px;left:-80px;width:480px;height:480px;background:radial-gradient(circle,rgba(189,168,113,0.15),transparent 70%);pointer-events:none}
+.hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:80px 48px;width:100%}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--gold2);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';height:1px;width:24px;background:var(--gold2);opacity:.6}
+h1.hero-title{font-family:'Playfair Display',serif;font-size:64px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:14px}
+h1.hero-title span{color:var(--gold2)}
+.hero-subtitle{color:rgba(255,255,255,.65);font-size:16px;font-weight:400;margin-bottom:40px;max-width:580px; line-height: 1.5;}
+
+/* search */
+.search-card{background:rgba(255,255,255,.08);border:1px solid rgba(189,168,113,.3);border-radius:12px;padding:28px 32px;backdrop-filter:blur(16px);max-width:900px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);}
+.search-tabs{display:flex;gap:0;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,.1)}
+.stab{background:transparent;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;color:rgba(255,255,255,.5);font-family:'Nunito Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:8px 24px;cursor:pointer;transition:all .2s}
+.stab:hover{color:rgba(255,255,255,.8)}
+.stab.active{color:var(--gold2);border-bottom-color:var(--gold2)}
+.search-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:0;background:rgba(26,28,32,0.6);border:1px solid rgba(255,255,255,.15);border-radius:8px;overflow:hidden}
+.sf{padding:14px 18px;border-right:1px solid rgba(255,255,255,.08)}
+.sf:last-of-type{border-right:none}
+.sf-lbl{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:6px}
+.sf input,.sf select{background:transparent;border:none;outline:none;color:#fff;font-family:'Nunito Sans',sans-serif;font-size:14px;font-weight:600;width:100%}
+.sf select option{background:var(--ink);color:#fff}
+.sf input::placeholder{color:rgba(255,255,255,.3); font-weight: 400;}
+.search-go{background:var(--gold2);border:none;padding:0 28px;color:var(--ink);font-family:'Nunito Sans',sans-serif;font-size:14px;font-weight:800;cursor:pointer;letter-spacing:.04em;display:flex;align-items:center;gap:8px;transition:all .2s}
+.search-go:hover{background:var(--gold3)}
+.trending-wrap{margin-top:16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.tr-label{color:rgba(255,255,255,.4);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.tr-chip{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);font-size:11px;padding:5px 14px;border-radius:100px;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-block}
+.tr-chip:hover{background:rgba(189,168,113,.15);border-color:rgba(189,168,113,.5);color:var(--gold2)}
+
+/* ═══════════════════════════════
+   SECTION COMMONS
+═══════════════════════════════ */
+.section{padding:80px 48px;max-width:1200px;margin:0 auto}
+.section-full{padding:80px 0}
+.section-full .section-inner{max-width:1200px;margin:0 auto;padding:0 48px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+h2.sec-title{font-family:'Playfair Display',serif;font-size:40px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:8px}
+h2.sec-title span{color:var(--gold)}
+.sec-sub{font-size:15px;color:var(--muted);margin-bottom:36px}
+.sec-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px}
+.view-all{color:var(--gold);font-size:12px;font-weight:700;text-decoration:none;border:1px solid rgba(189,168,113,.35);padding:9px 20px;border-radius:4px;letter-spacing:.04em;text-transform:uppercase;transition:all .2s}
+.view-all:hover{background:var(--gold2);color:var(--ink);border-color:var(--gold2)}
+
+/* ═══════════════════════════════
+   CONTINUE LAST SEARCH
+═══════════════════════════════ */
+.continue-bar{background:var(--ink);padding:32px 48px; border-bottom: 1px solid var(--ink2);}
+.continue-inner{max-width:1200px;margin:0 auto}
+.continue-label{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.continue-label::after{content:'';flex:1;height:1px;background:rgba(189,168,113,.2)}
+.continue-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.continue-card{background:rgba(255,255,255,.03);border:1px solid rgba(189,168,113,.15);border-radius:8px;padding:16px 20px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:14px}
+.continue-card:hover{background:rgba(189,168,113,.08);border-color:rgba(189,168,113,.4); transform: translateY(-2px);}
+.cc-icon{width:42px;height:42px;background:rgba(189,168,113,.12);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0; border: 1px solid rgba(189,168,113,0.3);}
+.cc-text{overflow:hidden}
+.cc-title{font-size:13px;font-weight:600;color:#e0d8cc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cc-meta{font-size:11px;color:rgba(255,255,255,.4);margin-top:4px}
+
+/* ═══════════════════════════════
+   TRENDING RIGHT NOW (Pan India)
+═══════════════════════════════ */
+.trending-sec{background:var(--cream2);border-top:1px solid var(--cream3);border-bottom:1px solid var(--cream3)}
+.trend-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.trend-card{background:var(--white);border:1px solid var(--cream3);border-radius:10px;overflow:hidden;transition:all .3s;cursor:pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.03);}
+.trend-card:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(26,28,32,.08);border-color:var(--gold3)}
+.tc-img{height:180px;position:relative;overflow:hidden;background-size:cover;background-position:center;}
+.tc-badge{position:absolute;top:12px;left:12px;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:4px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);}
+.badge-hot{background:var(--red);color:#fff}
+.badge-new{background:var(--ink);color:var(--gold2)}
+.badge-trending{background:var(--green);color:#fff}
+.tc-body{padding:18px}
+.tc-name{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.tc-loc{font-size:12px;color:var(--muted);margin-bottom:10px}
+.tc-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--cream3);padding-top:12px;margin-top:6px}
+.tc-price{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--ink)}
+.tc-change{font-size:11px;font-weight:700;padding:3px 8px;border-radius:4px}
+.change-up{background:#e8f5ee;color:var(--green)}
+.change-down{background:#fdecea;color:var(--red)}
+
+/* ═══════════════════════════════
+   PROPERTY RECOMMENDATIONS
+═══════════════════════════════ */
+.rec-bg{background:var(--bg-main)}
+.rec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.prop-card{background:var(--white);border:1px solid var(--cream3);border-radius:12px;overflow:hidden;transition:all .3s;cursor:pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.02);}
+.prop-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(26,28,32,.1);border-color:var(--gold3)}
+.pc-img{height:220px;position:relative;background-size:cover;background-position:center;overflow:hidden}
+.pc-status{position:absolute;top:12px;left:12px;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:4px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);}
+.status-rtm{background:var(--green);color:#fff}
+.status-uc{background:var(--gold2);color:var(--ink)}
+.status-nl{background:var(--ink);color:var(--gold2)}
+.pc-save{position:absolute;top:12px;right:12px;width:34px;height:34px;background:rgba(255,255,255,.95);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;transition:all .2s; box-shadow: 0 4px 10px rgba(0,0,0,0.15);}
+.pc-save:hover{background:#fff;transform:scale(1.1); color: var(--red);}
+.pc-body{padding:22px}
+.pc-dev{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.pc-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--text);margin-bottom:4px}
+.pc-loc{font-size:13px;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:6px}
+.pc-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.pc-tag{background:var(--gold4);color:var(--ink);font-size:11px;padding:4px 12px;border-radius:4px;font-weight:700}
+.pc-footer{border-top:1px solid var(--cream3);padding-top:16px;display:flex;justify-content:space-between;align-items:center}
+.pc-price{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink)}
+.pc-price small{font-family:'Nunito Sans',sans-serif;font-size:11px;color:var(--muted);font-weight:600;display:block; text-transform: uppercase; letter-spacing: 0.05em;}
+.pc-enq{background:var(--ink);color:#fff;border:none;padding:10px 20px;border-radius:6px;font-family:'Nunito Sans',sans-serif;font-size:12px;font-weight:800;letter-spacing:.06em;cursor:pointer;transition:all .2s; text-transform: uppercase;}
+.pc-enq:hover{background:var(--gold2);color:var(--ink)}
+
+/* ═══════════════════════════════
+   COMPARE PROPERTIES
+═══════════════════════════════ */
+.compare-sec{background:var(--ink);padding:80px 0}
+.compare-inner{max-width:1200px;margin:0 auto;padding:0 48px}
+.compare-sec .eyebrow{color:var(--gold2)}
+.compare-sec h2.sec-title{color:#fff}
+.compare-sec h2.sec-title span{color:var(--gold2)}
+.compare-sec .sec-sub{color:rgba(255,255,255,.5)}
+.compare-wrapper { background: var(--ink2); border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); overflow: hidden; padding: 12px; box-shadow: 0 24px 48px rgba(0,0,0,0.4); }
+.compare-table{width:100%;border-collapse:collapse;border-spacing:0;}
+.compare-table th,.compare-table td{padding:18px 24px;text-align:left;border-bottom:1px solid rgba(255,255,255,.05)}
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table thead th{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4); vertical-align: top;}
+.compare-table thead th:not(:first-child){text-align:center; width: 25%;}
+.ct-prop-img { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.1); }
+.ct-prop{display:flex;flex-direction:column}
+.ct-prop-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:4px}
+.ct-prop-loc{font-size:12px;color:rgba(255,255,255,.5)}
+.ct-feat{font-size:14px;color:rgba(255,255,255,.6);white-space:nowrap; font-weight: 600;}
+.ct-val{font-size:15px;font-weight:700;color:#fff;text-align:center}
+.ct-val.highlight{color:var(--gold2)}
+.ct-best{background:rgba(189,168,113,.08); position: relative;}
+.ct-best::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--gold2); }
+.ct-check{color:var(--green);font-size:18px; background: rgba(36,117,71,0.2); padding: 4px 10px; border-radius: 100px;}
+.ct-cross{color:rgba(255,255,255,.2);font-size:18px}
+.ct-badge-best{background:var(--gold2);color:var(--ink);font-size:10px;font-weight:800;letter-spacing:.1em;padding:4px 10px;border-radius:4px;text-transform:uppercase; margin-bottom: 10px; display: inline-block;}
+.compare-cta{margin-top:32px;text-align:center}
+.compare-cta-btn{background:transparent;border:1px solid rgba(189,168,113,.5);color:var(--gold2);padding:12px 32px;border-radius:6px;font-family:'Nunito Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.compare-cta-btn:hover{background:var(--gold2);color:var(--ink)}
+
+/* ═══════════════════════════════
+   PRICE INSIGHTS & ANALYTICS (EXPANDED)
+═══════════════════════════════ */
+.insights-sec{background:var(--cream2);padding:80px 0}
+.insights-inner{max-width:1200px;margin:0 auto;padding:0 48px}
+.insights-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+
+/* Common Card Style */
+.insight-box { background: var(--white); border: 1px solid var(--cream3); border-radius: 12px; padding: 32px; box-shadow: 0 8px 24px rgba(0,0,0,0.04); height: 100%;}
+.pcc-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px}
+.pcc-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.pcc-sub{font-size:12px;color:var(--muted)}
+.pcc-pill{background:var(--gold4);color:var(--ink);font-size:10px;font-weight:800;padding:5px 12px;border-radius:100px; letter-spacing: 0.05em; text-transform: uppercase;}
+
+/* Graph 1: Micromarket Bars */
+.bar-row{display:flex;flex-direction:column;gap:14px}
+.bar-item{display:flex;align-items:center;gap:12px}
+.bar-loc{font-size:13px;font-weight:700;color:var(--ink);width:110px;flex-shrink:0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.bar-track{flex:1;background:var(--cream2);border-radius:4px;height:22px;position:relative;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;transition:width .8s cubic-bezier(0.4, 0, 0.2, 1)}
+.bar-fill span{font-size:10px;font-weight:800;color:#fff}
+.bar-val{font-size:12px;font-weight:800;color:var(--ink);width:60px;text-align:right;flex-shrink:0}
+.bar-change{font-size:11px;font-weight:800;width:50px;text-align:right;flex-shrink:0}
+
+/* Graph 2: Donut */
+.donut-wrap { display: flex; align-items: center; gap: 32px; justify-content: center; padding: 10px 0;}
+.donut-chart { 
+  width: 130px; height: 130px; border-radius: 50%; 
+  background: conic-gradient(var(--ink) 0% 45%, var(--gold2) 45% 75%, var(--gold) 75% 90%, var(--cream3) 90% 100%);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.donut-inner { width: 85px; height: 85px; background: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+.donut-inner span { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--ink); line-height: 1; }
+.donut-inner small { font-size: 9px; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-top: 4px; }
+.donut-legend { display: flex; flex-direction: column; gap: 10px; }
+.leg-item{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text); font-weight: 600;}
+.leg-dot{width:10px;height:10px;border-radius:3px}
+.inventory-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--cream3); }
+.inv-stat { text-align: center; }
+.inv-num { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+.inv-lbl { font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* Graph 3: Price Trend SVG */
+.trend-container { position: relative; height: 180px; width: 100%; margin-top: 20px;}
+.trend-labels-y { position: absolute; left: 0; top: 0; bottom: 30px; display: flex; flex-direction: column; justify-content: space-between; font-size: 10px; color: var(--muted); font-weight: 600;}
+.trend-labels-x { position: absolute; left: 40px; right: 0; bottom: 0; display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); font-weight: 700;}
+.trend-chart-svg { position: absolute; left: 40px; right: 0; top: 0; bottom: 30px; width: calc(100% - 40px); height: calc(100% - 30px); overflow: visible; }
+.trend-line { fill: none; stroke: var(--gold); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; transition: all 0.8s ease-out;}
+.trend-area { fill: url(#trend-grad); opacity: 0.3; transition: all 0.8s ease-out;}
+.trend-grid-line { stroke: var(--cream3); stroke-width: 1; stroke-dasharray: 4 4; }
+
+/* Graph 4: Rental Supply */
+.rental-row { margin-bottom: 18px; }
+.rental-top { display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+.rental-top span.yield { color: var(--green); }
+.rental-bar-bg { width: 100%; height: 8px; background: var(--cream2); border-radius: 4px; overflow: hidden; }
+.rental-bar-fill { height: 100%; background: var(--gold); border-radius: 4px; transition: width 0.8s ease; }
+
+
+/* ═══════════════════════════════
+   TOP DEVELOPERS (Reverted Design)
+═══════════════════════════════ */
+.dev-sec{background:var(--bg-main);padding:80px 0;border-top:1px solid var(--cream3)}
+.dev-inner{max-width:1200px;margin:0 auto;padding:0 48px}
+.dev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+
+/* The reverted, clean cream-card design */
+.dev-card{background:var(--cream2);border:1px solid var(--cream3);border-radius:10px;padding:24px;transition:all .3s;cursor:pointer}
+.dev-card:hover{border-color:var(--gold3);box-shadow:0 12px 32px rgba(0,0,0,.08);background:var(--white); transform: translateY(-3px);}
+
+.dev-top{display:flex;align-items:center;gap:14px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--cream3)}
+.dev-logo{width:52px;height:52px;border-radius:8px;background:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:var(--gold2);flex-shrink:0}
+.dev-name{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:2px}
+.dev-type{font-size:10px;color:var(--muted);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.dev-stars{color:var(--gold);font-size:12px;margin-top:2px}
+
+/* Original Grid Stats */
+.dev-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--white);border:1px solid var(--cream3);border-radius:6px;overflow:hidden;margin-bottom:16px}
+.ds-item{padding:12px 8px;text-align:center;border-right:1px solid var(--cream3)}
+.ds-item:last-child{border-right:none}
+.ds-num{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink)}
+.ds-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+
+/* Original Tags & Checkmark */
+.dev-projects{display:flex;gap:6px;flex-wrap:wrap}
+.dev-proj-tag{background:var(--gold4);color:#8b6a18;font-size:10px;padding:3px 9px;border-radius:3px;font-weight:700}
+.dev-rera{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--green);font-weight:700;margin-top:14px;}
+.dev-rera::before{content:'✓';font-weight:900; font-size:12px;}
+
+/* ═══════════════════════════════
+   POPULAR CITIES (Redesigned)
+═══════════════════════════════ */
+.cities-sec{background:var(--white);padding:80px 0; border-top: 1px solid var(--cream3);}
+.cities-inner{max-width:1200px;margin:0 auto;padding:0 48px}
+.cities-sec h2.sec-title{color:var(--ink)}
+.cities-sec .sec-sub{color:var(--muted)}
+.cities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+
+.city-card{height: 300px; position:relative; overflow:hidden; border-radius:16px; border:none; box-shadow:0 8px 24px rgba(0,0,0,.08); cursor:pointer;}
+.city-card:hover{transform:translateY(-6px); box-shadow:0 20px 40px rgba(0,0,0,.15);}
+.city-bg { position:absolute; inset:0; background-size:cover; background-position:center; transition:transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.city-card:hover .city-bg { transform:scale(1.08); }
+
+.city-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(26,28,32,0.95) 0%, rgba(26,28,32,0.5) 50%, rgba(26,28,32,0.1) 100%); display:flex; flex-direction:column; justify-content:flex-end; padding:24px; transition: all 0.3s; }
+.city-card:hover .city-overlay { background:linear-gradient(to top, rgba(26,28,32,0.98) 0%, rgba(26,28,32,0.7) 60%, transparent 100%);}
+
+.city-rank{font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--gold2);margin-bottom:4px;}
+.city-name{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff;margin-bottom:2px}
+.city-state{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:16px; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em;}
+
+.city-meta{display:flex;flex-direction:column;gap:10px; border-top:1px solid rgba(255,255,255,0.15); padding-top:16px;}
+.cm-item{font-size:12px;color:rgba(255,255,255,.6);display:flex;justify-content:space-between; font-weight:500;}
+.cm-val{color:#fff;font-weight:700}
+.city-badge{position:absolute;top:20px;right:20px;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:4px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);}
+.city-badge-hot{background:var(--red);color:#fff}
+.city-badge-rising{background:var(--gold2);color:var(--ink)}
+
+/* ═══════════════════════════════
+   SERVICES BAR
+═══════════════════════════════ */
+.services-sec{background:var(--bg-main);border-top:1px solid var(--cream3);padding:80px 0}
+.services-inner{max-width:1200px;margin:0 auto;padding:0 48px}
+.serv-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;}
+.serv-item{background:var(--white);padding:32px 20px;text-align:center;cursor:pointer;transition:all .3s; border: 1px solid var(--cream3); border-radius: 12px;}
+.serv-item:hover{border-color: var(--gold2); box-shadow: 0 10px 24px rgba(0,0,0,0.04); transform: translateY(-4px);}
+.serv-icon{font-size:32px;margin-bottom:16px;display:block}
+.serv-name{font-size:14px;font-weight:800;color:var(--ink);margin-bottom:8px}
+.serv-desc{font-size:12px;color:var(--muted);line-height:1.5; font-weight: 500;}
+
+/* ═══════════════════════════════
+   FOOTER
+═══════════════════════════════ */
+footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:80px 48px 32px; border-top: 4px solid var(--gold2);}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.08)}
+.footer-logo{font-family:'Playfair Display',serif;font-size:26px;color:var(--gold2);font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.footer-desc{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.8;margin-bottom:24px; padding-right: 20px;}
+.footer-contact{font-size:14px;color:rgba(255,255,255,0.7);display:flex;flex-direction:column;gap:10px; font-weight: 500;}
+.footer-contact a{color:rgba(255,255,255,0.7);text-decoration:none;transition:color .2s}
+.footer-contact a:hover{color:var(--gold2)}
+.footer-h{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);margin-bottom:20px;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:12px}
+.footer-links a{color:rgba(255,255,255,0.5);font-size:14px;text-decoration:none;transition:color .2s; font-weight: 500;}
+.footer-links a:hover{color:var(--gold2); padding-left: 4px;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:rgba(255,255,255,0.4)}
+.footer-badges{display:flex;gap:12px}
+.f-badge{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,0.6);font-size:11px;padding:6px 14px;border-radius:4px;font-weight:700; text-transform: uppercase; letter-spacing: 0.05em;}
+</style>
+</head>
+<body>
+
+<!-- ══════ NAV ══════ -->
+<nav class="nav">
+  <a class="logo" href="#">
+    <div class="logo-mark">B</div>
+    Bharat<em>Estates</em>
+  </a>
+  <div class="nav-center">
+    <a class="nav-link active" href="#">Buy</a>
+    <a class="nav-link" href="#">Rent</a>
+    <a class="nav-link" href="#">Projects</a>
+    <a class="nav-link" href="#">Plot / Land</a>
+    <a class="nav-link" href="#">Commercial</a>
+    <a class="nav-link" href="#">Agents</a>
+    <a class="nav-link" href="#insights-section">Insights</a>
+  </div>
+  <div class="nav-right">
+    <div class="city-selector-wrap">
+      <span style="font-size:14px;">📍</span>
+      <select id="global-city-selector">
+        <option value="India">All India</option>
+        <option value="Mumbai">Mumbai</option>
+        <option value="Bengaluru">Bengaluru</option>
+        <option value="Delhi">Delhi NCR</option>
+        <option value="Patna">Patna</option>
+      </select>
+    </div>
+    <button class="nav-btn-ghost">Login</button>
+    <button class="nav-btn-solid">+ Post Property</button>
+  </div>
+</nav>
+
+<!-- ══════ HERO ══════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">India's Most Premium Real Estate Platform</div>
+    <h1 class="hero-title">Find Your Perfect Home<br>in <span id="hero-loc-title">India</span></h1>
+    <p class="hero-subtitle">Explore 14,327+ verified premium projects, 21,941+ resale luxury listings and exclusive rentals — from verified developers nationwide.</p>
+    <div class="search-card">
+      <div class="search-tabs">
+        <button class="stab active">Buy</button>
+        <button class="stab">Rent</button>
+        <button class="stab">Projects</button>
+        <button class="stab">Commercial</button>
+      </div>
+      <div class="search-row">
+        <div class="sf">
+          <div class="sf-lbl">Location / Area</div>
+          <input type="text" placeholder="Bandra, Whitefield, DLF Phase 5...">
+        </div>
+        <div class="sf">
+          <div class="sf-lbl">Budget</div>
+          <select>
+            <option>Any Budget</option>
+            <option>₹ 50L – ₹ 1 Cr</option>
+            <option>₹ 1 Cr – ₹ 3 Cr</option>
+            <option>₹ 3 Cr – ₹ 10 Cr</option>
+            <option>₹ 10 Cr+</option>
+          </select>
+        </div>
+        <div class="sf">
+          <div class="sf-lbl">Property Type</div>
+          <select>
+            <option>Any Type</option>
+            <option>Luxury Apartment</option>
+            <option>Independent Villa</option>
+            <option>Penthouse</option>
+            <option>Premium Plot</option>
+          </select>
+        </div>
+        <div class="sf">
+          <div class="sf-lbl">BHK</div>
+          <select>
+            <option>Any BHK</option>
+            <option>2 BHK</option>
+            <option>3 BHK</option>
+            <option>4 BHK</option>
+            <option>5+ BHK</option>
+          </select>
+        </div>
+        <button class="search-go">Search</button>
+      </div>
+      <div class="trending-wrap">
+        <span class="tr-label">Trending Now:</span>
+        <a class="tr-chip" href="#">Bandra West</a>
+        <a class="tr-chip" href="#">Gurugram Sec 42</a>
+        <a class="tr-chip" href="#">Koramangala</a>
+        <a class="tr-chip" href="#">Juhu</a>
+        <a class="tr-chip" href="#">Powai</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ CONTINUE LAST SEARCH ══════ -->
+<div class="continue-bar">
+  <div class="continue-inner">
+    <div class="continue-label">Continue Your Last Search</div>
+    <div class="continue-cards">
+      <div class="continue-card">
+        <div class="cc-icon">🏢</div>
+        <div class="cc-text">
+          <div class="cc-title">4 BHK Sea-Facing · Worli</div>
+          <div class="cc-meta">₹8Cr–₹15Cr · 12 new results</div>
+        </div>
+      </div>
+      <div class="continue-card">
+        <div class="cc-icon">🏠</div>
+        <div class="cc-text">
+          <div class="cc-title">Villas for Rent · Whitefield</div>
+          <div class="cc-meta">₹80k–₹1.5L/mo · 7 new</div>
+        </div>
+      </div>
+      <div class="continue-card">
+        <div class="cc-icon">🌍</div>
+        <div class="cc-text">
+          <div class="cc-title">Plots · Golf Course Ext.</div>
+          <div class="cc-meta">₹4Cr–₹10Cr · 5 new listings</div>
+        </div>
+      </div>
+      <div class="continue-card">
+        <div class="cc-icon">🏗</div>
+        <div class="cc-text">
+          <div class="cc-title">New Launch · Andheri West</div>
+          <div class="cc-meta">₹3Cr–₹7Cr · 3 new projects</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ TRENDING RIGHT NOW ══════ -->
+<div class="section-full trending-sec">
+  <div class="section-inner">
+    <div class="sec-header">
+      <div>
+        <div class="eyebrow">🔥 Live Activity</div>
+        <h2 class="sec-title">Trending Right Now in <span>India</span></h2>
+      </div>
+      <a class="view-all" href="#">See All Trending →</a>
+    </div>
+    <div class="trend-grid">
+      <div class="trend-card">
+        <div class="tc-img" style="background-image:url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80');">
+          <span class="tc-badge badge-hot">🔥 Hot</span>
+        </div>
+        <div class="tc-body">
+          <div class="tc-name">Lodha Altamount</div>
+          <div class="tc-loc">📍 Altamount Road, Mumbai</div>
+          <div class="tc-bottom">
+            <div class="tc-price">₹18 Cr+</div>
+            <span class="tc-change change-up">↑ 6.2%</span>
+          </div>
+        </div>
+      </div>
+      <div class="trend-card">
+        <div class="tc-img" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80');">
+          <span class="tc-badge badge-new">New Launch</span>
+        </div>
+        <div class="tc-body">
+          <div class="tc-name">DLF Camellias</div>
+          <div class="tc-loc">📍 Sector 42, Gurugram</div>
+          <div class="tc-bottom">
+            <div class="tc-price">₹35 Cr+</div>
+            <span class="tc-change change-up">↑ 4.8%</span>
+          </div>
+        </div>
+      </div>
+      <div class="trend-card">
+        <div class="tc-img" style="background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80');">
+          <span class="tc-badge badge-trending">Trending</span>
+        </div>
+        <div class="tc-body">
+          <div class="tc-name">Prestige Golfshire</div>
+          <div class="tc-loc">📍 Nandi Hills, Bengaluru</div>
+          <div class="tc-bottom">
+            <div class="tc-price">₹11 Cr+</div>
+            <span class="tc-change change-up">↑ 8.1%</span>
+          </div>
+        </div>
+      </div>
+      <div class="trend-card">
+        <div class="tc-img" style="background-image:url('https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?w=600&q=80');">
+          <span class="tc-badge badge-new">New Phase</span>
+        </div>
+        <div class="tc-body">
+          <div class="tc-name">Piramal Mahalaxmi</div>
+          <div class="tc-loc">📍 Mahalaxmi, Mumbai</div>
+          <div class="tc-bottom">
+            <div class="tc-price">₹6.5 Cr+</div>
+            <span class="tc-change change-down">↓ 1.2%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ RECOMMENDATIONS ══════ -->
+<div class="section-full rec-bg">
+  <div class="section-inner">
+    <div class="sec-header">
+      <div>
+        <div class="eyebrow">Curated for You</div>
+        <h2 class="sec-title">Recommended <span>Properties</span></h2>
+        <p class="sec-sub" style="margin-bottom:0">Based on your pan-India luxury search preferences</p>
+      </div>
+      <a class="view-all" href="#">View All →</a>
+    </div>
+    <div class="rec-grid">
+      <div class="prop-card">
+        <div class="pc-img" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80');">
+          <span class="pc-status status-nl">New Launch</span>
+          <div class="pc-save">♡</div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-dev">Macrotech Developers</div>
+          <div class="pc-name">The World Towers</div>
+          <div class="pc-loc">📍 Lower Parel, Mumbai</div>
+          <div class="pc-tags"><span class="pc-tag">3 BHK</span><span class="pc-tag">4 BHK</span><span class="pc-tag">Penthouse</span></div>
+          <div class="pc-footer">
+            <div class="pc-price">₹8.5 Cr – ₹24 Cr<small>onwards</small></div>
+            <button class="pc-enq">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="prop-card">
+        <div class="pc-img" style="background-image:url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80');">
+          <span class="pc-status status-rtm">Ready to Move</span>
+          <div class="pc-save">♡</div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-dev">Sobha Limited</div>
+          <div class="pc-name">Sobha City</div>
+          <div class="pc-loc">📍 Sector 108, Gurugram</div>
+          <div class="pc-tags"><span class="pc-tag">2 BHK</span><span class="pc-tag">3 BHK</span></div>
+          <div class="pc-footer">
+            <div class="pc-price">₹2.8 Cr – ₹4.5 Cr<small>onwards</small></div>
+            <button class="pc-enq">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="prop-card">
+        <div class="pc-img" style="background-image:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80');">
+          <span class="pc-status status-uc">Under Construction</span>
+          <div class="pc-save">♡</div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-dev">Embassy Group</div>
+          <div class="pc-name">Embassy Boulevard</div>
+          <div class="pc-loc">📍 Yelahanka, Bengaluru</div>
+          <div class="pc-tags"><span class="pc-tag">4 BHK Villa</span><span class="pc-tag">5 BHK Villa</span></div>
+          <div class="pc-footer">
+            <div class="pc-price">₹9 Cr – ₹16 Cr<small>onwards</small></div>
+            <button class="pc-enq">Enquire</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ COMPARE PROPERTIES ══════ -->
+<div class="compare-sec">
+  <div class="compare-inner">
+    <div style="text-align:center; margin-bottom: 48px;">
+        <div class="eyebrow" style="text-align:center">Side-by-Side Analysis</div>
+        <h2 class="sec-title" style="color:#fff; text-align:center;">Compare <span style="color:var(--gold2)">Properties</span></h2>
+        <p class="sec-sub" style="color:rgba(255,255,255,.5); text-align:center; max-width: 600px; margin: 0 auto;">Evaluate luxury amenities, price points, and builder reputation — all in one comprehensive view.</p>
+    </div>
+    
+    <div class="compare-wrapper">
+        <table class="compare-table">
+        <thead>
+            <tr>
+            <th>Compare Features</th>
+            <th>
+                <span class="ct-badge-best" style="background:transparent;"></span>
+                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=400&q=80" class="ct-prop-img" alt="Lodha Altamount">
+                <div class="ct-prop-name">Lodha Altamount</div>
+                <div class="ct-prop-loc">South Mumbai</div>
+            </th>
+            <th class="ct-best" style="border-radius: 8px 8px 0 0;">
+                <span class="ct-badge-best">Highest ROI</span>
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&q=80" class="ct-prop-img" alt="DLF Camellias">
+                <div class="ct-prop-name">DLF Camellias</div>
+                <div class="ct-prop-loc">Gurugram</div>
+            </th>
+            <th>
+                <span class="ct-badge-best" style="background:transparent;"></span>
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80" class="ct-prop-img" alt="Prestige Golfshire">
+                <div class="ct-prop-name">Prestige Golfshire</div>
+                <div class="ct-prop-loc">Bengaluru</div>
+            </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td class="ct-feat">Configuration</td>
+            <td class="ct-val">3, 4 BHK & Penthouses</td>
+            <td class="ct-val ct-best highlight">4, 5, 6 BHK</td>
+            <td class="ct-val">4 BHK Luxury Villas</td>
+            </tr>
+            <tr>
+            <td class="ct-feat">Starting Price</td>
+            <td class="ct-val">₹ 18.0 Cr</td>
+            <td class="ct-val ct-best highlight">₹ 35.0 Cr</td>
+            <td class="ct-val">₹ 11.0 Cr</td>
+            </tr>
+            <tr>
+            <td class="ct-feat">Avg. Price / sq.ft</td>
+            <td class="ct-val">₹ 85,000</td>
+            <td class="ct-val ct-best highlight">₹ 48,000</td>
+            <td class="ct-val">₹ 18,500</td>
+            </tr>
+            <tr>
+            <td class="ct-feat">Possession Status</td>
+            <td class="ct-val">Ready to Move</td>
+            <td class="ct-val ct-best">Ready to Move</td>
+            <td class="ct-val">Ready to Move</td>
+            </tr>
+            <tr>
+            <td class="ct-feat">Private Golf Course</td>
+            <td class="ct-val"><span class="ct-cross">—</span></td>
+            <td class="ct-val ct-best"><span class="ct-check">✓</span></td>
+            <td class="ct-val"><span class="ct-check">✓</span></td>
+            </tr>
+            <tr>
+            <td class="ct-feat">Private Pool / Jacuzzi</td>
+            <td class="ct-val"><span class="ct-check">✓</span></td>
+            <td class="ct-val ct-best"><span class="ct-check">✓</span></td>
+            <td class="ct-val"><span class="ct-check">✓</span></td>
+            </tr>
+            <tr>
+            <td class="ct-feat">Concierge Services</td>
+            <td class="ct-val"><span class="ct-check">✓</span></td>
+            <td class="ct-val ct-best"><span class="ct-check">✓</span></td>
+            <td class="ct-val"><span class="ct-cross">—</span></td>
+            </tr>
+            <tr>
+            <td class="ct-feat">Developer Rating</td>
+            <td class="ct-val">★★★★☆</td>
+            <td class="ct-val ct-best highlight">★★★★★</td>
+            <td class="ct-val">★★★★☆</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+    <div class="compare-cta">
+      <button class="compare-cta-btn">+ Add Another Property to Compare</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ PRICE INSIGHTS & MARKET DATA ══════ -->
+<div class="insights-sec" id="insights-section">
+  <div class="insights-inner">
+    <div class="sec-header" style="margin-bottom: 48px;">
+        <div>
+            <div class="eyebrow">Market Intelligence</div>
+            <h2 class="sec-title">Property Data & <span>Analytics</span></h2>
+            <p class="sec-sub">Real-time market trends, demand charts and pricing insights for <strong id="insight-city-label">India</strong>.</p>
+        </div>
+    </div>
+    
+    <div class="insights-grid">
+      
+      <!-- Box 1: Micromarket Price Comparison -->
+      <div class="insight-box">
+        <div class="pcc-head">
+          <div>
+            <div class="pcc-title">Micromarket Comparison</div>
+            <div class="pcc-sub">Avg Price per sq.ft · Premium Residential</div>
+          </div>
+          <div class="pcc-pill" id="chart-pill-label">All India Avg</div>
+        </div>
+        <div class="bar-row" id="insight-bars">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Box 2: Demand & Inventory -->
+      <div class="insight-box">
+        <div class="pcc-head" style="margin-bottom: 12px;">
+            <div>
+              <div class="pcc-title">Demand by Config</div>
+              <div class="pcc-sub">Buyer inquiries breakdown</div>
+            </div>
+        </div>
+        <div class="donut-wrap">
+            <div class="donut-chart">
+                <div class="donut-inner">
+                    <span id="donut-main-stat">45%</span>
+                    <small>3 BHK</small>
+                </div>
+            </div>
+            <div class="donut-legend">
+                <div class="leg-item"><div class="leg-dot" style="background:var(--ink)"></div>3 BHK</div>
+                <div class="leg-item"><div class="leg-dot" style="background:var(--gold2)"></div>4 BHK</div>
+                <div class="leg-item"><div class="leg-dot" style="background:var(--gold)"></div>Villas / Plots</div>
+                <div class="leg-item"><div class="leg-dot" style="background:var(--cream3)"></div>Other</div>
+            </div>
+        </div>
+        <div class="inventory-grid">
+            <div class="inv-stat">
+                <div class="inv-num" id="inv-total">14.2K</div>
+                <div class="inv-lbl">Active Units</div>
+            </div>
+            <div class="inv-stat">
+                <div class="inv-num" id="inv-yoy">+8.4%</div>
+                <div class="inv-lbl">YoY Appreciation</div>
+            </div>
+        </div>
+      </div>
+
+      <!-- Box 3: Price Trend -->
+      <div class="insight-box">
+        <div class="pcc-head">
+          <div>
+            <div class="pcc-title">5-Year Price Trend</div>
+            <div class="pcc-sub">Capital Appreciation Trajectory (₹)</div>
+          </div>
+        </div>
+        <div class="trend-container">
+            <div class="trend-labels-y">
+                <span>+40%</span>
+                <span>+20%</span>
+                <span>Base</span>
+            </div>
+            <svg class="trend-chart-svg" viewBox="0 0 400 150" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="trend-grad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="var(--gold)" stop-opacity="0.8"/>
+                        <stop offset="100%" stop-color="var(--gold)" stop-opacity="0"/>
+                    </linearGradient>
+                </defs>
+                <!-- Grid Lines -->
+                <line x1="0" y1="10" x2="400" y2="10" class="trend-grid-line"/>
+                <line x1="0" y1="75" x2="400" y2="75" class="trend-grid-line"/>
+                <line x1="0" y1="140" x2="400" y2="140" class="trend-grid-line"/>
+                
+                <!-- Line and Area (Path populated via JS) -->
+                <path id="trend-area-path" class="trend-area" d="" />
+                <path id="trend-line-path" class="trend-line" d="" />
+            </svg>
+            <div class="trend-labels-x">
+                <span>2022</span>
+                <span>2023</span>
+                <span>2024</span>
+                <span>2025</span>
+                <span>2026</span>
+            </div>
+        </div>
+      </div>
+
+      <!-- Box 4: Rental Supply vs Yield -->
+      <div class="insight-box">
+        <div class="pcc-head" style="margin-bottom: 24px;">
+          <div>
+            <div class="pcc-title">Rental Supply & Yield</div>
+            <div class="pcc-sub">Availability volume vs expected ROI</div>
+          </div>
+        </div>
+        <div id="rental-bars-container">
+            <!-- Populated via JS -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════ TOP DEVELOPERS (Reverted to Original Style) ══════ -->
+<div class="dev-sec">
+  <div class="dev-inner">
+    <div class="sec-header">
+      <div>
+        <div class="eyebrow">Verified Builders</div>
+        <h2 class="sec-title">Top <span>Developers</span> in <span id="dev-city-label">India</span></h2>
+        <p class="sec-sub" style="margin-bottom:0">Trusted Grade-A construction companies with premium portfolios</p>
+      </div>
+      <a class="view-all" href="#">All Developers →</a>
+    </div>
+    
+    <div class="dev-grid" id="dev-grid-container">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</div>
+
+<!-- ══════ POPULAR CITIES (Redesigned & Attractive) ══════ -->
+<div class="cities-sec">
+  <div class="cities-inner">
+    <div class="eyebrow">National Network</div>
+    <h2 class="sec-title" style="margin-bottom:6px">Most Popular <span>Investment Hubs</span></h2>
+    <p class="sec-sub" style="margin-bottom:48px">Explore high-growth metropolitan markets across India — powered by BharatEstates</p>
+    
+    <div class="cities-grid">
+      
+      <div class="city-card">
+        <div class="city-bg" style="background-image:url('https://images.unsplash.com/photo-1522256424424-df3ab9940177?w=600&q=80')"></div>
+        <span class="city-badge city-badge-hot">Premium</span>
+        <div class="city-overlay">
+          <div class="city-rank">#1 PREFERRED</div>
+          <div class="city-name">Mumbai</div>
+          <div class="city-state">Maharashtra</div>
+          <div class="city-meta">
+            <div class="cm-item"><span>Avg. Price</span><span class="cm-val">₹28,200 / sqft</span></div>
+            <div class="cm-item"><span>Listings</span><span class="cm-val">54,200+</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="city-card">
+        <div class="city-bg" style="background-image:url('https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=600&q=80')"></div>
+        <span class="city-badge city-badge-rising">Tech Hub</span>
+        <div class="city-overlay">
+          <div class="city-rank">#2 FASTEST GROWING</div>
+          <div class="city-name">Bengaluru</div>
+          <div class="city-state">Karnataka</div>
+          <div class="city-meta">
+            <div class="cm-item"><span>Avg. Price</span><span class="cm-val">₹12,400 / sqft</span></div>
+            <div class="cm-item"><span>Listings</span><span class="cm-val">48,700+</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="city-card">
+        <div class="city-bg" style="background-image:url('https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80')"></div>
+        <span class="city-badge city-badge-hot">High ROI</span>
+        <div class="city-overlay">
+          <div class="city-rank">#3 TOP VALUE</div>
+          <div class="city-name">Delhi NCR</div>
+          <div class="city-state">Delhi / Haryana / UP</div>
+          <div class="city-meta">
+            <div class="cm-item"><span>Avg. Price</span><span class="cm-val">₹16,800 / sqft</span></div>
+            <div class="cm-item"><span>Listings</span><span class="cm-val">62,000+</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="city-card">
+        <div class="city-bg" style="background-image:url('https://images.unsplash.com/photo-1605130284535-11dd9eedc58a?w=600&q=80')"></div>
+        <div class="city-overlay">
+          <div class="city-rank">#4 EMERGING</div>
+          <div class="city-name">Hyderabad</div>
+          <div class="city-state">Telangana</div>
+          <div class="city-meta">
+            <div class="cm-item"><span>Avg. Price</span><span class="cm-val">₹9,200 / sqft</span></div>
+            <div class="cm-item"><span>Listings</span><span class="cm-val">31,400+</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="city-card">
+        <div class="city-bg" style="background-image:url('https://images.unsplash.com/photo-1565017409257-2fc1610b42f6?w=600&q=80')"></div>
+        <div class="city-overlay">
+          <div class="city-rank">#5 INDUSTRIAL</div>
+          <div class="city-name">Pune</div>
+          <div class="city-state">Maharashtra</div>
+          <div class="city-meta">
+            <div class="cm-item"><span>Avg. Price</span><span class="cm-val">₹9,100 / sqft</span></div>
+            <div class="cm-item"><span>Listings</span><span class="cm-val">28,900+</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="city-card">
+        <div class="city-bg" style="background-image:url('https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&q=80')"></div>
+        <div class="city-overlay">
+          <div class="city-rank">#6 COMMERCIAL</div>
+          <div class="city-name">Chennai</div>
+          <div class="city-state">Tamil Nadu</div>
+          <div class="city-meta">
+            <div class="cm-item"><span>Avg. Price</span><span class="cm-val">₹8,800 / sqft</span></div>
+            <div class="cm-item"><span>Listings</span><span class="cm-val">22,100+</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="city-card">
+        <div class="city-bg" style="background-image:url('https://images.unsplash.com/photo-1623910271131-0161476b701c?w=600&q=80')"></div>
+        <span class="city-badge city-badge-rising">Tier-2 Pick</span>
+        <div class="city-overlay" style="background:linear-gradient(to top, rgba(26,28,32,0.95) 0%, rgba(189,168,113,0.3) 60%, transparent 100%);">
+          <div class="city-rank">#7 HIGH POTENTIAL</div>
+          <div class="city-name" style="color:var(--gold2)">Patna</div>
+          <div class="city-state">Bihar</div>
+          <div class="city-meta">
+            <div class="cm-item"><span>Avg. Price</span><span class="cm-val">₹4,600 / sqft</span></div>
+            <div class="cm-item"><span>Listings</span><span class="cm-val">8,400+</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="city-card">
+        <div class="city-bg" style="background-image:url('https://images.unsplash.com/photo-1558431382-27e303142255?w=600&q=80')"></div>
+        <div class="city-overlay">
+          <div class="city-rank">#8 HERITAGE</div>
+          <div class="city-name">Kolkata</div>
+          <div class="city-state">West Bengal</div>
+          <div class="city-meta">
+            <div class="cm-item"><span>Avg. Price</span><span class="cm-val">₹6,400 / sqft</span></div>
+            <div class="cm-item"><span>Listings</span><span class="cm-val">18,700+</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SERVICES ══════ -->
+<div class="services-sec">
+  <div class="services-inner">
+    <div style="text-align:center;margin-bottom:40px">
+      <div class="eyebrow" style="text-align:center">Complete Platform</div>
+      <h2 class="sec-title" style="text-align:center">Everything Under One <span>Roof</span></h2>
+    </div>
+    <div class="serv-grid">
+      <div class="serv-item"><span class="serv-icon">🏦</span><div class="serv-name">Luxury Home Loans</div><div class="serv-desc">Exclusive HNWI rates via 15+ banks.</div></div>
+      <div class="serv-item"><span class="serv-icon">🎨</span><div class="serv-name">Bespoke Interiors</div><div class="serv-desc">Premium fit-outs from top designers.</div></div>
+      <div class="serv-item"><span class="serv-icon">📊</span><div class="serv-name">Asset Valuation</div><div class="serv-desc">Free AI-powered portfolio reports.</div></div>
+      <div class="serv-item"><span class="serv-icon">🔑</span><div class="serv-name">Property Mgmt.</div><div class="serv-desc">End-to-end service for NRI owners.</div></div>
+      <div class="serv-item"><span class="serv-icon">⚖️</span><div class="serv-name">Legal Concierge</div><div class="serv-desc">Flawless title, docs & registration.</div></div>
+      <div class="serv-item"><span class="serv-icon">🚁</span><div class="serv-name">VIP Site Visits</div><div class="serv-desc">Chauffeur driven guided tours.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ FOOTER ══════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">
+          <div class="logo-mark" style="width:28px;height:28px;font-size:14px;">B</div>
+          Bharat<em style="color:rgba(255,255,255,0.7);font-style:normal;font-weight:400">Estates</em>
+        </div>
+        <p class="footer-desc">India's premier luxury real estate marketplace. Discover exclusive properties, access verified Grade-A developers, and experience white-glove concierge services nationwide.</p>
+        <div class="footer-contact">
+          <a href="#">📞 +91 98765 43210</a>
+          <a href="#">✉️ luxury@bharatestates.com</a>
+          <a href="#">📍 BKC, Mumbai – 400 051</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-h">Properties</div>
+        <ul class="footer-links">
+          <li><a href="#">Luxury Apartments</a></li>
+          <li><a href="#">Independent Villas</a></li>
+          <li><a href="#">Penthouses</a></li>
+          <li><a href="#">Premium Plots</a></li>
+          <li><a href="#">Grade-A Commercial</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-h">Top Markets</div>
+        <ul class="footer-links">
+          <li><a href="#">Mumbai (MMR)</a></li>
+          <li><a href="#">Delhi NCR</a></li>
+          <li><a href="#">Bengaluru</a></li>
+          <li><a href="#">Hyderabad</a></li>
+          <li><a href="#">Pune</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-h">Company</div>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Market Insights</a></li>
+          <li><a href="#">Press & Media</a></li>
+          <li><a href="#">Contact Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-h">Exclusive Services</div>
+        <ul class="footer-links">
+          <li><a href="#">NRI Investment Help</a></li>
+          <li><a href="#">Bespoke Interiors</a></li>
+          <li><a href="#">Legal Concierge</a></li>
+          <li><a href="#">Portfolio Mgmt.</a></li>
+          <li><a href="#">Developer Portal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 BharatEstates. All rights reserved.</span>
+      <div class="footer-badges">
+        <span class="f-badge">RERA Compliant</span>
+        <span class="f-badge">ISO 9001:2015</span>
+        <span class="f-badge">Privacy Policy</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Tab Switching
+document.querySelectorAll('.stab').forEach(b=>{
+  b.addEventListener('click',function(){
+    this.closest('.search-tabs').querySelectorAll('.stab').forEach(x=>x.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// Save Button Toggle
+document.querySelectorAll('.pc-save').forEach(s=>{
+  let saved=false;
+  s.addEventListener('click',function(e){
+    e.stopPropagation();
+    saved=!saved;
+    this.textContent=saved?'♥':'♡';
+    this.style.color=saved?'var(--red)':'inherit';
+  });
+});
+
+// Helper for generating Smooth SVG curves
+function generateSVGSpline(dataArray) {
+    let path = `M0,${140 - dataArray[0]}`;
+    for (let i = 0; i < dataArray.length - 1; i++) {
+        let x1 = i * 100 + 50; 
+        let y1 = 140 - dataArray[i];
+        let x2 = i * 100 + 50;
+        let y2 = 140 - dataArray[i+1];
+        let x = (i+1) * 100;
+        let y = 140 - dataArray[i+1];
+        path += ` C${x1},${y1} ${x2},${y2} ${x},${y}`;
+    }
+    return path;
+}
+
+// Dynamic City Data Logic (Includes New Trend & Rental Data)
+const dynamicData = {
+  "India": {
+    insightsTitle: "All India Avg",
+    bars: [
+      { loc: "Mumbai (South)", val: "₹55,000", pct: "95%", change: "↑ 6.2%", dir: "up" },
+      { loc: "Delhi (Central)", val: "₹42,000", pct: "80%", change: "↑ 5.8%", dir: "up" },
+      { loc: "Gurugram (Golf)", val: "₹28,000", pct: "65%", change: "↑ 12.1%", dir: "up" },
+      { loc: "Bengaluru (CBD)", val: "₹22,000", pct: "50%", change: "↑ 8.4%", dir: "up" },
+      { loc: "Hyderabad (J.H.)", val: "₹16,000", pct: "38%", change: "↑ 9.2%", dir: "up" },
+      { loc: "Pune (Koregaon)", val: "₹14,500", pct: "32%", change: "↑ 7.1%", dir: "up" }
+    ],
+    trend: [20, 45, 60, 95, 125], // SVG scaling values
+    rentals: [
+      { lbl: "3 BHK Flats", yield: "4.8%", w: "80%" },
+      { lbl: "4 BHK Luxury", yield: "5.2%", w: "60%" },
+      { lbl: "Villas/Plots", yield: "3.5%", w: "40%" },
+      { lbl: "Commercial", yield: "8.1%", w: "95%" }
+    ],
+    invTotal: "84.2K", invYoy: "+8.4%",
+    devs: [
+      { name: "Lodha Group", logo: "L", type: "Ultra Luxury", rera: "MH/01/2020", num: "42", exp: "40+", sold: "50k+", proj: ["Altamount", "The Park"] },
+      { name: "DLF Limited", logo: "DLF", type: "Premium Residential", rera: "HR/05/2018", num: "28", exp: "75+", sold: "100k+", proj: ["Camellias", "Magnolias"] },
+      { name: "Prestige Group", logo: "PR", type: "Luxury & Commercial", rera: "KA/02/2019", num: "35", exp: "35+", sold: "80k+", proj: ["Golfshire", "Kingfisher"] }
+    ]
+  },
+  "Mumbai": {
+    insightsTitle: "Mumbai MMR",
+    bars: [
+      { loc: "South Mumbai", val: "₹55,000", pct: "95%", change: "↑ 4.2%", dir: "up" },
+      { loc: "Bandra / Khar", val: "₹45,000", pct: "82%", change: "↑ 5.1%", dir: "up" },
+      { loc: "Juhu / V.Parle", val: "₹38,000", pct: "70%", change: "↑ 3.8%", dir: "up" },
+      { loc: "Andheri West", val: "₹24,000", pct: "55%", change: "↑ 6.4%", dir: "up" },
+      { loc: "Powai", val: "₹21,000", pct: "48%", change: "↑ 7.2%", dir: "up" },
+      { loc: "Thane (Prem)", val: "₹16,000", pct: "35%", change: "↑ 8.1%", dir: "up" }
+    ],
+    trend: [30, 40, 70, 85, 110],
+    rentals: [
+      { lbl: "2 BHK Suburbs", yield: "3.8%", w: "95%" },
+      { lbl: "3 BHK SoBo", yield: "2.9%", w: "45%" },
+      { lbl: "Premium Offices", yield: "7.5%", w: "85%" }
+    ],
+    invTotal: "22.4K", invYoy: "+6.2%",
+    devs: [
+      { name: "Lodha Group", logo: "L", type: "Ultra Luxury", rera: "MH/01/2020", num: "42", exp: "40+", sold: "50k+", proj: ["World Towers", "Trump Tower"] },
+      { name: "Godrej Prop.", logo: "GP", type: "Premium Residential", rera: "MH/04/2019", num: "18", exp: "30+", sold: "25k+", proj: ["The Trees", "RK Studios"] },
+      { name: "Rustomjee", logo: "R", type: "Luxury Townships", rera: "MH/03/2018", num: "14", exp: "25+", sold: "15k+", proj: ["Crown", "Seasons"] }
+    ]
+  },
+  "Bengaluru": {
+    insightsTitle: "Bengaluru Urban",
+    bars: [
+      { loc: "Koramangala", val: "₹22,000", pct: "85%", change: "↑ 7.2%", dir: "up" },
+      { loc: "Indiranagar", val: "₹18,500", pct: "75%", change: "↑ 6.8%", dir: "up" },
+      { loc: "Whitefield", val: "₹12,000", pct: "60%", change: "↑ 9.4%", dir: "up" },
+      { loc: "Sarjapur Rd", val: "₹10,500", pct: "55%", change: "↑ 10.2%", dir: "up" },
+      { loc: "Hebbal", val: "₹11,000", pct: "58%", change: "↑ 8.1%", dir: "up" },
+      { loc: "Electronic City", val: "₹7,500", pct: "40%", change: "↓ 1.1%", dir: "dn" }
+    ],
+    trend: [10, 30, 60, 110, 130],
+    rentals: [
+      { lbl: "IT Corridor 2 BHK", yield: "6.2%", w: "100%" },
+      { lbl: "Luxury Villas", yield: "4.1%", w: "30%" },
+      { lbl: "Co-working Space", yield: "8.5%", w: "70%" }
+    ],
+    invTotal: "18.1K", invYoy: "+9.3%",
+    devs: [
+      { name: "Prestige Group", logo: "PR", type: "Luxury Townships", rera: "KA/02/2019", num: "35", exp: "35+", sold: "80k+", proj: ["Golfshire", "Lakeside"] },
+      { name: "Sobha Limited", logo: "S", type: "Premium Quality", rera: "KA/05/2017", num: "22", exp: "28+", sold: "45k+", proj: ["City", "Dream Acres"] },
+      { name: "Brigade Group", logo: "B", type: "Mixed Use", rera: "KA/04/2016", num: "19", exp: "30+", sold: "40k+", proj: ["Gateway", "Exotica"] }
+    ]
+  },
+  "Delhi": {
+    insightsTitle: "Delhi NCR",
+    bars: [
+      { loc: "Lutyens Zone", val: "₹1.2L", pct: "98%", change: "↑ 2.2%", dir: "up" },
+      { loc: "Golf Cr. Ext", val: "₹28,000", pct: "70%", change: "↑ 14.1%", dir: "up" },
+      { loc: "Vasant Vihar", val: "₹35,000", pct: "80%", change: "↑ 4.8%", dir: "up" },
+      { loc: "Dwarka Exp.", val: "₹16,000", pct: "50%", change: "↑ 18.4%", dir: "up" },
+      { loc: "Noida Sec 150", val: "₹12,000", pct: "40%", change: "↑ 11.2%", dir: "up" },
+      { loc: "Greater Noida W", val: "₹7,500", pct: "25%", change: "↑ 8.1%", dir: "up" }
+    ],
+    trend: [25, 45, 55, 90, 135],
+    rentals: [
+      { lbl: "Gurugram 3 BHK", yield: "5.5%", w: "80%" },
+      { lbl: "Noida 2 BHK", yield: "4.8%", w: "90%" },
+      { lbl: "Delhi Independent", yield: "2.5%", w: "20%" }
+    ],
+    invTotal: "32.5K", invYoy: "+11.8%",
+    devs: [
+      { name: "DLF Limited", logo: "DLF", type: "Ultra Luxury", rera: "HR/05/2018", num: "28", exp: "75+", sold: "100k+", proj: ["Camellias", "Crest"] },
+      { name: "M3M India", logo: "M3M", type: "Premium Commercial", rera: "HR/09/2020", num: "15", exp: "12+", sold: "10k+", proj: ["Golfestate", "Urbana"] },
+      { name: "Emaar India", logo: "EM", type: "Luxury Residential", rera: "HR/02/2017", num: "12", exp: "15+", sold: "20k+", proj: ["Marbella", "Palm Drive"] }
+    ]
+  },
+  "Patna": {
+    insightsTitle: "Patna Municipal",
+    bars: [
+      { loc: "Boring Road", val: "₹8,500", pct: "85%", change: "↑ 6.2%", dir: "up" },
+      { loc: "Patliputra Col", val: "₹7,200", pct: "75%", change: "↑ 5.8%", dir: "up" },
+      { loc: "Rajendra Ngr", val: "₹6,500", pct: "65%", change: "↑ 4.1%", dir: "up" },
+      { loc: "Kankarbagh", val: "₹5,800", pct: "58%", change: "↑ 3.9%", dir: "up" },
+      { loc: "Danapur", val: "₹4,200", pct: "45%", change: "↑ 8.2%", dir: "up" },
+      { loc: "Phulwari Shrf", val: "₹3,500", pct: "35%", change: "↑ 9.4%", dir: "up" }
+    ],
+    trend: [40, 50, 75, 95, 120],
+    rentals: [
+      { lbl: "2 BHK Suburbs", yield: "4.2%", w: "70%" },
+      { lbl: "3 BHK Central", yield: "3.5%", w: "50%" },
+      { lbl: "Retail Shops", yield: "7.8%", w: "85%" }
+    ],
+    invTotal: "8.4K", invYoy: "+6.8%",
+    devs: [
+      { name: "Satyamev Grp", logo: "SG", type: "Premium Residential", rera: "BR/07/2016", num: "14", exp: "18+", sold: "3k+", proj: ["Heights", "Enclave"] },
+      { name: "Venus Star", logo: "VS", type: "Luxury Heights", rera: "BR/07/2019", num: "8", exp: "12+", sold: "1k+", proj: ["Capital H.", "Residency"] },
+      { name: "Sai Developers", logo: "SD", type: "Mid-Segment", rera: "BR/07/2018", num: "9", exp: "10+", sold: "2k+", proj: ["Greens", "Towers"] }
+    ]
+  }
+};
+
+function renderCityData(cityKey) {
+  const data = dynamicData[cityKey];
+  
+  // Update Labels
+  document.getElementById('hero-loc-title').textContent = cityKey;
+  document.getElementById('insight-city-label').textContent = cityKey;
+  document.getElementById('dev-city-label').textContent = cityKey;
+  document.getElementById('chart-pill-label').textContent = data.insightsTitle;
+  document.getElementById('inv-total').textContent = data.invTotal;
+  document.getElementById('inv-yoy').textContent = data.invYoy;
+  
+  // 1. Update Micromarket Bars
+  const barsContainer = document.getElementById('insight-bars');
+  barsContainer.innerHTML = '';
+  data.bars.forEach((b, i) => {
+    const bgColors = ['var(--ink)', 'var(--ink2)', 'var(--ink3)', 'var(--gold)', 'var(--gold2)', 'var(--gold3)'];
+    const color = bgColors[i % bgColors.length];
+    const changeClass = b.dir === 'up' ? 'change-up' : 'change-down';
+    const html = `
+      <div class="bar-item">
+        <div class="bar-loc">${b.loc}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:0%; background:${color}"><span>${b.val}</span></div></div>
+        <div class="bar-val">${b.val}</div>
+        <div class="bar-change ${changeClass}" style="background:transparent; padding:0; text-align:right;">${b.change}</div>
+      </div>
+    `;
+    barsContainer.insertAdjacentHTML('beforeend', html);
+    setTimeout(() => { barsContainer.lastElementChild.querySelector('.bar-fill').style.width = b.pct; }, 50);
+  });
+
+  // 2. Update Price Trend SVG
+  const pathD = generateSVGSpline(data.trend);
+  const areaD = pathD + " L400,150 L0,150 Z";
+  document.getElementById('trend-line-path').setAttribute('d', pathD);
+  document.getElementById('trend-area-path').setAttribute('d', areaD);
+
+  // 3. Update Rental Supply Bars
+  const rentalsContainer = document.getElementById('rental-bars-container');
+  rentalsContainer.innerHTML = '';
+  data.rentals.forEach(r => {
+    const html = `
+      <div class="rental-row">
+          <div class="rental-top">
+              <span>${r.lbl}</span>
+              <span class="yield">${r.yield} Yield</span>
+          </div>
+          <div class="rental-bar-bg">
+              <div class="rental-bar-fill" style="width: 0%;"></div>
+          </div>
+      </div>
+    `;
+    rentalsContainer.insertAdjacentHTML('beforeend', html);
+    setTimeout(() => { rentalsContainer.lastElementChild.querySelector('.rental-bar-fill').style.width = r.w; }, 50);
+  });
+
+  // 4. Update Devs (Reverted Clean Style)
+  const devContainer = document.getElementById('dev-grid-container');
+  devContainer.innerHTML = '';
+  data.devs.forEach(dev => {
+    const projTags = dev.proj.map(p => `<span class="dev-proj-tag">${p}</span>`).join('');
+    const html = `
+      <div class="dev-card">
+        <div class="dev-top">
+          <div class="dev-logo">${dev.logo}</div>
+          <div>
+            <div class="dev-name">${dev.name}</div>
+            <div class="dev-type">${dev.type}</div>
+            <div class="dev-stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="dev-stats">
+          <div class="ds-item"><div class="ds-num">${dev.num}</div><div class="ds-lbl">Projects</div></div>
+          <div class="ds-item"><div class="ds-num">${dev.exp}</div><div class="ds-lbl">Yrs Active</div></div>
+          <div class="ds-item"><div class="ds-num">${dev.sold}</div><div class="ds-lbl">Units Sold</div></div>
+        </div>
+        <div class="dev-projects">
+          ${projTags}
+        </div>
+        <div class="dev-rera">BR/RERA/${dev.rera}</div>
+      </div>
+    `;
+    devContainer.insertAdjacentHTML('beforeend', html);
+  });
+}
+
+// Listen to Dropdown Change
+const selector = document.getElementById('global-city-selector');
+selector.addEventListener('change', function(e) {
+  renderCityData(e.target.value);
+  document.getElementById('insights-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+// Initial Render
+renderCityData('India');
+</script>
+</body>
+</html>

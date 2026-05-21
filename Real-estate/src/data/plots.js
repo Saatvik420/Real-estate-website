@@ -1,0 +1,283 @@
+import { agents } from './agents';
+
+export const plots = [
+  // Maharashtra - Mumbai
+  { 
+    id: 'plot_mh_1', 
+    cityId: 'mumbai', 
+    title: 'Residential Plot near Karjat', 
+    price: 8500000, 
+    priceStr: '₹85 L', 
+    area: '2500 sqft', 
+    pricePerUnit: '₹3,400 / sqft',
+    location: 'Karjat', 
+    zone: 'Residential', 
+    status: 'Verified', 
+    developer: 'Exotic Greens',
+    rera: 'MH/KAR/2023/102',
+    tags: ['Corner Plot', 'Gated Community'], 
+    img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
+    agentId: 'agent_1'
+  },
+  { 
+    id: 'plot_mh_2', 
+    cityId: 'pune', 
+    title: 'Agricultural Land near Mulshi', 
+    price: 15000000, 
+    priceStr: '₹1.5 Cr', 
+    area: '2 Acres', 
+    pricePerUnit: '₹75 L / Acre',
+    location: 'Mulshi', 
+    zone: 'Agricultural', 
+    status: 'Verified', 
+    developer: 'Nature Farms',
+    rera: 'MH/PUN/2022/45',
+    tags: ['Lake View', 'Clear Title'], 
+    img: 'https://images.pexels.com/photos/7752033/pexels-photo-7752033.jpeg',
+    agentId: 'agent_1'
+  },
+  { 
+    id: 'plot_mh_3', 
+    cityId: 'mumbai', 
+    title: 'Commercial Land in Navi Mumbai', 
+    price: 120000000, 
+    priceStr: '₹12 Cr', 
+    area: '10000 sqft', 
+    pricePerUnit: '₹12,000 / sqft',
+    location: 'Panvel', 
+    zone: 'Commercial', 
+    status: 'Verified', 
+    developer: 'Industrial Hubs',
+    rera: 'MH/NM/2024/09',
+    tags: ['Industrial Area', 'Highway Touch'], 
+    img: 'https://images.pexels.com/photos/9670372/pexels-photo-9670372.jpeg',
+    agentId: 'agent_2'
+  },
+
+  // Karnataka - Bengaluru
+  { 
+    id: 'plot_ka_1', 
+    cityId: 'bengaluru', 
+    title: 'Premium Villa Plot in Devanahalli', 
+    price: 12000000, 
+    priceStr: '₹1.2 Cr', 
+    area: '3000 sqft', 
+    pricePerUnit: '₹4,000 / sqft',
+    location: 'Devanahalli', 
+    zone: 'Residential', 
+    status: 'Ready to Construct', 
+    developer: 'Prestige Group',
+    rera: 'KA/DEV/2023/88',
+    tags: ['Near Airport', 'Luxury Amenities'], 
+    img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
+    agentId: 'agent_4'
+  },
+  { 
+    id: 'plot_ka_2', 
+    cityId: 'bengaluru', 
+    title: 'Industrial Land in Peenya', 
+    price: 45000000, 
+    priceStr: '₹4.5 Cr', 
+    area: '10000 sqft', 
+    pricePerUnit: '₹4,500 / sqft',
+    location: 'Peenya', 
+    zone: 'Industrial', 
+    status: 'Verified', 
+    developer: 'Peenya Ind. Corp',
+    rera: 'KA/IND/2021/12',
+    tags: ['Corner Plot', 'Power Backup'], 
+    img: 'https://images.unsplash.com/photo-1589923158776-cb4485d99fd6?w=600&q=80',
+    agentId: 'agent_4'
+  },
+  { 
+    id: 'plot_ka_3', 
+    cityId: 'mysuru', 
+    title: 'Residential Plot in Hebbal', 
+    price: 4500000, 
+    priceStr: '₹45 L', 
+    area: '1200 sqft', 
+    pricePerUnit: '₹3,750 / sqft',
+    location: 'Hebbal', 
+    zone: 'Residential', 
+    status: 'Verified', 
+    developer: 'Mysore Dev Corp',
+    rera: 'KA/MYS/2022/15',
+    tags: ['Park Facing', 'Ready to Build'], 
+    img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
+    agentId: 'agent_4'
+  },
+
+  // Delhi NCR
+  { 
+    id: 'plot_hr_1', 
+    cityId: 'gurugram', 
+    title: 'Commercial Plot on Sohna Road', 
+    price: 55000000, 
+    priceStr: '₹5.5 Cr', 
+    area: '500 sq yards', 
+    pricePerUnit: '₹1.1 L / sq yard',
+    location: 'Sector 48', 
+    zone: 'Commercial', 
+    status: 'Verified', 
+    developer: 'DLF India',
+    rera: 'HR/GUR/2020/02',
+    tags: ['Main Road', 'High Visibility'], 
+    img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
+    agentId: 'agent_3'
+  },
+  { 
+    id: 'plot_up_1', 
+    cityId: 'noida', 
+    title: 'Residential Plot in Sector 150', 
+    price: 25000000, 
+    priceStr: '₹2.5 Cr', 
+    area: '300 sq yards', 
+    pricePerUnit: '₹83,333 / sq yard',
+    location: 'Sector 150', 
+    zone: 'Residential', 
+    status: 'Gated', 
+    developer: 'ATS Homekraft',
+    rera: 'UP/NOI/2023/11',
+    tags: ['Eco Friendly', 'Park View'], 
+    img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
+    agentId: 'agent_3'
+  },
+
+  // Andhra Pradesh
+  { 
+    id: 'plot_ap_1', 
+    cityId: 'visakhapatnam', 
+    title: 'Beachfront Plot near Bheemili', 
+    price: 9500000, 
+    priceStr: '₹95 L', 
+    area: '2400 sqft', 
+    pricePerUnit: '₹3,958 / sqft',
+    location: 'Bheemili', 
+    zone: 'Residential', 
+    status: 'Ready to Construct', 
+    developer: 'Coastal Sands',
+    rera: 'AP/VIZ/2022/04',
+    tags: ['Sea View', 'Clear Title'], 
+    img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
+    agentId: 'agent_5'
+  },
+  { 
+    id: 'plot_ap_2', 
+    cityId: 'vijayawada', 
+    title: 'Agricultural Land near Kanchikacherla', 
+    price: 35000000, 
+    priceStr: '₹3.5 Cr', 
+    area: '5 Acres', 
+    pricePerUnit: '₹70 L / Acre',
+    location: 'Kanchikacherla', 
+    zone: 'Agricultural', 
+    status: 'Verified', 
+    developer: 'Agri Green',
+    rera: 'AP/VIJ/2021/18',
+    tags: ['Canal Water', 'Fertile Soil'], 
+    img: 'https://images.pexels.com/photos/20858785/pexels-photo-20858785.jpeg',
+    agentId: 'agent_5'
+  },
+
+  // Telangana
+  { 
+    id: 'plot_ts_1', 
+    cityId: 'hyderabad', 
+    title: 'Farmhouse Plot in Moinabad', 
+    price: 18000000, 
+    priceStr: '₹1.8 Cr', 
+    area: '0.5 Acres', 
+    pricePerUnit: '₹3.6 Cr / Acre',
+    location: 'Moinabad', 
+    zone: 'Agricultural', 
+    status: 'Verified', 
+    developer: 'Green Leaves',
+    rera: 'TS/HYD/2023/56',
+    tags: ['Weekend Retreat', 'Greenery'], 
+    img: 'https://images.pexels.com/photos/8817642/pexels-photo-8817642.jpeg',
+    agentId: 'agent_6'
+  },
+  { 
+    id: 'plot_ts_2', 
+    cityId: 'hyderabad', 
+    title: 'Villa Plot in Tellapur', 
+    price: 22000000, 
+    priceStr: '₹2.2 Cr', 
+    area: '400 sq yards', 
+    pricePerUnit: '₹55,000 / sq yard',
+    location: 'Tellapur', 
+    zone: 'Residential', 
+    status: 'HMDA Approved', 
+    developer: 'Fortune Group',
+    rera: 'TS/HYD/2022/12',
+    tags: ['Luxury Community', 'Clubhouse'], 
+    img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
+    agentId: 'agent_6'
+  },
+
+  // Tamil Nadu
+  { 
+    id: 'plot_tn_1', 
+    cityId: 'chennai', 
+    title: 'Residential Plot in ECR', 
+    price: 15000000, 
+    priceStr: '₹1.5 Cr', 
+    area: '2400 sqft', 
+    pricePerUnit: '₹6,250 / sqft',
+    location: 'East Coast Road', 
+    zone: 'Residential', 
+    status: 'CMDA Approved', 
+    developer: 'Casagrand',
+    rera: 'TN/CHE/2023/05',
+    tags: ['Near Beach', 'Elite Locality'], 
+    img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
+    agentId: 'agent_2'
+  },
+
+  // Rajasthan
+  { 
+    id: 'plot_rj_1', 
+    cityId: 'jaipur', 
+    title: 'Residential Plot on Ajmer Road', 
+    price: 3500000, 
+    priceStr: '₹35 L', 
+    area: '200 sq yards', 
+    pricePerUnit: '₹17,500 / sq yard',
+    location: 'Ajmer Road', 
+    zone: 'Residential', 
+    status: 'JDA Approved', 
+    developer: 'Vatika Group',
+    rera: 'RJ/JAI/2022/99',
+    tags: ['Gated', 'Fast Growing'], 
+    img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
+    agentId: 'agent_1'
+  },
+
+  // West Bengal
+  { 
+    id: 'plot_wb_1', 
+    cityId: 'kolkata', 
+    title: 'Residential Plot in Rajarhat', 
+    price: 6500000, 
+    priceStr: '₹65 L', 
+    area: '3 Cottah', 
+    pricePerUnit: '₹21.6 L / Cottah',
+    location: 'Rajarhat', 
+    zone: 'Residential', 
+    status: 'Verified', 
+    developer: 'Ambuja Neotia',
+    rera: 'WB/KOL/2021/08',
+    tags: ['Near IT Hub', 'Developing Area'], 
+    img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
+    agentId: 'agent_3'
+  }
+
+];
+
+// Ensure all plots have an agentId
+plots.forEach(p => {
+    if (!p.agentId) {
+        p.agentId = agents[Math.floor(Math.random() * agents.length)].id;
+    }
+});
+
