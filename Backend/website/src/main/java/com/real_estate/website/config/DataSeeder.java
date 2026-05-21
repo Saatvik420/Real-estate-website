@@ -25,8 +25,25 @@ public class DataSeeder implements CommandLineRunner {
     public void run(String... args) {
         try {
             System.out.println("--- DATA SEEDING STARTED ---");
-            if (userRepository.count() == 0) {
-                seedUsers();
+            
+            // Ensure Admin user always exists
+            if (userRepository.findByEmail("admin@bharatestates.com").isEmpty()) {
+                System.out.println("Seeding Admin user...");
+                User admin = User.builder()
+                        .email("admin@bharatestates.com")
+                        .password(passwordEncoder.encode("admin123"))
+                        .name("System Admin")
+                        .role("ADMIN")
+                        .active(true)
+                        .build();
+                userRepository.save(admin);
+                System.out.println("Admin user created: admin@bharatestates.com / admin123");
+            } else {
+                System.out.println("Admin user already exists.");
+            }
+
+            if (userRepository.count() <= 1) { // Only admin might exist
+                seedOtherUsers();
             }
             if (agentRepository.count() == 0) {
                 seedAgents();
@@ -44,45 +61,42 @@ public class DataSeeder implements CommandLineRunner {
         }
     }
 
-    private void seedUsers() {
-        System.out.println("Seeding users...");
-        User admin = User.builder()
-                .email("admin@bharatestates.com")
-                .password(passwordEncoder.encode("admin123"))
-                .name("System Admin")
-                .role("ADMIN")
-                .active(true)
-                .build();
-        userRepository.save(admin);
+    private void seedOtherUsers() {
+        System.out.println("Seeding other users...");
+        if (userRepository.findByEmail("user@example.com").isEmpty()) {
+            User user = User.builder()
+                    .email("user@example.com")
+                    .password(passwordEncoder.encode("user123"))
+                    .name("John Doe")
+                    .role("USER")
+                    .active(true)
+                    .build();
+            userRepository.save(user);
+        }
 
-        User user = User.builder()
-                .email("user@example.com")
-                .password(passwordEncoder.encode("user123"))
-                .name("John Doe")
-                .role("USER")
-                .active(true)
-                .build();
-        userRepository.save(user);
+        if (userRepository.findByEmail("contractor1@example.com").isEmpty()) {
+            User contractor1 = User.builder()
+                    .email("contractor1@example.com")
+                    .password(passwordEncoder.encode("password"))
+                    .name("Amit Sharma")
+                    .role("CONTRACTOR")
+                    .specialty("Interior Design")
+                    .active(true)
+                    .build();
+            userRepository.save(contractor1);
+        }
 
-        User contractor1 = User.builder()
-                .email("contractor1@example.com")
-                .password(passwordEncoder.encode("password"))
-                .name("Amit Sharma")
-                .role("CONTRACTOR")
-                .specialty("Interior Design")
-                .active(true)
-                .build();
-        userRepository.save(contractor1);
-
-        User contractor2 = User.builder()
-                .email("contractor2@example.com")
-                .password(passwordEncoder.encode("password"))
-                .name("Vikram Singh")
-                .role("CONTRACTOR")
-                .specialty("Civil Construction")
-                .active(true)
-                .build();
-        userRepository.save(contractor2);
+        if (userRepository.findByEmail("contractor2@example.com").isEmpty()) {
+            User contractor2 = User.builder()
+                    .email("contractor2@example.com")
+                    .password(passwordEncoder.encode("password"))
+                    .name("Vikram Singh")
+                    .role("CONTRACTOR")
+                    .specialty("Civil Construction")
+                    .active(true)
+                    .build();
+            userRepository.save(contractor2);
+        }
     }
 
     private void seedAgents() {
