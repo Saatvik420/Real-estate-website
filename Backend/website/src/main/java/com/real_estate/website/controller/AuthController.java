@@ -27,7 +27,14 @@ public class AuthController {
 
     @GetMapping("/test")
     public ResponseEntity<String> test() {
-        return ResponseEntity.ok("Auth controller is reachable!");
+        return ResponseEntity.ok("Auth controller is reachable! [Version: 1.0.4]");
+    }
+
+    @GetMapping("/diagnostic/admin-check")
+    public ResponseEntity<String> checkAdmin() {
+        boolean exists = userRepository.findByEmail("admin@bharatestates.com").isPresent();
+        long count = userRepository.count();
+        return ResponseEntity.ok("Admin exists: " + exists + " | Total users: " + count);
     }
 
     @PostMapping("/login")

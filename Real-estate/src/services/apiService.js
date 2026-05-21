@@ -27,10 +27,7 @@ const handleResponse = async (response) => {
         }
 
         if (!response.ok) {
-            if (response.status === 401) {
-                return { success: false, data: null, error: 'Invalid credentials.' };
-            }
-            const errorMessage = data?.message || `Server error: ${response.status}`;
+            const errorMessage = data?.message || (response.status === 401 ? 'Invalid credentials.' : `Server error: ${response.status}`);
             return { success: false, data: null, error: errorMessage };
         }
 
