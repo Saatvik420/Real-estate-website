@@ -15,7 +15,7 @@ const AboutView = () => {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '80px', alignItems: 'center', marginBottom: '100px' }}>
+        <div className="grid-2-1" style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '80px', alignItems: 'center', marginBottom: '100px' }}>
             <div>
                 <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.5rem', marginBottom: '24px', color: 'var(--ink)' }}>Our Philosophy</h3>
                 <p style={{ fontSize: '1.1rem', color: '#555', lineHeight: '1.8', marginBottom: '32px' }}>
@@ -41,7 +41,7 @@ const AboutView = () => {
             </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px', marginBottom: '100px' }}>
+        <div className="grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px', marginBottom: '100px' }}>
             {[
                 { title: 'The Curator', desc: 'Every property on our platform is hand-selected and verified for legal compliance and architectural excellence.' },
                 { title: 'The Strategist', desc: 'Our market intelligence reports provide HNIs with data-driven insights to make high-yield investment decisions.' },

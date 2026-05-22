@@ -56,8 +56,8 @@ const CompareProperties = () => {
           <h2 className="sec-title" style={{ color: '#fff', textAlign: 'center' }}>Compare <span>Properties</span></h2>
         </div>
 
-        <div className="compare-wrapper">
-          <table className="compare-table">
+        <div className="compare-wrapper" style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+          <table className="compare-table" style={{ minWidth: '600px' }}>
             <thead>
               <tr>
                 <th>Features</th>

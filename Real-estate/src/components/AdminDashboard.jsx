@@ -85,16 +85,16 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="section-full" style={{ background: '#f8f9fa', minHeight: '100vh', padding: 0, display: 'flex' }}>
+    <div className="section-full admin-layout" style={{ background: '#f8f9fa', minHeight: '100vh', padding: 0, display: 'flex' }}>
       
       {/* Admin Sidebar */}
-      <aside style={{ width: '300px', background: 'var(--ink)', color: '#fff', padding: '40px 0', display: 'flex', flexDirection: 'column', position: 'fixed', height: '100vh', zIndex: 100 }}>
+      <aside className="admin-sidebar" style={{ width: '300px', background: 'var(--ink)', color: '#fff', padding: '40px 0', display: 'flex', flexDirection: 'column', position: 'fixed', height: '100vh', zIndex: 100 }}>
         <div className="logo" style={{ padding: '0 40px', marginBottom: '60px' }}>
             <div className="logo-mark" style={{ width: '32px', height: '32px', fontSize: '16px' }}>B</div>
             Admin<em>Control</em>
         </div>
 
-        <nav style={{ flex: 1 }}>
+        <nav style={{ flex: 1, overflowY: 'auto' }}>
             {[
                 { name: 'Overview', icon: '📊' },
                 { name: 'Investor Management', icon: '👥' },
@@ -125,7 +125,7 @@ const AdminDashboard = () => {
             ))}
         </nav>
 
-        <div style={{ padding: '0 40px' }}>
+        <div className="hide-mobile" style={{ padding: '0 40px' }}>
             <button 
                 onClick={logout}
                 style={{ 
@@ -141,8 +141,6 @@ const AdminDashboard = () => {
                     transition: '0.3s',
                     marginTop: '20px'
                 }}
-                onMouseOver={(e) => {e.target.style.background = 'rgba(255,255,255,0.05)'; e.target.style.borderColor = 'var(--gold2)';}}
-                onMouseOut={(e) => {e.target.style.background = 'transparent'; e.target.style.borderColor = 'rgba(255,255,255,0.15)';}}
             >
                 LOGOUT SESSION
             </button>
@@ -150,18 +148,18 @@ const AdminDashboard = () => {
       </aside>
 
       {/* Main Content */}
-      <main style={{ flex: 1, padding: '60px', marginLeft: '300px' }}>
+      <main className="admin-main" style={{ flex: 1, padding: '60px', marginLeft: '300px' }}>
         
-        <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '48px' }}>
+        <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '48px', flexWrap: 'wrap', gap: '20px' }}>
             <div>
                 <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.4rem', marginBottom: '8px' }}>{activeTab}</h2>
                 <div style={{ fontSize: '0.9rem', color: 'var(--muted)' }}>System Date: {new Date().toLocaleDateString('en-IN', { dateStyle: 'long' })}</div>
             </div>
-            <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+            <div style={{ display: 'flex', gap: '20px', alignItems: 'center', flexWrap: 'wrap' }}>
                 <input 
                     type="text" 
                     placeholder="Search..." 
-                    style={{ padding: '12px 20px', borderRadius: '12px', border: '1px solid #ddd', width: '250px' }}
+                    style={{ padding: '12px 20px', borderRadius: '12px', border: '1px solid #ddd', width: '200px' }}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />
@@ -180,12 +178,11 @@ const AdminDashboard = () => {
                 >
                     LOGOUT
                 </button>
-                <div style={{ width: '45px', height: '45px', borderRadius: '12px', background: 'var(--gold2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900 }}>AD</div>
             </div>
         </header>
 
         {activeTab === 'Overview' && (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px', marginBottom: '40px' }}>
+            <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px', marginBottom: '40px' }}>
                 {stats.map((s, i) => (
                     <div key={i} style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #eee' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px' }}>
@@ -201,23 +198,22 @@ const AdminDashboard = () => {
         {activeTab === 'Lead & Appointment' && (
             <div>
                 {/* CRM Toolbar */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px', background: '#fff', padding: '20px 30px', borderRadius: '16px', border: '1px solid #eee' }}>
-                    <div style={{ display: 'flex', gap: '15px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px', background: '#fff', padding: '20px 30px', borderRadius: '16px', border: '1px solid #eee', flexWrap: 'wrap', gap: '20px' }}>
+                    <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
                         {['Property', 'Service'].map(cat => (
                             <button 
                                 key={cat}
                                 onClick={() => { setLeadCategory(cat); setExpandedLeadId(null); }}
                                 style={{ 
-                                    padding: '10px 25px', 
+                                    padding: '10px 20px', 
                                     borderRadius: '10px', 
                                     border: '1.5px solid',
                                     borderColor: leadCategory === cat ? 'var(--gold2)' : '#eee',
                                     background: leadCategory === cat ? 'var(--gold4)' : 'transparent',
                                     color: leadCategory === cat ? 'var(--ink)' : 'var(--muted)',
                                     fontWeight: 800,
-                                    fontSize: '0.85rem',
-                                    cursor: 'pointer',
-                                    transition: '0.2s'
+                                    fontSize: '0.75rem',
+                                    cursor: 'pointer'
                                 }}
                             >
                                 {cat.toUpperCase()} LEADS
@@ -225,11 +221,11 @@ const AdminDashboard = () => {
                         ))}
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                        <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--muted2)' }}>FILTER STATUS:</span>
+                        <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--muted2)' }}>FILTER:</span>
                         <select 
                             value={leadFilter} 
                             onChange={(e) => setLeadFilter(e.target.value)}
-                            style={{ padding: '8px 15px', borderRadius: '8px', border: '1px solid #eee', fontSize: '0.85rem', fontWeight: 600, outline: 'none' }}
+                            style={{ padding: '8px 15px', borderRadius: '8px', border: '1px solid #eee', fontSize: '0.85rem', fontWeight: 600 }}
                         >
                             <option>All</option>
                             <option>New</option>
@@ -242,14 +238,14 @@ const AdminDashboard = () => {
                 </div>
 
                 {/* Leads Table */}
-                <div style={{ background: '#fff', borderRadius: '24px', overflow: 'hidden', border: '1px solid #eee', boxShadow: '0 10px 30px rgba(0,0,0,0.02)' }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <div className="leads-table-container" style={{ background: '#fff', borderRadius: '24px', overflow: 'hidden', border: '1px solid #eee' }}>
+                    <table className="leads-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
                         <thead style={{ background: '#fcfcfc' }}>
                             <tr style={{ textAlign: 'left' }}>
-                                <th style={{ padding: '20px 40px', fontSize: '0.75rem', color: 'var(--muted2)' }}>CLIENT DETAILS</th>
-                                <th style={{ padding: '20px', fontSize: '0.75rem', color: 'var(--muted2)' }}>INTEREST / LOCATION</th>
-                                <th style={{ padding: '20px', fontSize: '0.75rem', color: 'var(--muted2)' }}>ASSIGNED {leadCategory === 'Property' ? 'DEVELOPER' : 'EXPERT'}</th>
-                                <th style={{ padding: '20px', fontSize: '0.75rem', color: 'var(--muted2)' }}>PIPELINE STAGE</th>
+                                <th style={{ padding: '20px 40px', fontSize: '0.75rem', color: 'var(--muted2)' }}>CLIENT</th>
+                                <th style={{ padding: '20px', fontSize: '0.75rem', color: 'var(--muted2)' }}>INTEREST</th>
+                                <th style={{ padding: '20px', fontSize: '0.75rem', color: 'var(--muted2)' }}>ASSIGNED</th>
+                                <th style={{ padding: '20px', fontSize: '0.75rem', color: 'var(--muted2)' }}>STAGE</th>
                                 <th style={{ padding: '20px 40px', fontSize: '0.75rem', color: 'var(--muted2)', textAlign: 'right' }}>ACTIONS</th>
                             </tr>
                         </thead>

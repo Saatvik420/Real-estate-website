@@ -38,38 +38,39 @@ const ContractorDashboard = () => {
           <button className="nav-btn-ghost" style={{ borderColor: 'var(--red)', color: 'var(--red)' }} onClick={logout}>SIGNOUT</button>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 3fr', gap: '30px' }}>
-            <aside>
+        <div className="dashboard-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 3fr', gap: '30px' }}>
+            <aside className="dashboard-sidebar">
                 <div style={{ background: '#fff', padding: '30px', borderRadius: '16px', border: '1px solid var(--cream3)', textAlign: 'center' }}>
                     <div style={{ padding: '10px', background: 'var(--ink)', borderRadius: '8px', fontSize: '0.7rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--gold2)', marginBottom: '20px' }}>
                         Platinum Partner
                     </div>
-                    {['Leads', 'Corporate Profile', 'Analytics'].map(tab => (
-                        <div 
-                            key={tab} 
-                            onClick={() => setActiveTab(tab)}
-                            style={{ 
-                                padding: '15px', 
-                                borderBottom: '1px solid #f5f5f5', 
-                                cursor: 'pointer', 
-                                fontWeight: 700, 
-                                fontSize: '0.9rem', 
-                                color: activeTab === tab ? 'var(--gold2)' : 'var(--ink)',
-                                background: activeTab === tab ? 'var(--bg-main)' : 'transparent',
-                                borderRadius: '8px',
-                                marginBottom: '5px'
-                            }}
-                        >
-                            {tab}
-                        </div>
-                    ))}
+                    <div className="dashboard-tabs" style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                        {['Leads', 'Corporate Profile', 'Analytics'].map(tab => (
+                            <div 
+                                key={tab} 
+                                onClick={() => setActiveTab(tab)}
+                                style={{ 
+                                    padding: '15px', 
+                                    borderBottom: '1px solid #f5f5f5', 
+                                    cursor: 'pointer', 
+                                    fontWeight: 700, 
+                                    fontSize: '0.9rem', 
+                                    color: activeTab === tab ? 'var(--gold2)' : 'var(--ink)',
+                                    background: activeTab === tab ? 'var(--bg-main)' : 'transparent',
+                                    borderRadius: '8px'
+                                }}
+                            >
+                                {tab}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </aside>
 
-            <main>
+            <main className="dashboard-main">
                 {activeTab === 'Leads' && (
                     <>
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginBottom: '40px' }}>
+                        <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginBottom: '40px' }}>
                             {[
                                 { lbl: 'Total Leads', val: leads.length + 120 },
                                 { lbl: 'Profile Views', val: '3.2k' },
@@ -83,20 +84,20 @@ const ContractorDashboard = () => {
                             ))}
                         </div>
 
-                        <div style={{ background: 'var(--ink)', padding: '40px', borderRadius: '24px', color: '#fff', marginBottom: '40px' }}>
+                        <div style={{ background: 'var(--ink)', padding: '40px', borderRadius: '24px', color: '#fff', marginBottom: '40px', overflowX: 'hidden' }}>
                             <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', marginBottom: '30px' }}>Live Verified Leads</h3>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
                                 {leads.map((lead, idx) => (
-                                    <div key={idx} style={{ background: 'rgba(255,255,255,0.05)', padding: '25px', borderRadius: '16px', display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr auto', alignItems: 'center', border: '1px solid rgba(255,255,255,0.1)' }}>
+                                    <div key={idx} className="leads-row-card" style={{ background: 'rgba(255,255,255,0.05)', padding: '25px', borderRadius: '16px', display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr auto', alignItems: 'center', border: '1px solid rgba(255,255,255,0.1)', gap: '20px' }}>
                                         <div>
                                             <div style={{ fontWeight: 800, fontSize: '1.1rem', color: 'var(--gold2)' }}>{lead.name}</div>
-                                            <div style={{ fontSize: '0.75rem', opacity: 0.6 }}>{lead.email} | {lead.phone}</div>
+                                            <div style={{ fontSize: '0.75rem', opacity: 0.6 }}>{lead.email}</div>
                                         </div>
                                         <div>
                                             <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', opacity: 0.6, marginBottom: '4px' }}>Interest</div>
                                             <div style={{ fontWeight: 600 }}>{lead.area}</div>
                                         </div>
-                                        <div>
+                                        <div className="hide-mobile">
                                             <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', opacity: 0.6, marginBottom: '4px' }}>Date</div>
                                             <div style={{ fontWeight: 600 }}>{lead.date}</div>
                                         </div>
@@ -116,7 +117,7 @@ const ContractorDashboard = () => {
                     <div style={{ background: '#fff', padding: '40px', borderRadius: '24px', border: '1px solid var(--cream3)' }}>
                         <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', marginBottom: '32px' }}>Update Corporate Identity</h3>
                         <form onSubmit={handleProfileUpdate} style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                            <div className="dashboard-main-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                                 <div className="pd-form-group">
                                     <label>Company / Brand Name</label>
                                     <input type="text" value={editData.name} onChange={(e) => setEditData({...editData, name: e.target.value})} style={{ background: 'var(--bg-main)', border: '1.5px solid #eee' }} />

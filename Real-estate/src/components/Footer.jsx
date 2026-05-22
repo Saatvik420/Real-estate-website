@@ -9,7 +9,7 @@ const Footer = () => {
     <footer>
       <div className="footer-inner">
         <div className="footer-top">
-          <div className="footer-col-main" style={{ gridColumn: 'span 2' }}>
+          <div className="footer-col-main">
             <div className="footer-logo">
               <div className="logo-mark" style={{ background: 'var(--gold2)', color: 'var(--ink)' }}>B</div>
               <span style={{ color: 'var(--gold2)' }}>Bharat<em>Estates</em></span>

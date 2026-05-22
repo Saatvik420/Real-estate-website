@@ -110,7 +110,7 @@ const SearchResults = () => {
                 <button className="nav-btn-solid" onClick={() => setSearchFilters({})}>RESET FILTERS</button>
               </div>
             ) : (
-              <div className="rec-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
+              <div className="rec-grid">
                 {properties.map(prop => {
                   const agent = agents[prop.agentId];
                   return (

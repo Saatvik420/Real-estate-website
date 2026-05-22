@@ -680,10 +680,46 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:80px 48px 32px;
 .insight-box { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
 .insight-box:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); border-color: var(--gold3); }
 
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.bar {
+  width: 24px;
+  height: 2px;
+  background-color: var(--gold2);
+  border-radius: 10px;
+  transition: all 0.3s linear;
+  position: relative;
+  transform-origin: 1px;
+}
+
+.bar.active:nth-child(1) { transform: rotate(45deg); }
+.bar.active:nth-child(2) { opacity: 0; }
+.bar.active:nth-child(3) { transform: rotate(-45deg); }
+
+.nav-left-mobile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 /* ═══════════════════════════════
    RESPONSIVE QUERIES
 ═══════════════════════════════ */
 @media (max-width: 1200px) {
+  .nav { padding: 0 24px; }
+  .nav-link { padding: 6px 10px; font-size: 12px; }
   .trend-grid, .cities-grid { grid-template-columns: repeat(3, 1fr); }
   .rec-grid, .dev-grid { grid-template-columns: repeat(2, 1fr); }
   .serv-grid { grid-template-columns: repeat(3, 1fr); }
@@ -694,13 +730,67 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:80px 48px 32px;
 }
 
 @media (max-width: 992px) {
-  .nav { padding: 0 24px; }
-  .nav-center { display: none; } /* Hide center nav on smaller screens, could add hamburger */
+  .hamburger { display: flex; }
+  .nav-center {
+    position: fixed;
+    top: 72px;
+    left: -100%;
+    width: 280px;
+    height: calc(100vh - 72px);
+    background: var(--ink);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px 24px;
+    transition: left 0.3s ease;
+    box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+    z-index: 1000;
+    overflow-y: auto;
+    gap: 16px;
+    display: flex;
+  }
+  .nav-center.mobile-open { left: 0; }
+  .nav-link { font-size: 16px; width: 100%; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .professional-dropdown .dropdown-menu { 
+    position: static !important; display: block !important; background: transparent !important; border: none !important; padding: 0 0 0 16px !important; box-shadow: none !important; 
+  }
+  .professional-dropdown .nav-link:first-child { border-bottom: none; color: var(--gold2); font-weight: 800; }
+  
+  .hide-mobile { display: none !important; }
+
   .section, .section-full .section-inner, .continue-inner, .dev-inner, .cities-inner, .services-inner, .footer-inner, .pd-header-content { padding: 0 24px; }
   .trend-grid, .cities-grid { grid-template-columns: repeat(2, 1fr); }
   .pd-main-grid { grid-template-columns: 1fr; }
   .results-layout { grid-template-columns: 1fr; }
   .filters-sidebar { position: relative; top: 0; max-height: none; margin-bottom: 24px; }
+
+  /* Dashboard Responsiveness */
+  .admin-layout, .dashboard-grid { 
+    display: flex !important; 
+    flex-direction: column !important; 
+  }
+  .admin-sidebar { 
+    width: 100% !important; 
+    height: auto !important; 
+    position: static !important; 
+    padding: 20px 0 !important;
+  }
+  .admin-main { 
+    margin-left: 0 !important; 
+    padding: 24px !important; 
+  }
+  .stats-grid { 
+    grid-template-columns: repeat(2, 1fr) !important; 
+  }
+  .leads-table-container {
+    overflow-x: auto;
+  }
+  .leads-table {
+    min-width: 800px;
+  }
+
+  .leads-row-card {
+    grid-template-columns: 1fr 1fr !important;
+  }
 }
 
 @media (max-width: 768px) {
@@ -718,6 +808,27 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:80px 48px 32px;
   .pd-gallery { grid-template-columns: 1fr; }
   .inventory-grid { grid-template-columns: 1fr; }
   .donut-wrap { flex-direction: column; }
+  .stats-grid { 
+    grid-template-columns: 1fr !important; 
+  }
+  .dashboard-main-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .auth-layout {
+    grid-template-columns: 1fr !important;
+  }
+  .auth-left-panel {
+    padding: 40px !important;
+  }
+  .auth-right-panel {
+    padding: 40px !important;
+  }
+
+  .grid-2-1, .grid-3 {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
 }
 
 @media (max-width: 480px) {

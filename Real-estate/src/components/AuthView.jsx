@@ -45,10 +45,10 @@ const AuthView = () => {
 
   return (
     <div className="section-full" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', background: '#faf9f6', padding: '60px 0' }}>
-      <div className="section-inner" style={{ maxWidth: '1150px', display: 'grid', gridTemplateColumns: '1.1fr 1fr', background: '#fff', borderRadius: '32px', overflow: 'hidden', boxShadow: '0 60px 120px rgba(0,0,0,0.07)', border: '1px solid var(--cream3)' }}>
+      <div className="section-inner auth-layout" style={{ maxWidth: '1150px', display: 'grid', gridTemplateColumns: '1.1fr 1fr', background: '#fff', borderRadius: '32px', overflow: 'hidden', boxShadow: '0 60px 120px rgba(0,0,0,0.07)', border: '1px solid var(--cream3)' }}>
         
         {/* Left Side: Brand Panel */}
-        <div style={{ background: 'var(--ink)', padding: '80px', color: '#fff', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' }}>
+        <div className="auth-left-panel" style={{ background: 'var(--ink)', padding: '80px', color: '#fff', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' }}>
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'radial-gradient(circle at 0% 0%, rgba(181,153,107,0.15) 0%, transparent 50%)', pointerEvents: 'none' }}></div>
             
             <div style={{ position: 'relative', zIndex: 1 }}>
@@ -82,7 +82,7 @@ const AuthView = () => {
         </div>
 
         {/* Right Side: Form Panel */}
-        <div style={{ padding: '80px' }}>
+        <div className="auth-right-panel" style={{ padding: '80px' }}>
             <div style={{ display: 'flex', gap: '40px', marginBottom: '50px', borderBottom: '1px solid #eee' }}>
                 <button 
                     onClick={() => toggleForm(true)} 
