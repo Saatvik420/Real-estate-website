@@ -1005,15 +1005,15 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:var(--section-p
 }
 
 .hero-contact-btn {
-  padding: 16px 48px;
-  font-size: 15px;
-  border-radius: 8px;
-  font-weight: 900;
-  letter-spacing: 1px;
+  padding: 10px 28px;
+  font-size: 13px;
+  border-radius: 6px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
   background: var(--gold2);
   color: var(--ink);
-  box-shadow: 0 15px 30px rgba(189,168,113,0.6);
-  border: 2px solid #fff;
+  box-shadow: 0 10px 20px rgba(189,168,113,0.4);
+  border: 1.5px solid #fff;
   cursor: pointer;
   transition: all 0.3s ease;
 }
