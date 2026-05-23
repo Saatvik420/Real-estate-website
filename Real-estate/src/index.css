@@ -64,13 +64,41 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg-main);color:var(--
 }
 
 /* Professional Dropdown */
-.professional-dropdown:hover .dropdown-menu {
+.professional-dropdown:hover .dropdown-menu,
+.professional-dropdown.active .dropdown-menu {
   display: block !important;
   animation: fadeIn 0.2s ease-out;
 }
 
 .dropdown-menu {
   display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--ink);
+  min-width: 200px;
+  border: 1px solid rgba(189, 168, 113, 0.2);
+  border-radius: 8px;
+  padding: 10px 0;
+  z-index: 1000;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 992px) {
+  .dropdown-menu {
+    position: static;
+    background: rgba(255,255,255,0.03);
+    border: none;
+    box-shadow: none;
+    padding: 0 0 0 20px;
+    margin-top: 10px;
+    width: 100%;
+  }
+  .professional-dropdown.active .dropdown-menu {
+    display: flex !important;
+    flex-direction: column;
+    gap: 8px;
+  }
 }
 
 @keyframes fadeIn {
@@ -826,13 +854,28 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:var(--section-p
   }
   .nav-center.mobile-open { left: 0; }
   .nav-link { font-size: 16px; width: 100%; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-  .professional-dropdown .dropdown-menu { 
-    position: static !important; display: block !important; background: transparent !important; border: none !important; padding: 0 0 0 16px !important; box-shadow: none !important; 
-  }
-  .professional-dropdown .nav-link:first-child { border-bottom: none; color: var(--gold2); font-weight: 800; }
-  
-  .hide-mobile { display: none !important; }
 
+  .professional-dropdown .dropdown-menu {
+    position: static !important; 
+    display: none !important; 
+    background: rgba(255,255,255,0.03) !important; 
+    border: none !important; 
+    padding: 0 0 0 16px !important; 
+    box-shadow: none !important;
+    width: 100% !important;
+    margin-top: 5px;
+    border-radius: 8px;
+  }
+
+  .professional-dropdown.active .dropdown-menu {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .professional-dropdown .nav-link:first-child { border-bottom: none; color: var(--gold2); font-weight: 800; }
+
+  .hide-mobile { display: none !important; }
+  .show-mobile-only { display: block !important; }
   .section, .section-full .section-inner, .continue-inner, .dev-inner, .cities-inner, .services-inner, .footer-inner, .pd-header-content { padding: 0 24px; }
   .trend-grid, .cities-grid { grid-template-columns: repeat(2, 1fr); }
   .pd-main-grid { grid-template-columns: 1fr; }

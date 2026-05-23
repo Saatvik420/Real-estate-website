@@ -5,10 +5,23 @@ import { useApp } from '../hooks/useApp';
 const Navbar = () => {
   const { setView, setSelectedCity, setSearchFilters, isLoggedIn, currentUser, logout } = useApp();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null); // 'corporate' | 'account' | 'partners' | null
   const navigate = useNavigate();
 
-  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setActiveDropdown(null);
+  };
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+    setActiveDropdown(null);
+  };
+
+  const toggleDropdown = (name, e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setActiveDropdown(activeDropdown === name ? null : name);
+  };
 
   return (
     <nav className="nav">
@@ -44,8 +57,8 @@ const Navbar = () => {
         <Link className="nav-link" to="/projects" onClick={() => { setView('projects'); closeMobileMenu(); }}>Projects</Link>
         <Link className="nav-link" to="/insights" onClick={() => { setView('insights'); closeMobileMenu(); }}>Insights</Link>
         
-        <div className="professional-dropdown" style={{ position: 'relative' }}>
-          <span className="nav-link" style={{ cursor: 'pointer' }}>Corporate ▾</span>
+        <div className={`professional-dropdown ${activeDropdown === 'corporate' ? 'active' : ''}`} style={{ position: 'relative' }}>
+          <span className="nav-link" onClick={(e) => toggleDropdown('corporate', e)} style={{ cursor: 'pointer' }}>Corporate ▾</span>
           <div className="dropdown-menu">
             <Link className="nav-link" to="/about" onClick={() => { setView('about'); closeMobileMenu(); }}>About Us</Link>
             <Link className="nav-link" to="/contact" onClick={() => { setView('contact'); closeMobileMenu(); }}>Contact</Link>
@@ -57,8 +70,8 @@ const Navbar = () => {
 
       <div className="nav-right">
         {isLoggedIn ? (
-          <div className="professional-dropdown" style={{ position: 'relative' }}>
-            <button className="nav-btn-solid">ACCOUNT</button>
+          <div className={`professional-dropdown ${activeDropdown === 'account' ? 'active' : ''}`} style={{ position: 'relative' }}>
+            <button className="nav-btn-solid" onClick={(e) => toggleDropdown('account', e)}>ACCOUNT ▾</button>
             <div className="dropdown-menu" style={{ right: '0' }}>
                 <div style={{ padding: '8px 16px', borderBottom: '1px solid rgba(255,255,255,0.05)', marginBottom: '8px' }}>
                     <div style={{ fontSize: '11px', color: 'var(--gold2)', fontWeight: '800' }}>WELCOME</div>
@@ -73,12 +86,13 @@ const Navbar = () => {
           </div>
         ) : (
           <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-            <Link to="/auth" className="nav-link" onClick={() => { setView('auth'); closeMobileMenu(); }} style={{ fontWeight: 'bold' }}>Sign in</Link>
-            <div className="professional-dropdown hide-mobile" style={{ position: 'relative' }}>
-              <span className="nav-btn-ghost" style={{ cursor: 'pointer' }}>Partners ▾</span>
+            <Link to="/auth" className="nav-link hide-mobile" onClick={() => { setView('auth'); closeMobileMenu(); }} style={{ fontWeight: 'bold' }}>Sign in</Link>
+            <div className={`professional-dropdown ${activeDropdown === 'partners' ? 'active' : ''}`} style={{ position: 'relative' }}>
+              <span className="nav-btn-ghost" onClick={(e) => toggleDropdown('partners', e)} style={{ cursor: 'pointer' }}>Partners ▾</span>
               <div className="dropdown-menu" style={{ right: '0' }}>
                 <Link to="/partner-auth" className="nav-link" onClick={() => { setView('auth'); closeMobileMenu(); }} style={{ display: 'block' }}>Partner Login</Link>
                 <Link to="/contractor-auth" className="nav-link" onClick={() => { setView('auth'); closeMobileMenu(); }} style={{ display: 'block' }}>Developer Login</Link>
+                <Link to="/auth" className="nav-link show-mobile-only" onClick={() => { setView('auth'); closeMobileMenu(); }} style={{ display: 'none' }}>Investor Sign In</Link>
               </div>
             </div>
           </div>
