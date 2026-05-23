@@ -101,6 +101,15 @@ const Hero = () => {
             <a className="tr-chip" href="#">Koramangala</a>
           </div>
         </div>
+        
+        <div className="hero-actions reveal" style={{ marginTop: '32px', display: 'flex', gap: '16px' }}>
+          <button className="nav-btn-solid" onClick={() => navigate('/contact')} style={{ padding: '14px 40px', fontSize: '13px', borderRadius: '8px', boxShadow: '0 10px 20px rgba(189,168,113,0.2)' }}>
+            CONTACT US
+          </button>
+          <button className="nav-btn-ghost" onClick={() => navigate('/about')} style={{ padding: '14px 40px', fontSize: '13px', borderRadius: '8px' }}>
+            ABOUT THE PLATFORM
+          </button>
+        </div>
       </div>
     </section>
   );
