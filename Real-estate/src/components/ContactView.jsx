@@ -7,7 +7,7 @@ const ContactView = () => {
     name: currentUser?.name || '', 
     email: currentUser?.email || '', 
     phone: currentUser?.phone || '', 
-    area: 'South Mumbai Luxury', 
+    address: '', 
     message: '' 
   });
   const [loading, setLoading] = useState(false);
@@ -117,18 +117,14 @@ const ContactView = () => {
                     )}
 
                     <div className="pd-form-group" style={{ marginBottom: '20px' }}>
-                        <label>Interest Area</label>
-                        <select 
+                        <label>Residential Address (Optional)</label>
+                        <input 
+                            type="text"
+                            placeholder="e.g. 42, Skyline Towers, Mumbai"
                             style={{ background: 'var(--bg-main)', color: 'var(--ink)', borderColor: 'var(--cream3)' }}
-                            value={formData.area}
-                            onChange={(e) => setFormData({...formData, area: e.target.value})}
-                        >
-                            <option>South Mumbai Luxury</option>
-                            <option>Delhi NCR Penthouses</option>
-                            <option>Bengaluru Tech Corridors</option>
-                            <option>NRI Investment Services</option>
-                            <option>Strategic Land Parcels</option>
-                        </select>
+                            value={formData.address}
+                            onChange={(e) => setFormData({...formData, address: e.target.value})}
+                        />
                     </div>
                     <div className="pd-form-group" style={{ marginBottom: '30px' }}>
                         <label>Your Message / Requirements</label>
