@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { AppContext } from './AppContext';
 import { apiService } from '../services/apiService';
 import { rentalProperties as initialRentals } from '../data/rentals';
@@ -159,7 +159,7 @@ export const AppProvider = ({ children }) => {
   };
 
   // ── BUSINESS ACTIONS ──────────────────────────────────────────────────────
-  const toggleWishlist = (propertyId) => {
+  const toggleWishlist = useCallback((propertyId) => {
       setWishlist(prev => {
           const updated = prev.includes(propertyId) 
             ? prev.filter(id => id !== propertyId) 
@@ -167,35 +167,35 @@ export const AppProvider = ({ children }) => {
           localStorage.setItem('be_wishlist', JSON.stringify(updated));
           return updated;
       });
-  };
+  }, []);
 
-  const submitInquiryAction = async (data) => {
+  const submitInquiryAction = useCallback(async (data) => {
       const res = await apiService.submitInquiry(data);
       if (res.success) {
           setAllInquiries(prev => [res.data, ...prev]);
           return true;
       }
       return false;
-  };
+  }, []);
 
-  const updateInquiryStatusAction = async (id, status) => {
+  const updateInquiryStatusAction = useCallback(async (id, status) => {
       const res = await apiService.updateInquiryStatus(id, status);
       if (res.success) {
           setAllInquiries(prev => prev.map(i => i.id === id ? { ...i, status } : i));
       }
-  };
+  }, []);
 
-  const appointContractorAction = async (inquiryId, contractorId) => {
+  const appointContractorAction = useCallback(async (inquiryId, contractorId) => {
       const res = await apiService.appointContractor(inquiryId, contractorId);
       if (res.success) {
           setAllInquiries(prev => prev.map(i => i.id === inquiryId ? res.data : i));
           return true;
       }
       return false;
-  };
+  }, []);
 
   // ── PROFILE ACTIONS ──────────────────────────────────────────────────────
-  const updateProfileAction = async (data) => {
+  const updateProfileAction = useCallback(async (data) => {
       setLoading(true);
       const res = await apiService.updateProfile(data);
       if (res.success) {
@@ -204,35 +204,35 @@ export const AppProvider = ({ children }) => {
       }
       setLoading(false);
       return res.success;
-  };
+  }, []);
 
   // ── ADMIN ACTIONS ──────────────────────────────────────────────────────────
-  const deleteUserAction = async (userId) => {
+  const deleteUserAction = useCallback(async (userId) => {
     const res = await apiService.deleteUser(userId);
     if (res.success) {
         setAllUsers(prev => prev.filter(u => u.id !== userId));
         return true;
     }
     return false;
-  };
+  }, []);
 
-  const toggleUserStatus = async (userId) => {
+  const toggleUserStatus = useCallback(async (userId) => {
     const res = await apiService.updateUserStatus(userId, 'Toggled');
     if (res.success) {
         // Refresh users list if needed
     }
-  };
+  }, []);
 
-  const approveContractorAction = async (contId) => {
+  const approveContractorAction = useCallback(async (contId) => {
     const res = await apiService.approvePartner(contId);
     if (res.success) {
         setContractors(prev => prev.map(c => c.id === contId ? { ...c, status: 'Active' } : c));
         return true;
     }
     return false;
-  };
+  }, []);
 
-  const value = {
+  const value = useMemo(() => ({
     view, setView,
     selectedState, setSelectedState,
     selectedCity, setSelectedCity,
@@ -247,7 +247,14 @@ export const AppProvider = ({ children }) => {
     allUsers, adminStats, allInquiries, wishlist, toggleWishlist,
     submitInquiryAction, updateInquiryStatusAction, appointContractorAction,
     deleteUserAction, toggleUserStatus, approveContractorAction, updateProfileAction
-  };
+  }), [
+    view, selectedState, selectedCity, selectedProperty, comparisonList, searchFilters,
+    states, cities, loading, rentals, contractors, companies, agents, plots,
+    isLoggedIn, currentUser, authToken, loginAction, registerAction, logoutAction,
+    allUsers, adminStats, allInquiries, wishlist, toggleWishlist,
+    submitInquiryAction, updateInquiryStatusAction, appointContractorAction,
+    deleteUserAction, toggleUserStatus, approveContractorAction, updateProfileAction
+  ]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

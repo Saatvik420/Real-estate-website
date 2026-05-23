@@ -11,9 +11,6 @@ export default defineConfig({
     sourcemap: false
   },
   server: {
-    hmr: {
-      overlay: false
-    },
     proxy: {
       '/api': {
         target: 'http://localhost:8080',
