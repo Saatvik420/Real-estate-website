@@ -18,7 +18,9 @@ const Navbar = () => {
   };
 
   const toggleDropdown = (name, e) => {
-    if (window.innerWidth > 992) return; // Let hover handle desktop
+    const isMobile = window.matchMedia("(max-width: 992px)").matches;
+    if (!isMobile) return; 
+    
     e.preventDefault();
     e.stopPropagation();
     setActiveDropdown(activeDropdown === name ? null : name);

@@ -85,23 +85,6 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg-main);color:var(--
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-@media (max-width: 992px) {
-  .dropdown-menu {
-    position: static;
-    background: rgba(255,255,255,0.03);
-    border: none;
-    box-shadow: none;
-    padding: 0 0 0 20px;
-    margin-top: 10px;
-    width: 100%;
-  }
-  .professional-dropdown.active .dropdown-menu {
-    display: flex !important;
-    flex-direction: column;
-    gap: 8px;
-  }
-}
-
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
