@@ -7,23 +7,20 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg-main);color:var(--
 /* ── SCROLL REVEAL BASE ── */
 .reveal {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(30px);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
 }
 
 .reveal-left {
   opacity: 0;
-  transform: translateX(-40px);
+  transform: translateX(-30px);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
 }
 
 .reveal-right {
   opacity: 0;
-  transform: translateX(40px);
+  transform: translateX(30px);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
 }
 
 .reveal.revealed, .reveal-left.revealed, .reveal-right.revealed {
@@ -694,27 +691,31 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:80px 48px 32px;
   to { opacity: 1; transform: scale(1); }
 }
 
-.anim-fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-.anim-slide-in-left { animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-.anim-slide-in-right { animation: slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-.anim-scale-up { animation: scaleUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+/* Utility Transitions */
+.nav-link, .nav-btn-solid, .nav-btn-ghost, .view-all, .pc-enq, .search-go, .stab { 
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
+}
 
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
-.delay-500 { animation-delay: 500ms; }
+/* Basic Animation Utilities (now using transitions via reveal) */
+.anim-fade-in-up { @apply reveal; }
+.anim-slide-in-left { @apply reveal-left; }
+.anim-slide-in-right { @apply reveal-right; }
+.anim-scale-up { @apply reveal; } /* simplified to reveal for now */
+.prop-card, .trend-card, .city-card, .dev-card, .insight-box { 
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease; 
+}
 
-/* Enhancing existing components with default animations */
-.hero-inner { animation: scaleUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-.section { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-.prop-card, .trend-card, .city-card, .dev-card { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-.prop-card:hover, .trend-card:hover, .city-card:hover, .dev-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 25px 50px rgba(0,0,0,0.15); }
-.nav-link, .nav-btn-solid, .nav-btn-ghost { transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+.prop-card:hover, .trend-card:hover, .city-card:hover, .dev-card:hover { 
+  transform: translateY(-10px) scale(1.02) !important; 
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15) !important; 
+  z-index: 10;
+}
 
-/* Insights Card Hover */
-.insight-box { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-.insight-box:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); border-color: var(--gold3); }
+.insight-box:hover { 
+  transform: translateY(-8px) !important; 
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08) !important; 
+  border-color: var(--gold3) !important; 
+}
 
 /* Hamburger Menu */
 .hamburger {
