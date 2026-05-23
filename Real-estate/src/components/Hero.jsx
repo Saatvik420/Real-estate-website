@@ -34,7 +34,15 @@ const Hero = () => {
 
   return (
     <section className="hero">
-      <div className="hero-bg"></div>
+      <video 
+        autoPlay 
+        muted 
+        loop 
+        playsInline 
+        className="hero-bg-video"
+      >
+        <source src="https://www.pexels.com/download/video/7577727/" type="video/mp4" />
+      </video>
       <div className="hero-overlay"></div>
       <div className="hero-glow"></div>
       <div className="hero-glow-alt"></div>
