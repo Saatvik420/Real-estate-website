@@ -41,7 +41,7 @@ const Hero = () => {
         playsInline 
         className="hero-bg-video"
       >
-        <source src="https://www.pexels.com/download/video/7577727/" type="video/mp4" />
+        <source src="https://www.pexels.com/video/for-sale-signage-in-front-of-a-house-7577611/" type="video/mp4" />
       </video>
       <div className="hero-overlay"></div>
       <div className="hero-glow"></div>
