@@ -22,13 +22,13 @@ const SupportView = () => {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', marginBottom: '80px' }}>
+        <div className="support-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: 'clamp(2rem, 5vw, 5rem)', marginBottom: '80px' }}>
             <div>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', marginBottom: '32px' }}>Frequently Asked Questions</h3>
+                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.5rem, 3vw, 1.8rem)', marginBottom: '32px' }}>Frequently Asked Questions</h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
                     {faq.map((item, idx) => (
-                        <div key={idx} style={{ padding: '24px', background: '#fff', borderRadius: '12px', border: '1px solid var(--cream3)' }}>
-                            <div style={{ fontWeight: 800, marginBottom: '10px', color: 'var(--ink)' }}>Q: {item.q}</div>
+                        <div key={idx} style={{ padding: 'clamp(1rem, 2vw, 1.5rem)', background: '#fff', borderRadius: '12px', border: '1px solid var(--cream3)' }}>
+                            <div style={{ fontWeight: 800, marginBottom: '10px', color: 'var(--ink)', fontSize: '0.95rem' }}>Q: {item.q}</div>
                             <div style={{ fontSize: '0.9rem', color: 'var(--muted)', lineHeight: '1.6' }}>{item.a}</div>
                         </div>
                     ))}
@@ -36,23 +36,23 @@ const SupportView = () => {
             </div>
 
             <div>
-                <div style={{ background: 'var(--ink)', padding: '50px', borderRadius: '24px', color: '#fff' }}>
-                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', marginBottom: '15px' }}>Help Center</h3>
-                    <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: '32px' }}>Can't find what you're looking for? Reach out to our 24/7 client happiness team.</p>
+                <div style={{ background: 'var(--ink)', padding: 'clamp(1.5rem, 5vw, 3rem)', borderRadius: '24px', color: '#fff' }}>
+                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.5rem, 4vw, 2rem)', marginBottom: '15px' }}>Help Center</h3>
+                    <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: '32px', fontSize: 'var(--body-text)' }}>Can't find what you're looking for? Reach out to our 24/7 client happiness team.</p>
                     
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                         <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-                            <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'var(--gold2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem' }}>📞</div>
+                            <div style={{ width: 'clamp(40px, 6vw, 50px)', height: 'clamp(40px, 6vw, 50px)', borderRadius: '50%', background: 'var(--gold2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}>📞</div>
                             <div>
                                 <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '1px', opacity: 0.6 }}>Toll-Free (India)</div>
-                                <div style={{ fontWeight: 700, fontSize: '1.1rem' }}>1800-LUX-BHRT</div>
+                                <div style={{ fontWeight: 700, fontSize: 'clamp(0.9rem, 2vw, 1.1rem)' }}>1800-LUX-BHRT</div>
                             </div>
                         </div>
                         <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-                            <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'var(--gold2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem' }}>✉️</div>
+                            <div style={{ width: 'clamp(40px, 6vw, 50px)', height: 'clamp(40px, 6vw, 50px)', borderRadius: '50%', background: 'var(--gold2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}>✉️</div>
                             <div>
                                 <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '1px', opacity: 0.6 }}>Client Support</div>
-                                <div style={{ fontWeight: 700, fontSize: '1.1rem' }}>care@bharatestates.com</div>
+                                <div style={{ fontWeight: 700, fontSize: 'clamp(0.9rem, 2vw, 1.1rem)' }}>care@bharatestates.com</div>
                             </div>
                         </div>
                     </div>

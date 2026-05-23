@@ -44,23 +44,23 @@ const AuthView = () => {
   };
 
   return (
-    <div className="section-full" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', background: '#faf9f6', padding: '60px 0' }}>
-      <div className="section-inner auth-layout" style={{ maxWidth: '1150px', display: 'grid', gridTemplateColumns: '1.1fr 1fr', background: '#fff', borderRadius: '32px', overflow: 'hidden', boxShadow: '0 60px 120px rgba(0,0,0,0.07)', border: '1px solid var(--cream3)' }}>
+    <div className="section-full" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', background: '#faf9f6', padding: 'var(--section-pad) 0' }}>
+      <div className="section-inner auth-layout" style={{ maxWidth: '1150px', width: '100%', margin: '0 auto' }}>
         
         {/* Left Side: Brand Panel */}
-        <div className="auth-left-panel" style={{ background: 'var(--ink)', padding: '80px', color: '#fff', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' }}>
+        <div className="auth-left-panel" style={{ position: 'relative', overflow: 'hidden' }}>
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'radial-gradient(circle at 0% 0%, rgba(181,153,107,0.15) 0%, transparent 50%)', pointerEvents: 'none' }}></div>
             
             <div style={{ position: 'relative', zIndex: 1 }}>
-                <div className="logo" style={{ marginBottom: '60px' }}>
+                <div className="logo" style={{ marginBottom: 'clamp(2rem, 5vw, 4rem)' }}>
                     <div className="logo-mark" style={{ width: '44px', height: '44px', fontSize: '22px' }}>B</div>
-                    <span style={{ fontSize: '1.8rem', fontWeight: 700, marginLeft: '15px', letterSpacing: '-0.5px' }}>Bharat<em style={{ color: 'rgba(255,255,255,0.6)', fontStyle: 'normal' }}>Estates</em></span>
+                    <span style={{ fontSize: 'clamp(1.4rem, 2.5vw, 1.8rem)', fontWeight: 700, marginLeft: '15px', letterSpacing: '-0.5px', color: '#fff' }}>Bharat<em style={{ color: 'rgba(255,255,255,0.6)', fontStyle: 'normal' }}>Estates</em></span>
                 </div>
                 
-                <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '3.2rem', marginBottom: '24px', lineHeight: '1.1' }}>
+                <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2rem, 5vw, 3.2rem)', marginBottom: '24px', lineHeight: '1.1', color: '#fff' }}>
                     Join the <br /><span style={{ color: 'var(--gold2)' }}>Elite Circle</span>
                 </h2>
-                <p style={{ color: 'rgba(255,255,255,0.6)', lineHeight: '1.8', fontSize: '1.15rem', maxWidth: '400px', marginBottom: '48px' }}>
+                <p style={{ color: 'rgba(255,255,255,0.6)', lineHeight: '1.8', fontSize: 'clamp(0.95rem, 1.5vw, 1.15rem)', maxWidth: '400px', marginBottom: '48px' }}>
                     {isLogin 
                         ? "Re-enter the world of architectural masterpieces and off-market opportunities." 
                         : "Discover a curated gateway to India's most prestigious residences and land parcels."}
@@ -74,7 +74,7 @@ const AuthView = () => {
                     ].map((feature, idx) => (
                         <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                             <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: 'rgba(181,153,107,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--gold2)', fontSize: '0.8rem', fontWeight: 900 }}>✓</div>
-                            <div style={{ fontSize: '0.95rem', fontWeight: 600, opacity: 0.9 }}>{feature}</div>
+                            <div style={{ fontSize: '0.95rem', fontWeight: 600, opacity: 0.9, color: '#fff' }}>{feature}</div>
                         </div>
                     ))}
                 </div>
@@ -82,8 +82,8 @@ const AuthView = () => {
         </div>
 
         {/* Right Side: Form Panel */}
-        <div className="auth-right-panel" style={{ padding: '80px' }}>
-            <div style={{ display: 'flex', gap: '40px', marginBottom: '50px', borderBottom: '1px solid #eee' }}>
+        <div className="auth-right-panel" style={{ padding: 'clamp(1.5rem, 5vw, 3.5rem)' }}>
+            <div style={{ display: 'flex', gap: 'clamp(1.5rem, 4vw, 3rem)', marginBottom: '50px', borderBottom: '1px solid #eee', overflowX: 'auto', scrollbarWidth: 'none' }}>
                 <button 
                     onClick={() => toggleForm(true)} 
                     style={{ 
@@ -96,7 +96,8 @@ const AuthView = () => {
                         letterSpacing: '1px',
                         cursor: 'pointer', 
                         color: isLogin ? 'var(--ink)' : 'var(--muted2)',
-                        transition: '0.3s'
+                        transition: '0.3s',
+                        whiteSpace: 'nowrap'
                     }}
                 >
                     SIGN IN
@@ -113,7 +114,8 @@ const AuthView = () => {
                         letterSpacing: '1px',
                         cursor: 'pointer', 
                         color: !isLogin ? 'var(--ink)' : 'var(--muted2)',
-                        transition: '0.3s'
+                        transition: '0.3s',
+                        whiteSpace: 'nowrap'
                     }}
                 >
                     REGISTER

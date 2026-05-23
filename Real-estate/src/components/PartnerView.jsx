@@ -18,10 +18,10 @@ const PartnerView = () => {
           <button className="nav-btn-ghost" onClick={() => navigate('/partner-auth')} style={{ borderColor: 'var(--gold2)', color: 'var(--ink)', padding: '12px 30px', fontWeight: 800 }}>SIGN IN</button>
         </div>
 
-        <div style={{ background: 'var(--ink)', padding: '80px', borderRadius: '24px', color: '#fff', display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '80px', alignItems: 'center', marginBottom: '100px' }}>
+        <div className="partner-hero" style={{ background: 'var(--ink)', padding: 'clamp(2rem, 8vw, 5rem) var(--container-pad)', borderRadius: '24px', color: '#fff', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: 'clamp(2rem, 5vw, 5rem)', alignItems: 'center', marginBottom: 'clamp(3rem, 10vw, 6rem)' }}>
             <div>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.5rem', marginBottom: '24px', color: 'var(--gold2)' }}>Scale Your Reach</h3>
-                <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.7)', lineHeight: '1.8', marginBottom: '32px' }}>
+                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', marginBottom: '24px', color: 'var(--gold2)' }}>Scale Your Reach</h3>
+                <p style={{ fontSize: 'var(--body-text)', color: 'rgba(255,255,255,0.7)', lineHeight: '1.8', marginBottom: '32px' }}>
                     List your Tier-1 projects on BharatEstates and gain direct access to a verified network of 15,000+ HNIs and NRI investors. 
                     Our platform isn't just a listing service—it's a high-intent marketing engine designed for architectural masterpieces.
                 </p>
@@ -39,8 +39,8 @@ const PartnerView = () => {
                     ))}
                 </div>
             </div>
-            <div style={{ background: 'rgba(255,255,255,0.05)', padding: '50px', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.1)' }}>
-                <h4 style={{ fontSize: '1.5rem', marginBottom: '24px', textAlign: 'center' }}>New Partner Inquiry</h4>
+            <div style={{ background: 'rgba(255,255,255,0.05)', padding: 'clamp(1.5rem, 4vw, 3rem)', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                <h4 style={{ fontSize: 'clamp(1.2rem, 3vw, 1.5rem)', marginBottom: '24px', textAlign: 'center' }}>New Partner Inquiry</h4>
                 <form className="pd-form" onSubmit={(e) => { e.preventDefault(); alert('Partnership inquiry received. Our developer relations head will contact you.'); }}>
                     <div className="pd-form-group">
                         <label style={{ color: 'rgba(255,255,255,0.6)' }}>Developer Name / Group *</label>
@@ -60,8 +60,8 @@ const PartnerView = () => {
         </div>
 
         <div style={{ textAlign: 'center' }}>
-            <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', marginBottom: '48px' }}>Our Technology Stack for Partners</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '30px' }}>
+            <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.5rem, 3vw, 2rem)', marginBottom: '48px' }}>Our Technology Stack for Partners</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '30px' }}>
                 {[
                     { icon: '📊', title: 'Real-time CRM', desc: 'Manage luxury leads with our proprietary portal.' },
                     { icon: '🗺️', title: 'Inventory Map', desc: 'Live unit-wise status tracking for large projects.' },

@@ -194,7 +194,7 @@ const PlotsView = () => {
                 <button className="nav-btn-solid" onClick={clearFilters} style={{ marginTop: '20px' }}>Reset All Filters</button>
               </div>
             ) : (
-              <div className="rec-grid" style={{ gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+              <div className="rec-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 350px), 1fr))', gap: '24px' }}>
                 {filteredPlots.map(plot => {
                   const agent = agents.find(a => a.id === plot.agentId);
                   const isComparing = comparisonList.includes(plot.id);
@@ -216,27 +216,27 @@ const PlotsView = () => {
                         </div>
 
                         {agent && (
-                          <div style={{ marginTop: '20px', padding: '15px', background: 'var(--ink2)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', color: '#fff' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '12px' }}>
+                          <div style={{ marginTop: '20px', padding: 'clamp(1rem, 2vw, 1.5rem)', background: 'var(--ink2)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', color: '#fff' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '12px', flexWrap: 'wrap' }}>
                               <img src={agent.img} alt={agent.name} style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--gold2)' }} />
-                              <div style={{ flex: 1 }}>
+                              <div style={{ flex: 1, minWidth: '120px' }}>
                                 <div style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--gold2)' }}>{agent.name}</div>
                                 <div style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.6)' }}>{agent.company}</div>
                               </div>
                             </div>
                             
-                            <div style={{ display: 'flex', gap: '8px' }}>
+                            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                               <button 
                                 onClick={(e) => { e.stopPropagation(); handleContactClick(plot, 'contact'); }}
                                 className="pd-btn-primary"
-                                style={{ flex: 1, padding: '8px', fontSize: '0.7rem' }}
+                                style={{ flex: 1, minWidth: '80px', padding: '8px', fontSize: '0.7rem' }}
                               >
                                 Contact
                               </button>
                               <button 
                                 onClick={(e) => { e.stopPropagation(); handleContactClick(plot, 'view_number'); }}
                                 className="nav-btn-ghost"
-                                style={{ flex: 1, padding: '8px', fontSize: '0.7rem', borderColor: 'var(--gold2)', color: 'var(--gold2)' }}
+                                style={{ flex: 1, minWidth: '80px', padding: '8px', fontSize: '0.7rem', borderColor: 'var(--gold2)', color: 'var(--gold2)' }}
                               >
                                 {revealedNumbers[plot.id] ? '+91 9XXXX XXXXX' : 'Number'}
                               </button>

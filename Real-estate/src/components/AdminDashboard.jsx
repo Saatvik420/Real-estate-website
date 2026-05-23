@@ -85,11 +85,11 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="section-full admin-layout" style={{ background: '#f8f9fa', minHeight: '100vh', padding: 0, display: 'flex' }}>
+    <div className="admin-layout" style={{ display: 'flex', minHeight: '100vh', background: '#f8f9fa', flexWrap: 'wrap' }}>
       
       {/* Admin Sidebar */}
-      <aside className="admin-sidebar" style={{ width: '300px', background: 'var(--ink)', color: '#fff', padding: '40px 0', display: 'flex', flexDirection: 'column', position: 'fixed', height: '100vh', zIndex: 100 }}>
-        <div className="logo" style={{ padding: '0 40px', marginBottom: '60px' }}>
+      <aside className="admin-sidebar" style={{ width: 'clamp(260px, 20vw, 300px)', background: 'var(--ink)', color: '#fff', position: 'sticky', top: 0, height: '100vh', display: 'flex', flexDirection: 'column' }}>
+        <div className="logo" style={{ padding: '30px 40px', marginBottom: '40px' }}>
             <div className="logo-mark" style={{ width: '32px', height: '32px', fontSize: '16px' }}>B</div>
             Admin<em>Control</em>
         </div>
@@ -148,18 +148,18 @@ const AdminDashboard = () => {
       </aside>
 
       {/* Main Content */}
-      <main className="admin-main" style={{ flex: 1, padding: '60px', marginLeft: '300px' }}>
+      <main className="admin-main">
         
         <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '48px', flexWrap: 'wrap', gap: '20px' }}>
             <div>
-                <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.4rem', marginBottom: '8px' }}>{activeTab}</h2>
+                <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.5rem, 4vw, 2.4rem)', marginBottom: '8px' }}>{activeTab}</h2>
                 <div style={{ fontSize: '0.9rem', color: 'var(--muted)' }}>System Date: {new Date().toLocaleDateString('en-IN', { dateStyle: 'long' })}</div>
             </div>
             <div style={{ display: 'flex', gap: '20px', alignItems: 'center', flexWrap: 'wrap' }}>
                 <input 
                     type="text" 
                     placeholder="Search..." 
-                    style={{ padding: '12px 20px', borderRadius: '12px', border: '1px solid #ddd', width: '200px' }}
+                    style={{ padding: '12px 20px', borderRadius: '12px', border: '1px solid #ddd', width: 'clamp(150px, 20vw, 200px)' }}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />
@@ -182,14 +182,14 @@ const AdminDashboard = () => {
         </header>
 
         {activeTab === 'Overview' && (
-            <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px', marginBottom: '40px' }}>
+            <div className="stats-grid">
                 {stats.map((s, i) => (
-                    <div key={i} style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '1px solid #eee' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px' }}>
-                            <div style={{ fontSize: '0.75rem', color: 'var(--muted2)', textTransform: 'uppercase', fontWeight: 800 }}>{s.lbl}</div>
-                            <div style={{ color: '#2b8a3e', fontSize: '0.75rem', fontWeight: 800 }}>{s.trend}</div>
+                    <div key={i} className="info-card">
+                        <div className="info-card-title">
+                            <div>{s.lbl}</div>
+                            <div style={{ color: '#2b8a3e' }}>{s.trend}</div>
                         </div>
-                        <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--ink)' }}>{s.val}</div>
+                        <div className="info-card-val">{s.val}</div>
                     </div>
                 ))}
             </div>

@@ -102,29 +102,14 @@ const Hero = () => {
           </div>
           
           {/* CRITICAL CALL TO ACTION */}
-          <div className="fail-safe-contact-container" style={{ marginTop: '24px', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.15)', display: 'flex', alignItems: 'center', gap: '20px', background: 'rgba(189,168,113,0.15)', margin: '24px -32px -28px', padding: '24px 32px', borderBottomLeftRadius: '12px', borderBottomRightRadius: '12px', position: 'relative', zIndex: '9999' }}>
+          <div className="fail-safe-contact-container">
             <button 
-              className="nav-btn-solid" 
+              className="hero-contact-btn" 
               onClick={() => navigate('/contact')} 
-              style={{ 
-                padding: '16px 48px', 
-                fontSize: '15px', 
-                borderRadius: '8px', 
-                fontWeight: '900',
-                letterSpacing: '1px',
-                background: 'var(--gold2)',
-                color: 'var(--ink)',
-                boxShadow: '0 15px 30px rgba(189,168,113,0.6)',
-                border: '2px solid #fff',
-                cursor: 'pointer',
-                display: 'block !important',
-                visibility: 'visible !important',
-                opacity: '1 !important'
-              }}
             >
               CONTACT US NOW
             </button>
-            <div style={{ color: '#fff', fontSize: '14px', fontWeight: '800', textShadow: '0 2px 10px rgba(0,0,0,1)' }}>
+            <div className="hero-contact-text">
               Speak with an Investment Expert 
             </div>
           </div>

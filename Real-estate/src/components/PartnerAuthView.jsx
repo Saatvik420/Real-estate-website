@@ -41,11 +41,11 @@ const PartnerAuthView = () => {
   };
 
   return (
-    <div className="section-full" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', background: '#fdfcfb', padding: '40px 0' }}>
-      <div className="section-inner" style={{ maxWidth: '1200px', display: 'grid', gridTemplateColumns: '1.2fr 1fr', background: '#fff', borderRadius: '32px', overflow: 'hidden', boxShadow: '0 50px 100px rgba(0,0,0,0.08)', border: '1px solid var(--cream3)' }}>
+    <div className="section-full" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', background: '#fdfcfb', padding: 'var(--section-pad) 0' }}>
+      <div className="section-inner auth-layout" style={{ maxWidth: '1150px', width: '100%', margin: '0 auto' }}>
         
         {/* Left Side: Form */}
-        <div style={{ padding: '80px' }}>
+        <div className="auth-right-panel" style={{ padding: 'clamp(1.5rem, 5vw, 3.5rem)' }}>
             <div 
               className="eyebrow" 
               onClick={() => navigate('/partner')} 
@@ -54,16 +54,16 @@ const PartnerAuthView = () => {
               ← RETURN TO DEVELOPER PORTAL
             </div>
             
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.8rem', color: 'var(--ink)', marginBottom: '16px', lineHeight: '1.1' }}>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2rem, 4vw, 2.8rem)', color: 'var(--ink)', marginBottom: '16px', lineHeight: '1.1' }}>
                 {isLogin ? 'Developer Login' : 'Join the Ecosystem'}
             </h2>
-            <p style={{ color: 'var(--muted)', marginBottom: '48px', fontSize: '1.05rem', lineHeight: '1.6', maxWidth: '450px' }}>
+            <p style={{ color: 'var(--muted)', marginBottom: '48px', fontSize: 'clamp(0.95rem, 1.5vw, 1.05rem)', lineHeight: '1.6', maxWidth: '450px' }}>
                 {isLogin 
                     ? "Manage your mandates, track luxury lead pipelines, and update your corporate portfolio."
                     : "Apply for Platinum Partner status and showcase your masterpieces to India's most elite buyer network."}
             </p>
 
-            <div style={{ display: 'flex', gap: '40px', marginBottom: '40px', borderBottom: '1px solid var(--bg-main)' }}>
+            <div style={{ display: 'flex', gap: 'clamp(1.5rem, 4vw, 3rem)', marginBottom: '40px', borderBottom: '1px solid var(--bg-main)', overflowX: 'auto', scrollbarWidth: 'none' }}>
                 <button 
                     onClick={() => toggleForm(true)} 
                     style={{ 
@@ -76,7 +76,8 @@ const PartnerAuthView = () => {
                         letterSpacing: '1px',
                         cursor: 'pointer', 
                         color: isLogin ? 'var(--ink)' : 'var(--muted2)',
-                        transition: 'all 0.3s'
+                        transition: 'all 0.3s',
+                        whiteSpace: 'nowrap'
                     }}
                 >
                     SIGN IN
@@ -93,7 +94,8 @@ const PartnerAuthView = () => {
                         letterSpacing: '1px',
                         cursor: 'pointer', 
                         color: !isLogin ? 'var(--ink)' : 'var(--muted2)',
-                        transition: 'all 0.3s'
+                        transition: 'all 0.3s',
+                        whiteSpace: 'nowrap'
                     }}
                 >
                     APPLY NOW
@@ -109,7 +111,7 @@ const PartnerAuthView = () => {
                 
                 {!isLogin && (
                     <>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '20px' }}>
                             <div className="pd-form-group">
                                 <label style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--ink)', marginBottom: '10px', display: 'block' }}>Group / Brand Name</label>
                                 <input 
@@ -188,23 +190,23 @@ const PartnerAuthView = () => {
         </div>
 
         {/* Right Side: Info Panel */}
-        <div style={{ background: 'var(--ink)', padding: '80px', color: '#fff', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' }}>
+        <div className="auth-left-panel" style={{ position: 'relative', overflow: 'hidden' }}>
             <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, background: 'linear-gradient(135deg, rgba(181,153,107,0.1) 0%, transparent 100%)', pointerEvents: 'none' }}></div>
             
             <div style={{ position: 'relative', zIndex: 1 }}>
                 <div style={{ width: '60px', height: '60px', background: 'var(--gold2)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.8rem', marginBottom: '40px' }}>🏛️</div>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.2rem', color: 'var(--gold2)', marginBottom: '24px' }}>Strategic Growth <br />for Modern Bharat</h3>
+                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', color: 'var(--gold2)', marginBottom: '24px' }}>Strategic Growth <br />for Modern Bharat</h3>
                 <p style={{ color: 'rgba(255,255,255,0.6)', lineHeight: '1.8', fontSize: '1.1rem', marginBottom: '48px' }}>
                     Join 450+ Grade-A partners who have scaled their luxury transactions by leveraging our high-intent HNI data sets and proprietary marketing stack.
                 </p>
                 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
-                    <div style={{ padding: '24px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '20px' }}>
-                        <div style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '4px', color: '#fff' }}>₹14k Cr</div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))', gap: '20px' }}>
+                    <div style={{ padding: 'clamp(1rem, 2vw, 1.5rem)', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '20px' }}>
+                        <div style={{ fontSize: 'clamp(1.2rem, 2vw, 1.8rem)', fontWeight: 800, marginBottom: '4px', color: '#fff' }}>₹14k Cr</div>
                         <div style={{ fontSize: '0.7rem', opacity: 0.5, textTransform: 'uppercase', letterSpacing: '1px' }}>Platform GMV</div>
                     </div>
-                    <div style={{ padding: '24px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '20px' }}>
-                        <div style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '4px', color: '#fff' }}>12.4%</div>
+                    <div style={{ padding: 'clamp(1rem, 2vw, 1.5rem)', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '20px' }}>
+                        <div style={{ fontSize: 'clamp(1.2rem, 2vw, 1.8rem)', fontWeight: 800, marginBottom: '4px', color: '#fff' }}>12.4%</div>
                         <div style={{ fontSize: '0.7rem', opacity: 0.5, textTransform: 'uppercase', letterSpacing: '1px' }}>Avg. Conv. Rate</div>
                     </div>
                 </div>

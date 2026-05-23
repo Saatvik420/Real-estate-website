@@ -182,7 +182,7 @@ const RentalsView = () => {
                 <button className="nav-btn-solid" onClick={clearFilters} style={{ marginTop: '20px' }}>Reset Filters</button>
               </div>
             ) : (
-              <div className="rec-grid" style={{ gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+              <div className="rec-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 350px), 1fr))', gap: '24px' }}>
                 {results.map(prop => {
                   const agent = agents.find(a => a.id === prop.agentId);
                   return (
@@ -199,10 +199,10 @@ const RentalsView = () => {
                         </div>
                         
                         {agent && (
-                          <div style={{ marginTop: '20px', padding: '15px', background: 'var(--ink2)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', color: '#fff' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '12px' }}>
+                          <div style={{ marginTop: '20px', padding: 'clamp(1rem, 2vw, 1.5rem)', background: 'var(--ink2)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', color: '#fff' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '12px', flexWrap: 'wrap' }}>
                               <img src={agent.img} alt={agent.name} style={{ width: '45px', height: '45px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--gold2)' }} />
-                              <div style={{ flex: 1 }}>
+                              <div style={{ flex: 1, minWidth: '120px' }}>
                                 <div style={{ fontSize: '0.9rem', fontWeight: 'bold', color: 'var(--gold2)' }}>{agent.name}</div>
                                 <div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.6)', marginTop: '2px' }}>{agent.company}</div>
                               </div>

@@ -34,27 +34,27 @@ const ContactView = () => {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '60px', alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: 'clamp(2rem, 5vw, 4rem)', alignItems: 'start' }}>
             <div>
-                <div style={{ background: 'var(--ink)', padding: '40px', borderRadius: '20px', color: '#fff', marginBottom: '30px' }}>
-                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', color: 'var(--gold2)', marginBottom: '24px' }}>Global Headquarters</h3>
+                <div style={{ background: 'var(--ink)', padding: 'clamp(1.5rem, 4vw, 2.5rem)', borderRadius: '20px', color: '#fff', marginBottom: '30px' }}>
+                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.5rem, 3vw, 1.8rem)', color: 'var(--gold2)', marginBottom: '24px' }}>Global Headquarters</h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', fontSize: '1rem' }}>
                         <div>
                             <div style={{ fontWeight: 800, color: 'var(--gold2)', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '1px', marginBottom: '5px' }}>Location</div>
-                            <p style={{ opacity: 0.8 }}>12th Floor, Capital Towers, <br />Bandra Kurla Complex (BKC), <br />Mumbai – 400 051, India</p>
+                            <p style={{ opacity: 0.8, fontSize: '0.95rem' }}>12th Floor, Capital Towers, <br />Bandra Kurla Complex (BKC), <br />Mumbai – 400 051, India</p>
                         </div>
                         <div>
                             <div style={{ fontWeight: 800, color: 'var(--gold2)', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '1px', marginBottom: '5px' }}>Direct Advisory</div>
-                            <p style={{ opacity: 0.8 }}>+91 98765 43210</p>
+                            <p style={{ opacity: 0.8, fontSize: '0.95rem' }}>+91 98765 43210</p>
                         </div>
                         <div>
                             <div style={{ fontWeight: 800, color: 'var(--gold2)', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '1px', marginBottom: '5px' }}>Email Inquiries</div>
-                            <p style={{ opacity: 0.8 }}>luxury@bharatestates.com</p>
+                            <p style={{ opacity: 0.8, fontSize: '0.95rem' }}>luxury@bharatestates.com</p>
                         </div>
                     </div>
                 </div>
 
-                <div style={{ padding: '30px', border: '1px solid var(--cream3)', borderRadius: '16px', background: '#fff' }}>
+                <div style={{ padding: 'clamp(1.5rem, 3vw, 2rem)', border: '1px solid var(--cream3)', borderRadius: '16px', background: '#fff' }}>
                     <h4 style={{ fontWeight: 800, marginBottom: '15px', color: 'var(--ink)' }}>Regional Hubs</h4>
                     <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '0.9rem', color: 'var(--muted)' }}>
                         <li>📍 <strong>Gurugram:</strong> Golf Course Road</li>
@@ -65,14 +65,14 @@ const ContactView = () => {
                 </div>
             </div>
 
-            <div style={{ background: '#fff', padding: '50px', borderRadius: '24px', border: '1px solid var(--cream3)', boxShadow: '0 20px 50px rgba(0,0,0,0.05)' }}>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', marginBottom: '10px' }}>Request a Private Consultation</h3>
-                <p style={{ color: 'var(--muted)', marginBottom: '32px' }}>Please provide your details, and a senior consultant will reach out within 2 hours.</p>
+            <div style={{ background: '#fff', padding: 'clamp(1.5rem, 5vw, 3rem)', borderRadius: '24px', border: '1px solid var(--cream3)', boxShadow: '0 20px 50px rgba(0,0,0,0.05)' }}>
+                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.5rem, 4vw, 2rem)', marginBottom: '10px' }}>Request a Private Consultation</h3>
+                <p style={{ color: 'var(--muted)', marginBottom: '32px', fontSize: 'var(--body-text)' }}>Please provide your details, and a senior consultant will reach out within 2 hours.</p>
 
                 <form className="pd-form" onSubmit={handleSubmit}>
                     {!isLoggedIn ? (
                         <>
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '20px', marginBottom: '20px' }}>
                                 <div className="pd-form-group">
                                     <label>Full Name *</label>
                                     <input 

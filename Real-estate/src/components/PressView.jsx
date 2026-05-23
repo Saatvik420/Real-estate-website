@@ -22,18 +22,18 @@ const PressView = () => {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '60px' }}>
+        <div className="press-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 350px), 1fr))', gap: 'clamp(2rem, 5vw, 4rem)' }}>
             <div>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', marginBottom: '32px' }}>Latest Newsroom</h3>
+                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.5rem, 3vw, 1.8rem)', marginBottom: '32px' }}>Latest Newsroom</h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
                     {releases.map((item, idx) => (
-                        <div key={idx} style={{ padding: '32px 0', borderBottom: '1px solid var(--cream3)', display: 'flex', gap: '40px', alignItems: 'flex-start' }}>
+                        <div key={idx} style={{ padding: 'clamp(1.5rem, 3vw, 2rem) 0', borderBottom: '1px solid var(--cream3)', display: 'flex', gap: 'clamp(1rem, 3vw, 2.5rem)', alignItems: 'flex-start', flexWrap: 'wrap' }}>
                             <div style={{ minWidth: '120px' }}>
                                 <div style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--gold)' }}>{item.date}</div>
                                 <div style={{ fontSize: '0.7rem', color: 'var(--muted2)', textTransform: 'uppercase', marginTop: '4px' }}>{item.category}</div>
                             </div>
-                            <div style={{ flex: 1 }}>
-                                <h4 style={{ fontSize: '1.25rem', fontFamily: "'Playfair Display', serif", fontWeight: 700, color: 'var(--ink)', cursor: 'pointer' }}>{item.title}</h4>
+                            <div style={{ flex: 1, minWidth: '200px' }}>
+                                <h4 style={{ fontSize: 'clamp(1.1rem, 2vw, 1.25rem)', fontFamily: "'Playfair Display', serif", fontWeight: 700, color: 'var(--ink)', cursor: 'pointer' }}>{item.title}</h4>
                                 <a href="#" style={{ fontSize: '0.8rem', color: 'var(--gold)', textDecoration: 'none', fontWeight: 800, display: 'inline-block', marginTop: '12px' }}>Read Release →</a>
                             </div>
                         </div>
@@ -41,9 +41,9 @@ const PressView = () => {
                 </div>
             </div>
 
-            <div>
-                <div style={{ background: 'var(--bg-main)', padding: '40px', borderRadius: '16px', border: '1px solid var(--cream3)' }}>
-                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', marginBottom: '20px' }}>Media Kit</h3>
+            <aside>
+                <div style={{ background: 'var(--bg-main)', padding: 'clamp(1.5rem, 4vw, 2.5rem)', borderRadius: '16px', border: '1px solid var(--cream3)' }}>
+                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.2rem, 2.5vw, 1.5rem)', marginBottom: '20px' }}>Media Kit</h3>
                     <p style={{ fontSize: '0.9rem', color: 'var(--muted)', marginBottom: '24px', lineHeight: '1.6' }}>Download our brand assets, leadership bios, and high-resolution corporate photography.</p>
                     <button className="nav-btn-ghost" style={{ width: '100%', borderColor: 'var(--ink)', color: 'var(--ink)' }}>Download Kit (.ZIP)</button>
                 </div>
@@ -56,7 +56,7 @@ const PressView = () => {
                         <a href="mailto:press@bharatestates.com" style={{ color: 'var(--gold)', textDecoration: 'none', fontSize: '0.85rem', fontWeight: 700 }}>press@bharatestates.com</a>
                     </div>
                 </div>
-            </div>
+            </aside>
         </div>
       </div>
     </div>

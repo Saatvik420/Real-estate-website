@@ -23,33 +23,33 @@ const ProjectsView = () => {
           </div>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(2rem, 6vw, 4rem)' }}>
           {companies.map(comp => (
             <div key={comp.id} className="developer-profile-card" style={{ background: '#fff', borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.03)', border: '1px solid var(--cream3)' }}>
               {/* Developer Info Header */}
-              <div style={{ padding: '40px', background: 'linear-gradient(to right, var(--ink), #1a1a1a)', color: '#fff', display: 'flex', gap: '40px', flexWrap: 'wrap', alignItems: 'center' }}>
-                <div style={{ flex: '0 0 120px' }}>
-                    <img src={comp.logo} alt={comp.name} style={{ width: '120px', height: '120px', borderRadius: '16px', objectFit: 'cover', border: '3px solid var(--gold2)' }} />
+              <div style={{ padding: 'clamp(1.5rem, 5vw, 3rem)', background: 'linear-gradient(to right, var(--ink), #1a1a1a)', color: '#fff', display: 'flex', gap: 'clamp(1.5rem, 4vw, 3rem)', flexWrap: 'wrap', alignItems: 'center' }}>
+                <div style={{ flex: '0 0 clamp(80px, 15vw, 120px)' }}>
+                    <img src={comp.logo} alt={comp.name} style={{ width: '100%', height: 'auto', borderRadius: '16px', objectFit: 'cover', border: '3px solid var(--gold2)' }} />
                 </div>
-                <div style={{ flex: 1, minWidth: '300px' }}>
+                <div style={{ flex: 1, minWidth: 'min(100%, 300px)' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '20px' }}>
                         <div>
-                            <h3 style={{ fontSize: '2.2rem', margin: '0 0 10px 0', color: 'var(--gold2)', fontFamily: "'Playfair Display', serif" }}>{comp.name}</h3>
-                            <div style={{ display: 'flex', gap: '20px', fontSize: '0.9rem', opacity: 0.8 }}>
+                            <h3 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.2rem)', margin: '0 0 10px 0', color: 'var(--gold2)', fontFamily: "'Playfair Display', serif" }}>{comp.name}</h3>
+                            <div style={{ display: 'flex', gap: '20px', fontSize: '0.9rem', opacity: 0.8, flexWrap: 'wrap' }}>
                                 <span>📍 HQ: {comp.headquarters}</span>
                                 <span>🏗️ Est. {comp.established}</span>
                             </div>
                         </div>
                         <button className="nav-btn-ghost" style={{ borderColor: 'var(--gold2)', color: 'var(--gold2)', padding: '10px 25px' }}>Visit Website</button>
                     </div>
-                    <p style={{ marginTop: '20px', fontSize: '1.1rem', lineHeight: '1.6', opacity: 0.9, maxWidth: '900px' }}>{comp.description}</p>
+                    <p style={{ marginTop: '20px', fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)', lineHeight: '1.6', opacity: 0.9, maxWidth: '900px' }}>{comp.description}</p>
                 </div>
               </div>
 
               {/* Projects Grid */}
-              <div style={{ padding: '40px' }}>
-                <h4 style={{ fontSize: '1.4rem', color: 'var(--ink)', marginBottom: '30px', borderLeft: '4px solid var(--gold2)', paddingLeft: '15px' }}>Signature Projects</h4>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '30px' }}>
+              <div style={{ padding: 'clamp(1.5rem, 4vw, 2.5rem)' }}>
+                <h4 style={{ fontSize: 'clamp(1.2rem, 3vw, 1.4rem)', color: 'var(--ink)', marginBottom: '30px', borderLeft: '4px solid var(--gold2)', paddingLeft: '15px' }}>Signature Projects</h4>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 350px), 1fr))', gap: '30px' }}>
                   {comp.projects.map(proj => (
                     <div key={proj.id} className="project-detail-card" onClick={() => handleProjectClick(proj.id)} style={{ border: '1px solid #f0f0f0', borderRadius: '16px', overflow: 'hidden', transition: 'all 0.3s', background: '#fff', cursor: 'pointer' }}>
                         <div style={{ height: '220px', backgroundImage: `url('${proj.img || 'https://via.placeholder.com/400x220?text=Project+Image'}')`, backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative' }}>
@@ -57,13 +57,13 @@ const ProjectsView = () => {
                                 {proj.status}
                             </div>
                         </div>
-                        <div style={{ padding: '25px' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '15px' }}>
+                        <div style={{ padding: 'clamp(1.2rem, 3vw, 1.5rem)' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '15px', flexWrap: 'wrap', gap: '10px' }}>
                                 <div>
-                                    <h5 style={{ fontSize: '1.25rem', margin: '0 0 5px 0', color: 'var(--ink)' }}>{proj.name}</h5>
+                                    <h5 style={{ fontSize: 'clamp(1.1rem, 2vw, 1.25rem)', margin: '0 0 5px 0', color: 'var(--ink)' }}>{proj.name}</h5>
                                     <div style={{ fontSize: '0.85rem', color: 'var(--muted2)' }}>📍 {proj.location}</div>
                                 </div>
-                                <div style={{ textAlign: 'right' }}>
+                                <div style={{ textAlign: 'left' }}>
                                     <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--ink)' }}>{proj.priceRange || 'Price on Request'}</div>
                                     <div style={{ fontSize: '0.75rem', color: 'var(--muted2)' }}>{proj.areaRange || 'TBD'}</div>
                                 </div>
