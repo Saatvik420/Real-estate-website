@@ -38,12 +38,13 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/", "/health").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("/api/properties/**").permitAll()
-                        .requestMatchers("/api/locations/**").permitAll()
-                        .requestMatchers("/api/insights/**").permitAll()
-                        .requestMatchers("/api/agents/**").permitAll()
+                        .requestMatchers("/api/properties", "/api/properties/**").permitAll()
+                        .requestMatchers("/api/locations", "/api/locations/**").permitAll()
+                        .requestMatchers("/api/insights", "/api/insights/**").permitAll()
+                        .requestMatchers("/api/agents", "/api/agents/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/inquiries").permitAll()
                         .anyRequest().authenticated()
                 )
@@ -59,10 +60,14 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
+        // Allow all origins, methods, and headers more robustly
         configuration.setAllowedOriginPatterns(Arrays.asList("*"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(Arrays.asList("*"));
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "X-Requested-With", "Accept", "Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers"));
+        configuration.setExposedHeaders(Arrays.asList("Authorization"));
         configuration.setAllowCredentials(true);
+        configuration.setMaxAge(3600L);
+        
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;

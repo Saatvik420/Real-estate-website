@@ -14,6 +14,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/insights")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class InsightsController {
 
     @GetMapping
