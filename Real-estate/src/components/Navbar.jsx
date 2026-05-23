@@ -72,7 +72,6 @@ const Navbar = () => {
       </div>
 
       <div className="nav-right">
-        <Link to="/contact" className="nav-btn-solid" onClick={() => { setView('contact'); closeMobileMenu(); }} style={{ marginRight: '8px', background: 'var(--gold2)', color: 'var(--ink)' }}>CONTACT US</Link>
         {isLoggedIn ? (
           <div className={`professional-dropdown ${activeDropdown === 'account' ? 'active' : ''}`} style={{ position: 'relative' }}>
             <button className="nav-btn-solid" onClick={(e) => toggleDropdown('account', e)}>ACCOUNT ▾</button>
