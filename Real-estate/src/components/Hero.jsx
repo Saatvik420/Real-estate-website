@@ -102,30 +102,30 @@ const Hero = () => {
           </div>
           
           {/* CRITICAL CALL TO ACTION */}
-          <div style={{ marginTop: '24px', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.15)', display: 'flex', alignItems: 'center', gap: '20px', background: 'rgba(189,168,113,0.05)', margin: '24px -32px -28px', padding: '20px 32px', borderBottomLeftRadius: '12px', borderBottomRightRadius: '12px' }}>
+          <div className="fail-safe-contact-container" style={{ marginTop: '24px', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.15)', display: 'flex', alignItems: 'center', gap: '20px', background: 'rgba(189,168,113,0.15)', margin: '24px -32px -28px', padding: '24px 32px', borderBottomLeftRadius: '12px', borderBottomRightRadius: '12px', position: 'relative', zIndex: '9999' }}>
             <button 
               className="nav-btn-solid" 
               onClick={() => navigate('/contact')} 
               style={{ 
-                padding: '14px 40px', 
-                fontSize: '14px', 
+                padding: '16px 48px', 
+                fontSize: '15px', 
                 borderRadius: '8px', 
                 fontWeight: '900',
                 letterSpacing: '1px',
                 background: 'var(--gold2)',
                 color: 'var(--ink)',
-                boxShadow: '0 15px 30px rgba(189,168,113,0.4)',
-                border: 'none',
+                boxShadow: '0 15px 30px rgba(189,168,113,0.6)',
+                border: '2px solid #fff',
                 cursor: 'pointer',
-                display: 'block',
-                visibility: 'visible',
-                opacity: '1'
+                display: 'block !important',
+                visibility: 'visible !important',
+                opacity: '1 !important'
               }}
             >
               CONTACT US NOW
             </button>
-            <div style={{ color: '#fff', fontSize: '13px', fontWeight: '700', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
-              Talk to our Investment Experts
+            <div style={{ color: '#fff', fontSize: '14px', fontWeight: '800', textShadow: '0 2px 10px rgba(0,0,0,1)' }}>
+              Speak with an Investment Expert 
             </div>
           </div>
         </div>
