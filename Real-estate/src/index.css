@@ -64,10 +64,11 @@ body{font-family:'Nunito Sans',sans-serif;background:var(--bg-main);color:var(--
 }
 
 /* Professional Dropdown */
-.professional-dropdown:hover .dropdown-menu,
-.professional-dropdown.active .dropdown-menu {
-  display: block !important;
-  animation: fadeIn 0.2s ease-out;
+@media (min-width: 993px) {
+  .professional-dropdown:hover .dropdown-menu {
+    display: block !important;
+    animation: fadeIn 0.2s ease-out;
+  }
 }
 
 .dropdown-menu {
