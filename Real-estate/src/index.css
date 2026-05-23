@@ -5,25 +5,26 @@ html{scroll-behavior:smooth}
 body{font-family:'Nunito Sans',sans-serif;background:var(--bg-main);color:var(--text);line-height:1.6}
 
 /* ── SCROLL REVEAL BASE ── */
-.reveal {
+.reveal, .anim-fade-in-up, .anim-scale-up {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal-left {
+.reveal-left, .anim-slide-in-left {
   opacity: 0;
   transform: translateX(-30px);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal-right {
+.reveal-right, .anim-slide-in-right {
   opacity: 0;
   transform: translateX(30px);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal.revealed, .reveal-left.revealed, .reveal-right.revealed {
+.reveal.revealed, .reveal-left.revealed, .reveal-right.revealed,
+.anim-fade-in-up.revealed, .anim-slide-in-left.revealed, .anim-slide-in-right.revealed, .anim-scale-up.revealed {
   opacity: 1;
   transform: translate(0, 0);
 }
@@ -706,7 +707,7 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:var(--section-p
   font-size: 0.75rem;
   color: var(--muted2);
   text-transform: uppercase;
-  fontWeight: 800;
+  font-weight: 800;
   margin-bottom: 15px;
   display: flex;
   justify-content: space-between;
@@ -747,11 +748,7 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:var(--section-p
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
 }
 
-/* Basic Animation Utilities (now using transitions via reveal) */
-.anim-fade-in-up { @apply reveal; }
-.anim-slide-in-left { @apply reveal-left; }
-.anim-slide-in-right { @apply reveal-right; }
-.anim-scale-up { @apply reveal; } /* simplified to reveal for now */
+/* Basic Animation Utilities (inherited from reveal classes above) */
 .prop-card, .trend-card, .city-card, .dev-card, .insight-box { 
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease; 
 }

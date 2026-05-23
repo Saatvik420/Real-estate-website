@@ -24,7 +24,7 @@ const useScrollReveal = () => {
 
     // Function to find and observe elements
     const observeElements = () => {
-      const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+      const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .anim-fade-in-up, .anim-slide-in-left, .anim-slide-in-right, .anim-scale-up');
       revealElements.forEach((el) => {
         // Only observe if not already revealed
         if (!el.classList.contains('revealed')) {
