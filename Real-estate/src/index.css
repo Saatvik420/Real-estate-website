@@ -142,7 +142,7 @@ h1.hero-title{font-family:'Playfair Display',serif;font-size:var(--h1);font-weig
 .hero-subtitle{color:rgba(255,255,255,.65);font-size:var(--body-text);font-weight:400;margin-bottom:40px;max-width:580px; line-height: 1.5;}
 
 /* search */
-.search-card{background:rgba(255,255,255,.08);border:1px solid rgba(189,168,113,0.3);border-radius:12px;padding:clamp(1.5rem, 4vw, 2.5rem);backdrop-filter:blur(16px);max-width:900px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);}
+.search-card{background:rgba(255,255,255,.08);border:1px solid rgba(189,168,113,0.3);border-radius:12px;padding:clamp(1.5rem, 4vw, 2.5rem);max-width:900px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);}
 .search-tabs{display:flex;gap:0;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.1);overflow-x:auto;scrollbar-width:none;}
 .search-row{display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:0;background:rgba(26,28,32,0.6);border:1px solid rgba(255,255,255,0.15);border-radius:8px;overflow:hidden}
 
@@ -1005,15 +1005,15 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:var(--section-p
 }
 
 .hero-contact-btn {
-  padding: 10px 28px;
-  font-size: 13px;
-  border-radius: 6px;
+  padding: 8px 20px;
+  font-size: 11px;
+  border-radius: 4px;
   font-weight: 800;
   letter-spacing: 0.5px;
   background: var(--gold2);
   color: var(--ink);
-  box-shadow: 0 10px 20px rgba(189,168,113,0.4);
-  border: 1.5px solid #fff;
+  box-shadow: 0 8px 15px rgba(189,168,113,0.3);
+  border: 1px solid #fff;
   cursor: pointer;
   transition: all 0.3s ease;
 }
