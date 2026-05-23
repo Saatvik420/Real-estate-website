@@ -99,16 +99,25 @@ const Hero = () => {
             <a className="tr-chip" href="#">Bandra West</a>
             <a className="tr-chip" href="#">Gurugram Sec 42</a>
             <a className="tr-chip" href="#">Koramangala</a>
+            
+            <button 
+              className="nav-btn-solid" 
+              onClick={() => navigate('/contact')} 
+              style={{ 
+                marginLeft: 'auto', 
+                padding: '8px 24px', 
+                fontSize: '11px', 
+                borderRadius: '100px', 
+                fontWeight: '800',
+                background: 'var(--gold2)',
+                color: 'var(--ink)',
+                border: 'none',
+                cursor: 'pointer'
+              }}
+            >
+              CONTACT US
+            </button>
           </div>
-        </div>
-        
-        <div className="hero-actions" style={{ marginTop: '40px', display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-          <button className="nav-btn-solid" onClick={() => navigate('/contact')} style={{ padding: '16px 48px', fontSize: '14px', borderRadius: '8px', fontWeight: '800', boxShadow: '0 15px 30px rgba(189,168,113,0.3)' }}>
-            CONTACT US NOW
-          </button>
-          <button className="nav-btn-ghost" onClick={() => navigate('/about')} style={{ padding: '16px 48px', fontSize: '14px', borderRadius: '8px', background: 'rgba(255,255,255,0.05)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>
-            LEARN MORE
-          </button>
         </div>
       </div>
     </section>
