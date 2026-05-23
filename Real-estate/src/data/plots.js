@@ -17,6 +17,7 @@ export const plots = [
     rera: 'MH/KAR/2023/102',
     tags: ['Corner Plot', 'Gated Community'], 
     img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
+    video: 'https://videos.pexels.com/video-files/2491284/2491284-uhd_2560_1440_24fps.mp4',
     agentId: 'agent_1'
   },
   { 
@@ -34,6 +35,7 @@ export const plots = [
     rera: 'MH/PUN/2022/45',
     tags: ['Lake View', 'Clear Title'], 
     img: 'https://images.pexels.com/photos/7752033/pexels-photo-7752033.jpeg',
+    video: 'https://videos.pexels.com/video-files/4440922/4440922-uhd_2560_1440_24fps.mp4',
     agentId: 'agent_1'
   },
   { 
@@ -51,6 +53,7 @@ export const plots = [
     rera: 'MH/NM/2024/09',
     tags: ['Industrial Area', 'Highway Touch'], 
     img: 'https://images.pexels.com/photos/9670372/pexels-photo-9670372.jpeg',
+    video: 'https://videos.pexels.com/video-files/2491284/2491284-uhd_2560_1440_24fps.mp4',
     agentId: 'agent_2'
   },
 
@@ -70,6 +73,7 @@ export const plots = [
     rera: 'KA/DEV/2023/88',
     tags: ['Near Airport', 'Luxury Amenities'], 
     img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
+    video: 'https://videos.pexels.com/video-files/4440922/4440922-uhd_2560_1440_24fps.mp4',
     agentId: 'agent_4'
   },
   { 
@@ -87,6 +91,7 @@ export const plots = [
     rera: 'KA/IND/2021/12',
     tags: ['Corner Plot', 'Power Backup'], 
     img: 'https://images.unsplash.com/photo-1589923158776-cb4485d99fd6?w=600&q=80',
+    video: 'https://videos.pexels.com/video-files/2491284/2491284-uhd_2560_1440_24fps.mp4',
     agentId: 'agent_4'
   },
   { 
@@ -104,6 +109,7 @@ export const plots = [
     rera: 'KA/MYS/2022/15',
     tags: ['Park Facing', 'Ready to Build'], 
     img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
+    video: 'https://videos.pexels.com/video-files/4440922/4440922-uhd_2560_1440_24fps.mp4',
     agentId: 'agent_4'
   },
 
@@ -123,6 +129,7 @@ export const plots = [
     rera: 'HR/GUR/2020/02',
     tags: ['Main Road', 'High Visibility'], 
     img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
+    video: 'https://videos.pexels.com/video-files/2491284/2491284-uhd_2560_1440_24fps.mp4',
     agentId: 'agent_3'
   },
   { 
@@ -140,6 +147,7 @@ export const plots = [
     rera: 'UP/NOI/2023/11',
     tags: ['Eco Friendly', 'Park View'], 
     img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
+    video: 'https://videos.pexels.com/video-files/4440922/4440922-uhd_2560_1440_24fps.mp4',
     agentId: 'agent_3'
   },
 
@@ -159,6 +167,7 @@ export const plots = [
     rera: 'AP/VIZ/2022/04',
     tags: ['Sea View', 'Clear Title'], 
     img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
+    video: 'https://videos.pexels.com/video-files/2491284/2491284-uhd_2560_1440_24fps.mp4',
     agentId: 'agent_5'
   },
   { 
@@ -176,6 +185,7 @@ export const plots = [
     rera: 'AP/VIJ/2021/18',
     tags: ['Canal Water', 'Fertile Soil'], 
     img: 'https://images.pexels.com/photos/20858785/pexels-photo-20858785.jpeg',
+    video: 'https://videos.pexels.com/video-files/4440922/4440922-uhd_2560_1440_24fps.mp4',
     agentId: 'agent_5'
   },
 
@@ -195,6 +205,7 @@ export const plots = [
     rera: 'TS/HYD/2023/56',
     tags: ['Weekend Retreat', 'Greenery'], 
     img: 'https://images.pexels.com/photos/8817642/pexels-photo-8817642.jpeg',
+    video: 'https://videos.pexels.com/video-files/2491284/2491284-uhd_2560_1440_24fps.mp4',
     agentId: 'agent_6'
   },
   { 
@@ -212,6 +223,7 @@ export const plots = [
     rera: 'TS/HYD/2022/12',
     tags: ['Luxury Community', 'Clubhouse'], 
     img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
+    video: 'https://videos.pexels.com/video-files/4440922/4440922-uhd_2560_1440_24fps.mp4',
     agentId: 'agent_6'
   },
 
@@ -231,6 +243,7 @@ export const plots = [
     rera: 'TN/CHE/2023/05',
     tags: ['Near Beach', 'Elite Locality'], 
     img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
+    video: 'https://videos.pexels.com/video-files/2491284/2491284-uhd_2560_1440_24fps.mp4',
     agentId: 'agent_2'
   },
 
@@ -250,6 +263,7 @@ export const plots = [
     rera: 'RJ/JAI/2022/99',
     tags: ['Gated', 'Fast Growing'], 
     img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
+    video: 'https://videos.pexels.com/video-files/4440922/4440922-uhd_2560_1440_24fps.mp4',
     agentId: 'agent_1'
   },
 
@@ -269,6 +283,7 @@ export const plots = [
     rera: 'WB/KOL/2021/08',
     tags: ['Near IT Hub', 'Developing Area'], 
     img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
+    video: 'https://videos.pexels.com/video-files/2491284/2491284-uhd_2560_1440_24fps.mp4',
     agentId: 'agent_3'
   }
 
@@ -280,4 +295,3 @@ plots.forEach(p => {
         p.agentId = agents[Math.floor(Math.random() * agents.length)].id;
     }
 });
-

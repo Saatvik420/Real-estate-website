@@ -35,7 +35,21 @@ const PropertyDetails = () => {
 
   return (
     <div className="property-details-page">
-      <div className="pd-header-bg" style={{ backgroundImage: `url('${property.img}')` }}>
+      <div className="pd-header-bg">
+        {property.video ? (
+          <video 
+            autoPlay 
+            muted 
+            loop 
+            playsInline 
+            poster={property.img}
+            className="pd-video-bg"
+          >
+            <source src={property.video} type="video/mp4" />
+          </video>
+        ) : (
+          <div className="pd-image-fallback" style={{ backgroundImage: `url('${property.img}')` }}></div>
+        )}
         <div className="pd-overlay"></div>
         <div className="pd-header-content">
           <div className="pd-meta-top">
