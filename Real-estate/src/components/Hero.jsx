@@ -99,24 +99,28 @@ const Hero = () => {
             <a className="tr-chip" href="#">Bandra West</a>
             <a className="tr-chip" href="#">Gurugram Sec 42</a>
             <a className="tr-chip" href="#">Koramangala</a>
-            
+          </div>
+          
+          <div style={{ marginTop: '24px', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', gap: '20px' }}>
             <button 
               className="nav-btn-solid" 
               onClick={() => navigate('/contact')} 
               style={{ 
-                marginLeft: 'auto', 
-                padding: '8px 24px', 
-                fontSize: '11px', 
-                borderRadius: '100px', 
-                fontWeight: '800',
+                padding: '12px 32px', 
+                fontSize: '13px', 
+                borderRadius: '8px', 
+                fontWeight: '900',
+                letterSpacing: '1px',
                 background: 'var(--gold2)',
                 color: 'var(--ink)',
-                border: 'none',
-                cursor: 'pointer'
+                boxShadow: '0 10px 20px rgba(0,0,0,0.3)'
               }}
             >
               CONTACT US
             </button>
+            <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '12px', fontWeight: '600' }}>
+              Questions? Talk to our Investment Experts
+            </span>
           </div>
         </div>
       </div>
