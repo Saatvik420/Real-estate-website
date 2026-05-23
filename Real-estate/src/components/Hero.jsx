@@ -51,47 +51,6 @@ const Hero = () => {
         <h1 className="hero-title">Discover Your <span>Sanctuary</span> in <span>{cityName}</span></h1>
         <p className="hero-subtitle">Explore 14,327+ curated forest-facing estates, luxury residences and verified projects — tailored for the discerning few.</p>
         
-        <div style={{ display: 'flex', gap: '20px', marginBottom: '48px', flexWrap: 'wrap' }}>
-          <button 
-            onClick={() => navigate('/contact')}
-            style={{ 
-              background: 'var(--gold2)', 
-              color: 'var(--ink)', 
-              padding: '18px 40px', 
-              borderRadius: '10px', 
-              fontSize: '1rem', 
-              fontWeight: 900, 
-              border: 'none', 
-              cursor: 'pointer',
-              boxShadow: '0 20px 40px rgba(189,168,113,0.3)',
-              textTransform: 'uppercase',
-              letterSpacing: '1px'
-            }}
-          >
-            Contact Advisor
-          </button>
-          <button 
-            onClick={() => {
-              const el = document.getElementById('recommendations');
-              el?.scrollIntoView({ behavior: 'smooth' });
-            }}
-            style={{ 
-              background: 'rgba(255,255,255,0.1)', 
-              color: '#fff', 
-              padding: '18px 40px', 
-              borderRadius: '10px', 
-              fontSize: '1rem', 
-              fontWeight: 700, 
-              border: '1px solid rgba(255,255,255,0.3)', 
-              cursor: 'pointer',
-              backdropFilter: 'blur(10px)',
-              textTransform: 'uppercase'
-            }}
-          >
-            Explore Estates
-          </button>
-        </div>
-
         <div className="search-card">
           <div className="search-tabs">
             {tabs.map(tab => (
