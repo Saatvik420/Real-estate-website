@@ -6,7 +6,7 @@ const Footer = () => {
   const { setView, setSearchFilters } = useApp();
 
   return (
-    <footer>
+    <footer className="reveal">
       <div className="footer-inner">
         <div className="footer-top">
           <div className="footer-col-main">

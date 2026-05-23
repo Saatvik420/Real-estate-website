@@ -28,7 +28,7 @@ const TopDevelopers = () => {
   const cityName = selectedCity === 'India' ? stateName : data.insightsTitle;
 
   return (
-    <div className="dev-sec">
+    <div className="dev-sec reveal">
       <div className="dev-inner">
         <div className="sec-header">
           <div>

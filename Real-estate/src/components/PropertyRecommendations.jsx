@@ -54,7 +54,7 @@ const PropertyRecommendations = () => {
   };
 
   return (
-    <div className="section-full rec-bg">
+    <div className="section-full rec-bg reveal">
       <div className="section-inner">
         <div className="sec-header">
           <div>

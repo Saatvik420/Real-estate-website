@@ -9,7 +9,7 @@ const ContinueSearch = () => {
   ];
 
   return (
-    <div className="continue-bar">
+    <div className="continue-bar reveal">
       <div className="continue-inner">
         <div className="continue-label">Continue Your Last Search</div>
         <div className="continue-cards">

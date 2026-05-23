@@ -13,7 +13,7 @@ const ProjectsView = () => {
   };
 
   return (
-    <div className="section-full" style={{ minHeight: '100vh', padding: '80px 0', background: '#f8f9fa' }}>
+    <div className="section-full reveal" style={{ minHeight: '100vh', padding: '80px 0', background: '#f8f9fa' }}>
       <div className="section-inner">
         <div className="sec-header" style={{ marginBottom: '60px' }}>
           <div>

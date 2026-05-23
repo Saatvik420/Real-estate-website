@@ -39,7 +39,7 @@ const SearchResults = () => {
   };
 
   return (
-    <div className="section-full bg-main" style={{ minHeight: '100vh', paddingTop: '40px' }}>
+    <div className="section-full bg-main reveal" style={{ minHeight: '100vh', paddingTop: '40px' }}>
       <div className="section-inner">
         <div className="results-top-bar">
           <div className="results-count">

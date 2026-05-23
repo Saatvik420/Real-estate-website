@@ -7,7 +7,7 @@ const PartnerView = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="section-full" style={{ background: '#fff', minHeight: '100vh' }}>
+    <div className="section-full reveal" style={{ background: '#fff', minHeight: '100vh' }}>
       <div className="section-inner">
         <div className="sec-header" style={{ marginBottom: '60px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
           <div>

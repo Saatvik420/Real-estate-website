@@ -70,7 +70,7 @@ const Insights = () => {
   const bgColors = ['#1b3022', '#2d4a3a', '#3e5c4a', '#8c6a4a', '#b08968', '#ddb892'];
 
   return (
-    <div className="insights-sec" id="insights-section">
+    <div className="insights-sec reveal" id="insights-section">
       <div className="insights-inner">
         <div className="sec-header anim-slide-in-left">
           <div>

@@ -37,7 +37,7 @@ const ContractorsView = () => {
   };
 
   return (
-    <div className="section-full" style={{ minHeight: '80vh', padding: '60px 0', background: '#fcfaf7' }}>
+    <div className="section-full reveal" style={{ minHeight: '80vh', padding: '60px 0', background: '#fcfaf7' }}>
       <div className="section-inner">
         <div className="sec-header" style={{ marginBottom: '40px' }}>
           <div>

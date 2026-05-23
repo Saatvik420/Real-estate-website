@@ -7,12 +7,13 @@ import { companies as localCompanies } from '../data/companies';
 
 // ── CORE CONFIGURATION ──────────────────────────────────────────────────────
 const getApiBaseUrl = () => {
+    // In production (Netlify), VITE_API_URL should be set to the Render backend URL
     const envUrl = import.meta.env.VITE_API_URL;
     if (envUrl) {
-        // Remove trailing slash if present, then add /api
         return envUrl.replace(/\/$/, '') + '/api';
     }
-    return 'http://localhost:8080/api';
+    // In development, use relative path to leverage Vite proxy
+    return '/api';
 };
 
 const API_BASE_URL = getApiBaseUrl();

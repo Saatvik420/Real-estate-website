@@ -24,7 +24,7 @@ const ContactView = () => {
   };
 
   return (
-    <div className="section-full" style={{ background: 'var(--bg-main)', minHeight: '100vh' }}>
+    <div className="section-full reveal" style={{ background: 'var(--bg-main)', minHeight: '100vh' }}>
       <div className="section-inner">
         <div className="sec-header" style={{ marginBottom: '60px' }}>
           <div>

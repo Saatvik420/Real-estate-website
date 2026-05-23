@@ -97,7 +97,7 @@ const PopularCities = () => {
   };
 
   return (
-    <div className="cities-sec">
+    <div className="cities-sec reveal">
       <div className="cities-inner">
         <div className="eyebrow">National Network</div>
         <h2 className="sec-title" style={{ marginBottom: '6px' }}>Most Popular <span>Investment Hubs</span></h2>

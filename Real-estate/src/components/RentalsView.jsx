@@ -95,7 +95,7 @@ const RentalsView = () => {
   }
 
   return (
-    <div className="section-full rec-bg" style={{ minHeight: '80vh' }}>
+    <div className="section-full rec-bg reveal" style={{ minHeight: '80vh' }}>
       <div className="section-inner">
         <div className="sec-header">
           <div>

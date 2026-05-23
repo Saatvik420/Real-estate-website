@@ -48,7 +48,7 @@ const TrendingSection = () => {
   };
 
   return (
-    <div className="section-full trending-sec">
+    <div className="section-full trending-sec reveal">
       <div className="section-inner">
         <div className="sec-header">
           <div>

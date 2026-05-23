@@ -11,7 +11,7 @@ const Services = () => {
   ];
 
   return (
-    <div className="services-sec">
+    <div className="services-sec reveal">
       <div className="services-inner">
         <div className="serv-grid">
           {services.map((serv, index) => (

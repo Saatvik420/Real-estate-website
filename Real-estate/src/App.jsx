@@ -28,11 +28,27 @@ import AuthView from './components/AuthView';
 import PartnerAuthView from './components/PartnerAuthView';
 import ContractorAuthView from './components/ContractorAuthView';
 import UserProfile from './components/UserProfile';
-import ContractorDashboard from './components/ContractorDashboard';
-import PartnerDashboard from './components/PartnerDashboard';
-import AdminDashboard from './components/AdminDashboard';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useApp } from './hooks/useApp';
+import useScrollReveal from './hooks/useScrollReveal';
+import Navbar from './components/Navbar';
+// ... rest of imports unchanged
 
 import './App.css';
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
+
+const AnimationTrigger = () => {
+  useScrollReveal();
+  return null;
+};
 
 const Home = () => (
   <>
@@ -49,9 +65,11 @@ const Home = () => (
 function App() {
   return (
     <Router>
+      <ScrollToTop />
+      <AnimationTrigger />
       <div className="app-container">
         <Navbar />
-        
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/results" element={<SearchResults />} />

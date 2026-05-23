@@ -46,7 +46,7 @@ const Hero = () => {
       <div className="hero-overlay"></div>
       <div className="hero-glow"></div>
       <div className="hero-glow-alt"></div>
-      <div className="hero-inner">
+      <div className="hero-inner reveal">
         <div className="hero-eyebrow">India's Most Premium Real Estate Platform</div>
         <h1 className="hero-title">Discover Your <span>Sanctuary</span> in <span>{cityName}</span></h1>
         <p className="hero-subtitle">Explore 14,327+ curated forest-facing estates, luxury residences and verified projects — tailored for the discerning few.</p>

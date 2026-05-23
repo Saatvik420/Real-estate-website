@@ -22,7 +22,7 @@ const AgentsView = () => {
   if (loading) return <div style={{ padding: '100px', textAlign: 'center' }}>Consulting our network of experts...</div>;
 
   return (
-    <div className="section-full bg-main" style={{ minHeight: '100vh', paddingTop: '40px' }}>
+    <div className="section-full bg-main reveal" style={{ minHeight: '100vh', paddingTop: '40px' }}>
       <div className="section-inner">
         <div className="sec-header">
           <div>
