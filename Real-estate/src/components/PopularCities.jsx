@@ -120,6 +120,14 @@ const PopularCities = () => {
             </div>
           ))}
         </div>
+
+        <div className="reveal" style={{ marginTop: '60px', textAlign: 'center', background: 'var(--ink)', padding: '60px', borderRadius: '16px', border: '1px solid var(--gold2)' }}>
+          <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '32px', color: '#fff', marginBottom: '16px' }}>Can't find the perfect location?</h3>
+          <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: '32px', fontSize: '18px' }}>Our senior investment consultants are ready to assist you with a bespoke portfolio.</p>
+          <button className="nav-btn-solid" onClick={() => navigate('/contact')} style={{ padding: '16px 48px', fontSize: '14px', borderRadius: '8px', fontWeight: '800' }}>
+            CONNECT WITH AN ADVISOR
+          </button>
+        </div>
       </div>
     </div>
   );

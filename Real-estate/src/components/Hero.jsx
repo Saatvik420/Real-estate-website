@@ -102,12 +102,12 @@ const Hero = () => {
           </div>
         </div>
         
-        <div className="hero-actions reveal" style={{ marginTop: '32px', display: 'flex', gap: '16px' }}>
-          <button className="nav-btn-solid" onClick={() => navigate('/contact')} style={{ padding: '14px 40px', fontSize: '13px', borderRadius: '8px', boxShadow: '0 10px 20px rgba(189,168,113,0.2)' }}>
-            CONTACT US
+        <div className="hero-actions" style={{ marginTop: '40px', display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+          <button className="nav-btn-solid" onClick={() => navigate('/contact')} style={{ padding: '16px 48px', fontSize: '14px', borderRadius: '8px', fontWeight: '800', boxShadow: '0 15px 30px rgba(189,168,113,0.3)' }}>
+            CONTACT US NOW
           </button>
-          <button className="nav-btn-ghost" onClick={() => navigate('/about')} style={{ padding: '14px 40px', fontSize: '13px', borderRadius: '8px' }}>
-            ABOUT THE PLATFORM
+          <button className="nav-btn-ghost" onClick={() => navigate('/about')} style={{ padding: '16px 48px', fontSize: '14px', borderRadius: '8px', background: 'rgba(255,255,255,0.05)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>
+            LEARN MORE
           </button>
         </div>
       </div>
