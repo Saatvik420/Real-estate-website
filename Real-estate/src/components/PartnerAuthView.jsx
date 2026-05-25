@@ -4,7 +4,10 @@ import { useApp } from '../hooks/useApp';
 
 const PartnerAuthView = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [formData, setFormData] = useState({ name: '', email: '', password: '', phone: '', expertise: 'Luxury Interior Design', experience: '5-10 Years' });
+  const [formData, setFormData] = useState({ 
+    name: '', email: '', password: '', phone: '', 
+    expertise: 'Residential Developer', experience: '5-10 Years' 
+  });
   const [error, setError] = useState('');
   const { login, register, setView, loading } = useApp();
   const navigate = useNavigate();
@@ -34,183 +37,128 @@ const PartnerAuthView = () => {
     }
   };
 
-  const toggleForm = (isLogin) => {
-    setIsLogin(isLogin);
-    setFormData({ name: '', email: '', password: '', phone: '', expertise: 'Residential Developer', experience: '5-10 Years' });
-    setError('');
-  };
-
   return (
-    <div className="section-full" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', background: '#fdfcfb', padding: 'var(--section-pad) 0' }}>
-      <div className="section-inner auth-layout" style={{ maxWidth: '1150px', width: '100%', margin: '0 auto' }}>
+    <div className="auth-page-wrapper">
+      <div className="auth-bg-ornament"></div>
+      <div className="auth-container-modern">
         
-        {/* Left Side: Form */}
-        <div className="auth-right-panel" style={{ padding: 'clamp(1.5rem, 5vw, 3.5rem)' }}>
-            <div 
-              className="eyebrow" 
-              onClick={() => navigate('/partner')} 
-              style={{ cursor: 'pointer', marginBottom: '32px', display: 'inline-flex', alignItems: 'center', gap: '8px', opacity: 0.6 }}
-            >
-              ← RETURN TO DEVELOPER PORTAL
+        {/* Left Side: Brand Panel */}
+        <div className="auth-panel-brand">
+          <button 
+            onClick={() => navigate('/partner')} 
+            style={{ background: 'none', border: 'none', color: 'var(--gold)', fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.5px', cursor: 'pointer', marginBottom: '40px', textAlign: 'left', padding: 0 }}
+          >
+            ← Back to Portal
+          </button>
+          
+          <div style={{ width: '56px', height: '56px', background: 'var(--gold)', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', marginBottom: '32px' }}>🏛️</div>
+          
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '42px', marginBottom: '24px', lineHeight: '1.1' }}>
+            Institutional <br /><span style={{ color: 'var(--gold)' }}>Growth</span>
+          </h2>
+          <p style={{ color: 'rgba(255,255,255,0.6)', lineHeight: '1.8', fontSize: '17px', maxWidth: '400px', marginBottom: '48px' }}>
+            Connect with HNI buyers and leverage our proprietary marketing stack to scale your luxury mandates.
+          </p>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+            <div style={{ padding: '20px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px' }}>
+              <div style={{ fontSize: '20px', fontWeight: 800, color: '#fff' }}>₹14k Cr+</div>
+              <div style={{ fontSize: '9px', opacity: 0.5, textTransform: 'uppercase', letterSpacing: '1px', marginTop: '4px' }}>Platform GMV</div>
             </div>
-            
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2rem, 4vw, 2.8rem)', color: 'var(--ink)', marginBottom: '16px', lineHeight: '1.1' }}>
-                {isLogin ? 'Developer Login' : 'Join the Ecosystem'}
-            </h2>
-            <p style={{ color: 'var(--muted)', marginBottom: '48px', fontSize: 'clamp(0.95rem, 1.5vw, 1.05rem)', lineHeight: '1.6', maxWidth: '450px' }}>
-                {isLogin 
-                    ? "Manage your mandates, track luxury lead pipelines, and update your corporate portfolio."
-                    : "Apply for Platinum Partner status and showcase your masterpieces to India's most elite buyer network."}
-            </p>
-
-            <div style={{ display: 'flex', gap: 'clamp(1.5rem, 4vw, 3rem)', marginBottom: '40px', borderBottom: '1px solid var(--bg-main)', overflowX: 'auto', scrollbarWidth: 'none' }}>
-                <button 
-                    onClick={() => toggleForm(true)} 
-                    style={{ 
-                        padding: '12px 0', 
-                        background: 'none', 
-                        border: 'none', 
-                        borderBottom: isLogin ? '3px solid var(--gold2)' : '3px solid transparent', 
-                        fontWeight: 800, 
-                        fontSize: '0.85rem', 
-                        letterSpacing: '1px',
-                        cursor: 'pointer', 
-                        color: isLogin ? 'var(--ink)' : 'var(--muted2)',
-                        transition: 'all 0.3s',
-                        whiteSpace: 'nowrap'
-                    }}
-                >
-                    SIGN IN
-                </button>
-                <button 
-                    onClick={() => toggleForm(false)} 
-                    style={{ 
-                        padding: '12px 0', 
-                        background: 'none', 
-                        border: 'none', 
-                        borderBottom: !isLogin ? '3px solid var(--gold2)' : '3px solid transparent', 
-                        fontWeight: 800, 
-                        fontSize: '0.85rem', 
-                        letterSpacing: '1px',
-                        cursor: 'pointer', 
-                        color: !isLogin ? 'var(--ink)' : 'var(--muted2)',
-                        transition: 'all 0.3s',
-                        whiteSpace: 'nowrap'
-                    }}
-                >
-                    APPLY NOW
-                </button>
+            <div style={{ padding: '20px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px' }}>
+              <div style={{ fontSize: '20px', fontWeight: 800, color: '#fff' }}>12.4%</div>
+              <div style={{ fontSize: '9px', opacity: 0.5, textTransform: 'uppercase', letterSpacing: '1px', marginTop: '4px' }}>Avg Conversion</div>
             </div>
-
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                {error && (
-                    <div style={{ background: '#fff5f5', color: '#c92a2a', padding: '16px', borderRadius: '12px', fontSize: '0.9rem', fontWeight: 600, border: '1px solid #ffc9c9' }}>
-                        ✕ {error}
-                    </div>
-                )}
-                
-                {!isLogin && (
-                    <>
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '20px' }}>
-                            <div className="pd-form-group">
-                                <label style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--ink)', marginBottom: '10px', display: 'block' }}>Group / Brand Name</label>
-                                <input 
-                                    type="text" 
-                                    placeholder="e.g. DLF Limited" 
-                                    required 
-                                    style={{ width: '100%', padding: '16px', borderRadius: '12px', border: '1.5px solid #eee', fontSize: '1rem', outline: 'none' }}
-                                    value={formData.name} 
-                                    onChange={(e) => setFormData({...formData, name: e.target.value})} 
-                                />
-                            </div>
-                            <div className="pd-form-group">
-                                <label style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--ink)', marginBottom: '10px', display: 'block' }}>Specialization</label>
-                                <select 
-                                    style={{ width: '100%', padding: '16px', borderRadius: '12px', border: '1.5px solid #eee', fontSize: '1rem', outline: 'none', background: '#fff' }}
-                                    value={formData.expertise} 
-                                    onChange={(e) => setFormData({...formData, expertise: e.target.value})}
-                                >
-                                    <option>Residential Developer</option>
-                                    <option>Commercial Group</option>
-                                    <option>Legal & Compliance</option>
-                                    <option>Investment Advisory</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div className="pd-form-group">
-                            <label style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--ink)', marginBottom: '10px', display: 'block' }}>Corporate Phone Number</label>
-                            <input 
-                                type="tel" 
-                                placeholder="+91 99109 11650" 
-                                required 
-                                style={{ width: '100%', padding: '16px', borderRadius: '12px', border: '1.5px solid #eee', fontSize: '1rem', outline: 'none' }}
-                                value={formData.phone} 
-                                onChange={(e) => setFormData({...formData, phone: e.target.value})} 
-                            />
-                        </div>
-                    </>
-                )}
-
-                <div className="pd-form-group">
-                    <label style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--ink)', marginBottom: '10px', display: 'block' }}>Corporate Email</label>
-                    <input 
-                        type="email" 
-                        placeholder="partner@brand.com" 
-                        required 
-                        style={{ width: '100%', padding: '16px', borderRadius: '12px', border: '1.5px solid #eee', fontSize: '1rem', outline: 'none' }}
-                        value={formData.email} 
-                        onChange={(e) => setFormData({...formData, email: e.target.value})} 
-                    />
-                </div>
-
-                <div className="pd-form-group">
-                    <label style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--ink)', marginBottom: '10px', display: 'block' }}>Secure Password</label>
-                    <input 
-                        type="password" 
-                        placeholder="••••••••" 
-                        required 
-                        style={{ width: '100%', padding: '16px', borderRadius: '12px', border: '1.5px solid #eee', fontSize: '1rem', outline: 'none' }}
-                        value={formData.password} 
-                        onChange={(e) => setFormData({...formData, password: e.target.value})} 
-                    />
-                </div>
-
-                <button 
-                    className="nav-btn-solid" 
-                    style={{ width: '100%', padding: '20px', fontSize: '1rem', fontWeight: 800, marginTop: '16px', borderRadius: '14px', boxShadow: '0 10px 30px rgba(181, 153, 107, 0.2)' }}
-                    disabled={loading}
-                >
-                    {loading ? 'AUTHENTICATING...' : (isLogin ? 'AUTHENTICATE & ENTER' : 'SUBMIT APPLICATION')}
-                </button>
-
-                <p style={{ textAlign: 'center', fontSize: '0.9rem', color: 'var(--muted)', marginTop: '8px' }}>
-                    Secured by One5 Realty solutions Auth Protocol v2.4
-                </p>
-            </form>
+          </div>
         </div>
 
-        {/* Right Side: Info Panel */}
-        <div className="auth-left-panel" style={{ position: 'relative', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, background: 'linear-gradient(135deg, rgba(181,153,107,0.1) 0%, transparent 100%)', pointerEvents: 'none' }}></div>
-            
-            <div style={{ position: 'relative', zIndex: 1 }}>
-                <div style={{ width: '60px', height: '60px', background: 'var(--gold2)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.8rem', marginBottom: '40px' }}>🏛️</div>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', color: 'var(--gold2)', marginBottom: '24px' }}>Strategic Growth <br />for Modern Bharat</h3>
-                <p style={{ color: 'rgba(255,255,255,0.6)', lineHeight: '1.8', fontSize: '1.1rem', marginBottom: '48px' }}>
-                    Join 450+ Grade-A partners who have scaled their luxury transactions by leveraging our high-intent HNI data sets and proprietary marketing stack.
-                </p>
-                
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))', gap: '20px' }}>
-                    <div style={{ padding: 'clamp(1rem, 2vw, 1.5rem)', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '20px' }}>
-                        <div style={{ fontSize: 'clamp(1.2rem, 2vw, 1.8rem)', fontWeight: 800, marginBottom: '4px', color: '#fff' }}>₹14k Cr</div>
-                        <div style={{ fontSize: '0.7rem', opacity: 0.5, textTransform: 'uppercase', letterSpacing: '1px' }}>Platform GMV</div>
-                    </div>
-                    <div style={{ padding: 'clamp(1rem, 2vw, 1.5rem)', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '20px' }}>
-                        <div style={{ fontSize: 'clamp(1.2rem, 2vw, 1.8rem)', fontWeight: 800, marginBottom: '4px', color: '#fff' }}>12.4%</div>
-                        <div style={{ fontSize: '0.7rem', opacity: 0.5, textTransform: 'uppercase', letterSpacing: '1px' }}>Avg. Conv. Rate</div>
-                    </div>
+        {/* Right Side: Form Panel */}
+        <div className="auth-panel-form">
+          <div className="auth-tab-group">
+            <button className={`auth-tab ${isLogin ? 'active' : ''}`} onClick={() => setIsLogin(true)}>Partner Login</button>
+            <button className={`auth-tab ${!isLogin ? 'active' : ''}`} onClick={() => setIsLogin(false)}>Apply for Access</button>
+          </div>
+
+          <form onSubmit={handleSubmit}>
+            {error && (
+              <div style={{ background: '#fff5f5', color: '#c92a2a', padding: '14px', borderRadius: '8px', fontSize: '13px', fontWeight: 700, marginBottom: '24px', border: '1px solid #ffc9c9' }}>
+                ✕ {error}
+              </div>
+            )}
+
+            {!isLogin && (
+              <>
+                <div className="auth-input-group">
+                  <label className="auth-label">Group / Brand Name</label>
+                  <input 
+                    type="text" 
+                    className="auth-input" 
+                    placeholder="e.g. DLF Limited" 
+                    required 
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  />
                 </div>
+                <div className="auth-input-group">
+                  <label className="auth-label">Specialization</label>
+                  <select 
+                    className="auth-input"
+                    value={formData.expertise} 
+                    onChange={(e) => setFormData({...formData, expertise: e.target.value})}
+                  >
+                    <option>Residential Developer</option>
+                    <option>Commercial Group</option>
+                    <option>Investment Advisory</option>
+                  </select>
+                </div>
+                <div className="auth-input-group">
+                  <label className="auth-label">Corporate Phone</label>
+                  <input 
+                    type="tel" 
+                    className="auth-input" 
+                    placeholder="+91 00000 00000" 
+                    required 
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                  />
+                </div>
+              </>
+            )}
+
+            <div className="auth-input-group">
+              <label className="auth-label">Corporate Email</label>
+              <input 
+                type="email" 
+                className="auth-input" 
+                placeholder="partner@brand.com" 
+                required 
+                value={formData.email}
+                onChange={(e) => setFormData({...formData, email: e.target.value})}
+              />
             </div>
+
+            <div className="auth-input-group">
+              <label className="auth-label">Secure Password</label>
+              <input 
+                type="password" 
+                className="auth-input" 
+                placeholder="••••••••" 
+                required 
+                value={formData.password}
+                onChange={(e) => setFormData({...formData, password: e.target.value})}
+              />
+            </div>
+
+            <button className="auth-btn-submit" disabled={loading}>
+              {loading ? 'Verifying...' : (isLogin ? 'Authenticate & Enter' : 'Submit Application')}
+            </button>
+          </form>
+
+          <div style={{ marginTop: 'auto', paddingTop: '40px', textAlign: 'center' }}>
+            <p style={{ fontSize: '12px', color: 'var(--muted2)', fontWeight: 600 }}>
+              Partner Security Protocol v2.4 Active
+            </p>
+          </div>
         </div>
       </div>
     </div>
