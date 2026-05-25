@@ -63,9 +63,9 @@ const UserProfile = () => {
             <aside>
                 <div style={{ background: '#fff', padding: 'clamp(1.5rem, 4vw, 2.5rem)', borderRadius: '24px', border: '1px solid var(--cream3)', textAlign: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.02)' }}>
                     <div style={{ width: 'clamp(80px, 10vw, 100px)', height: 'clamp(80px, 10vw, 100px)', borderRadius: '50%', background: 'var(--gold2)', margin: '0 auto 20px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 'clamp(2rem, 4vw, 2.5rem)', color: '#fff', fontWeight: 800 }}>
-                        {currentUser.name.charAt(0)}
+                        {currentUser?.name ? currentUser.name.charAt(0) : '?'}
                     </div>
-                    <h3 style={{ margin: '0 0 5px 0', fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.2rem, 2.5vw, 1.5rem)' }}>{currentUser.name}</h3>
+                    <h3 style={{ margin: '0 0 5px 0', fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.2rem, 2.5vw, 1.5rem)' }}>{currentUser?.name || 'User'}</h3>
                     <div style={{ fontSize: '0.85rem', color: 'var(--muted)', marginBottom: '10px' }}>{currentUser.email}</div>
                     <div style={{ fontSize: '0.8rem', color: 'var(--gold2)', fontWeight: 700, marginBottom: '25px' }}>{currentUser.role}</div>
                     <div style={{ padding: '12px', background: 'var(--ink)', borderRadius: '12px', fontSize: '0.7rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--gold2)', letterSpacing: '1px' }}>

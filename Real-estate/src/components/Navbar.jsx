@@ -60,28 +60,28 @@ const Navbar = () => {
             <div className="nested-dropdown">
               <span className="nav-link">Rajasthan <span style={{ fontSize: '10px' }}>▶</span></span>
               <div className="nested-menu">
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Khatu Shyam'); closeMobileMenu(); }}>Khatu Shyam</Link>
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Paota'); closeMobileMenu(); }}>Paota</Link>
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Behror'); closeMobileMenu(); }}>Behror</Link>
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Neemrana'); closeMobileMenu(); }}>Neemrana</Link>
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Jaipur'); closeMobileMenu(); }}>Jaipur</Link>
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Ajmer Road'); closeMobileMenu(); }}>Ajmer Road</Link>
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('khatu_shyam'); closeMobileMenu(); }}>Khatu Shyam</Link>
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('paota'); closeMobileMenu(); }}>Paota</Link>
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('behror'); closeMobileMenu(); }}>Behror</Link>
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('neemrana'); closeMobileMenu(); }}>Neemrana</Link>
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('jaipur'); closeMobileMenu(); }}>Jaipur</Link>
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('ajmer_road'); closeMobileMenu(); }}>Ajmer Road</Link>
               </div>
             </div>
             <div className="nested-dropdown">
               <span className="nav-link">U.P. <span style={{ fontSize: '10px' }}>▶</span></span>
               <div className="nested-menu">
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Noida'); closeMobileMenu(); }}>Noida</Link>
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Greater Noida'); closeMobileMenu(); }}>Greater Noida</Link>
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Vrindavan'); closeMobileMenu(); }}>Vrindavan</Link>
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Ayodhya'); closeMobileMenu(); }}>Ayodhya</Link>
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('noida'); closeMobileMenu(); }}>Noida</Link>
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('greater_noida'); closeMobileMenu(); }}>Greater Noida</Link>
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('vrindavan'); closeMobileMenu(); }}>Vrindavan</Link>
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('ayodhya'); closeMobileMenu(); }}>Ayodhya</Link>
               </div>
             </div>
             <div className="nested-dropdown">
               <span className="nav-link">Uttarakhand <span style={{ fontSize: '10px' }}>▶</span></span>
               <div className="nested-menu">
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Dehradun'); closeMobileMenu(); }}>Dehradun</Link>
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Haridwar'); closeMobileMenu(); }}>Haridwar</Link>
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('dehradun'); closeMobileMenu(); }}>Dehradun</Link>
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('haridwar'); closeMobileMenu(); }}>Haridwar</Link>
               </div>
             </div>
           </div>
@@ -118,7 +118,7 @@ const Navbar = () => {
             <div className="dropdown-menu" style={{ right: '0' }}>
                 <div style={{ padding: '8px 16px', borderBottom: '1px solid rgba(255,255,255,0.05)', marginBottom: '8px' }}>
                     <div style={{ fontSize: '11px', color: 'var(--gold2)', fontWeight: '800' }}>WELCOME</div>
-                    <div style={{ fontSize: '13px', color: '#fff', fontWeight: '700' }}>{currentUser?.name?.split(' ')[0]}</div>
+                    <div style={{ fontSize: '13px', color: '#fff', fontWeight: '700' }}>{currentUser?.name ? currentUser.name.split(' ')[0] : 'User'}</div>
                 </div>
                 <Link className="nav-link" to="/profile" onClick={() => { setView('profile'); closeMobileMenu(); }} style={{ display: 'block' }}>Profile</Link>
                 {currentUser?.role === 'ADMIN' && <Link className="nav-link" to="/admin" onClick={() => { setView('admin'); closeMobileMenu(); }} style={{ display: 'block' }}>Admin</Link>}

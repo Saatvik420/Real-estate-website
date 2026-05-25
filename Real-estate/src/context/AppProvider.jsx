@@ -101,7 +101,7 @@ export const AppProvider = ({ children }) => {
   }, []);
 
   // ── AUTH ACTIONS ──────────────────────────────────────────────────────────
-  const loginAction = async (email, password) => {
+  const login = async (email, password) => {
     const res = await apiService.login(email, password);
     if (res.success) {
       setToken(res.token);
@@ -121,7 +121,7 @@ export const AppProvider = ({ children }) => {
     setView('home');
   };
 
-  const registerAction = async (userData) => {
+  const register = async (userData) => {
     const res = await apiService.register(userData);
     if (res.success) {
       setToken(res.token);
@@ -186,17 +186,17 @@ export const AppProvider = ({ children }) => {
     comparisonList, setComparisonList,
     searchFilters, setSearchFilters,
     states, cities, loading, rentals, contractors, companies, plots,
-    currentUser, isLoggedIn, loginAction, logout, registerAction, updateProfileAction,
+    currentUser, isLoggedIn, login, logout, register, updateProfileAction,
     allUsers, adminStats, allInquiries, toggleUserStatus, deleteUserAction, approveContractorAction,
     submitInquiryAction, updateInquiryStatusAction, appointContractorAction
-  }), [
+    }), [
     view, selectedState, selectedCity, selectedProperty, comparisonList, searchFilters,
     states, cities, loading, rentals, contractors, companies, plots,
     currentUser, isLoggedIn, allUsers, adminStats, allInquiries,
-    loginAction, logout, registerAction, updateProfileAction,
+    login, logout, register, updateProfileAction,
     submitInquiryAction, updateInquiryStatusAction, appointContractorAction,
     deleteUserAction, toggleUserStatus, approveContractorAction
-  ]);
+    ]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

@@ -52,7 +52,7 @@ const LeadFormModal = ({ isOpen, onClose, onSuccess, title, subtitle, contractor
           <p className="modal-subtitle">{subtitle || 'Please provide your details to continue.'}</p>
         </div>
         <form onSubmit={handleSubmit} className="pd-form">
-          {!isLoggedIn ? (
+          {!isLoggedIn || !currentUser ? (
             <>
               <div className="pd-form-group">
                 <label>Full Name</label>
