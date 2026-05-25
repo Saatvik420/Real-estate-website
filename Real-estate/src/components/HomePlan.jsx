@@ -7,11 +7,7 @@ const HomePlan = () => {
   const { isLoggedIn } = useApp();
 
   const handlePlanSelection = (plan) => {
-    if (isLoggedIn) {
-      navigate('/payment', { state: { plan } });
-    } else {
-      navigate('/auth');
-    }
+    navigate('/plans');
   };
 
   const plans = [

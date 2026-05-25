@@ -36,6 +36,7 @@ import ContractorDashboard from './components/ContractorDashboard';
 import PartnerDashboard from './components/PartnerDashboard';
 import AdminDashboard from './components/AdminDashboard';
 import PaymentView from './components/PaymentView';
+import PlansView from './components/PlansView';
 
 import './App.css';
 
@@ -96,6 +97,7 @@ function App() {
           <Route path="/partner-dashboard" element={<PartnerDashboard />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/payment" element={<PaymentView />} />
+          <Route path="/plans" element={<PlansView />} />
         </Routes>
 
         <WhatsAppButton />
