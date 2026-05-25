@@ -61,7 +61,7 @@ export const companies = [
     description: 'A boutique developer focused on luxury hill properties and river-facing residences in Uttarakhand.',
     headquarters: 'Dehradun, Uttarakhand',
     established: '1988',
-    logo: 'https://images.unsplash.com/photo-1541339905195-022832144070?w=200&q=80',
+    logo: 'https://images.pexels.com/photos/12484139/pexels-photo-12484139.jpeg',
     projects: [
       { 
         id: 'proj_5', 

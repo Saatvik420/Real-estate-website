@@ -32,7 +32,7 @@ export const plots = [
     status: 'CLU Applied', 
     developer: 'Highway Infra',
     tags: ['Highway Touch', 'Warehouse Potential'], 
-    img: 'https://images.unsplash.com/photo-1589923158776-cb4485d99fd6?w=600&q=80'
+    img: 'https://images.pexels.com/photos/15422584/pexels-photo-15422584.jpeg'
   },
   { 
     id: 'plot_rj_behror_1', 
@@ -48,7 +48,7 @@ export const plots = [
     status: 'RIICO Allotted', 
     developer: 'RIICO',
     tags: ['Industrial Power', 'Wide Road'], 
-    img: 'https://images.pexels.com/photos/4440922/pexels-photo-4440922.jpeg?w=600&q=80'
+    img: 'https://images.pexels.com/photos/7425495/pexels-photo-7425495.jpeg'
   },
   { 
     id: 'plot_rj_neemrana_1', 
@@ -132,7 +132,7 @@ export const plots = [
     status: 'YEIDA Allotted', 
     developer: 'YEIDA',
     tags: ['Near Airport', 'Highway'], 
-    img: 'https://images.pexels.com/photos/4440922/pexels-photo-4440922.jpeg?w=600&q=80'
+    img: 'https://images.pexels.com/photos/5668998/pexels-photo-5668998.jpeg'
   },
   { 
     id: 'plot_up_vrindavan_1', 
@@ -215,6 +215,6 @@ export const plots = [
     status: 'Clear Title', 
     developer: 'Divine Farms',
     tags: ['River Side', 'Fertile Soil'], 
-    img: 'https://images.pexels.com/photos/4440922/pexels-photo-4440922.jpeg?w=600&q=80'
+    img: 'https://images.pexels.com/photos/10132014/pexels-photo-10132014.jpeg'
   }
 ];
