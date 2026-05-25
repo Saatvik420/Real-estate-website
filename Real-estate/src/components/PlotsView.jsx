@@ -17,7 +17,7 @@ const PlotsView = () => {
 
   // Local filter state for sidebar
   const [filters, setFilters] = useState({
-    cityId: selectedCity === 'India' ? 'All' : selectedCity.toLowerCase(),
+    cityId: (selectedCity || 'India') === 'India' ? 'All' : (selectedCity || '').toLowerCase().replace(/\s+/g, '_'),
     type: 'Any Type',
     priceRange: 'Any Price'
   });
@@ -41,31 +41,48 @@ const PlotsView = () => {
   useEffect(() => {
     const fetchPlots = async () => {
       setLoading(true);
-      const res = await apiService.getProperties({
-        cityId: filters.cityId === 'All' ? 'India' : filters.cityId,
-        listingType: 'Plots / Land',
-        type: filters.type
-      });
-      
-      if (res.success) {
-        let results = [...res.data];
+      try {
+        const res = await apiService.getProperties({
+          cityId: filters.cityId === 'All' ? 'India' : filters.cityId,
+          listingType: 'Plots / Land',
+          type: filters.type
+        });
         
-        if (filters.priceRange !== 'Any Price') {
-          if (filters.priceRange === 'Below ₹ 1 Cr') {
-            results = results.filter(p => p.price < 10000000);
-          } else if (filters.priceRange === '₹ 1 Cr - ₹ 3 Cr') {
-            results = results.filter(p => p.price >= 10000000 && p.price <= 30000000);
-          } else if (filters.priceRange === 'Above ₹ 3 Cr') {
-            results = results.filter(p => p.price > 30000000);
+        if (res.success && res.data) {
+          let results = [...res.data];
+          
+          if (filters.priceRange !== 'Any Price') {
+            if (filters.priceRange === 'Below ₹ 1 Cr') {
+              results = results.filter(p => p.price < 10000000);
+            } else if (filters.priceRange === '₹ 1 Cr - ₹ 3 Cr') {
+              results = results.filter(p => p.price >= 10000000 && p.price <= 30000000);
+            } else if (filters.priceRange === 'Above ₹ 3 Cr') {
+              results = results.filter(p => p.price > 30000000);
+            }
           }
+          setFilteredPlots(results);
+        } else {
+          setFilteredPlots([]);
         }
-        setFilteredPlots(results);
+      } catch (err) {
+        console.error("Fetch Plots Error:", err);
+        setFilteredPlots([]);
       }
       setLoading(false);
     };
     fetchPlots();
     window.scrollTo(0, 0);
-  }, [filters, selectedCity]);
+  }, [filters]);
+
+  // Sync internal filter when global selectedCity changes
+  useEffect(() => {
+    if (selectedCity) {
+      setFilters(prev => ({
+        ...prev,
+        cityId: selectedCity === 'India' ? 'All' : selectedCity.toLowerCase().replace(/\s+/g, '_')
+      }));
+    }
+  }, [selectedCity]);
 
   const handlePropertyClick = (id) => {
     setSelectedProperty(id);
