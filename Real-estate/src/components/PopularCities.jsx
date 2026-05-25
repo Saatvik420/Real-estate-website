@@ -16,7 +16,7 @@ const PopularCities = () => {
       rank: "#1 PREFERRED",
       badge: "Cultural Capital",
       badgeClass: "city-badge-hot",
-      img: "https://images.unsplash.com/photo-1599661046289-e31897c93e14?w=600&q=80"
+      img: "https://images.pexels.com/photos/28426012/pexels-photo-28426012.jpeg"
     },
     {
       id: "noida",
@@ -27,7 +27,7 @@ const PopularCities = () => {
       rank: "#2 FASTEST GROWING",
       badge: "Tech Hub",
       badgeClass: "city-badge-rising",
-      img: "https://images.unsplash.com/photo-1626014303757-636611689443?w=600&q=80"
+      img: "https://images.pexels.com/photos/25466317/pexels-photo-25466317.jpeg"
     },
     {
       id: "dehradun",
@@ -48,7 +48,7 @@ const PopularCities = () => {
       listings: "3,400+",
       rank: "#4 EMERGING",
       badge: "Industrial Hub",
-      img: "https://images.unsplash.com/photo-1548013146-72479768b921?w=600&q=80"
+      img: "https://images.pexels.com/photos/33797765/pexels-photo-33797765.jpeg"
     },
     {
       id: "vrindavan",
@@ -57,7 +57,7 @@ const PopularCities = () => {
       price: "₹6,100 / sqft",
       listings: "5,900+",
       rank: "#5 SPIRITUAL",
-      img: "https://images.unsplash.com/photo-1561464382-33f7d8ca914a?w=600&q=80"
+      img: "https://images.pexels.com/photos/29651458/pexels-photo-29651458.jpeg"
     },
     {
       id: "haridwar",
@@ -66,7 +66,7 @@ const PopularCities = () => {
       price: "₹5,800 / sqft",
       listings: "4,100+",
       rank: "#6 HERITAGE",
-      img: "https://images.unsplash.com/photo-1563814881293-9c8df634f593?w=600&q=80"
+      img: "https://images.pexels.com/photos/27418789/pexels-photo-27418789.jpeg"
     },
     {
       id: "ayodhya",
@@ -77,7 +77,7 @@ const PopularCities = () => {
       rank: "#7 HIGH POTENTIAL",
       badge: "Rising Star",
       badgeClass: "city-badge-rising",
-      img: "https://images.unsplash.com/photo-1610444390666-880ba8e7f1e7?w=600&q=80"
+      img: "https://images.pexels.com/photos/12058309/pexels-photo-12058309.jpeg"
     },
     {
       id: "ajmer_road",
@@ -86,7 +86,7 @@ const PopularCities = () => {
       price: "₹6,400 / sqft",
       listings: "1,700+",
       rank: "#8 CONNECTIVITY",
-      img: "https://images.unsplash.com/photo-1599661046289-e31897c93e14?w=600&q=80"
+      img: "https://images.pexels.com/photos/9390151/pexels-photo-9390151.jpeg"
     }
   ];
 
