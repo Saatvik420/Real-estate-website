@@ -27,7 +27,7 @@ public class DataSeeder implements CommandLineRunner {
         try {
             System.out.println("--- DATA SEEDING STARTED ---");
             
-            String adminEmail = "admin@bharatestates.com";
+            String adminEmail = "admin@one5realty.com";
             String adminPass = "admin123";
 
             // Clean up any existing admin to ensure fresh credentials

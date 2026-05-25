@@ -49,7 +49,7 @@ const ContactView = () => {
                         </div>
                         <div>
                             <div style={{ fontWeight: 800, color: 'var(--gold2)', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '1px', marginBottom: '5px' }}>Email Inquiries</div>
-                            <p style={{ opacity: 0.8, fontSize: '0.95rem' }}>luxury@bharatestates.com</p>
+                            <p style={{ opacity: 0.8, fontSize: '0.95rem' }}>luxury@one5realty.com</p>
                         </div>
                     </div>
                 </div>

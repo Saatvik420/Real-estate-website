@@ -53,8 +53,8 @@ const AuthView = () => {
             
             <div style={{ position: 'relative', zIndex: 1 }}>
                 <div className="logo" style={{ marginBottom: 'clamp(2rem, 5vw, 4rem)' }}>
-                    <div className="logo-mark" style={{ width: '44px', height: '44px', fontSize: '22px' }}>B</div>
-                    <span style={{ fontSize: 'clamp(1.4rem, 2.5vw, 1.8rem)', fontWeight: 700, marginLeft: '15px', letterSpacing: '-0.5px', color: '#fff' }}>Bharat<em style={{ color: 'rgba(255,255,255,0.6)', fontStyle: 'normal' }}>Estates</em></span>
+                    <div className="logo-mark" style={{ width: '44px', height: '44px', fontSize: '22px' }}>15</div>
+                    <span style={{ fontSize: 'clamp(1.4rem, 2.5vw, 1.8rem)', fontWeight: 700, marginLeft: '15px', letterSpacing: '-0.5px', color: '#fff' }}>One5 <em style={{ color: 'rgba(255,255,255,0.6)', fontStyle: 'normal' }}>Realty solutions</em></span>
                 </div>
                 
                 <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2rem, 5vw, 3.2rem)', marginBottom: '24px', lineHeight: '1.1', color: '#fff' }}>
@@ -195,7 +195,7 @@ const AuthView = () => {
 
             <div style={{ marginTop: '60px', paddingTop: '32px', borderTop: '1px solid #eee', textAlign: 'center' }}>
                 <p style={{ fontSize: '0.85rem', color: 'var(--muted)', lineHeight: '1.6' }}>
-                    By continuing, you agree to BharatEstates' <br />
+                    By continuing, you agree to One5 Realty solutions' <br />
                     <a href="#" style={{ color: 'var(--ink)', fontWeight: 700 }}>Terms of Service</a> and <a href="#" style={{ color: 'var(--ink)', fontWeight: 700 }}>Privacy Policy</a>.
                 </p>
             </div>

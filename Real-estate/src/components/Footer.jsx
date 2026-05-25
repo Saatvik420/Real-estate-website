@@ -11,8 +11,8 @@ const Footer = () => {
         <div className="footer-top">
           <div className="footer-col-main">
             <div className="footer-logo">
-              <div className="logo-mark" style={{ background: 'var(--gold2)', color: 'var(--ink)' }}>B</div>
-              <span style={{ color: 'var(--gold2)' }}>Bharat<em>Estates</em></span>
+              <div className="logo-mark" style={{ background: 'var(--gold2)', color: 'var(--ink)' }}>15</div>
+              <span style={{ color: 'var(--gold2)' }}>One5<em style={{ color: 'rgba(255,255,255,0.7)', fontStyle: 'normal', fontWeight: 400 }}>Realty solutions</em></span>
             </div>
             <p className="footer-desc">
               India's premier gateway to ultra-luxury real estate and verified plot investments. 
@@ -21,7 +21,7 @@ const Footer = () => {
             <div className="footer-contact">
               <h4 style={{ color: 'var(--gold2)', fontSize: '14px', marginBottom: '8px' }}>About Us</h4>
               <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.6)', lineHeight: '1.6', marginBottom: '16px' }}>
-                At BharatEstates, we bridge the gap between world-class developers and astute buyers. We are more than an agency; we are your strategic partners in luxury real estate, ensuring transparency, security, and exceptional returns.
+                At One5 Realty solutions, we bridge the gap between world-class developers and astute buyers. We are more than an agency; we are your strategic partners in luxury real estate, ensuring transparency, security, and exceptional returns.
               </p>
               
               <h4 style={{ color: 'var(--gold2)', fontSize: '14px', marginBottom: '8px' }}>Contact Us</h4>
@@ -29,7 +29,7 @@ const Footer = () => {
               <span style={{ display: 'block', marginBottom: '4px' }}>Regional Office: Cyber City, Phase 2, Gurugram, Haryana</span>
               <a href="tel:+919876543210" style={{ display: 'block', marginBottom: '4px' }}>📞 +91 98765 43210 (Sales)</a>
               <a href="tel:+919876543211" style={{ display: 'block', marginBottom: '4px' }}>📞 +91 98765 43211 (Support)</a>
-              <a href="mailto:concierge@bharatestates.com" style={{ display: 'block' }}>✉️ concierge@bharatestates.com</a>
+              <a href="mailto:concierge@one5realty.com" style={{ display: 'block' }}>✉️ concierge@one5realty.com</a>
             </div>
           </div>
 
@@ -72,7 +72,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p>© 2026 BharatEstates Private Limited. All rights reserved.</p>
+          <p>© 2026 One5 Realty solutions Private Limited. All rights reserved.</p>
           <div className="footer-badges">
             <span className="f-badge">RERA Registered</span>
             <span className="f-badge">PCI-DSS Secure</span>

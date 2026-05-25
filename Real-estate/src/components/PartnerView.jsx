@@ -22,7 +22,7 @@ const PartnerView = () => {
             <div>
                 <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', marginBottom: '24px', color: 'var(--gold2)' }}>Scale Your Reach</h3>
                 <p style={{ fontSize: 'var(--body-text)', color: 'rgba(255,255,255,0.7)', lineHeight: '1.8', marginBottom: '32px' }}>
-                    List your Tier-1 projects on BharatEstates and gain direct access to a verified network of 15,000+ HNIs and NRI investors. 
+                    List your Tier-1 projects on One5 Realty solutions and gain direct access to a verified network of 15,000+ HNIs and NRI investors. 
                     Our platform isn't just a listing service—it's a high-intent marketing engine designed for architectural masterpieces.
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>

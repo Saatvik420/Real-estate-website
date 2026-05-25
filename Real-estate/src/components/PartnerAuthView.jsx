@@ -184,7 +184,7 @@ const PartnerAuthView = () => {
                 </button>
 
                 <p style={{ textAlign: 'center', fontSize: '0.9rem', color: 'var(--muted)', marginTop: '8px' }}>
-                    Secured by BharatEstates Auth Protocol v2.4
+                    Secured by One5 Realty solutions Auth Protocol v2.4
                 </p>
             </form>
         </div>

@@ -32,7 +32,7 @@ public class AuthController {
 
     @GetMapping("/diagnostic/admin-check")
     public ResponseEntity<String> checkAdmin() {
-        boolean exists = userRepository.findByEmail("admin@bharatestates.com").isPresent();
+        boolean exists = userRepository.findByEmail("admin@one5realty.com").isPresent();
         long count = userRepository.count();
         return ResponseEntity.ok("Admin exists: " + exists + " | Total users: " + count);
     }

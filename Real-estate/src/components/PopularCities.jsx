@@ -101,7 +101,7 @@ const PopularCities = () => {
       <div className="cities-inner">
         <div className="eyebrow">National Network</div>
         <h2 className="sec-title" style={{ marginBottom: '6px' }}>Most Popular <span>Investment Hubs</span></h2>
-        <p className="sec-sub" style={{ marginBottom: '48px' }}>Explore high-growth metropolitan markets across India — powered by BharatEstates</p>
+        <p className="sec-sub" style={{ marginBottom: '48px' }}>Explore high-growth metropolitan markets across India — powered by One5 Realty solutions</p>
         
         <div className="cities-grid">
           {allCities.map((city, index) => (

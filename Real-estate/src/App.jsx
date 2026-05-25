@@ -13,6 +13,7 @@ import Insights from './components/Insights';
 import TopDevelopers from './components/TopDevelopers';
 import PopularCities from './components/PopularCities';
 import Services from './components/Services';
+import HomePlan from './components/HomePlan';
 import Footer from './components/Footer';
 import SearchResults from './components/SearchResults';
 import PropertyDetails from './components/PropertyDetails';
@@ -52,6 +53,7 @@ const AnimationTrigger = () => {
 const Home = () => (
   <>
     <Hero />
+    <HomePlan />
     <ContinueSearch />
     <TrendingSection />
     <PropertyRecommendations />

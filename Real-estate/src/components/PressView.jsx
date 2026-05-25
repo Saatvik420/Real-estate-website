@@ -5,10 +5,10 @@ const PressView = () => {
   const { setView } = useApp();
 
   const releases = [
-    { date: 'May 14, 2026', title: 'BharatEstates Crosses ₹5,000 Cr in Luxury Transaction Volume', category: 'Corporate' },
+    { date: 'May 14, 2026', title: 'One5 Realty solutions Crosses ₹5,000 Cr in Luxury Transaction Volume', category: 'Corporate' },
     { date: 'April 22, 2026', title: 'New "Market Intelligence 2.0" Dashboard Launched for Global NRIs', category: 'Product' },
     { date: 'March 05, 2026', title: 'Exclusively Mandated: DLF’s Most Expensive Penthouse Collection', category: 'Partnership' },
-    { date: 'Feb 18, 2026', title: 'BharatEstates Expands to Dubai with Strategic Business Bay Hub', category: 'Expansion' }
+    { date: 'Feb 18, 2026', title: 'One5 Realty solutions Expands to Dubai with Strategic Business Bay Hub', category: 'Expansion' }
   ];
 
   return (
@@ -53,7 +53,7 @@ const PressView = () => {
                     <div style={{ fontSize: '0.95rem' }}>
                         <div style={{ fontWeight: 700, color: 'var(--ink)' }}>Sanjana Mehta</div>
                         <div style={{ color: 'var(--muted)', fontSize: '0.85rem' }}>Head of Communications</div>
-                        <a href="mailto:press@bharatestates.com" style={{ color: 'var(--gold)', textDecoration: 'none', fontSize: '0.85rem', fontWeight: 700 }}>press@bharatestates.com</a>
+                        <a href="mailto:press@one5realty.com" style={{ color: 'var(--gold)', textDecoration: 'none', fontSize: '0.85rem', fontWeight: 700 }}>press@one5realty.com</a>
                     </div>
                 </div>
             </aside>

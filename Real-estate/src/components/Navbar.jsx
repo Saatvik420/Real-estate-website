@@ -35,8 +35,8 @@ const Navbar = () => {
           <span className={`bar ${isMobileMenuOpen ? 'active' : ''}`}></span>
         </button>
         <Link to="/" className="logo" onClick={() => { setView('home'); closeMobileMenu(); }}>
-          <div className="logo-mark">B</div>
-          <span>Bharat<em>Estates</em></span>
+          <div className="logo-mark">15</div>
+          <span>One5<em style={{ color: 'rgba(255,255,255,0.7)', fontStyle: 'normal', fontWeight: 400 }}>Realty solutions</em></span>
         </Link>
       </div>
 

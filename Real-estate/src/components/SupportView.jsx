@@ -5,7 +5,7 @@ const SupportView = () => {
   const { setView } = useApp();
 
   const faq = [
-    { q: 'How does BharatEstates verify property listings?', a: 'Every listing undergoes a 3-tier verification process: Legal Due Diligence, RERA Authenticity Check, and On-site Physical Audit by our regional hubs.' },
+    { q: 'How does One5 Realty solutions verify property listings?', a: 'Every listing undergoes a 3-tier verification process: Legal Due Diligence, RERA Authenticity Check, and On-site Physical Audit by our regional hubs.' },
     { q: 'Are there any fees for initial consultation?', a: 'Our primary advisory desk provides complimentary consultation for HNIs and NRIs. Bespoke legal and registration concierge services are available on a fixed-fee basis.' },
     { q: 'Can you assist with home loans for NRIs?', a: 'Yes, we have exclusive partnerships with 15+ banks offering specialized interest rates and streamlined processing for non-resident investors.' },
     { q: 'Do you handle property management for secondary homes?', a: 'Absolutely. Our Portfolio Management team handles everything from tenant vetting to maintenance for our global clients.' }
@@ -52,7 +52,7 @@ const SupportView = () => {
                             <div style={{ width: 'clamp(40px, 6vw, 50px)', height: 'clamp(40px, 6vw, 50px)', borderRadius: '50%', background: 'var(--gold2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}>✉️</div>
                             <div>
                                 <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '1px', opacity: 0.6 }}>Client Support</div>
-                                <div style={{ fontWeight: 700, fontSize: 'clamp(0.9rem, 2vw, 1.1rem)' }}>care@bharatestates.com</div>
+                                <div style={{ fontWeight: 700, fontSize: 'clamp(0.9rem, 2vw, 1.1rem)' }}>care@one5realty.com</div>
                             </div>
                         </div>
                     </div>
