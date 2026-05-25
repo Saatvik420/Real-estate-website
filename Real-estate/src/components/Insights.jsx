@@ -95,6 +95,25 @@ const Insights = () => {
         </div>
 
         <div className="insights-grid">
+          {/* Main Highlights Card */}
+          <div className="insight-box" style={{ gridColumn: 'span 2', background: 'var(--cream2)', border: 'none', opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)', transition: 'all 0.6s ease' }}>
+            <div className="pcc-head">
+              <div>
+                <div className="pcc-title" style={{ color: 'var(--ink)', fontSize: '1.2rem' }}>Strategic Market Highlights</div>
+                <div className="pcc-sub">Key takeaways from the latest sector analysis</div>
+              </div>
+              <div className="pcc-pill" style={{ background: 'var(--gold)', color: '#fff', border: 'none' }}>EXPERT VIEW</div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginTop: '20px' }}>
+              {data.highlights?.map((hl, i) => (
+                <div key={i} style={{ display: 'flex', gap: '12px', opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateX(0)' : 'translateX(-10px)', transition: `all 0.5s ease ${0.2 + i * 0.1}s` }}>
+                  <div style={{ minWidth: '8px', height: '8px', borderRadius: '50%', background: 'var(--gold)', marginTop: '6px' }}></div>
+                  <p style={{ fontSize: '0.95rem', color: 'var(--ink)', lineHeight: '1.5', margin: 0 }}>{hl}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="insight-box" style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)', transition: 'all 0.6s ease 0.1s' }}>
             <div className="pcc-head">
               <div>
@@ -201,6 +220,48 @@ const Insights = () => {
             <div className="inv-num" style={{ color: 'var(--gold2)' }}>RERA</div>
             <div className="inv-lbl" style={{ color: 'rgba(255,255,255,0.6)' }}>Approved Projects</div>
           </div>
+        </div>
+
+        {/* Detailed Analysis Cards */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px', marginTop: '60px' }}>
+          {data.detailedAnalysis?.whyPlots && (
+            <div className="insight-box" style={{ background: '#fff', border: '1px solid var(--cream3)', opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)', transition: 'all 0.6s ease 0.6s' }}>
+              <h3 style={{ color: 'var(--ink)', borderBottom: '2px solid var(--gold)', paddingBottom: '10px', display: 'inline-block' }}>Growth Hotspots & Drivers</h3>
+              <ul style={{ listStyle: 'none', padding: 0, marginTop: '20px' }}>
+                {data.detailedAnalysis.whyPlots.map((item, idx) => (
+                  <li key={idx} style={{ marginBottom: '12px', paddingLeft: '24px', position: 'relative', color: 'var(--muted)', fontSize: '0.9rem' }}>
+                    <span style={{ position: 'absolute', left: 0, color: 'var(--gold)' }}>✦</span> {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          
+          {data.detailedAnalysis?.nriAdvantages && (
+            <div className="insight-box" style={{ background: '#fff', border: '1px solid var(--cream3)', opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)', transition: 'all 0.6s ease 0.7s' }}>
+              <h3 style={{ color: 'var(--ink)', borderBottom: '2px solid var(--gold)', paddingBottom: '10px', display: 'inline-block' }}>NRI Investment Edge</h3>
+              <ul style={{ listStyle: 'none', padding: 0, marginTop: '20px' }}>
+                {data.detailedAnalysis.nriAdvantages.map((item, idx) => (
+                  <li key={idx} style={{ marginBottom: '12px', paddingLeft: '24px', position: 'relative', color: 'var(--muted)', fontSize: '0.9rem' }}>
+                    <span style={{ position: 'absolute', left: 0, color: 'var(--gold)' }}>✓</span> {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {data.detailedAnalysis?.hotspots && (
+            <div className="insight-box" style={{ background: '#fff', border: '1px solid var(--cream3)', opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)', transition: 'all 0.6s ease 0.8s' }}>
+              <h3 style={{ color: 'var(--ink)', borderBottom: '2px solid var(--gold)', paddingBottom: '10px', display: 'inline-block' }}>Strategic Nodes</h3>
+              <ul style={{ listStyle: 'none', padding: 0, marginTop: '20px' }}>
+                {data.detailedAnalysis.hotspots.map((item, idx) => (
+                  <li key={idx} style={{ marginBottom: '12px', paddingLeft: '24px', position: 'relative', color: 'var(--muted)', fontSize: '0.9rem' }}>
+                    <span style={{ position: 'absolute', left: 0, color: 'var(--gold)' }}>📍</span> {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
 
         <div className="trending-wrap" style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'scale(1)' : 'scale(0.95)', transition: 'all 0.6s ease 0.5s', marginTop: '40px', justifyContent: 'center' }}>
