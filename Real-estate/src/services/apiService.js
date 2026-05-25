@@ -174,6 +174,14 @@ export const apiService = {
         filtered = filtered.filter(p => p.tags && p.tags.some(t => t.includes(filters.bhk)));
     }
 
+    // Handlers for trending/featured if no city/type is specified
+    if (filters.trendingOnly && filtered.length === 0) {
+        filtered = localData.slice(0, 8);
+    }
+    if (filters.featuredOnly && filtered.length === 0) {
+        filtered = localData.slice(4, 12);
+    }
+
     return { success: true, data: filtered };
   },
 
@@ -187,9 +195,15 @@ export const apiService = {
   },
 
   getRecommendedProperties: async (locationId, type = 'city') => {
-    const res = await apiService.getProperties({ cityId: locationId });
-    if (res.success && res.data.length > 0) return res;
-    return { success: true, data: getMergedLocalData().slice(0, 6) };
+    // If no specific location, return a broad set of trending properties
+    const res = await apiService.getProperties({ 
+        cityId: locationId === 'India' ? '' : locationId 
+    });
+    
+    if (res.success && res.data.length >= 4) return res;
+    
+    // Fallback to a diverse set of local data
+    return { success: true, data: getMergedLocalData().slice(0, 8) };
   },
 
   getMarketInsights: async (locationId, locationType = 'city') => {

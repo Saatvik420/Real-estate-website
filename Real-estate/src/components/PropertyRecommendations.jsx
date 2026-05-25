@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useApp } from '../hooks/useApp';
 import { apiService } from '../services/apiService';
 
@@ -46,11 +46,12 @@ const PropertyRecommendations = () => {
 
   if (loading) return null;
 
-  const handleViewAll = (e) => {
-    e.preventDefault();
-    setSearchFilters({ featuredOnly: true });
-    setView('results');
-    navigate('/results');
+  const handleViewAll = () => {
+    setSearchFilters(prev => ({ 
+      ...prev, 
+      listingType: 'Buy',
+      featuredOnly: true 
+    }));
   };
 
   return (
@@ -62,7 +63,7 @@ const PropertyRecommendations = () => {
             <h2 className="sec-title">Recommended <span>Properties</span> in <span>{locationName}</span></h2>
             <p className="sec-sub" style={{ marginBottom: 0 }}>Based on your regional luxury search preferences</p>
           </div>
-          <a className="view-all" href="#" onClick={handleViewAll}>View All Shortlisted →</a>
+          <Link className="view-all" to="/results" onClick={handleViewAll}>View All Shortlisted →</Link>
         </div>
         <div className="rec-grid">
           {properties.map(prop => (

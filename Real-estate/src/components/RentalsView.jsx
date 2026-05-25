@@ -183,13 +183,12 @@ const RentalsView = () => {
                       <div className="pc-tags">
                         {prop.tags.map((tag, i) => <span key={i} className="pc-tag">{tag}</span>)}
                       </div>
-                      
+
                       <div className="pc-footer">
                         <div className="pc-price">{prop.priceStr}<small>{prop.area}</small></div>
-                        <button className="pc-enq">View Details</button>
+                        <button className="pc-enq" onClick={(e) => { e.stopPropagation(); handlePropertyClick(prop.id); }}>View Details</button>
                       </div>
-                    </div>
-                  </div>
+                    </div>                  </div>
                 ))}
               </div>
             )}

@@ -9,7 +9,7 @@ const Hero = () => {
     selectedState, setSelectedState, 
     selectedCity, setSelectedCity, 
     states, cities, 
-    setView, setSearchFilters 
+    setView, searchFilters, setSearchFilters 
   } = useApp();
 
   const cityName = cities.find(c => c.id === selectedCity)?.name || 'India';
@@ -17,22 +17,29 @@ const Hero = () => {
 
   const handleSearch = () => {
     const selectedCityName = cities.find(c => c.id === selectedCity)?.name || 'India';
+    const selectedStateName = states.find(s => s.id === selectedState)?.name || '';
     
     if (activeTab === 'Plots / Land') {
+        setSearchFilters(prev => ({
+            ...prev,
+            listingType: 'Plots / Land',
+            cityId: selectedCity,
+            city: selectedCityName,
+            state: selectedStateName
+        }));
         setView('plots');
         navigate('/plots');
         return;
     }
     
-    setSearchFilters({ 
+    setSearchFilters(prev => ({ 
+      ...prev,
       listingType: activeTab,
-      type: searchFilters.type || 'Any Type',
-      budget: 'Any Budget',
-      bhk: 'Any BHK',
-      status: 'Any Status',
+      type: prev.type || 'Any Type',
+      cityId: selectedCity,
       city: selectedCityName,
-      state: states.find(s => s.id === selectedState)?.name || ''
-    });
+      state: selectedStateName
+    }));
     
     setView('results');
     navigate('/results');

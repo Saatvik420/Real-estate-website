@@ -154,23 +154,32 @@ const SearchResults = () => {
                         </div>
                         <div className="pc-footer">
                           <div className="pc-price">{prop.priceStr}<small>{prop.area}</small></div>
-                          <button 
-                            className={`pc-enq ${comparisonList.includes(prop.id) ? 'active' : ''}`} 
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              if (comparisonList.includes(prop.id)) {
-                                setComparisonList(prev => prev.filter(id => id !== prop.id));
-                              } else {
-                                if (comparisonList.length < 3) {
-                                  setComparisonList(prev => [...prev, prop.id]);
+                          <div style={{ display: 'flex', gap: '8px' }}>
+                            <button 
+                                className="nav-btn-solid" 
+                                style={{ padding: '8px 16px', fontSize: '12px' }}
+                                onClick={(e) => { e.stopPropagation(); handlePropertyClick(prop.id); }}
+                            >
+                                Details
+                            </button>
+                            <button 
+                                className={`pc-enq ${comparisonList.includes(prop.id) ? 'active' : ''}`} 
+                                onClick={(e) => {
+                                e.stopPropagation();
+                                if (comparisonList.includes(prop.id)) {
+                                    setComparisonList(prev => prev.filter(id => id !== prop.id));
                                 } else {
-                                  alert("You can only compare up to 3 properties.");
+                                    if (comparisonList.length < 3) {
+                                    setComparisonList(prev => [...prev, prop.id]);
+                                    } else {
+                                    alert("You can only compare up to 3 properties.");
+                                    }
                                 }
-                              }
-                            }}
-                          >
-                            {comparisonList.includes(prop.id) ? 'Comparing' : 'Compare'}
-                          </button>
+                                }}
+                            >
+                                {comparisonList.includes(prop.id) ? 'Comparing' : 'Compare'}
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>

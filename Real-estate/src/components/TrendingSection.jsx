@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useApp } from '../hooks/useApp';
 import { apiService } from '../services/apiService';
 
@@ -40,11 +40,12 @@ const TrendingSection = () => {
 
   if (loading) return null;
 
-  const handleViewAll = (e) => {
-    e.preventDefault();
-    setSearchFilters({ trendingOnly: true });
-    setView('results');
-    navigate('/results');
+  const handleViewAll = () => {
+    setSearchFilters(prev => ({ 
+      ...prev, 
+      listingType: 'Buy',
+      trendingOnly: true 
+    }));
   };
 
   return (
@@ -55,7 +56,7 @@ const TrendingSection = () => {
             <div className="eyebrow">🔥 Live Activity</div>
             <h2 className="sec-title">Trending Right Now in <span>{locationName}</span></h2>
           </div>
-          <a className="view-all" href="#" onClick={handleViewAll}>See All Trending →</a>
+          <Link className="view-all" to="/results" onClick={handleViewAll}>See All Trending →</Link>
         </div>
         <div className="trend-grid">
           {properties.map((prop, index) => (

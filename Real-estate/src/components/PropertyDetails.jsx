@@ -5,7 +5,6 @@ import { apiService } from '../services/apiService';
 const PropertyDetails = () => {
   const { selectedProperty } = useApp();
   const [property, setProperty] = useState(null);
-  const [agent, setAgent] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -15,13 +14,6 @@ const PropertyDetails = () => {
         const res = await apiService.getPropertyById(selectedProperty);
         if (res.success) {
           setProperty(res.data);
-          
-          if (res.data.agentId) {
-            const agentRes = await apiService.getAgentById(res.data.agentId);
-            if (agentRes.success) {
-              setAgent(agentRes.data);
-            }
-          }
         }
         setLoading(false);
       }
