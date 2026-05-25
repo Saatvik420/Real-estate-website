@@ -144,9 +144,8 @@ const AuthView = () => {
           <div style={{ marginTop: 'auto', paddingTop: '40px', textAlign: 'center' }}>
             <p style={{ fontSize: '12px', color: 'var(--muted2)', lineHeight: '1.6' }}>
               By continuing, you agree to One5 Realty's <br />
-              <a href="#" style={{ color: var(--ink), fontWeight: 700 }}>Terms</a> & <a href="#" style={{ color: var(--ink), fontWeight: 700 }}>Privacy Policy</a>
-            </p>
-          </div>
+              <a href="#" style={{ color: 'var(--ink)', fontWeight: 700 }}>Terms</a> & <a href="#" style={{ color: 'var(--ink)', fontWeight: 700 }}>Privacy Policy</a>
+            </p>          </div>
         </div>
       </div>
     </div>
