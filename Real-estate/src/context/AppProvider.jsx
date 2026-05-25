@@ -6,6 +6,7 @@ import { contractors as initialContractors } from '../data/contractors';
 import { companies as initialCompanies } from '../data/companies';
 import { agents as initialAgents } from '../data/agents';
 import { plots as initialPlots } from '../data/plots';
+import { states as localStates, cities as localCities } from '../data/locations';
 
 export const AppProvider = ({ children }) => {
   const [view, setView] = useState('home'); 
@@ -17,8 +18,8 @@ export const AppProvider = ({ children }) => {
     type: 'Any Type', budget: 'Any Budget', bhk: 'Any BHK', status: 'Any Status'
   });
   
-  const [states, setStates] = useState([]);
-  const [cities, setCities] = useState([]);
+  const [states, setStates] = useState(localStates);
+  const [cities, setCities] = useState(localCities);
   const [loading, setLoading] = useState(false);
 
   // Authentication & Session
@@ -91,7 +92,13 @@ export const AppProvider = ({ children }) => {
       setLoading(true);
       try {
           const stateRes = await apiService.getStates();
-          if (stateRes.success) setStates(stateRes.data);
+          // Filter API results to ensure they match our strict regions, or fallback to local
+          if (stateRes.success && stateRes.data.length > 0) {
+              const filteredStates = stateRes.data.filter(s => localStates.some(ls => ls.id === s.id));
+              setStates(filteredStates.length > 0 ? filteredStates : localStates);
+          } else {
+              setStates(localStates);
+          }
 
           setRentals(initialRentals);
           setCompanies(initialCompanies);
@@ -99,6 +106,7 @@ export const AppProvider = ({ children }) => {
           setPlots(initialPlots);
       } catch (err) {
           console.error("Bootstrap Error:", err);
+          setStates(localStates);
       } finally {
           setLoading(false);
       }
@@ -111,10 +119,20 @@ export const AppProvider = ({ children }) => {
     const syncCities = async () => {
       if (selectedState) {
         const res = await apiService.getCities(selectedState);
-        if (res.success) setCities(res.data);
+        if (res.success && res.data.length > 0) {
+            const filteredCities = res.data.filter(c => localCities.some(lc => lc.id === c.id));
+            setCities(filteredCities.length > 0 ? filteredCities : localCities.filter(c => c.stateId === selectedState));
+        } else {
+            setCities(localCities.filter(c => c.stateId === selectedState));
+        }
       } else {
         const res = await apiService.getCities();
-        if (res.success) setCities(res.data);
+        if (res.success && res.data.length > 0) {
+            const filteredCities = res.data.filter(c => localCities.some(lc => lc.id === c.id));
+            setCities(filteredCities.length > 0 ? filteredCities : localCities);
+        } else {
+            setCities(localCities);
+        }
       }
     };
     syncCities();

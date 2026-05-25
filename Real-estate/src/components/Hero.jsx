@@ -16,18 +16,24 @@ const Hero = () => {
   const tabs = ['Buy', 'Rent', 'Projects', 'Plots / Land', 'Commercial'];
 
   const handleSearch = () => {
+    const selectedCityName = cities.find(c => c.id === selectedCity)?.name || 'India';
+    
     if (activeTab === 'Plots / Land') {
         setView('plots');
         navigate('/plots');
         return;
     }
+    
     setSearchFilters({ 
       listingType: activeTab,
-      type: 'Any Type',
+      type: searchFilters.type || 'Any Type',
       budget: 'Any Budget',
       bhk: 'Any BHK',
-      status: 'Any Status'
+      status: 'Any Status',
+      city: selectedCityName,
+      state: states.find(s => s.id === selectedState)?.name || ''
     });
+    
     setView('results');
     navigate('/results');
   };
