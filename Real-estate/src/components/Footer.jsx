@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useApp } from '../hooks/useApp';
-import { Instagram, Facebook, Linkedin, Twitter, Youtube } from 'lucide-react';
+import { FaInstagram, FaFacebookF, FaLinkedinIn, FaTwitter, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
   const { setView, setSearchFilters } = useApp();
@@ -22,11 +22,11 @@ const Footer = () => {
             
             <div className="footer-socials" style={{ display: 'flex', gap: '12px', marginTop: '24px' }}>
               {[
-                { icon: Instagram, label: 'Instagram' },
-                { icon: Facebook, label: 'Facebook' },
-                { icon: Linkedin, label: 'LinkedIn' },
-                { icon: Twitter, label: 'Twitter' },
-                { icon: Youtube, label: 'YouTube' }
+                { icon: FaInstagram, label: 'Instagram' },
+                { icon: FaFacebookF, label: 'Facebook' },
+                { icon: FaLinkedinIn, label: 'LinkedIn' },
+                { icon: FaTwitter, label: 'Twitter' },
+                { icon: FaYoutube, label: 'YouTube' }
               ].map((social, idx) => (
                 <a 
                   key={idx} 
@@ -40,8 +40,8 @@ const Footer = () => {
                     border: '1px solid rgba(255,255,255,0.1)',
                     borderRadius: '50%', 
                     display: 'flex', 
-                    align-items: 'center', 
-                    justify-content: 'center', 
+                    alignItems: 'center', 
+                    justifyContent: 'center', 
                     color: '#fff', 
                     textDecoration: 'none', 
                     transition: 'all 0.3s'
