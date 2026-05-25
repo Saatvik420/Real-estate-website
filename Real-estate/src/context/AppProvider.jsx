@@ -27,7 +27,7 @@ export const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
 
   // ── AUTHENTICATION STATE ──────────────────────────────────────────────────
-  const [user, setUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
 
@@ -47,6 +47,9 @@ export const AppProvider = ({ children }) => {
           setRentals(initialRentals);
           setCompanies(initialCompanies);
           setPlots(initialPlots);
+
+          const savedUser = localStorage.getItem('user');
+          if (savedUser) setCurrentUser(JSON.parse(savedUser));
       } catch (err) {
           console.error("Bootstrap Error:", err);
       } finally {
@@ -71,15 +74,15 @@ export const AppProvider = ({ children }) => {
   }, [selectedState]);
 
   // ── REFRESH DATA ──────────────────────────────────────────────────────────
-  const refreshData = useCallback(async (user) => {
-    if (!user) return;
+  const refreshData = useCallback(async (userObj) => {
+    if (!userObj) return;
     
     try {
         // Fetch personal inquiries for any logged in user
         const myInqRes = await apiService.getMyInquiries();
-        if (myInqRes.success) setUser(prev => ({ ...prev, inquiries: myInqRes.data }));
+        if (myInqRes.success) setCurrentUser(prev => ({ ...prev, inquiries: myInqRes.data }));
 
-        if (user.role === 'ADMIN') {
+        if (userObj.role === 'ADMIN') {
             const usersRes = await apiService.getAllUsers();
             if (usersRes.success) setAllUsers(usersRes.data);
 
@@ -102,7 +105,7 @@ export const AppProvider = ({ children }) => {
     const res = await apiService.login(email, password);
     if (res.success) {
       setToken(res.token);
-      setUser(res.user);
+      setCurrentUser(res.user);
       setIsLoggedIn(true);
       refreshData(res.user);
     }
@@ -113,7 +116,7 @@ export const AppProvider = ({ children }) => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     setToken(null);
-    setUser(null);
+    setCurrentUser(null);
     setIsLoggedIn(false);
     setView('home');
   };
@@ -122,7 +125,7 @@ export const AppProvider = ({ children }) => {
     const res = await apiService.register(userData);
     if (res.success) {
       setToken(res.token);
-      setUser(res.user);
+      setCurrentUser(res.user);
       setIsLoggedIn(true);
       refreshData(res.user);
     }
@@ -132,8 +135,8 @@ export const AppProvider = ({ children }) => {
   const updateProfileAction = async (data) => {
     const res = await apiService.updateProfile(data);
     if (res.success) {
-        const updatedUser = { ...user, ...data };
-        setUser(updatedUser);
+        const updatedUser = { ...currentUser, ...data };
+        setCurrentUser(updatedUser);
         localStorage.setItem('user', JSON.stringify(updatedUser));
     }
     return res;
@@ -158,19 +161,19 @@ export const AppProvider = ({ children }) => {
   // ── INQUIRY ACTIONS ────────────────────────────────────────────────────────
   const submitInquiryAction = async (data) => {
     const res = await apiService.submitInquiry(data);
-    if (res.success) refreshData(user);
+    if (res.success) refreshData(currentUser);
     return res;
   };
 
   const updateInquiryStatusAction = async (id, status) => {
     const res = await apiService.updateInquiryStatus(id, status);
-    if (res.success) refreshData(user);
+    if (res.success) refreshData(currentUser);
     return res;
   };
 
   const appointContractorAction = async (inquiryId, contractorId) => {
     const res = await apiService.appointContractor(inquiryId, contractorId);
-    if (res.success) refreshData(user);
+    if (res.success) refreshData(currentUser);
     return res;
   };
 
@@ -183,13 +186,13 @@ export const AppProvider = ({ children }) => {
     comparisonList, setComparisonList,
     searchFilters, setSearchFilters,
     states, cities, loading, rentals, contractors, companies, plots,
-    user, isLoggedIn, loginAction, logout, registerAction, updateProfileAction,
+    currentUser, isLoggedIn, loginAction, logout, registerAction, updateProfileAction,
     allUsers, adminStats, allInquiries, toggleUserStatus, deleteUserAction, approveContractorAction,
     submitInquiryAction, updateInquiryStatusAction, appointContractorAction
   }), [
     view, selectedState, selectedCity, selectedProperty, comparisonList, searchFilters,
     states, cities, loading, rentals, contractors, companies, plots,
-    user, isLoggedIn, allUsers, adminStats, allInquiries,
+    currentUser, isLoggedIn, allUsers, adminStats, allInquiries,
     loginAction, logout, registerAction, updateProfileAction,
     submitInquiryAction, updateInquiryStatusAction, appointContractorAction,
     deleteUserAction, toggleUserStatus, approveContractorAction
