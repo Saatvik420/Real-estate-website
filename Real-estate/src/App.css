@@ -150,10 +150,12 @@ h1.hero-title span{color:var(--gold2)}
 .stab{background:transparent;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;color:rgba(255,255,255,.5);font-family:'Nunito Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:8px 24px;cursor:pointer;transition:all .2s}
 .stab:hover{color:rgba(255,255,255,.8)}
 .stab.active{color:var(--gold2);border-bottom-color:var(--gold2)}
-.search-row{display:grid;grid-template-columns:1fr 1fr 3fr auto;gap:0;background:rgba(26,28,32,0.6);border:1px solid rgba(255,255,255,.15);border-radius:8px;overflow:hidden}
-.sf{padding:14px 18px;border-right:1px solid rgba(255,255,255,.08)}
+.search-row{display:grid;grid-template-columns:1fr 1fr 3fr auto;gap:0;background:rgba(26,28,32,0.6);border:1px solid rgba(255,255,255,0.15);border-radius:8px;overflow:hidden}
+.sf{padding:14px 18px;border-right:1px solid rgba(255,255,255,0.08); position: relative; transition: background 0.2s;}
+.sf:hover { background: rgba(255,255,255,0.05); }
 .sf:last-of-type{border-right:none}
 .sf-lbl{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:6px}
+.sf-select-custom { position: relative; width: 100%; }
 .sf input,.sf select{background:transparent;border:none;outline:none;color:#fff;font-family:'Nunito Sans',sans-serif;font-size:14px;font-weight:600;width:100%}
 .sf select option{background:var(--ink);color:#fff}
 .sf input::placeholder{color:rgba(255,255,255,.3); font-weight: 400;}

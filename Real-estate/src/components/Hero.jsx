@@ -63,36 +63,62 @@ const Hero = () => {
               </button>
             ))}
           </div>
-          <div className="search-row">
+          <div className="search-row" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.2fr 2fr auto', gap: '0' }}>
             <div className="sf">
-              <div className="sf-lbl">State</div>
-              <select 
-                value={selectedState} 
-                onChange={(e) => {
-                  setSelectedState(e.target.value);
-                  setSelectedCity('India');
-                }}
-              >
-                <option value="">Select State</option>
-                {states.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
-              </select>
+              <div className="sf-lbl">STATE</div>
+              <div className="sf-select-custom">
+                <select 
+                  value={selectedState} 
+                  onChange={(e) => {
+                    setSelectedState(e.target.value);
+                    setSelectedCity('India');
+                  }}
+                  style={{ cursor: 'pointer', appearance: 'none', width: '100%', background: 'transparent', border: 'none', color: '#fff', fontWeight: '700', fontSize: '15px', outline: 'none' }}
+                >
+                  <option value="" style={{ background: 'var(--ink)' }}>Select State</option>
+                  {states.map(s => <option key={s.id} value={s.id} style={{ background: 'var(--ink)' }}>{s.name}</option>)}
+                </select>
+                <span style={{ position: 'absolute', right: '15px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'var(--gold2)', fontSize: '10px' }}>▼</span>
+              </div>
             </div>
+            
             <div className="sf">
-              <div className="sf-lbl">City</div>
-              <select 
-                value={selectedCity} 
-                onChange={(e) => setSelectedCity(e.target.value)}
-                disabled={!selectedState}
-              >
-                <option value="India">Select City</option>
-                {cities.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
-              </select>
+              <div className="sf-lbl">CITY / REGION</div>
+              <div className="sf-select-custom">
+                <select 
+                  value={selectedCity} 
+                  onChange={(e) => setSelectedCity(e.target.value)}
+                  disabled={!selectedState}
+                  style={{ cursor: 'pointer', appearance: 'none', width: '100%', background: 'transparent', border: 'none', color: '#fff', fontWeight: '700', fontSize: '15px', outline: 'none', opacity: selectedState ? 1 : 0.5 }}
+                >
+                  <option value="India" style={{ background: 'var(--ink)' }}>All Cities</option>
+                  {cities.map(c => <option key={c.id} value={c.id} style={{ background: 'var(--ink)' }}>{c.name}</option>)}
+                </select>
+                <span style={{ position: 'absolute', right: '15px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'var(--gold2)', fontSize: '10px' }}>▼</span>
+              </div>
             </div>
+
             <div className="sf">
-              <div className="sf-lbl">Location / Area</div>
-              <input type="text" placeholder="Search by locality, area or project name..." />
+              <div className="sf-lbl">PROPERTY TYPE</div>
+              <div className="sf-select-custom">
+                <select 
+                  onChange={(e) => setSearchFilters(prev => ({ ...prev, type: e.target.value }))}
+                  style={{ cursor: 'pointer', appearance: 'none', width: '100%', background: 'transparent', border: 'none', color: '#fff', fontWeight: '700', fontSize: '15px', outline: 'none' }}
+                >
+                  <option value="Any Type" style={{ background: 'var(--ink)' }}>Any Property Type</option>
+                  <option value="Luxury Apartment" style={{ background: 'var(--ink)' }}>Luxury Apartment</option>
+                  <option value="Independent Villa" style={{ background: 'var(--ink)' }}>Independent Villa</option>
+                  <option value="Penthouse" style={{ background: 'var(--ink)' }}>Penthouse</option>
+                  <option value="Premium Plot" style={{ background: 'var(--ink)' }}>Premium Plot</option>
+                  <option value="Commercial" style={{ background: 'var(--ink)' }}>Commercial Space</option>
+                </select>
+                <span style={{ position: 'absolute', right: '15px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'var(--gold2)', fontSize: '10px' }}>▼</span>
+              </div>
             </div>
-            <button className="search-go" onClick={handleSearch}>SEARCH</button>
+
+            <button className="search-go" onClick={handleSearch} style={{ height: '100%', borderRadius: '0', padding: '0 40px', background: 'var(--gold2)', color: 'var(--ink)', fontWeight: '900', letterSpacing: '1px' }}>
+              DISCOVER NOW
+            </button>
           </div>
           <div className="trending-wrap">
             <span className="tr-label">Popular:</span>

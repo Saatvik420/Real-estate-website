@@ -8,84 +8,85 @@ const PopularCities = () => {
 
   const allCities = [
     {
-      id: "mumbai",
-      name: "Mumbai",
-      state: "Maharashtra",
-      price: "₹28,200 / sqft",
-      listings: "54,200+",
+      id: "jaipur",
+      name: "Jaipur",
+      state: "Rajasthan",
+      price: "₹8,500 / sqft",
+      listings: "12,400+",
       rank: "#1 PREFERRED",
-      badge: "Premium",
+      badge: "Cultural Capital",
       badgeClass: "city-badge-hot",
-      img: "https://images.pexels.com/photos/13975198/pexels-photo-13975198.jpeg"
+      img: "https://images.unsplash.com/photo-1599661046289-e31897c93e14?w=600&q=80"
     },
     {
-      id: "bengaluru",
-      name: "Bengaluru",
-      state: "Karnataka",
+      id: "noida",
+      name: "Noida",
+      state: "Uttar Pradesh",
       price: "₹12,400 / sqft",
-      listings: "48,700+",
+      listings: "28,700+",
       rank: "#2 FASTEST GROWING",
       badge: "Tech Hub",
       badgeClass: "city-badge-rising",
-      img: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=600&q=80"
+      img: "https://images.unsplash.com/photo-1626014303757-636611689443?w=600&q=80"
     },
     {
-      id: "delhi",
-      name: "Delhi NCR",
-      state: "Delhi / Haryana / UP",
-      price: "₹16,800 / sqft",
-      listings: "62,000+",
+      id: "dehradun",
+      name: "Dehradun",
+      state: "Uttarakhand",
+      price: "₹7,800 / sqft",
+      listings: "8,200+",
       rank: "#3 TOP VALUE",
-      badge: "High ROI",
+      badge: "Scenic Living",
       badgeClass: "city-badge-hot",
-      img: "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80"
+      img: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=600&q=80"
     },
     {
-      id: "hyderabad",
-      name: "Hyderabad",
-      state: "Telangana",
-      price: "₹9,200 / sqft",
-      listings: "31,400+",
+      id: "neemrana",
+      name: "Neemrana",
+      state: "Rajasthan",
+      price: "₹4,200 / sqft",
+      listings: "3,400+",
       rank: "#4 EMERGING",
-      img: "https://images.unsplash.com/photo-1605130284535-11dd9eedc58a?w=600&q=80"
+      badge: "Industrial Hub",
+      img: "https://images.unsplash.com/photo-1548013146-72479768b921?w=600&q=80"
     },
     {
-      id: "pune",
-      name: "Pune",
-      state: "Maharashtra",
-      price: "₹9,100 / sqft",
-      listings: "28,900+",
-      rank: "#5 INDUSTRIAL",
-      img: "https://images.pexels.com/photos/32534888/pexels-photo-32534888.jpeg"
+      id: "vrindavan",
+      name: "Vrindavan",
+      state: "Uttar Pradesh",
+      price: "₹6,100 / sqft",
+      listings: "5,900+",
+      rank: "#5 SPIRITUAL",
+      img: "https://images.unsplash.com/photo-1561464382-33f7d8ca914a?w=600&q=80"
     },
     {
-      id: "chennai",
-      name: "Chennai",
-      state: "Tamil Nadu",
-      price: "₹8,800 / sqft",
-      listings: "22,100+",
-      rank: "#6 COMMERCIAL",
-      img: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&q=80"
+      id: "haridwar",
+      name: "Haridwar",
+      state: "Uttarakhand",
+      price: "₹5,800 / sqft",
+      listings: "4,100+",
+      rank: "#6 HERITAGE",
+      img: "https://images.unsplash.com/photo-1563814881293-9c8df634f593?w=600&q=80"
     },
     {
-      id: "patna",
-      name: "Patna",
-      state: "Bihar",
-      price: "₹4,600 / sqft",
-      listings: "8,400+",
+      id: "ayodhya",
+      name: "Ayodhya",
+      state: "Uttar Pradesh",
+      price: "₹9,600 / sqft",
+      listings: "2,400+",
       rank: "#7 HIGH POTENTIAL",
-      badge: "Tier-2 Pick",
+      badge: "Rising Star",
       badgeClass: "city-badge-rising",
-      img: "https://images.pexels.com/photos/34205688/pexels-photo-34205688.jpeg"
+      img: "https://images.unsplash.com/photo-1610444390666-880ba8e7f1e7?w=600&q=80"
     },
     {
-      id: "kolkata",
-      name: "Kolkata",
-      state: "West Bengal",
+      id: "ajmer_road",
+      name: "Ajmer Road",
+      state: "Rajasthan",
       price: "₹6,400 / sqft",
-      listings: "18,700+",
-      rank: "#8 HERITAGE",
-      img: "https://images.unsplash.com/photo-1558431382-27e303142255?w=600&q=80"
+      listings: "1,700+",
+      rank: "#8 CONNECTIVITY",
+      img: "https://images.unsplash.com/photo-1599661046289-e31897c93e14?w=600&q=80"
     }
   ];
 

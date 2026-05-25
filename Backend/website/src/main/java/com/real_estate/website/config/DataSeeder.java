@@ -148,30 +148,30 @@ public class DataSeeder implements CommandLineRunner {
 
     private void seedLocations() {
         List<State> states = Arrays.asList(
-                new State("st_mh", "Maharashtra"),
-                new State("st_ka", "Karnataka"),
-                new State("st_dl", "Delhi"),
-                new State("st_hr", "Haryana"),
-                new State("st_wb", "West Bengal"),
-                new State("st_ap", "Andhra Pradesh"),
-                new State("st_tg", "Telangana"),
-                new State("st_tn", "Tamil Nadu"),
-                new State("st_gj", "Gujarat"),
-                new State("st_rj", "Rajasthan")
+                new State("st_rj", "Rajasthan"),
+                new State("st_up", "Uttar Pradesh"),
+                new State("st_ut", "Uttarakhand")
         );
         stateRepository.saveAll(states);
 
         List<City> cities = Arrays.asList(
-                new City("mumbai", "st_mh", "Mumbai"),
-                new City("pune", "st_mh", "Pune"),
-                new City("bengaluru", "st_ka", "Bengaluru"),
-                new City("delhi", "st_dl", "New Delhi"),
-                new City("gurugram", "st_hr", "Gurugram"),
-                new City("kolkata", "st_wb", "Kolkata"),
-                new City("hyderabad", "st_tg", "Hyderabad"),
-                new City("chennai", "st_tn", "Chennai"),
-                new City("ahmedabad", "st_gj", "Ahmedabad"),
-                new City("jaipur", "st_rj", "Jaipur")
+                // Rajasthan
+                new City("khatu_shyam", "st_rj", "Khatu Shyam"),
+                new City("paota", "st_rj", "Paota"),
+                new City("behror", "st_rj", "Behror"),
+                new City("neemrana", "st_rj", "Neemrana"),
+                new City("jaipur", "st_rj", "Jaipur"),
+                new City("ajmer_road", "st_rj", "Ajmer Road"),
+                
+                // U.P.
+                new City("noida", "st_up", "Noida"),
+                new City("greater_noida", "st_up", "Greater Noida"),
+                new City("vrindavan", "st_up", "Vrindavan"),
+                new City("ayodhya", "st_up", "Ayodhya"),
+                
+                // Uttarakhand
+                new City("dehradun", "st_ut", "Dehradun"),
+                new City("haridwar", "st_ut", "Haridwar")
         );
         cityRepository.saveAll(cities);
     }
