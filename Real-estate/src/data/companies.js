@@ -64,7 +64,7 @@ export const companies = [
     logo: 'https://images.pexels.com/photos/12484139/pexels-photo-12484139.jpeg',
     projects: [
       { 
-        id: 'proj_5', 
+        id: 'proj_5',
         name: 'The Riverfront', 
         status: 'Completed', 
         type: 'Luxury Penthouse', 
