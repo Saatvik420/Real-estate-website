@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useApp } from '../hooks/useApp';
+import { Instagram, Facebook, Linkedin, Twitter, Youtube } from 'lucide-react';
 
 const Footer = () => {
   const { setView, setSearchFilters } = useApp();
@@ -18,7 +19,52 @@ const Footer = () => {
               India's premier gateway to ultra-luxury real estate and verified plot investments. 
               Curating the finest living experiences for the world's most discerning clientele. Our dedicated experts bring decades of experience, unmatched local insights, and a global network to help you secure the home or investment of your dreams.
             </p>
-            <div className="footer-contact">
+            
+            <div className="footer-socials" style={{ display: 'flex', gap: '12px', marginTop: '24px' }}>
+              {[
+                { icon: Instagram, label: 'Instagram' },
+                { icon: Facebook, label: 'Facebook' },
+                { icon: Linkedin, label: 'LinkedIn' },
+                { icon: Twitter, label: 'Twitter' },
+                { icon: Youtube, label: 'YouTube' }
+              ].map((social, idx) => (
+                <a 
+                  key={idx} 
+                  href="#" 
+                  className="social-icon" 
+                  aria-label={social.label}
+                  style={{ 
+                    width: '38px', 
+                    height: '38px', 
+                    background: 'rgba(255,255,255,0.05)', 
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    borderRadius: '50%', 
+                    display: 'flex', 
+                    align-items: 'center', 
+                    justify-content: 'center', 
+                    color: '#fff', 
+                    textDecoration: 'none', 
+                    transition: 'all 0.3s'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.background = 'var(--gold2)';
+                    e.currentTarget.style.color = 'var(--ink)';
+                    e.currentTarget.style.borderColor = 'var(--gold2)';
+                    e.currentTarget.style.transform = 'translateY(-3px)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
+                    e.currentTarget.style.color = '#fff';
+                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  <social.icon size={18} />
+                </a>
+              ))}
+            </div>
+
+            <div className="footer-contact" style={{ marginTop: '32px' }}>
               <h4 style={{ color: 'var(--gold2)', fontSize: '14px', marginBottom: '8px' }}>About Us</h4>
               <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.6)', lineHeight: '1.6', marginBottom: '16px' }}>
                 At One5 Realty solutions, we bridge the gap between world-class developers and astute buyers. We are more than an agency; we are your strategic partners in luxury real estate, ensuring transparency, security, and exceptional returns.
