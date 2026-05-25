@@ -6,7 +6,7 @@ import LeadFormModal from './LeadFormModal';
 
 const PlotsView = () => {
   const { 
-    selectedCity, plots, setView,
+    selectedCity, setSelectedCity, plots, setView,
     setSelectedProperty, comparisonList, setComparisonList
   } = useApp();
   const [filteredPlots, setFilteredPlots] = useState([]);
@@ -48,16 +48,16 @@ const PlotsView = () => {
           type: filters.type
         });
         
-        if (res.success && res.data) {
+        if (res.success && Array.isArray(res.data)) {
           let results = [...res.data];
           
           if (filters.priceRange !== 'Any Price') {
             if (filters.priceRange === 'Below ₹ 1 Cr') {
-              results = results.filter(p => p.price < 10000000);
+              results = results.filter(p => p && p.price < 10000000);
             } else if (filters.priceRange === '₹ 1 Cr - ₹ 3 Cr') {
-              results = results.filter(p => p.price >= 10000000 && p.price <= 30000000);
+              results = results.filter(p => p && p.price >= 10000000 && p.price <= 30000000);
             } else if (filters.priceRange === 'Above ₹ 3 Cr') {
-              results = results.filter(p => p.price > 30000000);
+              results = results.filter(p => p && p.price > 30000000);
             }
           }
           setFilteredPlots(results);
@@ -67,8 +67,9 @@ const PlotsView = () => {
       } catch (err) {
         console.error("Fetch Plots Error:", err);
         setFilteredPlots([]);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
     fetchPlots();
     window.scrollTo(0, 0);
@@ -102,6 +103,7 @@ const PlotsView = () => {
 
   const clearFilters = () => {
     setFilters({ cityId: 'All', type: 'Any Type', priceRange: 'Any Price' });
+    setSelectedCity('India');
   };
 
   if (loading) {
@@ -120,7 +122,7 @@ const PlotsView = () => {
       <div className="section-inner">
         <div className="sec-header">
           <div>
-            <div className="eyebrow" onClick={() => setView('home')} style={{ cursor: 'pointer' }}>← Back to Home</div>
+            <div className="eyebrow" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>← Back to Home</div>
             <h2 className="sec-title">Premium <span>Plots & Land</span></h2>
             <p className="sec-sub">Verified residential, commercial and agricultural land nationwide</p>
           </div>
@@ -199,7 +201,8 @@ const PlotsView = () => {
             ) : (
               <div className="rec-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 350px), 1fr))', gap: '24px' }}>
                 {filteredPlots.map(plot => {
-                  const isComparing = comparisonList.includes(plot.id);
+                  if (!plot) return null;
+                  const isComparing = Array.isArray(comparisonList) && comparisonList.includes(plot.id);
                   
                   return (
                     <div key={plot.id} className="prop-card" onClick={() => handlePropertyClick(plot.id)}>

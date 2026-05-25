@@ -130,19 +130,20 @@ export const apiService = {
     }
 
     const localData = getMergedLocalData();
-    const merged = [...apiData];
+    const merged = Array.isArray(apiData) ? [...apiData] : [];
     
     localData.forEach(localItem => {
-        if (!merged.find(apiItem => apiItem.id === localItem.id)) {
+        if (localItem && !merged.find(apiItem => apiItem && apiItem.id === localItem.id)) {
             merged.push(localItem);
         }
     });
 
-    let filtered = merged;
+    let filtered = merged.filter(p => p !== null && p !== undefined);
 
     if (filters.listingType) {
         const searchType = filters.listingType.toLowerCase();
         filtered = filtered.filter(p => {
+            if (!p) return false;
             const pType = (p.listingType || '').toLowerCase();
             
             if (searchType.includes('buy') || searchType.includes('sale')) {
@@ -162,16 +163,16 @@ export const apiService = {
     }
 
     if (filters.cityId && filters.cityId !== 'India' && filters.cityId !== 'All') {
-        filtered = filtered.filter(p => p.cityId?.toLowerCase() === filters.cityId.toLowerCase());
+        filtered = filtered.filter(p => p && p.cityId?.toLowerCase() === filters.cityId.toLowerCase());
     }
     if (filters.type && filters.type !== 'Any Type') {
-        filtered = filtered.filter(p => p.type === filters.type);
+        filtered = filtered.filter(p => p && p.type === filters.type);
     }
     if (filters.status && filters.status !== 'Any Status') {
-        filtered = filtered.filter(p => p.status === filters.status);
+        filtered = filtered.filter(p => p && p.status === filters.status);
     }
     if (filters.bhk && filters.bhk !== 'Any BHK') {
-        filtered = filtered.filter(p => p.tags && p.tags.some(t => t.includes(filters.bhk)));
+        filtered = filtered.filter(p => p && p.tags && p.tags.some(t => t.includes(filters.bhk)));
     }
 
     // Handlers for trending/featured if no city/type is specified
