@@ -80,6 +80,28 @@ const Insights = () => {
 
   return (
     <div className="insights-report" ref={sectionRef} style={{ background: 'var(--bg-main)', color: 'var(--ink)', padding: '60px 20px', minHeight: '100vh' }}>
+      <style>{`
+        @keyframes pulse-glow {
+          0% { r: 4; opacity: 0.6; stroke-width: 0; }
+          50% { r: 6; opacity: 1; stroke-width: 4; }
+          100% { r: 4; opacity: 0.6; stroke-width: 0; }
+        }
+        @keyframes shimmer-bar {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        @keyframes float-stat {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-5px); }
+          100% { transform: translateY(0px); }
+        }
+        .shimmer-overlay {
+          position: absolute;
+          top: 0; left: 0; width: 100%; height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+          animation: shimmer-bar 3s infinite;
+        }
+      `}</style>
       <div style={{ maxWidth: '900px', margin: '0 auto' }}>
         
         {/* Header */}
@@ -143,8 +165,10 @@ const Insights = () => {
                       <span style={{ fontWeight: 600 }}>{b.loc}</span>
                       <span style={{ color: 'var(--gold2)' }}>{b.val}</span>
                     </div>
-                    <div style={{ height: '8px', background: 'rgba(255,255,255,0.1)', borderRadius: '4px', overflow: 'hidden' }}>
-                      <div style={{ width: barsWidth[i] || '0%', height: '100%', background: 'var(--gold)', transition: `width 1.5s cubic-bezier(0.16, 1, 0.3, 1) ${0.8 + i * 0.1}s` }}></div>
+                    <div style={{ height: '8px', background: 'rgba(255,255,255,0.1)', borderRadius: '4px', overflow: 'hidden', position: 'relative' }}>
+                      <div style={{ width: barsWidth[i] || '0%', height: '100%', background: 'var(--gold)', transition: `width 1.5s cubic-bezier(0.16, 1, 0.3, 1) ${0.8 + i * 0.1}s`, position: 'relative' }}>
+                         <div className="shimmer-overlay"></div>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -165,7 +189,11 @@ const Insights = () => {
                     <path d={areaD} fill="url(#trend-grad)" style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 1.5s ease 1.5s' }} />
                     <path d={pathD} fill="none" stroke="var(--gold2)" strokeWidth="3" style={{ strokeDasharray: 2000, strokeDashoffset: isVisible ? 0 : 2000, transition: 'stroke-dashoffset 3s cubic-bezier(0.4, 0, 0.2, 1) 1s' }} />
                     {points.map((p, i) => (
-                      <circle key={i} cx={p.x} cy={p.y} r="4" fill="var(--gold)" style={{ opacity: isVisible ? 1 : 0, transition: `opacity 0.5s ease ${1.5 + (i * 0.2)}s` }} />
+                      <circle key={i} cx={p.x} cy={p.y} r="4" fill="var(--gold)" stroke="var(--gold2)" strokeOpacity="0.4" style={{ 
+                        opacity: isVisible ? 1 : 0, 
+                        transition: `opacity 0.5s ease ${1.5 + (i * 0.2)}s`,
+                        animation: isVisible ? `pulse-glow 2s infinite ${1.5 + (i * 0.2)}s` : 'none'
+                      }} />
                     ))}
                   </svg>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px', fontSize: '10px', color: 'rgba(255,255,255,0.4)' }}>
@@ -176,11 +204,11 @@ const Insights = () => {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '30px', marginTop: '80px', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '40px' }}>
-            <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'scale(1)' : 'scale(0.9)', transition: 'all 0.8s ease 1.8s' }}>
+            <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'scale(1)' : 'scale(0.9)', transition: 'all 0.8s ease 1.8s', animation: isVisible ? 'float-stat 4s ease-in-out infinite' : 'none' }}>
               <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--gold2)' }}>{data.invTotal}</div>
               <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginTop: '8px' }}>Market Valuation</div>
             </div>
-            <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'scale(1)' : 'scale(0.9)', transition: 'all 0.8s ease 2s' }}>
+            <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'scale(1)' : 'scale(0.9)', transition: 'all 0.8s ease 2s', animation: isVisible ? 'float-stat 4s ease-in-out infinite 1s' : 'none' }}>
               <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--gold2)' }}>{data.invYoy}</div>
               <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginTop: '8px' }}>Compound Growth</div>
             </div>
