@@ -128,7 +128,7 @@ const Insights = () => {
         ))}
 
         {/* Charts Section */}
-        <section className="charts-report" style={{ marginTop: '100px', padding: '60px', background: 'var(--ink)', borderRadius: '24px', color: '#fff' }}>
+        <section className="charts-report" style={{ marginTop: '100px', padding: '60px', background: 'var(--ink)', borderRadius: '24px', color: '#fff', opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(40px)', transition: 'all 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
           <h2 style={{ textAlign: 'center', marginBottom: '60px', color: 'var(--gold2)' }}>Statistical Growth Projections</h2>
           
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px' }}>
@@ -138,13 +138,13 @@ const Insights = () => {
               <h4 style={{ marginBottom: '30px', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)' }}>Market Benchmarking</h4>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
                 {data.bars.map((b, i) => (
-                  <div key={i}>
+                  <div key={i} style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateX(0)' : 'translateX(-20px)', transition: `all 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${0.5 + i * 0.1}s` }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem' }}>
                       <span style={{ fontWeight: 600 }}>{b.loc}</span>
                       <span style={{ color: 'var(--gold2)' }}>{b.val}</span>
                     </div>
                     <div style={{ height: '8px', background: 'rgba(255,255,255,0.1)', borderRadius: '4px', overflow: 'hidden' }}>
-                      <div style={{ width: barsWidth[i] || '0%', height: '100%', background: 'var(--gold)', transition: `width ${1 + i * 0.2}s cubic-bezier(0.16, 1, 0.3, 1)` }}></div>
+                      <div style={{ width: barsWidth[i] || '0%', height: '100%', background: 'var(--gold)', transition: `width 1.5s cubic-bezier(0.16, 1, 0.3, 1) ${0.8 + i * 0.1}s` }}></div>
                     </div>
                   </div>
                 ))}
@@ -152,7 +152,7 @@ const Insights = () => {
             </div>
 
             {/* Trend Chart */}
-            <div>
+            <div style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 1s ease 0.8s' }}>
                <h4 style={{ marginBottom: '30px', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)' }}>Market Growth Index (Base 2019=100)</h4>
                <div style={{ position: 'relative', height: '150px' }}>
                   <svg style={{ width: '100%', height: '150px' }} viewBox={`0 0 ${chartWidth} ${chartHeight}`} preserveAspectRatio="none">
@@ -162,8 +162,11 @@ const Insights = () => {
                         <stop offset="100%" stopColor="var(--gold)" stopOpacity="0"/>
                       </linearGradient>
                     </defs>
-                    <path d={areaD} fill="url(#trend-grad)" style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 1s ease 0.5s' }} />
-                    <path d={pathD} fill="none" stroke="var(--gold2)" strokeWidth="3" style={{ strokeDasharray: 1000, strokeDashoffset: isVisible ? 0 : 1000, transition: 'stroke-dashoffset 2s ease' }} />
+                    <path d={areaD} fill="url(#trend-grad)" style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 1.5s ease 1.5s' }} />
+                    <path d={pathD} fill="none" stroke="var(--gold2)" strokeWidth="3" style={{ strokeDasharray: 2000, strokeDashoffset: isVisible ? 0 : 2000, transition: 'stroke-dashoffset 3s cubic-bezier(0.4, 0, 0.2, 1) 1s' }} />
+                    {points.map((p, i) => (
+                      <circle key={i} cx={p.x} cy={p.y} r="4" fill="var(--gold)" style={{ opacity: isVisible ? 1 : 0, transition: `opacity 0.5s ease ${1.5 + (i * 0.2)}s` }} />
+                    ))}
                   </svg>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px', fontSize: '10px', color: 'rgba(255,255,255,0.4)' }}>
                     <span>2020</span><span>2022</span><span>2024</span><span>2025</span><span style={{ color: 'var(--gold2)' }}>2030(P)</span>
@@ -173,20 +176,16 @@ const Insights = () => {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '30px', marginTop: '80px', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '40px' }}>
-            <div>
+            <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'scale(1)' : 'scale(0.9)', transition: 'all 0.8s ease 1.8s' }}>
               <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--gold2)' }}>{data.invTotal}</div>
               <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginTop: '8px' }}>Market Valuation</div>
             </div>
-            <div>
+            <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'scale(1)' : 'scale(0.9)', transition: 'all 0.8s ease 2s' }}>
               <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--gold2)' }}>{data.invYoy}</div>
               <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginTop: '8px' }}>Compound Growth</div>
             </div>
           </div>
         </section>
-
-        <footer style={{ marginTop: '100px', textAlign: 'center', borderTop: '1px solid var(--cream3)', paddingTop: '40px' }}>
-          <p style={{ color: 'var(--muted)', fontSize: '0.9rem' }}>© 2026 Bharat Estates Market Research Division. All rights reserved.</p>
-        </footer>
       </div>
     </div>
   );
