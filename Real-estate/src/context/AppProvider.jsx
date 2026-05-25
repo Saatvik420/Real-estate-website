@@ -91,14 +91,8 @@ export const AppProvider = ({ children }) => {
     const bootstrap = async () => {
       setLoading(true);
       try {
-          const stateRes = await apiService.getStates();
-          // Filter API results to ensure they match our strict regions, or fallback to local
-          if (stateRes.success && stateRes.data.length > 0) {
-              const filteredStates = stateRes.data.filter(s => localStates.some(ls => ls.id === s.id));
-              setStates(filteredStates.length > 0 ? filteredStates : localStates);
-          } else {
-              setStates(localStates);
-          }
+          // We strictly use the local states for the UI to match the navbar
+          setStates(localStates);
 
           setRentals(initialRentals);
           setCompanies(initialCompanies);
@@ -106,7 +100,6 @@ export const AppProvider = ({ children }) => {
           setPlots(initialPlots);
       } catch (err) {
           console.error("Bootstrap Error:", err);
-          setStates(localStates);
       } finally {
           setLoading(false);
       }
@@ -118,21 +111,11 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     const syncCities = async () => {
       if (selectedState) {
-        const res = await apiService.getCities(selectedState);
-        if (res.success && res.data.length > 0) {
-            const filteredCities = res.data.filter(c => localCities.some(lc => lc.id === c.id));
-            setCities(filteredCities.length > 0 ? filteredCities : localCities.filter(c => c.stateId === selectedState));
-        } else {
-            setCities(localCities.filter(c => c.stateId === selectedState));
-        }
+        // Strictly filter from our verified local city list
+        setCities(localCities.filter(c => c.stateId === selectedState));
       } else {
-        const res = await apiService.getCities();
-        if (res.success && res.data.length > 0) {
-            const filteredCities = res.data.filter(c => localCities.some(lc => lc.id === c.id));
-            setCities(filteredCities.length > 0 ? filteredCities : localCities);
-        } else {
-            setCities(localCities);
-        }
+        // Show all verified cities from our list
+        setCities(localCities);
       }
     };
     syncCities();
