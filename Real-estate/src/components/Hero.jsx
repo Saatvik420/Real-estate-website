@@ -112,18 +112,29 @@ const Hero = () => {
             </div>
 
             <div className="sf">
-              <div className="sf-lbl">PROPERTY TYPE</div>
+              <div className="sf-lbl">{activeTab === 'Plots / Land' ? 'LAND CATEGORY' : 'PROPERTY TYPE'}</div>
               <div className="sf-select-custom">
                 <select 
                   onChange={(e) => setSearchFilters(prev => ({ ...prev, type: e.target.value }))}
                   style={{ cursor: 'pointer', appearance: 'none', width: '100%', background: 'transparent', border: 'none', color: '#fff', fontWeight: '700', fontSize: '15px', outline: 'none' }}
                 >
-                  <option value="Any Type" style={{ background: 'var(--ink)' }}>Any Property Type</option>
-                  <option value="Luxury Apartment" style={{ background: 'var(--ink)' }}>Luxury Apartment</option>
-                  <option value="Independent Villa" style={{ background: 'var(--ink)' }}>Independent Villa</option>
-                  <option value="Penthouse" style={{ background: 'var(--ink)' }}>Penthouse</option>
-                  <option value="Premium Plot" style={{ background: 'var(--ink)' }}>Premium Plot</option>
-                  <option value="Commercial" style={{ background: 'var(--ink)' }}>Commercial Space</option>
+                  {activeTab === 'Plots / Land' ? (
+                    <>
+                      <option value="Any Type" style={{ background: 'var(--ink)' }}>Any Category</option>
+                      <option value="Residential" style={{ background: 'var(--ink)' }}>Residential Land</option>
+                      <option value="Commercial" style={{ background: 'var(--ink)' }}>Commercial Land</option>
+                      <option value="Agriculture" style={{ background: 'var(--ink)' }}>Agriculture Land</option>
+                    </>
+                  ) : (
+                    <>
+                      <option value="Any Type" style={{ background: 'var(--ink)' }}>Any Property Type</option>
+                      <option value="Luxury Apartment" style={{ background: 'var(--ink)' }}>Luxury Apartment</option>
+                      <option value="Independent Villa" style={{ background: 'var(--ink)' }}>Independent Villa</option>
+                      <option value="Penthouse" style={{ background: 'var(--ink)' }}>Penthouse</option>
+                      <option value="Premium Plot" style={{ background: 'var(--ink)' }}>Premium Plot</option>
+                      <option value="Commercial" style={{ background: 'var(--ink)' }}>Commercial Space</option>
+                    </>
+                  )}
                 </select>
                 <span style={{ position: 'absolute', right: '15px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'var(--gold2)', fontSize: '10px' }}>▼</span>
               </div>

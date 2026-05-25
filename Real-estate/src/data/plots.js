@@ -38,7 +38,7 @@ export const plots = [
     id: 'plot_rj_behror_1', 
     cityId: 'behror', 
     listingType: 'Plots / Land',
-    type: 'Industrial',
+    type: 'Commercial',
     title: 'Behror Industrial Park Phase II', 
     price: 45000000, 
     priceStr: '₹4.5 Cr', 
@@ -122,7 +122,7 @@ export const plots = [
     id: 'plot_up_gn_1', 
     cityId: 'greater_noida', 
     listingType: 'Plots / Land',
-    type: 'Industrial',
+    type: 'Commercial',
     title: 'Yamuna Expressway Industrial Plot', 
     price: 28000000, 
     priceStr: '₹2.8 Cr', 
@@ -166,6 +166,22 @@ export const plots = [
     developer: 'Ayodhya Heritage',
     tags: ['High Growth', 'Cultural Hub'], 
     img: 'https://images.pexels.com/photos/20858785/pexels-photo-20858785.jpeg?w=600&q=80'
+  },
+  { 
+    id: 'plot_up_ayodhya_2', 
+    cityId: 'ayodhya', 
+    listingType: 'Plots / Land',
+    type: 'Agriculture',
+    title: 'Saryu River Basin Farm Land', 
+    price: 9500000, 
+    priceStr: '₹95 L', 
+    area: '1.5 Bigha', 
+    pricePerUnit: '₹63 L / Bigha',
+    location: 'Ghat Area', 
+    status: 'Verified', 
+    developer: 'Ayodhya Heritage',
+    tags: ['Fertile Soil', 'River Access'], 
+    img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80'
   },
 
   // ── UTTARAKHAND ────────────────────────────────────────────────────────
