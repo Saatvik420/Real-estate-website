@@ -35,8 +35,31 @@ const Navbar = () => {
           <span className={`bar ${isMobileMenuOpen ? 'active' : ''}`}></span>
         </button>
         <Link to="/" className="logo" onClick={() => { setView('home'); closeMobileMenu(); }}>
-          <div className="logo-mark">15</div>
-          <span>One5<em style={{ color: 'rgba(255,255,255,0.7)', fontStyle: 'normal', fontWeight: 400 }}>Realty solutions</em></span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" width="160" height="48" style={{ display: 'block', maxWidth: '100%', height: 'auto' }}>
+            <defs>
+              <linearGradient id="navGoldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#C59B3C" />
+                <stop offset="50%" stop-color="#F2DE92" />
+                <stop offset="100%" stop-color="#A57A27" />
+              </linearGradient>
+              <linearGradient id="navGoldSolid" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#D4AF37" />
+                <stop offset="100%" stop-color="#AA8C2C" />
+              </linearGradient>
+            </defs>
+            <g transform="translate(30, 25)">
+              <path d="M50 0 L90 40 L90 100 L10 100 L10 40 Z" fill="none" stroke="url(#navGoldGradient)" stroke-width="6" stroke-linejoin="round"/>
+              <path d="M50 0 L50 100" fill="none" stroke="url(#navGoldGradient)" stroke-width="2" opacity="0.5"/>
+              <path d="M10 40 L90 40" fill="none" stroke="url(#navGoldGradient)" stroke-width="2" opacity="0.5"/>
+              <path d="M30 100 L30 60 L70 60 L70 100" fill="none" stroke="url(#navGoldGradient)" stroke-width="5" stroke-linejoin="round"/>
+              <text x="50" y="85" font-family="'Playfair Display', serif, sans-serif" font-size="34" font-weight="900" fill="url(#navGoldSolid)" text-anchor="middle">15</text>
+            </g>
+            <g transform="translate(140, 80)">
+              <text x="0" y="0" font-family="'Montserrat', 'Inter', sans-serif" font-size="52" font-weight="800" fill="#f4edd9" letter-spacing="1">ONE5</text>
+              <text x="160" y="0" font-family="'Montserrat', 'Inter', sans-serif" font-size="52" font-weight="300" fill="#ebdcb5" letter-spacing="3">REALTY</text>
+              <text x="5" y="32" font-family="'Playfair Display', serif, sans-serif" font-size="16" font-weight="600" fill="#bda871" letter-spacing="10">PREMIUM SOLUTIONS</text>
+            </g>
+          </svg>
         </Link>
       </div>
 
