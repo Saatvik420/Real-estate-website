@@ -7,14 +7,12 @@ import LeadFormModal from './LeadFormModal';
 const RentalsView = () => {
   const { 
     selectedCity, searchFilters, setSearchFilters, 
-    setView, setSelectedProperty, agents
+    setView, setSelectedProperty
   } = useApp();
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeProperty, setActiveProperty] = useState(null);
-  const [modalMode, setModalMode] = useState('contact');
-  const [revealedNumbers, setRevealedNumbers] = useState({});
   
   const navigate = useNavigate();
   
@@ -63,24 +61,14 @@ const RentalsView = () => {
     setSearchFilters(defaultFilters);
   };
 
-  const handleContactClick = (prop, mode) => {
-    if (mode === 'view_number' && revealedNumbers[prop.id]) {
-      alert(`Agent Number: +91 99999 77777`);
-      return;
-    }
+  const handleContactClick = (prop) => {
     setActiveProperty(prop);
-    setModalMode(mode);
     setIsModalOpen(true);
   };
 
   const handleLeadSuccess = () => {
     setIsModalOpen(false);
-    if (modalMode === 'view_number' && activeProperty) {
-      setRevealedNumbers(prev => ({ ...prev, [activeProperty.id]: true }));
-      alert(`Success! Agent Number: +91 99999 77777`);
-    } else {
-      alert('Thank you! Our rental specialist will contact you shortly.');
-    }
+    alert('Thank you! Our rental specialist will contact you shortly.');
   };
 
   if (loading) {
@@ -183,58 +171,26 @@ const RentalsView = () => {
               </div>
             ) : (
               <div className="rec-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 350px), 1fr))', gap: '24px' }}>
-                {results.map(prop => {
-                  const agent = agents.find(a => a.id === prop.agentId);
-                  return (
-                    <div key={prop.id} className="prop-card" onClick={() => handlePropertyClick(prop.id)}>
-                      <div className="pc-img" style={{ backgroundImage: `url('${prop.img}')` }}>
-                        <span className="pc-status status-nl">{prop.section || 'Verified'}</span>
+                {results.map(prop => (
+                  <div key={prop.id} className="prop-card" onClick={() => handlePropertyClick(prop.id)}>
+                    <div className="pc-img" style={{ backgroundImage: `url('${prop.img}')` }}>
+                      <span className="pc-status status-nl">{prop.section || 'Verified'}</span>
+                    </div>
+                    <div className="pc-body">
+                      <div className="pc-dev">{prop.developer}</div>
+                      <div className="pc-name">{prop.title}</div>
+                      <div className="pc-loc">📍 {prop.location}</div>
+                      <div className="pc-tags">
+                        {prop.tags.map((tag, i) => <span key={i} className="pc-tag">{tag}</span>)}
                       </div>
-                      <div className="pc-body">
-                        <div className="pc-dev">{prop.developer}</div>
-                        <div className="pc-name">{prop.title}</div>
-                        <div className="pc-loc">📍 {prop.location}</div>
-                        <div className="pc-tags">
-                          {prop.tags.map((tag, i) => <span key={i} className="pc-tag">{tag}</span>)}
-                        </div>
-                        
-                        {agent && (
-                          <div style={{ marginTop: '20px', padding: 'clamp(1rem, 2vw, 1.5rem)', background: 'var(--ink2)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', color: '#fff' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '12px', flexWrap: 'wrap' }}>
-                              <img src={agent.img} alt={agent.name} style={{ width: '45px', height: '45px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--gold2)' }} />
-                              <div style={{ flex: 1, minWidth: '120px' }}>
-                                <div style={{ fontSize: '0.9rem', fontWeight: 'bold', color: 'var(--gold2)' }}>{agent.name}</div>
-                                <div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.6)', marginTop: '2px' }}>{agent.company}</div>
-                              </div>
-                            </div>
-                            
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                              <button 
-                                onClick={(e) => { e.stopPropagation(); handleContactClick(prop, 'contact'); }}
-                                className="pd-btn-primary"
-                                style={{ width: '100%', padding: '10px', fontSize: '0.75rem' }}
-                              >
-                                Book Now
-                              </button>
-                              <button 
-                                onClick={(e) => { e.stopPropagation(); handleContactClick(prop, 'view_number'); }}
-                                className="nav-btn-ghost"
-                                style={{ width: '100%', padding: '10px', fontSize: '0.75rem', borderColor: 'var(--gold2)', color: 'var(--gold2)' }}
-                              >
-                                {revealedNumbers[prop.id] ? '+91 99999 77777' : 'View Number'}
-                              </button>
-                            </div>
-                          </div>
-                        )}
-
-                        <div className="pc-footer">
-                          <div className="pc-price">{prop.priceStr}<small>{prop.area}</small></div>
-                          <button className="pc-enq">View Details</button>
-                        </div>
+                      
+                      <div className="pc-footer">
+                        <div className="pc-price">{prop.priceStr}<small>{prop.area}</small></div>
+                        <button className="pc-enq">View Details</button>
                       </div>
                     </div>
-                  );
-                })}
+                  </div>
+                ))}
               </div>
             )}
           </main>
@@ -245,12 +201,11 @@ const RentalsView = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onSuccess={handleLeadSuccess}
-        title={modalMode === 'contact' ? 'Book Private Walkthrough' : 'Unlock Rental Contact'}
-        subtitle={modalMode === 'contact' ? `Schedule a viewing for ${activeProperty?.title} today.` : "Provide your details to see the direct phone number."}
+        title="Book Private Walkthrough"
+        subtitle={`Interested in ${activeProperty?.title}? Schedule a viewing today.`}
       />
     </div>
   );
 };
 
 export default RentalsView;
-

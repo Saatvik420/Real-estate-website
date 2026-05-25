@@ -3,7 +3,7 @@ import { useApp } from '../hooks/useApp';
 
 const AdminDashboard = () => {
   const { 
-    allUsers, contractors, agents, logout, 
+    allUsers, logout, 
     adminStats, toggleUserStatus, deleteUserAction, approveContractorAction,
     allInquiries, updateInquiryStatusAction, appointContractorAction
   } = useApp();
@@ -90,7 +90,7 @@ const AdminDashboard = () => {
       {/* Admin Sidebar */}
       <aside className="admin-sidebar" style={{ width: 'clamp(260px, 20vw, 300px)', background: 'var(--ink)', color: '#fff', position: 'sticky', top: 0, height: '100vh', display: 'flex', flexDirection: 'column' }}>
         <div className="logo" style={{ padding: '30px 40px', marginBottom: '40px' }}>
-            <div className="logo-mark" style={{ width: '32px', height: '32px', fontSize: '16px' }}>B</div>
+            <div className="logo-mark" style={{ width: '32px', height: '32px', fontSize: '16px' }}>15</div>
             Admin<em>Control</em>
         </div>
 

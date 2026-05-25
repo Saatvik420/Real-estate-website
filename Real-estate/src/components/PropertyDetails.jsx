@@ -102,35 +102,6 @@ const PropertyDetails = () => {
               </div>
             </div>
 
-            {agent && (
-              <div className="pd-section">
-                <h3 className="pd-sec-title">Listing Agent</h3>
-                <div className="agent-card-landscape">
-                  <div className="acl-img" style={{ backgroundImage: `url('${agent.img}')` }}>
-                    <span className="acl-badge">VERIFIED AGENT</span>
-                    <div className="acl-company">{agent.company}</div>
-                  </div>
-                  <div className="acl-body">
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '10px' }}>
-                      <div>
-                        <div style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--ink)' }}>{agent.name}</div>
-                        <div style={{ fontSize: '0.9rem', color: 'var(--gold)', fontWeight: '700' }}>{agent.designation}</div>
-                      </div>
-                      <div style={{ textAlign: 'right' }}>
-                        <div style={{ fontSize: '1.1rem', fontWeight: '800', color: 'var(--green)' }}>★ {agent.rating}</div>
-                        <div style={{ fontSize: '0.75rem', color: 'var(--muted)', fontWeight: '700' }}>{agent.experience} Experience</div>
-                      </div>
-                    </div>
-                    <p style={{ fontSize: '0.9rem', color: 'var(--muted)', marginBottom: '20px', lineHeight: '1.5' }}>{agent.personalBio}</p>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginTop: 'auto' }}>
-                      <a href={`tel:${agent.contact}`} className="nav-btn-ghost" style={{ textAlign: 'center', textDecoration: 'none' }}>CALL AGENT</a>
-                      <a href={`mailto:${agent.email}`} className="nav-btn-solid" style={{ textAlign: 'center', textDecoration: 'none' }}>EMAIL AGENT</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
             <div className="pd-section">
               <h3 className="pd-sec-title">Image Gallery</h3>
               <div className="pd-gallery">

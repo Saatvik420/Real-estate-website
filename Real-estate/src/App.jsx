@@ -19,7 +19,6 @@ import SearchResults from './components/SearchResults';
 import PropertyDetails from './components/PropertyDetails';
 import FloatingCompareBar from './components/FloatingCompareBar';
 import RentalsView from './components/RentalsView';
-import AgentsView from './components/AgentsView';
 import ProjectsView from './components/ProjectsView';
 import PlotsView from './components/PlotsView';
 import AboutView from './components/AboutView';
@@ -77,7 +76,6 @@ function App() {
           <Route path="/details" element={<PropertyDetails />} />
           <Route path="/compare" element={<CompareProperties />} />
           <Route path="/rent" element={<RentalsView />} />
-          <Route path="/agents" element={<AgentsView />} />
           <Route path="/projects" element={<ProjectsView />} />
           <Route path="/plots" element={<PlotsView />} />
           <Route path="/insights" element={<Insights />} />

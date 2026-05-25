@@ -6,15 +6,13 @@ import LeadFormModal from './LeadFormModal';
 
 const PlotsView = () => {
   const { 
-    selectedCity, plots, setView, agents,
+    selectedCity, plots, setView,
     setSelectedProperty, comparisonList, setComparisonList
   } = useApp();
   const [filteredPlots, setFilteredPlots] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activePlot, setActivePlot] = useState(null);
-  const [modalMode, setModalMode] = useState('contact');
-  const [revealedNumbers, setRevealedNumbers] = useState({});
   const navigate = useNavigate();
 
   // Local filter state for sidebar
@@ -26,18 +24,12 @@ const PlotsView = () => {
 
   const plotCities = [
     { id: 'All', name: 'All Cities' },
-    { id: 'mumbai', name: 'Mumbai' },
-    { id: 'pune', name: 'Pune' },
-    { id: 'bengaluru', name: 'Bengaluru' },
-    { id: 'mysuru', name: 'Mysuru' },
-    { id: 'gurugram', name: 'Gurugram' },
-    { id: 'noida', name: 'Noida' },
-    { id: 'hyderabad', name: 'Hyderabad' },
-    { id: 'visakhapatnam', name: 'Visakhapatnam' },
-    { id: 'vijayawada', name: 'Vijayawada' },
-    { id: 'chennai', name: 'Chennai' },
     { id: 'jaipur', name: 'Jaipur' },
-    { id: 'kolkata', name: 'Kolkata' }
+    { id: 'khatu_shyam', name: 'Khatu Shyam' },
+    { id: 'noida', name: 'Noida' },
+    { id: 'greater_noida', name: 'Greater Noida' },
+    { id: 'dehradun', name: 'Dehradun' },
+    { id: 'haridwar', name: 'Haridwar' }
   ];
 
   useEffect(() => {
@@ -77,24 +69,14 @@ const PlotsView = () => {
     navigate('/details');
   };
 
-  const handleContactClick = (plot, mode) => {
-    if (mode === 'view_number' && revealedNumbers[plot.id]) {
-      alert(`Agent Number: +91 9XXXX XXXXX`);
-      return;
-    }
+  const handleContactClick = (plot) => {
     setActivePlot(plot);
-    setModalMode(mode);
     setIsModalOpen(true);
   };
 
   const handleLeadSuccess = () => {
     setIsModalOpen(false);
-    if (modalMode === 'view_number' && activePlot) {
-      setRevealedNumbers(prev => ({ ...prev, [activePlot.id]: true }));
-      alert(`Success! Agent Number: +91 9XXXX XXXXX`);
-    } else {
-      alert('Thank you! Our land specialist will contact you shortly.');
-    }
+    alert('Thank you! Our land specialist will contact you shortly.');
   };
 
   const clearFilters = () => {
@@ -124,7 +106,7 @@ const PlotsView = () => {
         </div>
 
         <div className="results-layout">
-          {/* Sidebar Filters - Matching Rent/Buy Pages */}
+          {/* Sidebar Filters */}
           <aside className="filters-sidebar">
             <div className="filter-header-row">
               <span className="filter-h" style={{ marginBottom: 0 }}>Filters</span>
@@ -196,7 +178,6 @@ const PlotsView = () => {
             ) : (
               <div className="rec-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 350px), 1fr))', gap: '24px' }}>
                 {filteredPlots.map(plot => {
-                  const agent = agents.find(a => a.id === plot.agentId);
                   const isComparing = comparisonList.includes(plot.id);
                   
                   return (
@@ -214,35 +195,6 @@ const PlotsView = () => {
                           <span className="pc-tag" style={{ background: 'var(--gold4)', color: 'var(--ink)' }}>{plot.area}</span>
                           <span className="pc-tag">{plot.status}</span>
                         </div>
-
-                        {agent && (
-                          <div style={{ marginTop: '20px', padding: 'clamp(1rem, 2vw, 1.5rem)', background: 'var(--ink2)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', color: '#fff' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '12px', flexWrap: 'wrap' }}>
-                              <img src={agent.img} alt={agent.name} style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--gold2)' }} />
-                              <div style={{ flex: 1, minWidth: '120px' }}>
-                                <div style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--gold2)' }}>{agent.name}</div>
-                                <div style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.6)' }}>{agent.company}</div>
-                              </div>
-                            </div>
-                            
-                            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                              <button 
-                                onClick={(e) => { e.stopPropagation(); handleContactClick(plot, 'contact'); }}
-                                className="pd-btn-primary"
-                                style={{ flex: 1, minWidth: '80px', padding: '8px', fontSize: '0.7rem' }}
-                              >
-                                Contact
-                              </button>
-                              <button 
-                                onClick={(e) => { e.stopPropagation(); handleContactClick(plot, 'view_number'); }}
-                                className="nav-btn-ghost"
-                                style={{ flex: 1, minWidth: '80px', padding: '8px', fontSize: '0.7rem', borderColor: 'var(--gold2)', color: 'var(--gold2)' }}
-                              >
-                                {revealedNumbers[plot.id] ? '+91 9XXXX XXXXX' : 'Number'}
-                              </button>
-                            </div>
-                          </div>
-                        )}
 
                         <div className="pc-footer">
                           <div className="pc-price">
@@ -281,8 +233,8 @@ const PlotsView = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onSuccess={handleLeadSuccess}
-        title={modalMode === 'contact' ? 'Enquire About Land' : 'Unlock Contact Details'}
-        subtitle={modalMode === 'contact' ? `Interested in ${activePlot?.title}?` : "Verify your details to view the land advisor's number."}
+        title="Enquire About Land"
+        subtitle={`Interested in ${activePlot?.title}?`}
       />
     </div>
   );

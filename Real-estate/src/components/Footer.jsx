@@ -43,7 +43,6 @@ const Footer = () => {
               <li><Link to="/rent" onClick={() => setView('rent')}>Premium Rentals</Link></li>
               <li><Link to="/plots" onClick={() => setView('plots')}>Estate Plots</Link></li>
               <li><Link to="/projects" onClick={() => setView('projects')}>New Launches</Link></li>
-              <li><Link to="/agents" onClick={() => setView('agents')}>Elite Agents</Link></li>
               <li><Link to="/insights" onClick={() => setView('insights')}>Market Intelligence</Link></li>
             </ul>
           </div>

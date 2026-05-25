@@ -5,32 +5,28 @@ import { apiService } from '../services/apiService';
 
 const SearchResults = () => {
   const { 
-    searchFilters, setSearchFilters, selectedCity,
-    comparisonList, setComparisonList, setSelectedProperty, setView 
+    selectedCity, searchFilters, setSearchFilters, 
+    setView, setSelectedProperty, comparisonList, setComparisonList 
   } = useApp();
   const [properties, setProperties] = useState([]);
-  const [agents, setAgents] = useState({});
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchResults = async () => {
       setLoading(true);
-      const res = await apiService.getProperties({ ...searchFilters, cityId: selectedCity });
+      const res = await apiService.getProperties({
+        cityId: selectedCity,
+        ...searchFilters
+      });
       if (res.success) {
           setProperties(res.data);
-          
-          const agentRes = await apiService.getAgents();
-          if (agentRes.success) {
-              const agentMap = {};
-              agentRes.data.forEach(a => agentMap[a.id] = a);
-              setAgents(agentMap);
-          }
       }
       setLoading(false);
     };
     fetchResults();
-  }, [searchFilters, selectedCity]);
+    window.scrollTo(0, 0);
+  }, [selectedCity, searchFilters]);
 
   const handlePropertyClick = (id) => {
     setSelectedProperty(id);
@@ -38,81 +34,110 @@ const SearchResults = () => {
     navigate('/details');
   };
 
+  const clearFilters = () => {
+    setSearchFilters({
+      type: 'Any Type',
+      budget: 'Any Budget',
+      bhk: 'Any BHK',
+      status: 'Any Status'
+    });
+  };
+
+  if (loading) {
+    return (
+      <div className="section" style={{ textAlign: 'center', padding: '100px 0' }}>
+        <div className="loader-dots">
+          <span></span><span></span><span></span>
+        </div>
+        <h2 style={{ marginTop: '20px', color: 'var(--muted)' }}>Scanning the market for excellence...</h2>
+      </div>
+    );
+  }
+
   return (
-    <div className="section-full bg-main reveal" style={{ minHeight: '100vh', paddingTop: '40px' }}>
+    <div className="section-full rec-bg reveal" style={{ minHeight: '80vh' }}>
       <div className="section-inner">
-        <div className="results-top-bar">
-          <div className="results-count">
-            Found {properties.length} Exclusive Properties in {selectedCity}
+        <div className="sec-header">
+          <div>
+            <div className="eyebrow" onClick={() => setView('home')} style={{ cursor: 'pointer' }}>← Back to Home</div>
+            <h2 className="sec-title">Premium <span>Search Results</span></h2>
+            <p className="sec-sub">Discover curated properties in <strong>{selectedCity === 'India' ? 'All India' : selectedCity}</strong></p>
           </div>
-          <div className="results-sort">
-            <label>Sort by: </label>
-            <select>
-              <option>Price (High to Low)</option>
-              <option>Price (Low to High)</option>
-              <option>Newest First</option>
-            </select>
-          </div>
+          {properties.length > 0 && (
+            <button className="nav-btn-ghost" onClick={clearFilters}>Clear Filters</button>
+          )}
         </div>
 
-        <div className="results-layout">
-          {/* Filters Sidebar */}
-          <aside className="filters-sidebar">
-            <div className="filter-header-row">
-              <span className="filter-h">Refine Search</span>
-              <button className="filter-clear-btn" onClick={() => setSearchFilters({})}>Clear All</button>
-            </div>
-
-            <div className="filter-sec">
-              <span className="filter-h-sm">Listing Type</span>
-              <select 
-                className="filter-select-box"
-                value={searchFilters.listingType || ''} 
-                onChange={(e) => setSearchFilters({...searchFilters, listingType: e.target.value})}
-              >
-                <option value="">All Types</option>
-                <option value="Buy">For Sale</option>
-                <option value="Rent">For Rent</option>
-                <option value="Plots">Land / Plots</option>
-              </select>
-            </div>
-
-            <div className="filter-sec">
-              <span className="filter-h-sm">Property Status</span>
-              <div className="filter-group">
-                {['Ready to Move', 'Under Construction', 'Verified'].map(status => (
-                  <label key={status} className="filter-opt">
+        <div className="results-layout" style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: '48px', alignItems: 'start' }}>
+          {/* Sidebar Filters */}
+          <aside className="filters-sidebar" style={{ background: '#fff', padding: '32px', borderRadius: '16px', border: '1px solid var(--cream3)', position: 'sticky', top: '100px' }}>
+            <div className="filter-sec" style={{ marginBottom: '32px' }}>
+              <span className="filter-h-sm" style={{ display: 'block', fontSize: '11px', fontWeight: '800', letterSpacing: '1px', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '16px' }}>Property Type</span>
+              <div className="filter-group" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                {['Any Type', 'Luxury Apartment', 'Independent Villa', 'Penthouse', 'Premium Plot'].map(type => (
+                  <label key={type} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13px', cursor: 'pointer', fontWeight: '600' }}>
                     <input 
-                      type="checkbox" 
-                      checked={searchFilters.status === status}
-                      onChange={() => setSearchFilters({...searchFilters, status: searchFilters.status === status ? '' : status})}
-                    /> {status}
+                      type="radio" 
+                      name="propType" 
+                      checked={searchFilters.type === type}
+                      onChange={() => setSearchFilters({...searchFilters, type})}
+                      style={{ accentColor: 'var(--gold)' }}
+                    />
+                    {type}
                   </label>
                 ))}
               </div>
             </div>
 
-            <button className="filter-apply-btn">Update Results</button>
+            <div className="filter-sec" style={{ marginBottom: '32px' }}>
+              <span className="filter-h-sm" style={{ display: 'block', fontSize: '11px', fontWeight: '800', letterSpacing: '1px', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '16px' }}>BHK Configuration</span>
+              <div className="filter-group" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                {['Any BHK', '2 BHK', '3 BHK', '4 BHK', '5+ BHK'].map(bhk => (
+                  <label key={bhk} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13px', cursor: 'pointer', fontWeight: '600' }}>
+                    <input 
+                      type="radio" 
+                      name="bhk" 
+                      checked={searchFilters.bhk === bhk}
+                      onChange={() => setSearchFilters({...searchFilters, bhk})}
+                      style={{ accentColor: 'var(--gold)' }}
+                    />
+                    {bhk}
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div className="filter-sec">
+              <span className="filter-h-sm" style={{ display: 'block', fontSize: '11px', fontWeight: '800', letterSpacing: '1px', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '16px' }}>Possession Status</span>
+              <div className="filter-group" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                {['Any Status', 'Ready to Move', 'Under Construction', 'New Launch'].map(status => (
+                  <label key={status} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13px', cursor: 'pointer', fontWeight: '600' }}>
+                    <input 
+                      type="radio" 
+                      name="status" 
+                      checked={searchFilters.status === status}
+                      onChange={() => setSearchFilters({...searchFilters, status})}
+                      style={{ accentColor: 'var(--gold)' }}
+                    />
+                    {status}
+                  </label>
+                ))}
+              </div>
+            </div>
           </aside>
 
-          {/* Main Results Grid */}
-          <main className="results-main">
-            {loading ? (
-              <div style={{ textAlign: 'center', padding: '100px 0' }}>
-                <div className="loader-dots"><span></span><span></span><span></span></div>
-                <p style={{ marginTop: '20px', color: 'var(--muted)', fontWeight: '700' }}>Curating your selection...</p>
-              </div>
-            ) : properties.length === 0 ? (
-              <div className="no-results-card">
-                <div className="no-res-icon">🏠</div>
-                <h3>No exact matches found</h3>
-                <p>We couldn't find properties matching your specific filters. Try expanding your search criteria.</p>
-                <button className="nav-btn-solid" onClick={() => setSearchFilters({})}>RESET FILTERS</button>
+          {/* Results Grid */}
+          <main>
+            {properties.length === 0 ? (
+              <div className="no-results" style={{ textAlign: 'center', padding: '100px 0', background: '#fff', borderRadius: '16px', border: '1px dotted var(--gold)' }}>
+                <div style={{ fontSize: '3rem', marginBottom: '20px' }}>🏙️</div>
+                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', marginBottom: '10px' }}>No Exclusive Properties Found</h3>
+                <p style={{ color: 'var(--muted)', marginBottom: '30px' }}>Try adjusting your filters or search for a different region.</p>
+                <button className="nav-btn-solid" onClick={clearFilters}>Reset All Filters</button>
               </div>
             ) : (
               <div className="rec-grid">
                 {properties.map(prop => {
-                  const agent = agents[prop.agentId];
                   return (
                     <div key={prop.id} className="prop-card" onClick={() => handlePropertyClick(prop.id)}>
                       <div className="pc-img" style={{ backgroundImage: `url('${prop.img}')`, height: '220px' }}>
@@ -121,12 +146,6 @@ const SearchResults = () => {
                       <div className="pc-body">
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                           <div className="pc-dev">{prop.developer}</div>
-                          {agent && (
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                              <img src={agent.img} alt={agent.name} style={{ width: '20px', height: '20px', borderRadius: '50%', objectFit: 'cover' }} />
-                              <span style={{ fontSize: '10px', fontWeight: '700', color: 'var(--muted)' }}>{agent.name.split(' ')[0]}</span>
-                            </div>
-                          )}
                         </div>
                         <div className="pc-name">{prop.title}</div>
                         <div className="pc-loc">📍 {prop.location}</div>

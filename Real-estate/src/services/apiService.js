@@ -202,19 +202,6 @@ export const apiService = {
     return { success: true, data };
   },
 
-  getAgents: async () => {
-    const res = await safeFetch(`${API_BASE_URL}/agents`);
-    if (res.success && res.data) return res;
-    return { success: true, data: localAgents };
-  },
-
-  getAgentById: async (id) => {
-    const res = await safeFetch(`${API_BASE_URL}/agents/${id}`);
-    if (res.success && res.data) return res;
-    const agent = localAgents.find(a => a.id === id);
-    return agent ? { success: true, data: agent } : { success: false, error: 'Agent not found' };
-  },
-
   // ── AUTH & USER METHODS ────────────────────────────────────────────────────
 
   login: async (email, password) => {

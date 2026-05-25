@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { AppContext } from './AppContext';
 import { apiService } from '../services/apiService';
 import { rentalProperties as initialRentals } from '../data/rentals';
-import { contractors as initialContractors } from '../data/contractors';
 import { companies as initialCompanies } from '../data/companies';
 import { agents as initialAgents } from '../data/agents';
 import { plots as initialPlots } from '../data/plots';
@@ -20,71 +19,22 @@ export const AppProvider = ({ children }) => {
   
   const [states, setStates] = useState(localStates);
   const [cities, setCities] = useState(localCities);
-  const [loading, setLoading] = useState(false);
-
-  // Authentication & Session
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null); 
-  const [authToken, setAuthToken] = useState(null);
-  const [allUsers, setAllUsers] = useState([]);
-
-  // Data Persistence
+  
   const [rentals, setRentals] = useState([]);
   const [contractors, setContractors] = useState([]);
   const [companies, setCompanies] = useState([]);
-  const [agents, setAgents] = useState([]);
   const [plots, setPlots] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  // ── AUTHENTICATION STATE ──────────────────────────────────────────────────
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem('token'));
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
+
+  // ── ADMIN STATE ───────────────────────────────────────────────────────────
+  const [allUsers, setAllUsers] = useState([]);
+  const [adminStats, setAdminStats] = useState({ totalGmv: '₹0', growth: '0%' });
   const [allInquiries, setAllInquiries] = useState([]);
-  const [wishlist, setWishlist] = useState([]);
-
-  // Admin Metrics
-  const [adminStats, setAdminStats] = useState({
-      totalGmv: '₹14,200 Cr', activeUsers: 0, pendingApprovals: 0, conversionRate: '0%', growth: '0%'
-  });
-
-  // ── DATA REFRESH ────────────────────────────────────────────────────────
-  const refreshData = useCallback(async (user) => {
-    if (!user) return;
-    
-    try {
-        // Fetch personal inquiries for any logged in user
-        const myInqRes = await apiService.getMyInquiries();
-        if (myInqRes.success) {
-            setAllInquiries(myInqRes.data || []);
-        }
-
-        // Fetch admin-specific data if applicable
-        if (user.role === 'ADMIN') {
-            const [inqRes, contRes, metricsRes, usersRes] = await Promise.all([
-                apiService.getInquiries(),
-                apiService.getContractors(),
-                apiService.getPlatformMetrics(),
-                apiService.getAllUsers()
-            ]);
-
-            if (inqRes.success) setAllInquiries(inqRes.data || []);
-            if (contRes.success) setContractors(contRes.data || []);
-            if (metricsRes.success) setAdminStats({ ...metricsRes.data });
-            if (usersRes.success) setAllUsers(usersRes.data || []);
-        }
-    } catch (err) {
-        console.error("Data refresh error:", err);
-    }
-  }, []);
-
-  // ── SESSION RECOVERY ──────────────────────────────────────────────────────
-  useEffect(() => {
-    const savedToken = localStorage.getItem('token');
-    const savedUser = JSON.parse(localStorage.getItem('user'));
-    const savedWishlist = JSON.parse(localStorage.getItem('be_wishlist')) || [];
-    if (savedToken && savedUser) {
-        setAuthToken(savedToken);
-        setCurrentUser(savedUser);
-        setIsLoggedIn(true);
-        refreshData(savedUser); // Fetch data for recovered session
-    }
-    setWishlist(savedWishlist);
-  }, [refreshData]);
 
   // ── INITIAL DATA BOOTSTRAP ────────────────────────────────────────────────
   useEffect(() => {
@@ -96,7 +46,6 @@ export const AppProvider = ({ children }) => {
 
           setRentals(initialRentals);
           setCompanies(initialCompanies);
-          setAgents(initialAgents);
           setPlots(initialPlots);
       } catch (err) {
           console.error("Bootstrap Error:", err);
@@ -121,118 +70,111 @@ export const AppProvider = ({ children }) => {
     syncCities();
   }, [selectedState]);
 
+  // ── REFRESH DATA ──────────────────────────────────────────────────────────
+  const refreshData = useCallback(async (user) => {
+    if (!user) return;
+    
+    try {
+        // Fetch personal inquiries for any logged in user
+        const myInqRes = await apiService.getMyInquiries();
+        if (myInqRes.success) setUser(prev => ({ ...prev, inquiries: myInqRes.data }));
+
+        if (user.role === 'ADMIN') {
+            const usersRes = await apiService.getAllUsers();
+            if (usersRes.success) setAllUsers(usersRes.data);
+
+            const inqRes = await apiService.getInquiries();
+            if (inqRes.success) setAllInquiries(inqRes.data);
+
+            const metricsRes = await apiService.getPlatformMetrics();
+            if (metricsRes.success) setAdminStats(metricsRes.data);
+            
+            const contRes = await apiService.getContractors();
+            if (contRes.success) setContractors(contRes.data);
+        }
+    } catch (err) {
+        console.error("Refresh Data Error:", err);
+    }
+  }, []);
+
   // ── AUTH ACTIONS ──────────────────────────────────────────────────────────
   const loginAction = async (email, password) => {
-    setLoading(true);
     const res = await apiService.login(email, password);
-    setLoading(false);
-    
     if (res.success) {
-        setIsLoggedIn(true);
-        setCurrentUser(res.user);
-        setAuthToken(res.token);
-        await refreshData(res.user); // Fetch data immediately after login
+      setToken(res.token);
+      setUser(res.user);
+      setIsLoggedIn(true);
+      refreshData(res.user);
     }
     return res;
   };
 
-  const logoutAction = useCallback(() => {
-    setIsLoggedIn(false);
-    setCurrentUser(null);
-    setAuthToken(null);
+  const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    setToken(null);
+    setUser(null);
+    setIsLoggedIn(false);
     setView('home');
-    window.location.href = '/'; // Force immediate redirect to homepage
-  }, []);
+  };
 
-  const registerAction = async (userData, role = 'USER') => {
-    setLoading(true);
-    const res = await apiService.register({ ...userData, role });
-    setLoading(false);
+  const registerAction = async (userData) => {
+    const res = await apiService.register(userData);
     if (res.success) {
-        setIsLoggedIn(true);
-        setCurrentUser(res.user);
-        setAuthToken(res.token);
-        await refreshData(res.user); // Fetch data immediately after registration
+      setToken(res.token);
+      setUser(res.user);
+      setIsLoggedIn(true);
+      refreshData(res.user);
     }
     return res;
   };
 
-  // ── BUSINESS ACTIONS ──────────────────────────────────────────────────────
-  const toggleWishlist = useCallback((propertyId) => {
-      setWishlist(prev => {
-          const updated = prev.includes(propertyId) 
-            ? prev.filter(id => id !== propertyId) 
-            : [...prev, propertyId];
-          localStorage.setItem('be_wishlist', JSON.stringify(updated));
-          return updated;
-      });
-  }, []);
-
-  const submitInquiryAction = useCallback(async (data) => {
-      const res = await apiService.submitInquiry(data);
-      if (res.success) {
-          setAllInquiries(prev => [res.data, ...prev]);
-          return true;
-      }
-      return false;
-  }, []);
-
-  const updateInquiryStatusAction = useCallback(async (id, status) => {
-      const res = await apiService.updateInquiryStatus(id, status);
-      if (res.success) {
-          setAllInquiries(prev => prev.map(i => i.id === id ? { ...i, status } : i));
-      }
-  }, []);
-
-  const appointContractorAction = useCallback(async (inquiryId, contractorId) => {
-      const res = await apiService.appointContractor(inquiryId, contractorId);
-      if (res.success) {
-          setAllInquiries(prev => prev.map(i => i.id === inquiryId ? res.data : i));
-          return true;
-      }
-      return false;
-  }, []);
-
-  // ── PROFILE ACTIONS ──────────────────────────────────────────────────────
-  const updateProfileAction = useCallback(async (data) => {
-      setLoading(true);
-      const res = await apiService.updateProfile(data);
-      if (res.success) {
-          setCurrentUser(res.data);
-          localStorage.setItem('user', JSON.stringify(res.data));
-      }
-      setLoading(false);
-      return res.success;
-  }, []);
+  const updateProfileAction = async (data) => {
+    const res = await apiService.updateProfile(data);
+    if (res.success) {
+        const updatedUser = { ...user, ...data };
+        setUser(updatedUser);
+        localStorage.setItem('user', JSON.stringify(updatedUser));
+    }
+    return res;
+  };
 
   // ── ADMIN ACTIONS ──────────────────────────────────────────────────────────
-  const deleteUserAction = useCallback(async (userId) => {
-    const res = await apiService.deleteUser(userId);
-    if (res.success) {
-        setAllUsers(prev => prev.filter(u => u.id !== userId));
-        return true;
-    }
-    return false;
-  }, []);
+  const toggleUserStatus = async (id) => {
+    // API call placeholder
+    setAllUsers(prev => prev.map(u => u.id === id ? { ...u, active: !u.active } : u));
+  };
 
-  const toggleUserStatus = useCallback(async (userId) => {
-    const res = await apiService.updateUserStatus(userId, 'Toggled');
-    if (res.success) {
-        // Refresh users list if needed
-    }
-  }, []);
+  const deleteUserAction = async (id) => {
+    // API call placeholder
+    setAllUsers(prev => prev.filter(u => u.id !== id));
+  };
 
-  const approveContractorAction = useCallback(async (contId) => {
-    const res = await apiService.approvePartner(contId);
-    if (res.success) {
-        setContractors(prev => prev.map(c => c.id === contId ? { ...c, status: 'Active' } : c));
-        return true;
-    }
-    return false;
-  }, []);
+  const approveContractorAction = async (id) => {
+    // API call placeholder
+    setAllUsers(prev => prev.map(u => u.id === id ? { ...u, role: 'CONTRACTOR' } : u));
+  };
 
+  // ── INQUIRY ACTIONS ────────────────────────────────────────────────────────
+  const submitInquiryAction = async (data) => {
+    const res = await apiService.submitInquiry(data);
+    if (res.success) refreshData(user);
+    return res;
+  };
+
+  const updateInquiryStatusAction = async (id, status) => {
+    const res = await apiService.updateInquiryStatus(id, status);
+    if (res.success) refreshData(user);
+    return res;
+  };
+
+  const appointContractorAction = async (inquiryId, contractorId) => {
+    const res = await apiService.appointContractor(inquiryId, contractorId);
+    if (res.success) refreshData(user);
+    return res;
+  };
+
+  // ── CONTEXT VALUE ──────────────────────────────────────────────────────────
   const value = useMemo(() => ({
     view, setView,
     selectedState, setSelectedState,
@@ -240,21 +182,17 @@ export const AppProvider = ({ children }) => {
     selectedProperty, setSelectedProperty,
     comparisonList, setComparisonList,
     searchFilters, setSearchFilters,
-    states, cities,
-    loading, setLoading,
-    rentals, contractors, companies, agents, plots,
-    isLoggedIn, currentUser, authToken,
-    login: loginAction, register: registerAction, logout: logoutAction,
-    allUsers, adminStats, allInquiries, wishlist, toggleWishlist,
-    submitInquiryAction, updateInquiryStatusAction, appointContractorAction,
-    deleteUserAction, toggleUserStatus, approveContractorAction, updateProfileAction
+    states, cities, loading, rentals, contractors, companies, plots,
+    user, isLoggedIn, loginAction, logout, registerAction, updateProfileAction,
+    allUsers, adminStats, allInquiries, toggleUserStatus, deleteUserAction, approveContractorAction,
+    submitInquiryAction, updateInquiryStatusAction, appointContractorAction
   }), [
     view, selectedState, selectedCity, selectedProperty, comparisonList, searchFilters,
-    states, cities, loading, rentals, contractors, companies, agents, plots,
-    isLoggedIn, currentUser, authToken, loginAction, registerAction, logoutAction,
-    allUsers, adminStats, allInquiries, wishlist, toggleWishlist,
+    states, cities, loading, rentals, contractors, companies, plots,
+    user, isLoggedIn, allUsers, adminStats, allInquiries,
+    loginAction, logout, registerAction, updateProfileAction,
     submitInquiryAction, updateInquiryStatusAction, appointContractorAction,
-    deleteUserAction, toggleUserStatus, approveContractorAction, updateProfileAction
+    deleteUserAction, toggleUserStatus, approveContractorAction
   ]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
