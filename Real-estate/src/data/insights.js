@@ -15,11 +15,11 @@ export const marketInsights = {
           "Rising infrastructure-led growth in Tier-2 and Tier-3 cities",
           "Growing investor preference for tangible and safer long-term assets"
         ],
-        extra: "Land has historically delivered strong returns in areas where infrastructure, highways, airports, industrial corridors, tourism, and urban expansion are taking place. Recent land transactions across India have also touched record levels, reflecting strong investor confidence in the sector."
+        extra: "Land has historically delivered strong returns in areas where infrastructure, highways, airports, industrial corridors, tourism, and urban expansion are taking place. As India develops new economic zones, expressways, smart cities, and industrial hubs, plotted developments are becoming one of the most attractive investment categories. Recent land transactions across India have also touched record levels, reflecting strong investor confidence in the sector."
       },
       {
         title: "How Safe Are Land and Plot Investments in India?",
-        content: "Land and plotted developments can be extremely rewarding investments when backed by proper research and due diligence. Key factors that make investments safer:",
+        content: "Land and plotted developments can be extremely rewarding investments when backed by proper research and due diligence. Key Factors That Make Investments Safer:",
         list: [
           "RERA-approved projects",
           "Verified land titles",
@@ -29,11 +29,11 @@ export const marketInsights = {
           "Clear legal documentation",
           "Proper zoning and land-use approvals"
         ],
-        extra: "Investors should always evaluate ownership history, encumbrance status, future development plans, connectivity and infrastructure pipeline, market demand and liquidity. Professional advisory and research-driven investment selection significantly reduce risks."
+        extra: "Investors should always evaluate: Ownership history, Encumbrance status, Future development plans, Connectivity and infrastructure pipeline, Market demand and liquidity. Professional advisory and research-driven investment selection significantly reduce risks and improve long-term returns."
       },
       {
         title: "Why NRIs Should Invest in Indian Real Estate",
-        content: "India has become one of the most attractive global investment destinations for NRIs because of its fast-growing economy, stable long-term growth outlook, and transparent regulations through RERA.",
+        content: "India has become one of the most attractive global investment destinations for NRIs because of its fast-growing economy, stable long-term growth outlook, strong infrastructure development, currency advantage, rising property appreciation, expanding urbanization, and transparent regulations through RERA.",
         list: [
           "Lower maintenance compared to apartments",
           "Strong long-term appreciation potential",
@@ -42,7 +42,21 @@ export const marketInsights = {
           "Increasing demand in emerging cities",
           "Future retirement or second-home planning"
         ],
-        extra: "Many NRIs are now actively investing in plotted developments near airports, expressways, tourism hubs, industrial corridors, and spiritual destinations where long-term growth visibility remains very strong."
+        extra: "Many NRIs are now actively investing in plotted developments near airports, expressways, tourism hubs, industrial corridors, and spiritual destinations where long-term growth visibility remains very strong. India’s rapidly evolving infrastructure ecosystem — including expressways, industrial corridors, airports, logistics parks, smart cities, and tourism projects — is expected to continue driving land appreciation across multiple states for the next decade."
+      },
+      {
+        title: "Why Land & Plot Investments Continue to Rise in India",
+        content: "India’s land and plotted development sector is benefiting from:",
+        list: [
+          "Rising urbanization",
+          "Infrastructure-led growth",
+          "Limited land supply",
+          "Growing NRI investments",
+          "Better transparency through RERA",
+          "Strong long-term appreciation potential",
+          "Increasing demand in Tier-2 and Tier-3 cities"
+        ],
+        extra: "For investors seeking long-term wealth creation, strategically selected land investments in infrastructure-backed locations continue to remain one of the most attractive opportunities in the Indian real estate sector."
       }
     ],
     bars: [
@@ -62,33 +76,61 @@ export const marketInsights = {
         subsections: [
           {
             name: "Jaipur",
-            content: "Jaipur continues to dominate Rajasthan’s plotted development market because of Ring road expansion, Metro connectivity, Smart City projects, and IT hubs. Areas such as Jagatpura, Ajmer Road, Tonk Road, and Ring Road corridors are witnessing significant appreciation."
+            content: "Jaipur continues to dominate Rajasthan’s plotted development market because of: Ring road expansion, Metro connectivity, Smart City projects, IT and education hubs, and Growing tourism and hospitality sector. Areas such as Jagatpura, Ajmer Road, Tonk Road, and Ring Road corridors are witnessing significant appreciation in land values."
           },
           {
             name: "Neemrana",
-            content: "Neemrana has emerged as a major industrial hotspot because of the Delhi-Mumbai Industrial Corridor (DMIC), Japanese industrial zone, and manufacturing growth. It offers excellent Delhi-NCR connectivity."
+            content: "Neemrana has emerged as a major industrial and investment hotspot because of: Delhi-Mumbai Industrial Corridor (DMIC), Japanese industrial zone, Manufacturing and logistics growth, and Excellent Delhi-NCR connectivity."
           }
         ]
       },
       {
-        title: "Khatu Shyam Ji – A Rapidly Emerging Spiritual Hub",
-        content: "Khatu Shyam Ji Temple and the surrounding Khatu–Ringas belt are witnessing strong real estate momentum driven by increasing tourist footfall and infrastructure upgrades under Swadesh Darshan 2.0.",
+        title: "Khatu Shyam Ji – A Rapidly Emerging Spiritual & Real Estate Hub",
+        content: "Traditionally known as one of India’s largest spiritual tourism centers, the region is now witnessing strong real estate momentum driven by increasing tourist footfall, infrastructure upgrades, hospitality demand, and township developments. Millions of devotees visit every year, creating continuous demand for:",
         list: [
-          "Land prices are still comparatively affordable",
-          "Religious tourism ensures year-round activity",
-          "Infrastructure development is increasing rapidly",
-          "Long-term appreciation potential is strong",
-          "Demand for hospitality and rental properties is rising"
+          "Hotels and hospitality projects",
+          "Commercial spaces",
+          "Residential townships",
+          "Farmhouses and second homes",
+          "Retail and rental infrastructure"
+        ],
+        extra: "The Rajasthan government is also actively working on the development of the Khatu Shyam Corridor under the Swadesh Darshan 2.0 scheme. Investors are particularly attracted because land prices are still comparatively affordable, religious tourism ensures year-round activity, infrastructure development is increasing rapidly, long-term appreciation potential is strong, and demand for hospitality and rental properties is rising. The Khatu–Palsana–Ringas corridor is increasingly being viewed as a long-term wealth creation zone."
+      },
+      {
+        title: "Delhi–Jaipur Highway (NH-8 / NH-48) – Rajasthan’s Growth Corridor",
+        content: "Stretching across key regions connecting Delhi-NCR and Rajasthan, the highway has transformed into a major hub for Industrial development, Warehousing and logistics, Commercial projects, Residential townships, Hospitality and tourism investments, and Large-scale plotted developments. Locations such as Neemrana, Behror, Shahpura, Kotputli, and Jaipur outskirts are witnessing substantial demand.",
+        list: [
+          "Excellent connectivity with Delhi-NCR and Jaipur",
+          "Industrial and commercial expansion",
+          "Increasing demand for plotted townships",
+          "Strong warehousing and logistics growth",
+          "Rising demand for hospitality projects",
+          "Future infrastructure-led appreciation",
+          "High investor confidence from domestic and NRI buyers"
+        ],
+        extra: "The presence of the Delhi-Mumbai Industrial Corridor (DMIC), Japanese industrial zones, logistics parks, manufacturing hubs, and improved expressway connectivity has significantly increased land demand and appreciation potential along this corridor."
+      },
+      {
+        title: "Major Growth Drivers",
+        list: [
+          "Delhi–Mumbai Industrial Corridor (DMIC)",
+          "Jaipur Smart City expansion",
+          "NH-8 / NH-48 development corridor",
+          "Khatu Shyam Ji spiritual tourism growth",
+          "Industrial and warehousing demand",
+          "Rising plotted township developments"
         ]
       },
       {
-        title: "Delhi–Jaipur Highway (NH-8 / NH-48) Corridor",
-        content: "Stretching across key regions connecting Delhi-NCR and Rajasthan, this highway has transformed into a major hub for industrial development, warehousing, and plotted developments.",
+        title: "Key Investment Hotspots",
         list: [
-          "Industrial and commercial expansion",
-          "Strong warehousing and logistics growth",
-          "Future infrastructure-led appreciation",
-          "High investor confidence from domestic and NRI buyers"
+          "Jaipur",
+          "Neemrana",
+          "Khatu Shyam Ji",
+          "Ringas",
+          "Ajmer Road Corridor",
+          "Udaipur",
+          "Jodhpur"
         ]
       }
     ],
@@ -98,19 +140,47 @@ export const marketInsights = {
       { loc: "Khatu Shyam Ji", val: "Emerging", pct: "75%", change: "↑ Spiritual Tourism", dir: "up" }
     ],
     trend: [110, 125, 145, 170, 195, 225, 320],
-    invTotal: "225 Index", invYoy: "2030 Proj: 320"
+    invTotal: "225 Index (2025)", invYoy: "2030 Proj: 320"
   },
   'uttar pradesh': {
     insightsTitle: "Uttar Pradesh: One of India’s Fastest Growing Real Estate Markets",
-    introduction: "Uttar Pradesh has transformed into a high-growth real estate destination driven by expressways, airports, industrial corridors, and religious tourism. UP’s real estate investments surged over 50% recently.",
+    introduction: "Uttar Pradesh has transformed into a high-growth real estate destination driven by expressways, airports, industrial corridors, religious tourism, and large-scale government investments. UP’s real estate investments surged over 50% recently, reflecting unprecedented market momentum.",
     sections: [
       {
-        title: "Noida and Greater Noida",
-        content: "Noida remains one of India’s strongest land investment destinations because of the upcoming Noida International Airport (Jewar Airport), metro expansion, and expressway connectivity. The airport-led growth is significantly increasing land values."
+        title: "Key Investment Cities in Uttar Pradesh",
+        subsections: [
+          {
+            name: "Noida and Greater Noida",
+            content: "Noida remains one of India’s strongest land investment destinations because of: Upcoming Noida International Airport (Jewar Airport), Metro expansion, IT and commercial growth, Expressway connectivity, and Strong demand for residential and commercial plots. The airport-led growth is significantly increasing land values in the Yamuna Expressway and Jewar region."
+          },
+          {
+            name: "Ayodhya",
+            content: "Ayodhya is witnessing extraordinary real estate growth after the Ram Mandir development, new airport, tourism infrastructure, and highway expansion. Property prices in prime locations have multiplied rapidly in recent years."
+          }
+        ]
       },
       {
-        title: "Ayodhya",
-        content: "Ayodhya is witnessing extraordinary growth after the Ram Mandir development, new airport, tourism infrastructure, and highway expansion. Property prices in prime locations have multiplied rapidly."
+        title: "Major Growth Drivers",
+        list: [
+          "Noida International Airport (Jewar)",
+          "Yamuna Expressway Industrial Development",
+          "Ganga Expressway",
+          "Religious tourism in Ayodhya & Varanasi",
+          "Smart city and metro expansion",
+          "Industrial and logistics growth"
+        ]
+      },
+      {
+        title: "Key Investment Hotspots",
+        list: [
+          "Noida",
+          "Greater Noida",
+          "Jewar",
+          "Ayodhya",
+          "Lucknow",
+          "Varanasi",
+          "Prayagraj"
+        ]
       }
     ],
     bars: [
@@ -119,19 +189,45 @@ export const marketInsights = {
       { loc: "Lucknow", val: "Strong", pct: "80%", change: "↑ Metro & Expansion", dir: "up" }
     ],
     trend: [112, 130, 155, 185, 230, 275, 400],
-    invTotal: "275 Index", invYoy: "2030 Proj: 400"
+    invTotal: "275 Index (2025)", invYoy: "2030 Proj: 400"
   },
   'uttarakhand': {
-    insightsTitle: "Lifestyle and Long-Term Appreciation Market",
-    introduction: "Uttarakhand is increasingly becoming a preferred destination for lifestyle investments, retirement homes, wellness tourism, and eco-tourism projects.",
+    insightsTitle: "Uttarakhand: Lifestyle and Long-Term Appreciation Market",
+    introduction: "Uttarakhand is increasingly becoming a preferred destination for lifestyle investments, retirement homes, eco-tourism projects, and premium land investments.",
     sections: [
       {
-        title: "Dehradun",
-        content: "Dehradun is among the fastest-growing Tier-2 destinations due to excellent connectivity with Delhi-NCR and rising demand for villas and plotted developments. Limited land supply supports long-term appreciation."
+        title: "Key Investment Cities in Uttarakhand",
+        subsections: [
+          {
+            name: "Dehradun",
+            content: "Dehradun is among the fastest-growing Tier-2 investment destinations due to: Excellent connectivity with Delhi-NCR, Educational institutions and healthcare infrastructure, and Rising demand for villas and plotted developments. Experts and local investors expect strong long-term appreciation in well-connected land parcels."
+          },
+          {
+            name: "Rishikesh",
+            content: "Rishikesh is attracting wellness tourism, hospitality investments, spiritual tourism, and luxury second-home buyers."
+          }
+        ]
       },
       {
-        title: "Rishikesh",
-        content: "Rishikesh is attracting wellness tourism, hospitality investments, spiritual tourism, and luxury second-home buyers."
+        title: "Major Growth Drivers",
+        list: [
+          "Growing demand for second homes",
+          "Tourism and hospitality expansion",
+          "Wellness and spiritual tourism",
+          "Better road and rail connectivity",
+          "Rising villa and plotted development projects"
+        ]
+      },
+      {
+        title: "Key Investment Hotspots",
+        list: [
+          "Dehradun",
+          "Rishikesh",
+          "Haridwar",
+          "Haldwani",
+          "Nainital outskirts"
+        ],
+        extra: "Limited land availability in premium hill and gateway cities is expected to support long-term appreciation."
       }
     ],
     bars: [
@@ -139,6 +235,6 @@ export const marketInsights = {
       { loc: "Rishikesh", val: "Emerging", pct: "75%", change: "↑ Wellness Tourism", dir: "up" }
     ],
     trend: [108, 120, 138, 160, 185, 210, 300],
-    invTotal: "210 Index", invYoy: "2030 Proj: 300"
+    invTotal: "210 Index (2025)", invYoy: "2030 Proj: 300"
   }
 };
