@@ -7,7 +7,6 @@ const Insights = () => {
   const { selectedCity, selectedState, setView } = useApp();
   const [data, setData] = useState(null);
   const [barsWidth, setBarsWidth] = useState([]);
-  const [rentalsWidth, setRentalsWidth] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
@@ -34,27 +33,23 @@ const Insights = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, [data]);
 
   useEffect(() => {
-    if (isVisible && data && data.bars && data.rentals) {
+    if (isVisible && data && data.bars) {
       setBarsWidth(data.bars.map(() => '0%'));
-      setRentalsWidth(data.rentals.map(() => '0%'));
-
       const timer = setTimeout(() => {
         setBarsWidth(data.bars.map(b => b.pct));
-        setRentalsWidth(data.rentals.map(r => r.w));
       }, 100);
-
       return () => clearTimeout(timer);
     }
   }, [data, isVisible]);
 
-  if (loading || !data || !data.bars || !data.rentals) return <div className="section" style={{ textAlign: 'center' }}><h3>Analyzing market data...</h3></div>;
+  if (loading || !data) return <div className="section" style={{ textAlign: 'center' }}><h3>Generating report...</h3></div>;
 
   const trendData = data.trend || [20, 40, 60, 80, 100];
   const maxVal = Math.max(...trendData);
@@ -84,194 +79,114 @@ const Insights = () => {
   const bgColors = ['#1b3022', '#2d4a3a', '#3e5c4a', '#8c6a4a', '#b08968', '#ddb892'];
 
   return (
-    <div className="insights-sec reveal" id="insights-section" ref={sectionRef}>
-      <div className="insights-inner">
-        <div className="sec-header anim-slide-in-left">
-          <div>
-            <div className="eyebrow" style={{ color: 'var(--gold)' }}>Strategic Intelligence</div>
-            <h2 className="sec-title" style={{ color: 'var(--ink)' }}>Market <span>Insights</span> for <span>{data.insightsTitle}</span></h2>
-          </div>
-          <Link className="view-all" to="/" onClick={() => setView('home')}>← BACK TO HOME</Link>
-        </div>
+    <div className="insights-report" ref={sectionRef} style={{ background: 'var(--bg-main)', color: 'var(--ink)', padding: '60px 20px', minHeight: '100vh' }}>
+      <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+        
+        {/* Header */}
+        <header style={{ marginBottom: '60px', textAlign: 'center' }}>
+          <div className="eyebrow" style={{ color: 'var(--gold)', fontWeight: 800, letterSpacing: '2px', marginBottom: '16px' }}>STRATEGIC INTELLIGENCE REPORT</div>
+          <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: '1.1', fontWeight: 900, marginBottom: '24px' }}>{data.insightsTitle}</h1>
+          <div style={{ width: '80px', height: '4px', background: 'var(--gold)', margin: '0 auto 40px' }}></div>
+          <Link to="/" onClick={() => setView('home')} style={{ color: 'var(--muted)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 700 }}>← RETURN TO DASHBOARD</Link>
+        </header>
 
-        <div className="insights-grid">
-          {/* Main Highlights Card */}
-          <div className="insight-box" style={{ gridColumn: 'span 2', background: 'var(--cream2)', border: 'none', opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)', transition: 'all 0.6s ease' }}>
-            <div className="pcc-head">
-              <div>
-                <div className="pcc-title" style={{ color: 'var(--ink)', fontSize: '1.2rem' }}>Strategic Market Highlights</div>
-                <div className="pcc-sub">Key takeaways from the latest sector analysis</div>
-              </div>
-              <div className="pcc-pill" style={{ background: 'var(--gold)', color: '#fff', border: 'none' }}>EXPERT VIEW</div>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginTop: '20px' }}>
-              {data.highlights?.map((hl, i) => (
-                <div key={i} style={{ display: 'flex', gap: '12px', opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateX(0)' : 'translateX(-10px)', transition: `all 0.5s ease ${0.2 + i * 0.1}s` }}>
-                  <div style={{ minWidth: '8px', height: '8px', borderRadius: '50%', background: 'var(--gold)', marginTop: '6px' }}></div>
-                  <p style={{ fontSize: '0.95rem', color: 'var(--ink)', lineHeight: '1.5', margin: 0 }}>{hl}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+        {/* Introduction */}
+        <section className="report-section anim-fade-in-up" style={{ marginBottom: '80px' }}>
+          <p style={{ fontSize: '1.25rem', lineHeight: '1.8', color: 'var(--ink)', marginBottom: '30px' }}>{data.introduction}</p>
+          {data.marketValuation && (
+             <div style={{ background: 'var(--cream2)', padding: '40px', borderRadius: '16px', borderLeft: '6px solid var(--gold)', marginBottom: '40px' }}>
+                <p style={{ fontSize: '1.1rem', margin: 0, fontStyle: 'italic', color: 'var(--ink)' }}>{data.marketValuation}</p>
+             </div>
+          )}
+        </section>
 
-          <div className="insight-box" style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)', transition: 'all 0.6s ease 0.1s' }}>
-            <div className="pcc-head">
-              <div>
-                <div className="pcc-title" style={{ color: 'var(--ink)' }}>Micromarket Benchmarking</div>
-                <div className="pcc-sub">Growth potential & key drivers across prime locations</div>
+        {/* Sections */}
+        {data.sections?.map((sec, idx) => (
+          <section key={idx} className="report-section anim-fade-in-up" style={{ marginBottom: '80px', opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(30px)', transition: `all 0.6s ease ${idx * 0.2}s` }}>
+            <h2 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '24px', color: 'var(--gold)' }}>{sec.title}</h2>
+            {sec.content && <p style={{ fontSize: '1.1rem', lineHeight: '1.7', marginBottom: '24px' }}>{sec.content}</p>}
+            
+            {sec.list && (
+              <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px', marginBottom: '24px' }}>
+                {sec.list.map((item, i) => (
+                  <li key={i} style={{ padding: '16px', background: '#fff', border: '1px solid var(--cream3)', borderRadius: '12px', fontSize: '0.95rem', display: 'flex', gap: '12px' }}>
+                    <span style={{ color: 'var(--gold)' }}>✦</span> {item}
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {sec.subsections?.map((sub, i) => (
+              <div key={i} style={{ marginBottom: '30px', paddingLeft: '20px', borderLeft: '2px solid var(--cream3)' }}>
+                <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '12px' }}>{sub.name}</h3>
+                <p style={{ fontSize: '1rem', lineHeight: '1.6' }}>{sub.content}</p>
               </div>
-              <div className="pcc-pill" style={{ background: 'rgba(189,168,113,0.1)', color: 'var(--gold)', borderColor: 'var(--gold)' }}>LIVE INDEX</div>
-            </div>
-            <div className="bar-row">
-              {data.bars.map((b, i) => (
-                <div key={i} className="bar-item">
-                  <div className="bar-loc" style={{ fontWeight: '600' }}>{b.loc}</div>
-                  <div className="bar-track" style={{ background: 'var(--cream3)', height: '24px', borderRadius: '12px', overflow: 'hidden' }}>
-                    <div className="bar-fill" style={{ width: barsWidth[i] || '0%', height: '100%', background: `linear-gradient(90deg, ${bgColors[i % bgColors.length]}, var(--gold))`, transition: `width ${0.8 + i * 0.2}s cubic-bezier(0.16, 1, 0.3, 1)`, display: 'flex', alignItems: 'center', paddingLeft: '12px', borderRadius: '12px', position: 'relative' }}>
-                       <span style={{ color: '#fff', fontSize: '11px', fontWeight: 'bold' }}>{b.change}</span>
+            ))}
+
+            {sec.extra && <p style={{ fontSize: '1.1rem', lineHeight: '1.7', color: 'var(--muted)' }}>{sec.extra}</p>}
+          </section>
+        ))}
+
+        {/* Charts Section */}
+        <section className="charts-report" style={{ marginTop: '100px', padding: '60px', background: 'var(--ink)', borderRadius: '24px', color: '#fff' }}>
+          <h2 style={{ textAlign: 'center', marginBottom: '60px', color: 'var(--gold2)' }}>Statistical Growth Projections</h2>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px' }}>
+            
+            {/* Bars */}
+            <div>
+              <h4 style={{ marginBottom: '30px', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)' }}>Market Benchmarking</h4>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                {data.bars.map((b, i) => (
+                  <div key={i}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.9rem' }}>
+                      <span style={{ fontWeight: 600 }}>{b.loc}</span>
+                      <span style={{ color: 'var(--gold2)' }}>{b.val}</span>
+                    </div>
+                    <div style={{ height: '8px', background: 'rgba(255,255,255,0.1)', borderRadius: '4px', overflow: 'hidden' }}>
+                      <div style={{ width: barsWidth[i] || '0%', height: '100%', background: 'var(--gold)', transition: `width ${1 + i * 0.2}s cubic-bezier(0.16, 1, 0.3, 1)` }}></div>
                     </div>
                   </div>
-                  <div className="bar-val" style={{ color: 'var(--ink)', fontSize: '12px', fontWeight: 'bold', marginTop: '4px' }}>{b.val} Potential</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="insight-box" style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)', transition: 'all 0.6s ease 0.2s' }}>
-            <div className="pcc-head">
-              <div>
-                <div className="pcc-title" style={{ color: 'var(--ink)' }}>Investment Drivers</div>
-                <div className="pcc-sub">Core thematic demand driving real estate capital</div>
+                ))}
               </div>
-              <div className="pcc-pill" style={{ background: 'rgba(27,48,34,0.1)', color: 'var(--ink)', borderColor: 'var(--ink)' }}>DEMAND</div>
             </div>
-            <div className="rental-list" style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              {data.rentals.map((r, i) => (
-                <div key={i} className="rental-row">
-                  <div className="rental-top" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
-                    <span style={{ fontWeight: '600', color: 'var(--ink)', fontSize: '14px' }}>{r.lbl}</span>
-                    <span className="yield" style={{ color: 'var(--gold)', fontWeight: 'bold', fontSize: '14px' }}>{r.yield}</span>
+
+            {/* Trend Chart */}
+            <div>
+               <h4 style={{ marginBottom: '30px', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)' }}>Market Growth Index (Base 2019=100)</h4>
+               <div style={{ position: 'relative', height: '150px' }}>
+                  <svg style={{ width: '100%', height: '150px' }} viewBox={`0 0 ${chartWidth} ${chartHeight}`} preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id="trend-grad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="var(--gold)" stopOpacity="0.5"/>
+                        <stop offset="100%" stopColor="var(--gold)" stopOpacity="0"/>
+                      </linearGradient>
+                    </defs>
+                    <path d={areaD} fill="url(#trend-grad)" style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 1s ease 0.5s' }} />
+                    <path d={pathD} fill="none" stroke="var(--gold2)" strokeWidth="3" style={{ strokeDasharray: 1000, strokeDashoffset: isVisible ? 0 : 1000, transition: 'stroke-dashoffset 2s ease' }} />
+                  </svg>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px', fontSize: '10px', color: 'rgba(255,255,255,0.4)' }}>
+                    <span>2020</span><span>2022</span><span>2024</span><span>2025</span><span style={{ color: 'var(--gold2)' }}>2030(P)</span>
                   </div>
-                  <div className="rental-bar-bg" style={{ background: 'var(--cream3)', height: '6px', borderRadius: '3px', overflow: 'hidden' }}>
-                    <div className="rental-bar-fill" style={{ width: rentalsWidth[i] || '0%', height: '100%', background: 'var(--ink)', transition: `width ${0.8 + i * 0.3}s cubic-bezier(0.16, 1, 0.3, 1)` }}></div>
-                  </div>
-                </div>
-              ))}
+               </div>
             </div>
           </div>
 
-          <div className="insight-box" style={{ gridColumn: 'span 2', opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)', transition: 'all 0.6s ease 0.3s' }}>
-            <div className="pcc-head">
-              <div>
-                <div className="pcc-title" style={{ color: 'var(--ink)' }}>Real Estate Growth Index</div>
-                <div className="pcc-sub">Historical growth trajectory and projections till 2030 (Base 2019=100)</div>
-              </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '30px', marginTop: '80px', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '40px' }}>
+            <div>
+              <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--gold2)' }}>{data.invTotal}</div>
+              <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginTop: '8px' }}>Market Valuation</div>
             </div>
-            <div className="trend-container" style={{ position: 'relative', height: '180px', marginTop: '30px' }}>
-              <div className="trend-labels-y" style={{ position: 'absolute', left: 0, top: 0, bottom: '30px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', fontSize: '10px', color: 'var(--muted)', width: '30px' }}>
-                <span>400</span><span>300</span><span>200</span><span>100</span><span>0</span>
-              </div>
-              <svg className="trend-chart-svg" preserveAspectRatio="none" style={{ width: 'calc(100% - 40px)', height: '150px', marginLeft: '40px' }} viewBox={`0 0 ${chartWidth} ${chartHeight}`}>
-                <defs>
-                  <linearGradient id="trend-grad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="var(--gold)" stopOpacity="0.5"/>
-                    <stop offset="100%" stopColor="var(--gold)" stopOpacity="0.05"/>
-                  </linearGradient>
-                </defs>
-                {[0, 1, 2, 3, 4].map(i => (
-                  <line key={i} className="trend-grid-line" x1="0" y1={(chartHeight / 4) * i} x2={chartWidth} y2={(chartHeight / 4) * i} stroke="var(--cream3)" strokeDasharray="4 4" />
-                ))}
-                
-                {/* Reveal Animation for Area and Path */}
-                <g style={{ strokeDasharray: 2000, strokeDashoffset: isVisible ? 0 : 2000, transition: 'stroke-dashoffset 2.5s cubic-bezier(0.22, 1, 0.36, 1)' }}>
-                   <path className="trend-area" d={areaD} fill="url(#trend-grad)" style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 1s ease 1s' }} />
-                   <path className="trend-line" d={pathD} fill="none" stroke="var(--gold)" strokeWidth="3" />
-                </g>
-
-                {points.map((p, i) => (
-                  <circle key={i} cx={p.x} cy={p.y} r="5" fill="#fff" stroke="var(--gold)" strokeWidth="2" style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'scale(1)' : 'scale(0)', transition: `all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) ${0.5 + (i * 0.2)}s`, transformOrigin: `${p.x}px ${p.y}px` }} />
-                ))}
-              </svg>
-              <div className="trend-labels-x" style={{ display: 'flex', justifyContent: 'space-between', marginLeft: '40px', marginTop: '10px', fontSize: '11px', color: 'var(--ink)', fontWeight: '600' }}>
-                <span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span style={{ color: 'var(--gold)' }}>2030(P)</span>
-              </div>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '10px', gap: '16px', fontSize: '11px', fontWeight: '600' }}>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><div style={{ width: '10px', height: '10px', background: 'var(--gold)', borderRadius: '50%' }}></div> Index Value</span>
+            <div>
+              <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--gold2)' }}>{data.invYoy}</div>
+              <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginTop: '8px' }}>Compound Growth</div>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div className="inventory-grid" style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(30px)', transition: 'all 0.6s ease 0.4s', marginTop: '48px', background: 'var(--ink)', padding: '40px', borderRadius: '12px', position: 'relative', overflow: 'hidden' }}>
-          <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '40%', background: 'radial-gradient(circle at 100% 50%, rgba(189,168,113,0.15), transparent)', pointerEvents: 'none' }}></div>
-          <div className="inv-stat">
-            <div className="inv-num" style={{ color: 'var(--gold2)' }}>{data.invTotal || '10,000+'}</div>
-            <div className="inv-lbl" style={{ color: 'rgba(255,255,255,0.6)' }}>Total Market Size</div>
-          </div>
-          <div className="inv-stat">
-            <div className="inv-num" style={{ color: 'var(--gold2)' }}>{data.invYoy || 'CAGR 8-10%'}</div>
-            <div className="inv-lbl" style={{ color: 'rgba(255,255,255,0.6)' }}>Projected Growth</div>
-          </div>
-          <div className="inv-stat">
-            <div className="inv-num" style={{ color: 'var(--gold2)' }}>High</div>
-            <div className="inv-lbl" style={{ color: 'rgba(255,255,255,0.6)' }}>Infrastructure Impact</div>
-          </div>
-          <div className="inv-stat">
-            <div className="inv-num" style={{ color: 'var(--gold2)' }}>RERA</div>
-            <div className="inv-lbl" style={{ color: 'rgba(255,255,255,0.6)' }}>Approved Projects</div>
-          </div>
-        </div>
-
-        {/* Detailed Analysis Cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px', marginTop: '60px' }}>
-          {data.detailedAnalysis?.whyPlots && (
-            <div className="insight-box" style={{ background: '#fff', border: '1px solid var(--cream3)', opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)', transition: 'all 0.6s ease 0.6s' }}>
-              <h3 style={{ color: 'var(--ink)', borderBottom: '2px solid var(--gold)', paddingBottom: '10px', display: 'inline-block' }}>Growth Hotspots & Drivers</h3>
-              <ul style={{ listStyle: 'none', padding: 0, marginTop: '20px' }}>
-                {data.detailedAnalysis.whyPlots.map((item, idx) => (
-                  <li key={idx} style={{ marginBottom: '12px', paddingLeft: '24px', position: 'relative', color: 'var(--muted)', fontSize: '0.9rem' }}>
-                    <span style={{ position: 'absolute', left: 0, color: 'var(--gold)' }}>✦</span> {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-          
-          {data.detailedAnalysis?.nriAdvantages && (
-            <div className="insight-box" style={{ background: '#fff', border: '1px solid var(--cream3)', opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)', transition: 'all 0.6s ease 0.7s' }}>
-              <h3 style={{ color: 'var(--ink)', borderBottom: '2px solid var(--gold)', paddingBottom: '10px', display: 'inline-block' }}>NRI Investment Edge</h3>
-              <ul style={{ listStyle: 'none', padding: 0, marginTop: '20px' }}>
-                {data.detailedAnalysis.nriAdvantages.map((item, idx) => (
-                  <li key={idx} style={{ marginBottom: '12px', paddingLeft: '24px', position: 'relative', color: 'var(--muted)', fontSize: '0.9rem' }}>
-                    <span style={{ position: 'absolute', left: 0, color: 'var(--gold)' }}>✓</span> {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {data.detailedAnalysis?.hotspots && (
-            <div className="insight-box" style={{ background: '#fff', border: '1px solid var(--cream3)', opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)', transition: 'all 0.6s ease 0.8s' }}>
-              <h3 style={{ color: 'var(--ink)', borderBottom: '2px solid var(--gold)', paddingBottom: '10px', display: 'inline-block' }}>Strategic Nodes</h3>
-              <ul style={{ listStyle: 'none', padding: 0, marginTop: '20px' }}>
-                {data.detailedAnalysis.hotspots.map((item, idx) => (
-                  <li key={idx} style={{ marginBottom: '12px', paddingLeft: '24px', position: 'relative', color: 'var(--muted)', fontSize: '0.9rem' }}>
-                    <span style={{ position: 'absolute', left: 0, color: 'var(--gold)' }}>📍</span> {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
-
-        <div className="trending-wrap" style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'scale(1)' : 'scale(0.95)', transition: 'all 0.6s ease 0.5s', marginTop: '40px', justifyContent: 'center' }}>
-          <span className="tr-label" style={{ color: 'var(--muted)' }}>High-Velocity Growth Nodes:</span>
-          {['Jaipur Ajmer Rd', 'Noida Jewar', 'Neemrana DMIC', 'Ayodhya', 'Dehradun Hills', 'Khatu Shyam Ji'].map((pocket, idx) => (
-            <div key={idx} className="tr-chip" style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(10px)', transition: `all 0.4s ease ${0.6 + idx * 0.1}s`, background: 'var(--ink)', border: '1px solid rgba(189,168,113,0.3)', color: 'var(--gold2)' }}>
-              📍 {pocket}
-            </div>
-          ))}
-        </div>
+        <footer style={{ marginTop: '100px', textAlign: 'center', borderTop: '1px solid var(--cream3)', paddingTop: '40px' }}>
+          <p style={{ color: 'var(--muted)', fontSize: '0.9rem' }}>© 2026 Bharat Estates Market Research Division. All rights reserved.</p>
+        </footer>
       </div>
     </div>
   );
