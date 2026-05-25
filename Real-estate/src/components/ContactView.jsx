@@ -45,7 +45,7 @@ const ContactView = () => {
                         </div>
                         <div>
                             <div style={{ fontWeight: 800, color: 'var(--gold2)', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '1px', marginBottom: '5px' }}>Mobile</div>
-                            <p style={{ opacity: 0.8, fontSize: '0.95rem' }}>+91 99109 11650</p>
+                            <p style={{ opacity: 0.8, fontSize: '0.95rem' }}>+91 96933 50546</p>
                         </div>
                         <div>
                             <div style={{ fontWeight: 800, color: 'var(--gold2)', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '1px', marginBottom: '5px' }}>Email</div>
@@ -90,7 +90,7 @@ const ContactView = () => {
                                 <label>Phone Number *</label>
                                 <input 
                                     type="tel" 
-                                    placeholder="+91 99109 11650" 
+                                    placeholder="+91 96933 50546" 
                                     required 
                                     style={{ background: 'var(--bg-main)', color: 'var(--ink)', borderColor: 'var(--cream3)' }} 
                                     value={formData.phone}

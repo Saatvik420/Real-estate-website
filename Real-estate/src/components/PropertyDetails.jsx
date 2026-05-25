@@ -115,7 +115,7 @@ const PropertyDetails = () => {
             </form>
             <div className="pd-contact-footer">
               <span>Direct Concierge</span>
-              <a href="tel:+919910911650">+91 99109 11650</a>
+              <a href="tel:+919693350546">+91 96933 50546</a>
             </div>
           </aside>
         </div>

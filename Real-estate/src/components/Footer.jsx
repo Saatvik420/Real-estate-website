@@ -72,7 +72,7 @@ const Footer = () => {
               
               <h4 style={{ color: 'var(--gold2)', fontSize: '14px', marginBottom: '8px' }}>Contact Us</h4>
               <span style={{ display: 'block', marginBottom: '4px' }}>Office 705, 7th Floor, Vishal Tower, Janakpuri District Centre, New Delhi - 110058</span>
-              <a href="tel:+919910911650" style={{ display: 'block', marginBottom: '4px' }}>📞 +91 99109 11650 (Advisory)</a>
+              <a href="tel:+919693350546" style={{ display: 'block', marginBottom: '4px' }}>📞 +91 96933 50546 (Advisory)</a>
               <a href="mailto:one5realtysolutions@gmail.com" style={{ display: 'block' }}>✉️ one5realtysolutions@gmail.com</a>
             </div>
           </div>

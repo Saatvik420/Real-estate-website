@@ -2,9 +2,9 @@ import React from 'react';
 
 const WhatsAppButton = () => {
   // REPLACE THIS with your actual business WhatsApp number (with country code, no + or spaces)
-  const phoneNumber = "91XXXXXXXXXX"; 
+  const phoneNumber = "919693350546"; 
   const message = "Hello One5 Realty, I'm interested in exploring premium property opportunities. Could you please assist me?";
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
 
   return (
     <a 
