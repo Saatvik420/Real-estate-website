@@ -18,7 +18,7 @@ const PlotsView = () => {
   // Local filter state for sidebar
   const [filters, setFilters] = useState({
     cityId: selectedCity === 'India' ? 'All' : selectedCity.toLowerCase(),
-    zone: 'Any Zone',
+    type: 'Any Type',
     priceRange: 'Any Price'
   });
 
@@ -42,16 +42,14 @@ const PlotsView = () => {
     const fetchPlots = async () => {
       setLoading(true);
       const res = await apiService.getProperties({
-        cityId: selectedCity,
-        listingType: 'Plots / Land'
+        cityId: filters.cityId === 'All' ? 'India' : filters.cityId,
+        listingType: 'Plots / Land',
+        type: filters.type
       });
       
       if (res.success) {
         let results = [...res.data];
         
-        if (filters.zone !== 'Any Zone') {
-          results = results.filter(p => p.zone === filters.zone);
-        }
         if (filters.priceRange !== 'Any Price') {
           if (filters.priceRange === 'Below ₹ 1 Cr') {
             results = results.filter(p => p.price < 10000000);
@@ -86,7 +84,7 @@ const PlotsView = () => {
   };
 
   const clearFilters = () => {
-    setFilters({ cityId: 'All', zone: 'Any Zone', priceRange: 'Any Price' });
+    setFilters({ cityId: 'All', type: 'Any Type', priceRange: 'Any Price' });
   };
 
   if (loading) {
@@ -135,15 +133,15 @@ const PlotsView = () => {
             </div>
 
             <div className="filter-sec">
-              <span className="filter-h-sm">Land Zone</span>
+              <span className="filter-h-sm">Land Category</span>
               <div className="filter-group">
-                {['Any Zone', 'Residential', 'Commercial', 'Agricultural', 'Industrial'].map(z => (
+                {['Any Type', 'Residential', 'Commercial', 'Agriculture', 'Industrial'].map(z => (
                   <label key={z} className="filter-opt">
                     <input 
                       type="radio" 
-                      name="zone" 
-                      checked={filters.zone === z}
-                      onChange={() => setFilters({...filters, zone: z})}
+                      name="type" 
+                      checked={filters.type === z}
+                      onChange={() => setFilters({...filters, type: z})}
                     />
                     {z}
                   </label>
@@ -189,7 +187,7 @@ const PlotsView = () => {
                   return (
                     <div key={plot.id} className="prop-card" onClick={() => handlePropertyClick(plot.id)}>
                       <div className="pc-img" style={{ backgroundImage: `url('${plot.img}')` }}>
-                        <span className="pc-status status-nl">{plot.zone}</span>
+                        <span className="pc-status status-nl">{plot.type}</span>
                         <div className="pc-save" onClick={(e) => e.stopPropagation()}>♡</div>
                       </div>
                       <div className="pc-body">

@@ -77,7 +77,7 @@ const getMergedLocalData = () => {
     }));
     const normalizedPlots = localPlots.map(p => ({ 
         ...p, 
-        listingType: p.listingType || 'Plots' 
+        listingType: p.listingType || 'Plots / Land' 
     }));
     
     // Extract projects from companies

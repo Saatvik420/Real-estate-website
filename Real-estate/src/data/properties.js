@@ -171,5 +171,47 @@ export const properties = [
     status: 'Ready to Move', 
     tags: ['Forest Front', 'Eco-Luxury', '6 BHK'], 
     img: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80'
+  },
+  { 
+    id: 'up_p5', 
+    cityId: 'vrindavan', 
+    type: 'Luxury Apartment', 
+    title: 'Radha Rani Mansions', 
+    price: 7500000, 
+    priceStr: '₹75 L', 
+    area: '1600 sqft', 
+    location: 'Raman Reti', 
+    developer: 'Bhakti Homes', 
+    status: 'Under Construction', 
+    tags: ['Temple View', '3 BHK'], 
+    img: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80'
+  },
+  { 
+    id: 'rj_p5', 
+    cityId: 'jaipur', 
+    type: 'Independent Villa', 
+    title: 'The Amber Estate', 
+    price: 48000000, 
+    priceStr: '₹4.8 Cr', 
+    area: '5200 sqft', 
+    location: 'Vaishali Nagar', 
+    developer: 'Mahima Group', 
+    status: 'Ready to Move', 
+    tags: ['Vaishali Nagar', 'Private Gym', '5 BHK'], 
+    img: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80'
+  },
+  { 
+    id: 'up_p6', 
+    cityId: 'ayodhya', 
+    type: 'Luxury Apartment', 
+    title: 'Saryu Riverside Heights', 
+    price: 11000000, 
+    priceStr: '₹1.1 Cr', 
+    area: '2100 sqft', 
+    location: 'New Ayodhya', 
+    developer: 'UP Awas Vikas', 
+    status: 'New Launch', 
+    tags: ['River View', 'Smart Home', '3 BHK'], 
+    img: 'https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?w=600&q=80'
   }
 ];
