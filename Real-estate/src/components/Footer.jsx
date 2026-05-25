@@ -25,11 +25,9 @@ const Footer = () => {
               </p>
               
               <h4 style={{ color: 'var(--gold2)', fontSize: '14px', marginBottom: '8px' }}>Contact Us</h4>
-              <span style={{ display: 'block', marginBottom: '4px' }}>Corporate HQ: 15th Floor, The Capital, BKC, Mumbai, Maharashtra 400051</span>
-              <span style={{ display: 'block', marginBottom: '4px' }}>Regional Office: Cyber City, Phase 2, Gurugram, Haryana</span>
-              <a href="tel:+919876543210" style={{ display: 'block', marginBottom: '4px' }}>📞 +91 98765 43210 (Sales)</a>
-              <a href="tel:+919876543211" style={{ display: 'block', marginBottom: '4px' }}>📞 +91 98765 43211 (Support)</a>
-              <a href="mailto:concierge@one5realty.com" style={{ display: 'block' }}>✉️ concierge@one5realty.com</a>
+              <span style={{ display: 'block', marginBottom: '4px' }}>Office 705, 7th Floor, Vishal Tower, Janakpuri District Centre, New Delhi - 110058</span>
+              <a href="tel:+919910911650" style={{ display: 'block', marginBottom: '4px' }}>📞 +91 99109 11650 (Advisory)</a>
+              <a href="mailto:one5realtysolutions@gmail.com" style={{ display: 'block' }}>✉️ one5realtysolutions@gmail.com</a>
             </div>
           </div>
 

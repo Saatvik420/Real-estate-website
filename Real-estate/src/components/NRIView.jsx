@@ -123,11 +123,11 @@ const NRIView = () => {
           <div style={{ display: 'flex', justifyContent: 'center', gap: '40px', flexWrap: 'wrap' }}>
              <div style={{ textAlign: 'left' }}>
                 <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--gold)', textTransform: 'uppercase', marginBottom: '5px' }}>Email Us</div>
-                <div style={{ fontSize: '1.1rem', fontWeight: 700 }}>nri.support@one5realty.com</div>
+                <div style={{ fontSize: '1.1rem', fontWeight: 700 }}>one5realtysolutions@gmail.com</div>
              </div>
              <div style={{ textAlign: 'left' }}>
-                <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--gold)', textTransform: 'uppercase', marginBottom: '5px' }}>WhatsApp (Intl)</div>
-                <div style={{ fontSize: '1.1rem', fontWeight: 700 }}>+91 999 999 9999</div>
+                <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--gold)', textTransform: 'uppercase', marginBottom: '5px' }}>Direct Support</div>
+                <div style={{ fontSize: '1.1rem', fontWeight: 700 }}>+91 99109 11650</div>
              </div>
           </div>
         </div>
