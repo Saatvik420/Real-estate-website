@@ -85,6 +85,7 @@ function App() {
           <Route path="/contact" element={<ContactView />} />
           <Route path="/press" element={<PressView />} />
           <Route path="/support" element={<SupportView />} />
+          <Route path="/nri-corner" element={<AboutView />} /> {/* Placeholder until dedicated NRI view is created */}
           <Route path="/partner" element={<PartnerView />} />
           <Route path="/auth" element={<AuthView />} />
           <Route path="/partner-auth" element={<PartnerAuthView />} />

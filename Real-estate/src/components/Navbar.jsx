@@ -41,25 +41,6 @@ const Navbar = () => {
       </div>
 
       <div className={`nav-center ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
-        <Link className="nav-link" to="/results" onClick={() => {
-          setView('results');
-          setSearchFilters({ listingType: 'Buy', type: 'Any Type', budget: 'Any Budget', bhk: 'Any BHK', status: 'Any Status' });
-          closeMobileMenu();
-        }}>Buy</Link>
-        <Link className="nav-link" to="/rent" onClick={() => {
-          setView('rent');
-          setSearchFilters({ listingType: 'Rent', type: 'Any Type', budget: 'Any Budget', bhk: 'Any BHK', status: 'Any Status' });
-          closeMobileMenu();
-        }}>Rent</Link>
-        <Link className="nav-link" to="/plots" onClick={() => {
-          setView('plots');
-          setSearchFilters({ listingType: 'Plots / Land', type: 'Any Type', budget: 'Any Budget', bhk: 'Any BHK', status: 'Any Status' });
-          closeMobileMenu();
-        }}>Plot/Land</Link>
-        <Link className="nav-link" to="/agents" onClick={() => { setView('agents'); closeMobileMenu(); }}>Agents</Link>
-        <Link className="nav-link" to="/projects" onClick={() => { setView('projects'); closeMobileMenu(); }}>Projects</Link>
-        <Link className="nav-link" to="/insights" onClick={() => { setView('insights'); closeMobileMenu(); }}>Insights</Link>
-        
         <div className={`professional-dropdown ${activeDropdown === 'corporate' ? 'active' : ''}`} style={{ position: 'relative' }}>
           <span className="nav-link" onClick={(e) => toggleDropdown('corporate', e)} style={{ cursor: 'pointer' }}>Corporate ▾</span>
           <div className="dropdown-menu">
@@ -69,6 +50,65 @@ const Navbar = () => {
             <Link className="nav-link" to="/support" onClick={() => { setView('support'); closeMobileMenu(); }}>Support</Link>
           </div>
         </div>
+
+        <Link className="nav-link" to="/insights" onClick={() => { setView('insights'); closeMobileMenu(); }}>Insights</Link>
+        <Link className="nav-link" to="/projects" onClick={() => { setView('projects'); closeMobileMenu(); }}>Projects</Link>
+        
+        <div className={`professional-dropdown ${activeDropdown === 'state-city' ? 'active' : ''}`} style={{ position: 'relative' }}>
+          <span className="nav-link" onClick={(e) => toggleDropdown('state-city', e)} style={{ cursor: 'pointer' }}>State / City ▾</span>
+          <div className="dropdown-menu">
+            <div className="nested-dropdown">
+              <span className="nav-link">Rajasthan <span style={{ fontSize: '10px' }}>▶</span></span>
+              <div className="nested-menu">
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Khatu Shyam'); closeMobileMenu(); }}>Khatu Shyam</Link>
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Paota'); closeMobileMenu(); }}>Paota</Link>
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Behror'); closeMobileMenu(); }}>Behror</Link>
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Neemrana'); closeMobileMenu(); }}>Neemrana</Link>
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Jaipur'); closeMobileMenu(); }}>Jaipur</Link>
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Ajmer Road'); closeMobileMenu(); }}>Ajmer Road</Link>
+              </div>
+            </div>
+            <div className="nested-dropdown">
+              <span className="nav-link">U.P. <span style={{ fontSize: '10px' }}>▶</span></span>
+              <div className="nested-menu">
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Noida'); closeMobileMenu(); }}>Noida</Link>
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Greater Noida'); closeMobileMenu(); }}>Greater Noida</Link>
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Vrindavan'); closeMobileMenu(); }}>Vrindavan</Link>
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Ayodhya'); closeMobileMenu(); }}>Ayodhya</Link>
+              </div>
+            </div>
+            <div className="nested-dropdown">
+              <span className="nav-link">Uttarakhand <span style={{ fontSize: '10px' }}>▶</span></span>
+              <div className="nested-menu">
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Dehradun'); closeMobileMenu(); }}>Dehradun</Link>
+                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('Haridwar'); closeMobileMenu(); }}>Haridwar</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={`professional-dropdown ${activeDropdown === 'plots' ? 'active' : ''}`} style={{ position: 'relative' }}>
+          <span className="nav-link" onClick={(e) => toggleDropdown('plots', e)} style={{ cursor: 'pointer' }}>Plot / Land ▾</span>
+          <div className="dropdown-menu">
+            <Link className="nav-link" to="/results" onClick={() => { 
+              setView('results'); 
+              setSearchFilters({ listingType: 'Plots / Land', type: 'Commercial', budget: 'Any Budget', bhk: 'Any BHK', status: 'Any Status' });
+              closeMobileMenu(); 
+            }}>Commercial</Link>
+            <Link className="nav-link" to="/results" onClick={() => { 
+              setView('results'); 
+              setSearchFilters({ listingType: 'Plots / Land', type: 'Residential', budget: 'Any Budget', bhk: 'Any BHK', status: 'Any Status' });
+              closeMobileMenu(); 
+            }}>Residential</Link>
+            <Link className="nav-link" to="/results" onClick={() => { 
+              setView('results'); 
+              setSearchFilters({ listingType: 'Plots / Land', type: 'Agriculture', budget: 'Any Budget', bhk: 'Any BHK', status: 'Any Status' });
+              closeMobileMenu(); 
+            }}>Agriculture</Link>
+          </div>
+        </div>
+
+        <Link className="nav-link" to="/nri-corner" onClick={() => { setView('nri'); closeMobileMenu(); }}>NRI Corner</Link>
       </div>
 
       <div className="nav-right">
