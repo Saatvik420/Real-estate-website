@@ -26,6 +26,7 @@ import AboutView from './components/AboutView';
 import ContactView from './components/ContactView';
 import PressView from './components/PressView';
 import SupportView from './components/SupportView';
+import NRIView from './components/NRIView';
 import PartnerView from './components/PartnerView';
 import AuthView from './components/AuthView';
 import PartnerAuthView from './components/PartnerAuthView';
@@ -84,7 +85,7 @@ function App() {
           <Route path="/contact" element={<ContactView />} />
           <Route path="/press" element={<PressView />} />
           <Route path="/support" element={<SupportView />} />
-          <Route path="/nri-corner" element={<AboutView />} /> {/* Placeholder until dedicated NRI view is created */}
+          <Route path="/nri-corner" element={<NRIView />} />
           <Route path="/partner" element={<PartnerView />} />
           <Route path="/auth" element={<AuthView />} />
           <Route path="/partner-auth" element={<PartnerAuthView />} />
