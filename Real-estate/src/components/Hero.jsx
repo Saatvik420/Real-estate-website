@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../hooks/useApp';
+import heroVideo from '../assets/13524355_4096_2160_50fps.mp4';
 
 const Hero = () => {
   const [activeTab, setActiveTab] = useState('Buy');
@@ -54,7 +55,7 @@ const Hero = () => {
         playsInline 
         className="hero-bg-video"
       >
-        <source src="https://www.pexels.com/download/video/7577611/" type="video/mp4" />
+        <source src={heroVideo} type="video/mp4" />
       </video>
       <div className="hero-overlay"></div>
       <div className="hero-glow"></div>
