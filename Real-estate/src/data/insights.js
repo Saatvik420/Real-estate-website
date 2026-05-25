@@ -18,6 +18,48 @@ export const marketInsights = {
         extra: "Land has historically delivered strong returns in areas where infrastructure, highways, airports, industrial corridors, tourism, and urban expansion are taking place. As India develops new economic zones, expressways, smart cities, and industrial hubs, plotted developments are becoming one of the most attractive investment categories. Recent land transactions across India have also touched record levels, reflecting strong investor confidence in the sector."
       },
       {
+        title: "Rajasthan: Emerging Hub for Strategic Land Investments",
+        content: "Rajasthan has become one of India’s most promising states for land and plot investments due to large-scale infrastructure development, industrial growth, tourism expansion, and increasing connectivity.",
+        subsections: [
+          {
+            name: "Key Investment Cities",
+            content: "Jaipur continues to dominate Rajasthan’s plotted development market due to Ring road expansion, Metro connectivity, and Smart City projects. Neemrana has emerged as a major industrial hotspot because of the Delhi-Mumbai Industrial Corridor (DMIC), Japanese industrial zones, and manufacturing growth."
+          },
+          {
+            name: "Khatu Shyam Ji – A Rapidly Emerging Spiritual Hub",
+            content: "The region is witnessing strong real estate momentum driven by increasing tourist footfall and infrastructure upgrades. The Rajasthan government is actively developing the Khatu Shyam Corridor under the Swadesh Darshan 2.0 scheme to improve pilgrim facilities."
+          },
+          {
+            name: "Delhi–Jaipur Highway (NH-8 / NH-48) Corridor",
+            content: "Stretching across key regions connecting Delhi-NCR and Rajasthan, the highway has transformed into a major hub for warehousing, logistics, and large-scale plotted developments. Locations such as Shahpura and Kotputli are witnessing substantial demand."
+          }
+        ]
+      },
+      {
+        title: "Uttar Pradesh: High-Growth Infrastructure Corridor",
+        content: "Uttar Pradesh has transformed into a high-growth real estate destination driven by expressways, airports, and religious tourism. UP’s real estate investments surged over 50% recently.",
+        subsections: [
+          {
+            name: "Noida & Greater Noida",
+            content: "Noida remains a top destination due to the upcoming Noida International Airport (Jewar Airport), Metro expansion, and IT growth."
+          },
+          {
+            name: "Ayodhya",
+            content: "Ayodhya is witnessing extraordinary growth after the Ram Mandir development and tourism infrastructure expansion."
+          }
+        ]
+      },
+      {
+        title: "Uttarakhand: Lifestyle and Wellness Market",
+        content: "Uttarakhand is increasingly becoming a preferred destination for lifestyle investments, retirement homes, and eco-tourism projects.",
+        subsections: [
+          {
+            name: "Dehradun & Rishikesh",
+            content: "Dehradun is among the fastest-growing Tier-2 destinations due to connectivity and education hubs. Rishikesh is attracting wellness tourism and luxury second-home buyers."
+          }
+        ]
+      },
+      {
         title: "How Safe Are Land and Plot Investments in India?",
         content: "Land and plotted developments can be extremely rewarding investments when backed by proper research and due diligence. Key Factors That Make Investments Safer:",
         list: [
@@ -29,42 +71,39 @@ export const marketInsights = {
           "Clear legal documentation",
           "Proper zoning and land-use approvals"
         ],
-        extra: "Investors should always evaluate: Ownership history, Encumbrance status, Future development plans, Connectivity and infrastructure pipeline, Market demand and liquidity. Professional advisory and research-driven investment selection significantly reduce risks and improve long-term returns."
+        extra: "Investors should always evaluate ownership history, encumbrance status, future development plans, and market demand. Professional advisory significantly reduces risks."
       },
       {
         title: "Why NRIs Should Invest in Indian Real Estate",
-        content: "India has become one of the most attractive global investment destinations for NRIs because of its fast-growing economy, stable long-term growth outlook, strong infrastructure development, currency advantage, rising property appreciation, expanding urbanization, and transparent regulations through RERA.",
+        content: "India has become one of the most attractive global investment destinations for NRIs due to its fast-growing economy and transparent regulations through RERA.",
         list: [
           "Lower maintenance compared to apartments",
           "Strong long-term appreciation potential",
           "Easy inheritance and wealth transfer",
           "Opportunity to diversify global portfolios",
-          "Increasing demand in emerging cities",
           "Future retirement or second-home planning"
         ],
-        extra: "Many NRIs are now actively investing in plotted developments near airports, expressways, tourism hubs, industrial corridors, and spiritual destinations where long-term growth visibility remains very strong. India’s rapidly evolving infrastructure ecosystem — including expressways, industrial corridors, airports, logistics parks, smart cities, and tourism projects — is expected to continue driving land appreciation across multiple states for the next decade."
+        extra: "Many NRIs are now actively investing in plotted developments near airports, expressways, and tourism hubs where long-term growth visibility remains strong."
+      },
+      {
+        title: "Comparative Future Growth Potential",
+        list: [
+          "Rajasthan: Strong | Industrial + Tourism + Spiritual | Potential: Very High",
+          "Uttar Pradesh: Extremely Strong | Infrastructure + Expressways + Airports | Potential: Exceptional",
+          "Uttarakhand: Emerging | Lifestyle + Wellness + Second Homes | Potential: High"
+        ]
       },
       {
         title: "Why Land & Plot Investments Continue to Rise in India",
-        content: "India’s land and plotted development sector is benefiting from:",
-        list: [
-          "Rising urbanization",
-          "Infrastructure-led growth",
-          "Limited land supply",
-          "Growing NRI investments",
-          "Better transparency through RERA",
-          "Strong long-term appreciation potential",
-          "Increasing demand in Tier-2 and Tier-3 cities"
-        ],
-        extra: "For investors seeking long-term wealth creation, strategically selected land investments in infrastructure-backed locations continue to remain one of the most attractive opportunities in the Indian real estate sector."
+        content: "India’s land and plotted development sector is benefiting from rising urbanization, infrastructure-led growth, limited land supply, and growing NRI investments. Strategically selected land investments in infrastructure-backed locations remain one of the most attractive opportunities for long-term wealth creation.",
       }
     ],
     bars: [
-      { loc: "Rajasthan", val: "Strong Growth", pct: "85%", change: "↑ Tourism & Ind.", dir: "up" },
-      { loc: "Uttar Pradesh", val: "Extremely Strong", pct: "98%", change: "↑ Infra & Airports", dir: "up" },
-      { loc: "Uttarakhand", val: "Emerging", pct: "75%", change: "↑ Lifestyle & Wellness", dir: "up" }
+      { loc: "Uttar Pradesh", val: "275 Index", pct: "98%", change: "↑ Exceptional", dir: "up" },
+      { loc: "Rajasthan", val: "225 Index", pct: "85%", change: "↑ Very High", dir: "up" },
+      { loc: "Uttarakhand", val: "210 Index", pct: "75%", change: "↑ High", dir: "up" }
     ],
-    trend: [100, 110, 125, 150, 190, 240, 320],
+    trend: [100, 112, 130, 155, 185, 230, 275, 400],
     invTotal: "$1 Trillion (2033)", invYoy: "8-10% CAGR"
   },
   'rajasthan': {
@@ -86,7 +125,7 @@ export const marketInsights = {
       },
       {
         title: "Khatu Shyam Ji – A Rapidly Emerging Spiritual & Real Estate Hub",
-        content: "Traditionally known as one of India’s largest spiritual tourism centers, the region is now witnessing strong real estate momentum driven by increasing tourist footfall, infrastructure upgrades, hospitality demand, and township developments. Millions of devotees visit every year, creating continuous demand for:",
+        content: "Traditionally known as one of India’s largest spiritual tourism centers, the region is now witnessing strong real estate momentum driven by increasing tourist footfall, infrastructure upgrades, hospitality demand, and township developments. Millions of devotees visit annually, creating continuous demand for:",
         list: [
           "Hotels and hospitality projects",
           "Commercial spaces",
@@ -94,21 +133,20 @@ export const marketInsights = {
           "Farmhouses and second homes",
           "Retail and rental infrastructure"
         ],
-        extra: "The Rajasthan government is also actively working on the development of the Khatu Shyam Corridor under the Swadesh Darshan 2.0 scheme. Investors are particularly attracted because land prices are still comparatively affordable, religious tourism ensures year-round activity, infrastructure development is increasing rapidly, long-term appreciation potential is strong, and demand for hospitality and rental properties is rising. The Khatu–Palsana–Ringas corridor is increasingly being viewed as a long-term wealth creation zone."
+        extra: "The Rajasthan government is actively working on the development of the Khatu Shyam Corridor under the Swadesh Darshan 2.0 scheme. This large-scale development is expected to further accelerate economic activity. Investors are attracted because land prices are still comparatively affordable and religious tourism ensures year-round activity. The Khatu–Palsana–Ringas corridor is increasingly being viewed as a long-term wealth creation zone."
       },
       {
-        title: "Delhi–Jaipur Highway (NH-8 / NH-48) – Rajasthan’s Growth Corridor",
-        content: "Stretching across key regions connecting Delhi-NCR and Rajasthan, the highway has transformed into a major hub for Industrial development, Warehousing and logistics, Commercial projects, Residential townships, Hospitality and tourism investments, and Large-scale plotted developments. Locations such as Neemrana, Behror, Shahpura, Kotputli, and Jaipur outskirts are witnessing substantial demand.",
+        title: "Delhi–Jaipur Highway (NH-8 / NH-48) – Growth Corridor",
+        content: "Stretching across key regions connecting Delhi-NCR and Rajasthan, the highway has transformed into a major hub for industrial development, warehousing, and logistics. Locations such as Neemrana, Behror, Shahpura, and Kotputli are witnessing substantial demand.",
         list: [
           "Excellent connectivity with Delhi-NCR and Jaipur",
           "Industrial and commercial expansion",
           "Increasing demand for plotted townships",
           "Strong warehousing and logistics growth",
           "Rising demand for hospitality projects",
-          "Future infrastructure-led appreciation",
           "High investor confidence from domestic and NRI buyers"
         ],
-        extra: "The presence of the Delhi-Mumbai Industrial Corridor (DMIC), Japanese industrial zones, logistics parks, manufacturing hubs, and improved expressway connectivity has significantly increased land demand and appreciation potential along this corridor."
+        extra: "The presence of the Delhi-Mumbai Industrial Corridor (DMIC) and Japanese industrial zones has significantly increased land demand and appreciation potential along this corridor."
       },
       {
         title: "Major Growth Drivers",

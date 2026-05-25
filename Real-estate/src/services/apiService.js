@@ -210,7 +210,8 @@ export const apiService = {
   getMarketInsights: async (locationId, locationType = 'city') => {
     const res = await safeFetch(`${API_BASE_URL}/insights?locationId=${locationId}&type=${locationType}`);
     // Check both the fetch success and the API's internal success flag
-    if (res.success && res.data && res.data.success !== false) return res;
+    // Also verify we actually got content (like introduction), otherwise fallback to local
+    if (res.success && res.data && res.data.success !== false && res.data.introduction) return res;
     
     console.log(`Falling back to local insights for ${locationId}`);
     const data = localInsights[locationId] || localInsights['India'];

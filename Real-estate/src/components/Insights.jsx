@@ -92,7 +92,7 @@ const Insights = () => {
 
         {/* Introduction */}
         <section className="report-section anim-fade-in-up" style={{ marginBottom: '80px' }}>
-          <p style={{ fontSize: '1.25rem', lineHeight: '1.8', color: 'var(--ink)', marginBottom: '30px' }}>{data.introduction}</p>
+          <p style={{ fontSize: '1.25rem', lineHeight: '1.8', color: 'var(--ink)', marginBottom: '30px', whiteSpace: 'pre-wrap' }}>{data.introduction}</p>
           {data.marketValuation && (
              <div style={{ background: 'var(--cream2)', padding: '40px', borderRadius: '16px', borderLeft: '6px solid var(--gold)', marginBottom: '40px' }}>
                 <p style={{ fontSize: '1.1rem', margin: 0, fontStyle: 'italic', color: 'var(--ink)' }}>{data.marketValuation}</p>
@@ -104,7 +104,7 @@ const Insights = () => {
         {data.sections?.map((sec, idx) => (
           <section key={idx} className="report-section anim-fade-in-up" style={{ marginBottom: '80px', opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(30px)', transition: `all 0.6s ease ${idx * 0.2}s` }}>
             <h2 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '24px', color: 'var(--gold)' }}>{sec.title}</h2>
-            {sec.content && <p style={{ fontSize: '1.1rem', lineHeight: '1.7', marginBottom: '24px' }}>{sec.content}</p>}
+            {sec.content && <p style={{ fontSize: '1.1rem', lineHeight: '1.7', marginBottom: '24px', whiteSpace: 'pre-wrap' }}>{sec.content}</p>}
             
             {sec.list && (
               <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px', marginBottom: '24px' }}>
