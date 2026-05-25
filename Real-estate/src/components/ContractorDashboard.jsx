@@ -27,7 +27,7 @@ const ContractorDashboard = () => {
   if (!currentUser) return <div style={{ padding: '100px', textAlign: 'center' }}>Please login as a partner.</div>;
 
   return (
-    <div className="section-full" style={{ background: '#fcfaf7', minHeight: '100vh' }}>
+    <div className="section-full reveal" style={{ background: '#fcfaf7', minHeight: '100vh' }}>
       <div className="section-inner">
         <div className="sec-header" style={{ marginBottom: '40px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
           <div>
@@ -94,7 +94,7 @@ const ContractorDashboard = () => {
                                         padding: 'clamp(1rem, 3vw, 1.5rem)', 
                                         borderRadius: '16px', 
                                         display: 'grid', 
-                                        gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', 
+                                        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))', 
                                         alignItems: 'center', 
                                         border: '1px solid rgba(255,255,255,0.1)', 
                                         gap: '20px' 
@@ -127,7 +127,7 @@ const ContractorDashboard = () => {
                     <div style={{ background: '#fff', padding: 'clamp(1.5rem, 4vw, 2.5rem)', borderRadius: '24px', border: '1px solid var(--cream3)' }}>
                         <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(1.5rem, 3vw, 1.8rem)', marginBottom: '32px' }}>Update Corporate Identity</h3>
                         <form onSubmit={handleProfileUpdate} style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
-                            <div className="dashboard-main-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px' }}>
+                            <div className="dashboard-main-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '20px' }}>
                                 <div className="pd-form-group">
                                     <label>Company / Brand Name</label>
                                     <input type="text" value={editData.name} onChange={(e) => setEditData({...editData, name: e.target.value})} style={{ background: 'var(--bg-main)', border: '1.5px solid #eee' }} />

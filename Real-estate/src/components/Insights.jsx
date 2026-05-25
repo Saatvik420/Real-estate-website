@@ -49,7 +49,7 @@ const Insights = () => {
     }
   }, [data, isVisible]);
 
-  if (loading || !data) return <div className="section" style={{ textAlign: 'center' }}><h3>Generating report...</h3></div>;
+  if (loading || !data) return <div className="section reveal" style={{ textAlign: 'center' }}><h3>Generating report...</h3></div>;
 
   const trendData = data.trend || [20, 40, 60, 80, 100];
   const maxVal = Math.max(...trendData);
@@ -129,7 +129,7 @@ const Insights = () => {
             {sec.content && <p style={{ fontSize: '1.1rem', lineHeight: '1.7', marginBottom: '24px', whiteSpace: 'pre-wrap' }}>{sec.content}</p>}
             
             {sec.list && (
-              <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px', marginBottom: '24px' }}>
+              <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: '16px', marginBottom: '24px' }}>
                 {sec.list.map((item, i) => (
                   <li key={i} style={{ padding: '16px', background: '#fff', border: '1px solid var(--cream3)', borderRadius: '12px', fontSize: '0.95rem', display: 'flex', gap: '12px' }}>
                     <span style={{ color: 'var(--gold)' }}>✦</span> {item}
@@ -153,7 +153,7 @@ const Insights = () => {
         <section className="charts-report" style={{ marginTop: '100px', padding: '60px', background: 'var(--ink)', borderRadius: '24px', color: '#fff', opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(40px)', transition: 'all 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
           <h2 style={{ textAlign: 'center', marginBottom: '60px', color: 'var(--gold2)' }}>Statistical Growth Projections</h2>
           
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '60px' }}>
             
             {/* Bars */}
             <div>
@@ -203,7 +203,7 @@ const Insights = () => {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '30px', marginTop: '80px', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '40px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '30px', marginTop: '80px', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '40px' }}>
             <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'scale(1)' : 'scale(0.9)', transition: 'all 0.8s ease 1.8s', animation: isVisible ? 'float-stat 4s ease-in-out infinite' : 'none' }}>
               <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--gold2)' }}>{data.invTotal}</div>
               <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginTop: '8px' }}>Market Valuation</div>

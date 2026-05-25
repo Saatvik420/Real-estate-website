@@ -48,7 +48,7 @@ const UserProfile = () => {
   if (!currentUser) return <div style={{ padding: '100px', textAlign: 'center' }}>Please login to view your profile.</div>;
 
   return (
-    <div className="section-full" style={{ background: '#fcfaf7', minHeight: '100vh' }}>
+    <div className="section-full reveal" style={{ background: '#fcfaf7', minHeight: '100vh' }}>
       <div className="section-inner">
         <div className="sec-header" style={{ marginBottom: '40px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
           <div>
@@ -171,7 +171,7 @@ const UserProfile = () => {
                         </div>
 
                         {!isEditing ? (
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '30px' }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '30px' }}>
                                 <div style={{ padding: '20px', background: 'var(--bg-main)', borderRadius: '16px' }}>
                                     <label style={{ fontSize: '0.7rem', color: 'var(--muted2)', fontWeight: 800, textTransform: 'uppercase', marginBottom: '8px', display: 'block' }}>Full Name</label>
                                     <div style={{ fontWeight: 700 }}>{currentUser.name}</div>
@@ -194,7 +194,7 @@ const UserProfile = () => {
                                 </div>
                             </div>
                         ) : (
-                            <form onSubmit={handleProfileUpdate} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '25px' }}>
+                            <form onSubmit={handleProfileUpdate} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '25px' }}>
                                 <div className="pd-form-group">
                                     <label>Full Name</label>
                                     <input type="text" value={editData.name} onChange={(e) => setEditData({...editData, name: e.target.value})} style={{ background: 'var(--bg-main)', border: '1.5px solid #eee' }} required />

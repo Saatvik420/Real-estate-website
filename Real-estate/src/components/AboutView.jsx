@@ -5,7 +5,7 @@ const AboutView = () => {
   const { setView } = useApp();
 
   return (
-    <div className="section-full reveal" style={{ background: '#fff', minHeight: '100vh' }}>
+    <div className="section reveal-full reveal" style={{ background: '#fff', minHeight: '100vh' }}>
       <div className="section-inner">
         <div className="sec-header" style={{ marginBottom: '60px' }}>
           <div>
@@ -19,7 +19,7 @@ const AboutView = () => {
           <p style={{ fontSize: '1.2rem', color: 'var(--ink)', lineHeight: '1.8', marginBottom: '32px', fontWeight: '500' }}>
             Welcome to One5 Realty Solutions, a trusted real estate investment advisory and solutions company owned by <strong>One5 Knowledge Ventures Pvt. Ltd.</strong>
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '40px' }}>
             <p style={{ fontSize: '1rem', color: '#555', lineHeight: '1.8' }}>
               We specialize in offering premium land and plot investment opportunities across different states of India, helping investors identify the right opportunities that align with their financial goals, vision, and long-term wealth creation strategies.
             </p>
@@ -58,7 +58,7 @@ const AboutView = () => {
             <p style={{ fontSize: '1.05rem', color: '#555', lineHeight: '1.8', textAlign: 'center', marginBottom: '32px' }}>
               We ensure complete transparency, secure transactions, and end-to-end assistance for NRI investors. From project verification and documentation support to regular updates and market insights, our dedicated team ensures your investments remain safe, informed, and future-ready.
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '20px' }}>
               {['Project Verification', 'Documentation Support', 'Regular Updates', 'Market Insights'].map((service, i) => (
                 <div key={i} style={{ padding: '15px', background: '#fff', borderRadius: '10px', textAlign: 'center', fontSize: '0.9rem', fontWeight: '700', color: 'var(--gold)', border: '1px solid var(--gold4)' }}>{service}</div>
               ))}

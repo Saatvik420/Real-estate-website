@@ -10,7 +10,6 @@ import TrendingSection from './components/TrendingSection';
 import PropertyRecommendations from './components/PropertyRecommendations';
 import CompareProperties from './components/CompareProperties';
 import Insights from './components/Insights';
-import TopDevelopers from './components/TopDevelopers';
 import PopularCities from './components/PopularCities';
 import Services from './components/Services';
 import HomePlan from './components/HomePlan';
@@ -60,7 +59,6 @@ const Home = () => (
     <ContinueSearch />
     <TrendingSection />
     <PropertyRecommendations />
-    <TopDevelopers />
     <PopularCities />
     <Services />
   </>

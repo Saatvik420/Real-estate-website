@@ -46,7 +46,7 @@ const PlansView = () => {
   };
 
   return (
-    <div className="section-full" style={{ background: 'var(--bg-main)', minHeight: '100vh', paddingTop: '120px' }}>
+    <div className="section-full reveal" style={{ background: 'var(--bg-main)', minHeight: '100vh', paddingTop: '120px' }}>
       <div className="section-inner">
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
           <div className="eyebrow" style={{ textAlign: 'center' }}>Membership Tiers</div>
@@ -56,7 +56,7 @@ const PlansView = () => {
           </p>
         </div>
 
-        <div className="grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px', alignItems: 'start' }}>
+        <div className="grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '30px', alignItems: 'start' }}>
           {plans.map((plan, idx) => (
             <div key={idx} style={{ 
               padding: '3.5rem 2.5rem', 
@@ -112,7 +112,7 @@ const PlansView = () => {
         {/* Comparison Section Placeholder */}
         <div style={{ marginTop: '100px', padding: '60px', background: 'var(--white)', borderRadius: '32px', border: '1px solid var(--cream3)' }}>
           <h3 style={{ textAlign: 'center', marginBottom: '40px', fontFamily: "'Playfair Display', serif", fontSize: '32px' }}>Why Upgrade?</h3>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '40px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: '40px' }}>
             {[
               { title: 'Verified Listings', desc: 'Get access to properties that have been physically verified by our experts.' },
               { title: 'Expert Consultation', desc: 'Direct access to top-tier real estate consultants for personalized advice.' },

@@ -37,7 +37,7 @@ const ContractorsView = () => {
   };
 
   return (
-    <div className="section-full reveal" style={{ minHeight: '80vh', padding: '60px 0', background: '#fcfaf7' }}>
+    <div className="section reveal-full reveal" style={{ minHeight: '80vh', padding: '60px 0', background: '#fcfaf7' }}>
       <div className="section-inner">
         <div className="sec-header" style={{ marginBottom: '40px' }}>
           <div>
@@ -70,7 +70,7 @@ const ContractorsView = () => {
           ))}
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(400px, 1fr))', gap: '30px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 400px), 1fr))', gap: '30px' }}>
           {filteredContractors.map(cont => (
             <div key={cont.id} className="agent-card-landscape" style={{ flexDirection: 'column', height: 'auto' }}>
               <div className="acl-img" style={{ backgroundImage: `url('${cont.img}')`, height: '250px', width: '100%', borderRadius: '16px 16px 0 0' }}>
@@ -89,7 +89,7 @@ const ContractorsView = () => {
                     <p style={{ fontSize: '0.95rem', color: '#555', lineHeight: '1.6', height: '75px', overflow: 'hidden' }}>{cont.personalBio}</p>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', padding: '15px 0', borderTop: '1px solid var(--cream3)', borderBottom: '1px solid var(--cream3)', marginBottom: '25px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: '20px', padding: '15px 0', borderTop: '1px solid var(--cream3)', borderBottom: '1px solid var(--cream3)', marginBottom: '25px' }}>
                   <div>
                     <div style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--muted2)', textTransform: 'uppercase', marginBottom: '5px' }}>Projects Done</div>
                     <div style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--ink)' }}>{cont.completedProjects}+</div>

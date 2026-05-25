@@ -36,7 +36,7 @@ const HomePlan = () => {
   ];
 
   return (
-    <div className="section-full reveal" style={{ background: 'var(--cream2)', borderTop: '1px solid var(--cream3)', borderBottom: '1px solid var(--cream3)' }}>
+    <div className="section reveal-full reveal" style={{ background: 'var(--cream2)', borderTop: '1px solid var(--cream3)', borderBottom: '1px solid var(--cream3)' }}>
       <div className="section-inner">
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
           <div className="eyebrow" style={{ textAlign: 'center' }}>Tailored Excellence</div>

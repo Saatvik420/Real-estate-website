@@ -60,7 +60,7 @@ const ContractorAuthView = () => {
             Connect with HNI property buyers looking for premium interiors, landscaping, and construction services.
           </p>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: '20px' }}>
             <div style={{ padding: '20px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px' }}>
               <div style={{ fontSize: '20px', fontWeight: 800, color: '#fff' }}>200+</div>
               <div style={{ fontSize: '9px', opacity: 0.5, textTransform: 'uppercase', letterSpacing: '1px', marginTop: '4px' }}>Active Experts</div>

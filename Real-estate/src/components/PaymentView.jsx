@@ -38,14 +38,14 @@ const PaymentView = () => {
   ];
 
   return (
-    <div className="section-full" style={{ background: 'var(--cream2)', minHeight: '100vh', paddingTop: '120px' }}>
+    <div className="section-full reveal" style={{ background: 'var(--cream2)', minHeight: '100vh', paddingTop: '120px' }}>
       <div className="section-inner" style={{ maxWidth: '900px' }}>
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <div className="eyebrow" style={{ textAlign: 'center' }}>Secure Checkout</div>
           <h2 className="sec-title" style={{ textAlign: 'center' }}>Complete Your <span>Subscription</span></h2>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '30px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '30px' }}>
           {/* Left: Payment Methods */}
           <div style={{ background: '#fff', padding: '40px', borderRadius: '24px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', border: '1px solid var(--cream3)' }}>
             <h3 style={{ marginBottom: '24px', fontSize: '20px', fontWeight: 800 }}>Select Payment Mode</h3>

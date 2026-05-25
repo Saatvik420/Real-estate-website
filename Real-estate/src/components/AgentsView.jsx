@@ -22,7 +22,7 @@ const AgentsView = () => {
   if (loading) return <div style={{ padding: '100px', textAlign: 'center' }}>Consulting our network of experts...</div>;
 
   return (
-    <div className="section-full bg-main reveal" style={{ minHeight: '100vh', paddingTop: '40px' }}>
+    <div className="section-full reveal bg-main reveal" style={{ minHeight: '100vh', paddingTop: '40px' }}>
       <div className="section-inner">
         <div className="sec-header">
           <div>
@@ -62,7 +62,7 @@ const AgentsView = () => {
                   ))}
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '16px', marginTop: 'auto', maxWidth: '400px', width: '100%' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))', gap: '16px', marginTop: 'auto', maxWidth: '400px', width: '100%' }}>
                   <a href={`tel:${agent.contact}`} className="nav-btn-ghost" style={{ textAlign: 'center', textDecoration: 'none', padding: '12px', display: 'block' }}>CONTACT</a>
                   <a href={`mailto:${agent.email}`} className="nav-btn-solid" style={{ textAlign: 'center', textDecoration: 'none', padding: '12px', display: 'block' }}>PORTFOLIO</a>
                 </div>

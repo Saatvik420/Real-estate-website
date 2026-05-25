@@ -13,7 +13,7 @@ const ProjectsView = () => {
   };
 
   return (
-    <div className="section-full reveal" style={{ minHeight: '100vh', padding: '80px 0', background: '#f8f9fa' }}>
+    <div className="section reveal-full reveal" style={{ minHeight: '100vh', padding: '80px 0', background: '#f8f9fa' }}>
       <div className="section-inner">
         <div className="sec-header" style={{ marginBottom: '60px' }}>
           <div>
@@ -69,7 +69,7 @@ const ProjectsView = () => {
                                 </div>
                             </div>
 
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginBottom: '20px', padding: '15px 0', borderTop: '1px solid #f5f5f5', borderBottom: '1px solid #f5f5f5' }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: '15px', marginBottom: '20px', padding: '15px 0', borderTop: '1px solid #f5f5f5', borderBottom: '1px solid #f5f5f5' }}>
                                 <div>
                                     <div style={{ fontSize: '0.7rem', color: '#999', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '4px' }}>Type</div>
                                     <div style={{ fontSize: '0.9rem', fontWeight: 700 }}>{proj.type}</div>

@@ -44,7 +44,7 @@ const NRIView = () => {
   };
 
   return (
-    <div className="section-full reveal" style={{ background: '#faf9f7', minHeight: '100vh' }}>
+    <div className="section reveal-full reveal" style={{ background: '#faf9f7', minHeight: '100vh' }}>
       <div className="section-inner">
         <div className="sec-header" style={{ marginBottom: '60px' }}>
           <div>
@@ -96,7 +96,7 @@ const NRIView = () => {
 
         <div className="nri-services-grid" style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', 
           gap: '24px',
           marginBottom: '80px'
         }}>

@@ -54,7 +54,7 @@ const PropertyDetails = () => {
         </div>
       </div>
 
-      <div className="section">
+      <div className="section reveal">
         <div className="pd-main-grid">
           <div className="pd-left">
             <div className="pd-section">
