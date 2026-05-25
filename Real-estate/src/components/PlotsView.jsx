@@ -26,8 +26,14 @@ const PlotsView = () => {
     { id: 'All', name: 'All Cities' },
     { id: 'jaipur', name: 'Jaipur' },
     { id: 'khatu_shyam', name: 'Khatu Shyam' },
+    { id: 'paota', name: 'Paota' },
+    { id: 'behror', name: 'Behror' },
+    { id: 'neemrana', name: 'Neemrana' },
+    { id: 'ajmer_road', name: 'Ajmer Road' },
     { id: 'noida', name: 'Noida' },
     { id: 'greater_noida', name: 'Greater Noida' },
+    { id: 'vrindavan', name: 'Vrindavan' },
+    { id: 'ayodhya', name: 'Ayodhya' },
     { id: 'dehradun', name: 'Dehradun' },
     { id: 'haridwar', name: 'Haridwar' }
   ];

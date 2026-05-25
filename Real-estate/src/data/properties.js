@@ -1,5 +1,5 @@
 export const properties = [
-  // Rajasthan - Jaipur
+  // ── RAJASTHAN ──────────────────────────────────────────────────────────
   { 
     id: 'rj_p1', 
     cityId: 'jaipur', 
@@ -32,8 +32,37 @@ export const properties = [
     video: 'https://videos.pexels.com/video-files/7578552/7578552-uhd_2560_1440_30fps.mp4', 
     rera: 'RJ/RERA/2023/205' 
   },
+  { 
+    id: 'rj_p3', 
+    cityId: 'neemrana', 
+    type: 'Service Apartment', 
+    title: 'Skyline Business Suites', 
+    price: 4500000, 
+    priceStr: '₹45 L', 
+    area: '850 sqft', 
+    location: 'Japanese Zone', 
+    developer: 'Industrial Infra', 
+    status: 'Ready to Move', 
+    tags: ['Business Hub', '1 BHK'], 
+    img: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80', 
+    rera: 'RJ/RERA/2022/99' 
+  },
+  { 
+    id: 'rj_p4', 
+    cityId: 'khatu_shyam', 
+    type: 'Boutique Hotel', 
+    title: 'Shyam Heritage Inn', 
+    price: 55000000, 
+    priceStr: '₹5.5 Cr', 
+    area: '8000 sqft', 
+    location: 'Temple Road', 
+    developer: 'Heritage Stays', 
+    status: 'Ready to Move', 
+    tags: ['Commercial', 'Investment'], 
+    img: 'https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?w=600&q=80'
+  },
 
-  // Uttar Pradesh - Noida
+  // ── UTTAR PRADESH ───────────────────────────────────────────────────────
   { 
     id: 'up_p1', 
     cityId: 'noida', 
@@ -66,8 +95,37 @@ export const properties = [
     video: 'https://videos.pexels.com/video-files/7577611/7577611-uhd_2560_1440_30fps.mp4', 
     rera: 'UP/RERA/2023/112' 
   },
+  { 
+    id: 'up_p3', 
+    cityId: 'ayodhya', 
+    type: 'Heritage Residence', 
+    title: 'Saryu Enclave Ayodhya', 
+    price: 15000000, 
+    priceStr: '₹1.5 Cr', 
+    area: '2800 sqft', 
+    location: 'Ram Path', 
+    developer: 'Ayodhya Dev', 
+    status: 'New Launch', 
+    tags: ['Holy City', 'Riverside', '4 BHK'], 
+    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80', 
+    rera: 'UP/RERA/2024/001' 
+  },
+  { 
+    id: 'up_p4', 
+    cityId: 'greater_noida', 
+    type: 'Penthouse', 
+    title: 'Alpha One Skyskrapers', 
+    price: 42000000, 
+    priceStr: '₹4.2 Cr', 
+    area: '5500 sqft', 
+    location: 'Alpha 1', 
+    developer: 'Godrej Properties', 
+    status: 'Ready to Move', 
+    tags: ['Sky Garden', 'Automation', '5 BHK'], 
+    img: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80'
+  },
 
-  // Uttarakhand - Dehradun
+  // ── UTTARAKHAND ────────────────────────────────────────────────────────
   { 
     id: 'ut_p1', 
     cityId: 'dehradun', 
@@ -99,5 +157,19 @@ export const properties = [
     img: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80', 
     video: 'https://videos.pexels.com/video-files/7578552/7578552-uhd_2560_1440_30fps.mp4', 
     rera: 'UT/RERA/2022/15' 
+  },
+  { 
+    id: 'ut_p3', 
+    cityId: 'dehradun', 
+    type: 'Forest Villa', 
+    title: 'The Doon Sanctuary', 
+    price: 65000000, 
+    priceStr: '₹6.5 Cr', 
+    area: '6000 sqft', 
+    location: 'Old Rajpur', 
+    developer: 'Himalayan Homes', 
+    status: 'Ready to Move', 
+    tags: ['Forest Front', 'Eco-Luxury', '6 BHK'], 
+    img: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80'
   }
 ];
