@@ -18,6 +18,7 @@ import Footer from './components/Footer';
 import SearchResults from './components/SearchResults';
 import PropertyDetails from './components/PropertyDetails';
 import FloatingCompareBar from './components/FloatingCompareBar';
+import WhatsAppButton from './components/WhatsAppButton';
 import RentalsView from './components/RentalsView';
 import ProjectsView from './components/ProjectsView';
 import PlotsView from './components/PlotsView';
@@ -94,6 +95,7 @@ function App() {
           <Route path="/admin" element={<AdminDashboard />} />
         </Routes>
 
+        <WhatsAppButton />
         <FloatingCompareBar />
         <Footer />
       </div>
