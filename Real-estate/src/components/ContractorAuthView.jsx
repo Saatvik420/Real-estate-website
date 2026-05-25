@@ -140,7 +140,7 @@ const ContractorAuthView = () => {
                             <label style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--ink)', marginBottom: '10px', display: 'block' }}>Contact Number</label>
                             <input 
                                 type="tel" 
-                                placeholder="+91 90000 00000" 
+                                placeholder="+91 99109 11650" 
                                 required 
                                 style={{ width: '100%', padding: '16px', borderRadius: '12px', border: '1.5px solid #eee', fontSize: '1rem', outline: 'none' }}
                                 value={formData.phone} 

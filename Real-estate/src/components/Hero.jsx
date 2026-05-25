@@ -146,8 +146,8 @@ const Hero = () => {
           </div>
           <div className="trending-wrap">
             <span className="tr-label">Popular:</span>
-            <a className="tr-chip" href="#">Bandra West</a>
-            <a className="tr-chip" href="#">Gurugram Sec 42</a>
+            <a className="tr-chip" href="#">Janakpuri</a>
+            <a className="tr-chip" href="#">Dwarka Expressway</a>
             <a className="tr-chip" href="#">Koramangala</a>
           </div>
           

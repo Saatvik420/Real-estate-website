@@ -51,9 +51,9 @@ const PressView = () => {
                 <div style={{ marginTop: '40px' }}>
                     <h4 style={{ fontWeight: 800, fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '20px', color: 'var(--muted2)' }}>Media Contacts</h4>
                     <div style={{ fontSize: '0.95rem' }}>
-                        <div style={{ fontWeight: 700, color: 'var(--ink)' }}>Sanjana Mehta</div>
-                        <div style={{ color: 'var(--muted)', fontSize: '0.85rem' }}>Head of Communications</div>
-                        <a href="mailto:press@one5realty.com" style={{ color: 'var(--gold)', textDecoration: 'none', fontSize: '0.85rem', fontWeight: 700 }}>press@one5realty.com</a>
+                        <div style={{ fontWeight: 700, color: 'var(--ink)' }}>Corporate Communications</div>
+                        <div style={{ color: 'var(--muted)', fontSize: '0.85rem' }}>Media Relations Desk</div>
+                        <a href="mailto:one5realtysolutions@gmail.com" style={{ color: 'var(--gold)', textDecoration: 'none', fontSize: '0.85rem', fontWeight: 700 }}>one5realtysolutions@gmail.com</a>
                     </div>
                 </div>
             </aside>

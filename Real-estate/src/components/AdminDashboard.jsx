@@ -339,7 +339,7 @@ const AdminDashboard = () => {
                                                         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                                                             <div>
                                                                 <div style={{ fontSize: '0.7rem', fontWeight: 900, color: 'var(--muted2)', textTransform: 'uppercase', marginBottom: '5px' }}>Direct Contact</div>
-                                                                <div style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--gold)' }}>{inq.phone || '+91 90000 00000'}</div>
+                                                                <div style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--gold)' }}>{inq.phone || '+91 99109 11650'}</div>
                                                             </div>
                                                             <div>
                                                                 <div style={{ fontSize: '0.7rem', fontWeight: 900, color: 'var(--muted2)', textTransform: 'uppercase', marginBottom: '5px' }}>User Role</div>

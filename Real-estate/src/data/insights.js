@@ -1,68 +1,81 @@
 export const marketInsights = {
   "India": {
-    insightsTitle: "North India Corridor",
+    insightsTitle: "India's Real Estate Market",
     bars: [
-      { loc: "Noida (Expressway)", val: "₹12,400", pct: "95%", change: "↑ 12.1%", dir: "up" },
-      { loc: "Jaipur (C-Scheme)", val: "₹15,000", pct: "85%", change: "↑ 6.2%", dir: "up" },
-      { loc: "Dehradun (Rajpur)", val: "₹14,000", pct: "80%", change: "↑ 8.5%", dir: "up" },
-      { loc: "Ayodhya (Main)", val: "₹9,600", pct: "65%", change: "↑ 22.4%", dir: "up" },
-      { loc: "Vrindavan", val: "₹6,100", pct: "50%", change: "↑ 14.8%", dir: "up" },
-      { loc: "Haridwar", val: "₹5,800", pct: "45%", change: "↑ 9.2%", dir: "up" }
+      { loc: "Rajasthan", val: "High Growth", pct: "85%", change: "↑ Tourism & Ind.", dir: "up" },
+      { loc: "Uttar Pradesh", val: "Exceptional", pct: "98%", change: "↑ Infra & Airports", dir: "up" },
+      { loc: "Uttarakhand", val: "Emerging", pct: "75%", change: "↑ Lifestyle & Wellness", dir: "up" }
     ],
-    trend: [30, 55, 85, 120, 160],
+    trend: [100, 120, 150, 190, 240, 320],
     rentals: [
-      { lbl: "Noida IT Corporate", yield: "6.2%", w: "95%" },
-      { lbl: "Jaipur Heritage", yield: "9.2%", w: "85%" },
-      { lbl: "Dehradun Scenic", yield: "4.5%", w: "70%" },
-      { lbl: "Vrindavan Spiritual", yield: "5.8%", w: "60%" }
+      { lbl: "Infrastructure Growth", yield: "Very High", w: "95%" },
+      { lbl: "NRI Investments", yield: "High", w: "85%" },
+      { lbl: "Tier-2 & Tier-3 Cities", yield: "Emerging", w: "70%" }
     ],
-    invTotal: "42.5K", invYoy: "+11.4%",
+    invTotal: "$1 Trillion", invYoy: "CAGR 8-10%",
     landInsights: {
       landUseMix: [
-        { lbl: 'Residential', val: 50, color: 'var(--ink)' },
-        { lbl: 'Commercial', val: 20, color: 'var(--gold)' },
-        { lbl: 'Spiritual/Eco', val: 20, color: 'var(--gold2)' },
-        { lbl: 'Industrial', val: 10, color: 'var(--ink3)' }
+        { lbl: 'Infrastructure', val: 40, color: 'var(--ink)' },
+        { lbl: 'Industrial', val: 30, color: 'var(--gold)' },
+        { lbl: 'Tourism/Spiritual', val: 20, color: 'var(--gold2)' },
+        { lbl: 'Residential', val: 10, color: 'var(--ink3)' }
       ],
       roiProjections: [
-        { loc: 'Ayodhya Corridor', y2: '+45%', y5: '+120%' },
-        { loc: 'Noida Ext. (Jewar)', y2: '+30%', y5: '+85%' },
-        { loc: 'Jaipur Ajmer Road', y2: '+18%', y5: '+55%' }
+        { loc: 'UP Expressways', y2: '+45%', y5: '+150%' },
+        { loc: 'Rajasthan Corridors', y2: '+30%', y5: '+100%' },
+        { loc: 'Uttarakhand Hills', y2: '+20%', y5: '+80%' }
       ],
       infraImpact: [
-        { project: 'Ram Mandir / Airport', impact: '+85%' },
-        { project: 'Jewar Intl. Airport', impact: '+60%' },
-        { project: 'Delhi-Doon Eway', impact: '+40%' }
+        { project: 'New Airports', impact: '+90%' },
+        { project: 'Expressways', impact: '+75%' },
+        { project: 'Smart Cities', impact: '+60%' }
       ],
-      growthPockets: ['Ayodhya', 'Greater Noida', 'Ajmer Road', 'Sahastradhara']
+      growthPockets: ['Noida', 'Ayodhya', 'Jaipur', 'Neemrana', 'Dehradun']
     },
-    devs: [
-      { name: "One5 Realty Group", logo: "15", type: "Ultra Luxury", rera: "RJ/01/2023", num: "12", exp: "25+", sold: "5k+", proj: ["Jewels", "Heights"] },
-      { name: "ATS Homekraft", logo: "ATS", type: "Premium Residential", rera: "UP/05/2018", num: "28", exp: "20+", sold: "30k+", proj: ["Tech Heights", "Pristine"] },
-      { name: "Pacific Group", logo: "PG", type: "Integrated Living", rera: "UT/02/2019", num: "15", exp: "35+", sold: "20k+", proj: ["Golf Estate", "Residency"] }
-    ]
+    devs: []
   },
-  'jaipur': {
-    insightsTitle: "Jaipur JDA",
+  'rajasthan': {
+    insightsTitle: "Rajasthan Market Trend",
     bars: [
-      { loc: "C-Scheme", val: "₹15,000", pct: "95%", change: "↑ 6.2%", dir: "up" },
-      { loc: "Jagatpura", val: "₹6,800", pct: "80%", change: "↑ 12.5%", dir: "up" },
-      { loc: "Ajmer Road", val: "₹5,200", pct: "70%", change: "↑ 14.2%", dir: "up" }
+      { loc: "Jaipur", val: "Very High", pct: "95%", change: "↑ Smart City", dir: "up" },
+      { loc: "Neemrana", val: "High", pct: "85%", change: "↑ DMIC", dir: "up" },
+      { loc: "Khatu Shyam Ji", val: "Emerging", pct: "75%", change: "↑ Spiritual Tourism", dir: "up" }
     ],
-    trend: [20, 45, 85, 130, 185],
-    rentals: [{ lbl: "Heritage Stay", yield: "9.2%", w: "98%" }, { lbl: "Luxury Apts", yield: "3.8%", w: "70%" }],
-    invTotal: "12.4K", invYoy: "+8.4%",
-    devs: [{ name: "Vatika Group", logo: "V", type: "Premium Residential", rera: "RJ/01/2016", num: "22", exp: "20+", sold: "15k+", proj: ["Panorama", "Jewels"] }]
+    trend: [110, 125, 145, 170, 195, 225, 320],
+    rentals: [
+      { lbl: "Industrial Hubs", yield: "Strong", w: "90%" },
+      { lbl: "Spiritual Tourism", yield: "High", w: "80%" }
+    ],
+    invTotal: "225 Index", invYoy: "2030 Proj: 320",
+    devs: []
   },
-  'noida': {
-    insightsTitle: "Noida Municipal",
+  'uttar pradesh': {
+    insightsTitle: "Uttar Pradesh Market Trend",
     bars: [
-      { loc: "Sector 150", val: "₹12,400", pct: "95%", change: "↑ 15.2%", dir: "up" },
-      { loc: "Expressway", val: "₹9,500", pct: "85%", change: "↑ 11.2%", dir: "up" }
+      { loc: "Noida / Jewar", val: "Exceptional", pct: "100%", change: "↑ Airport & Infra", dir: "up" },
+      { loc: "Ayodhya", val: "Very High", pct: "90%", change: "↑ Religious Tourism", dir: "up" },
+      { loc: "Lucknow", val: "Strong", pct: "80%", change: "↑ Metro & Expansion", dir: "up" }
     ],
-    trend: [25, 55, 95, 145, 210],
-    rentals: [{ lbl: "IT Corporate", yield: "6.2%", w: "95%" }, { lbl: "MNC Housing", yield: "4.1%", w: "75%" }],
-    invTotal: "28.7K", invYoy: "+12.8%",
-    devs: [{ name: "ATS Homekraft", logo: "ATS", type: "Quality Housing", rera: "UP/01/2016", num: "28", exp: "20+", sold: "30k+", proj: ["Tech Heights", "Imperial"] }]
+    trend: [112, 130, 155, 185, 230, 275, 400],
+    rentals: [
+      { lbl: "Airport Corridors", yield: "Exceptional", w: "98%" },
+      { lbl: "Religious Tourism", yield: "Very High", w: "85%" }
+    ],
+    invTotal: "275 Index", invYoy: "2030 Proj: 400",
+    devs: []
+  },
+  'uttarakhand': {
+    insightsTitle: "Uttarakhand Market Trend",
+    bars: [
+      { loc: "Dehradun", val: "High", pct: "85%", change: "↑ Connectivity", dir: "up" },
+      { loc: "Rishikesh", val: "Emerging", pct: "75%", change: "↑ Wellness Tourism", dir: "up" }
+    ],
+    trend: [108, 120, 138, 160, 185, 210, 300],
+    rentals: [
+      { lbl: "Second Homes", yield: "High", w: "85%" },
+      { lbl: "Eco-tourism", yield: "Growing", w: "70%" }
+    ],
+    invTotal: "210 Index", invYoy: "2030 Proj: 300",
+    devs: []
   }
 };

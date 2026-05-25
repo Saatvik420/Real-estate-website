@@ -27,7 +27,7 @@ public class DataSeeder implements CommandLineRunner {
         try {
             System.out.println("--- DATA SEEDING STARTED ---");
             
-            String adminEmail = "admin@one5realty.com";
+            String adminEmail = "one5realtysolutions@gmail.com";
             String adminPass = "admin123";
 
             // Clean up any existing admin to ensure fresh credentials
@@ -117,8 +117,8 @@ public class DataSeeder implements CommandLineRunner {
                         .designation("Senior Luxury Consultant")
                         .location("Mumbai, Maharashtra")
                         .areas(Arrays.asList("Lower Parel", "Worli", "Marine Drive", "Bandra West"))
-                        .contact("+91 98765 20025")
-                        .email("rajesh.k@luxury-living.com")
+                        .contact("+91 99109 11650")
+                        .email("one5realtysolutions@gmail.com")
                         .rating(4.9)
                         .experience("15+ Years")
                         .completedDeals("500+")
@@ -133,8 +133,8 @@ public class DataSeeder implements CommandLineRunner {
                         .designation("Residential Specialist")
                         .location("Delhi NCR")
                         .areas(Arrays.asList("Dwarka", "Sector 10", "Prithviraj Road", "Gurugram"))
-                        .contact("+91 98765 20013")
-                        .email("anita.d@capitalhomes.com")
+                        .contact("+91 99109 11650")
+                        .email("one5realtysolutions@gmail.com")
                         .rating(4.8)
                         .experience("10+ Years")
                         .completedDeals("350+")

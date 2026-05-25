@@ -90,7 +90,7 @@ const ContactView = () => {
                                 <label>Phone Number *</label>
                                 <input 
                                     type="tel" 
-                                    placeholder="+91 90000 00000" 
+                                    placeholder="+91 99109 11650" 
                                     required 
                                     style={{ background: 'var(--bg-main)', color: 'var(--ink)', borderColor: 'var(--cream3)' }} 
                                     value={formData.phone}
@@ -110,7 +110,7 @@ const ContactView = () => {
                         <label>Residential Address (Optional)</label>
                         <input 
                             type="text"
-                            placeholder="e.g. 42, Skyline Towers, Mumbai"
+                            placeholder="e.g. 705, Vishal Tower, New Delhi"
                             style={{ background: 'var(--bg-main)', color: 'var(--ink)', borderColor: 'var(--cream3)' }}
                             value={formData.address}
                             onChange={(e) => setFormData({...formData, address: e.target.value})}

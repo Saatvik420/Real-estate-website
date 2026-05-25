@@ -205,7 +205,7 @@ const UserProfile = () => {
                                 </div>
                                 <div className="pd-form-group">
                                     <label>Location</label>
-                                    <input type="text" value={editData.location} onChange={(e) => setEditData({...editData, location: e.target.value})} style={{ background: 'var(--bg-main)', border: '1.5px solid #eee' }} placeholder="e.g. Mumbai, Maharashtra" />
+                                    <input type="text" value={editData.location} onChange={(e) => setEditData({...editData, location: e.target.value})} style={{ background: 'var(--bg-main)', border: '1.5px solid #eee' }} placeholder="e.g. New Delhi, India" />
                                 </div>
                                 <div className="pd-form-group">
                                     <label>Expertise</label>

@@ -44,15 +44,15 @@ const SupportView = () => {
                         <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
                             <div style={{ width: 'clamp(40px, 6vw, 50px)', height: 'clamp(40px, 6vw, 50px)', borderRadius: '50%', background: 'var(--gold2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}>📞</div>
                             <div>
-                                <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '1px', opacity: 0.6 }}>Toll-Free (India)</div>
-                                <div style={{ fontWeight: 700, fontSize: 'clamp(0.9rem, 2vw, 1.1rem)' }}>1800-LUX-BHRT</div>
+                                <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '1px', opacity: 0.6 }}>Direct Advisory</div>
+                                <div style={{ fontWeight: 700, fontSize: 'clamp(0.9rem, 2vw, 1.1rem)' }}>+91 99109 11650</div>
                             </div>
                         </div>
                         <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
                             <div style={{ width: 'clamp(40px, 6vw, 50px)', height: 'clamp(40px, 6vw, 50px)', borderRadius: '50%', background: 'var(--gold2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}>✉️</div>
                             <div>
                                 <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '1px', opacity: 0.6 }}>Client Support</div>
-                                <div style={{ fontWeight: 700, fontSize: 'clamp(0.9rem, 2vw, 1.1rem)' }}>care@one5realty.com</div>
+                                <div style={{ fontWeight: 700, fontSize: 'clamp(0.9rem, 2vw, 1.1rem)' }}>one5realtysolutions@gmail.com</div>
                             </div>
                         </div>
                     </div>
