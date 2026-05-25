@@ -37,6 +37,12 @@ const NRIView = () => {
     }
   ];
 
+  const handleScheduleConsultation = () => {
+    const phoneNumber = "919910911650"; // Based on the footer contact info
+    const message = encodeURIComponent("Hello One5 Realty Solutions! I am interested in scheduling a virtual consultation for NRI investment opportunities. Please guide me further.");
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  };
+
   return (
     <div className="section-full reveal" style={{ background: '#faf9f7', minHeight: '100vh' }}>
       <div className="section-inner">
@@ -66,7 +72,7 @@ const NRIView = () => {
               At One5 Realty Solutions, we understand the unique challenges faced by overseas investors. From time-zone differences to regulatory complexities, our mission is to act as your "On-Ground Partners" in India's fast-growing real estate sector.
             </p>
             <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-              <button className="nav-btn-solid" style={{ padding: '16px 32px' }} onClick={() => setView('contact')}>Schedule a Virtual Consultation</button>
+              <button className="nav-btn-solid" style={{ padding: '16px 32px' }} onClick={handleScheduleConsultation}>Schedule a Virtual Consultation</button>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14px', fontWeight: '700', color: 'var(--gold2)' }}>
                 <span style={{ fontSize: '20px' }}>🌍</span> Global Client Support 24/7
               </div>
