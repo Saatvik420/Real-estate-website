@@ -36,6 +36,7 @@ import PartnerDashboard from './components/PartnerDashboard';
 import AdminDashboard from './components/AdminDashboard';
 import PaymentView from './components/PaymentView';
 import PlansView from './components/PlansView';
+import PageLoader from './components/PageLoader';
 
 import './App.css';
 
@@ -69,6 +70,7 @@ function App() {
     <Router>
       <ScrollToTop />
       <AnimationTrigger />
+      <PageLoader />
       <div className="app-container">
         <Navbar />
         
