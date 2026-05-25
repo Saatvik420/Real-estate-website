@@ -1,6 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useApp } from '../hooks/useApp';
 
 const HomePlan = () => {
+  const navigate = useNavigate();
+  const { isLoggedIn } = useApp();
+
+  const handlePlanSelection = (plan) => {
+    if (isLoggedIn) {
+      navigate('/payment', { state: { plan } });
+    } else {
+      navigate('/auth');
+    }
+  };
+
   const plans = [
     {
       name: "Starter",
@@ -68,7 +81,11 @@ const HomePlan = () => {
                 ))}
               </ul>
               
-              <button className={plan.highlight ? "nav-btn-solid" : "nav-btn-ghost"} style={{ width: '100%', padding: '15px' }}>
+              <button 
+                className={plan.highlight ? "nav-btn-solid" : "nav-btn-ghost"} 
+                style={{ width: '100%', padding: '15px' }}
+                onClick={() => handlePlanSelection(plan)}
+              >
                 {plan.name === 'Starter' ? 'GET STARTED' : 'UPGRADE NOW'}
               </button>
             </div>
