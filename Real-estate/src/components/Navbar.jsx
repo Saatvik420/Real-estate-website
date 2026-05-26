@@ -125,16 +125,19 @@ const Navbar = () => {
           <div className="dropdown-menu">
             <Link className="nav-link" to="/plots" onClick={() => { 
               setView('plots'); 
+              setSelectedCity('India');
               setSearchFilters({ listingType: 'Plots / Land', type: 'Commercial', budget: 'Any Budget', bhk: 'Any BHK', status: 'Any Status' });
               closeMobileMenu(); 
             }}>Commercial</Link>
             <Link className="nav-link" to="/plots" onClick={() => { 
               setView('plots'); 
+              setSelectedCity('India');
               setSearchFilters({ listingType: 'Plots / Land', type: 'Residential', budget: 'Any Budget', bhk: 'Any BHK', status: 'Any Status' });
               closeMobileMenu(); 
             }}>Residential</Link>
             <Link className="nav-link" to="/plots" onClick={() => { 
               setView('plots'); 
+              setSelectedCity('India');
               setSearchFilters({ listingType: 'Plots / Land', type: 'Agriculture', budget: 'Any Budget', bhk: 'Any BHK', status: 'Any Status' });
               closeMobileMenu(); 
             }}>Agriculture</Link>
