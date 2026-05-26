@@ -83,9 +83,9 @@ const Navbar = () => {
               <text x="50" y="85" font-family="'Playfair Display', serif, sans-serif" font-size="34" font-weight="900" fill="url(#navGoldSolid)" text-anchor="middle">15</text>
             </g>
             <g transform="translate(140, 80)">
-              <text x="0" y="0" font-family="'Montserrat', 'Inter', sans-serif" font-size="52" font-weight="800" fill="#f4edd9" letter-spacing="1">ONE5</text>
-              <text x="160" y="0" font-family="'Montserrat', 'Inter', sans-serif" font-size="52" font-weight="300" fill="#ebdcb5" letter-spacing="3">REALTY</text>
-              <text x="5" y="32" font-family="'Playfair Display', serif, sans-serif" font-size="16" font-weight="600" fill="#bda871" letter-spacing="10">PREMIUM SOLUTIONS</text>
+              <text x="0" y="0" font-family="'Montserrat', 'Inter', sans-serif" font-size="52" font-weight="800" fill="#f4edd9" letter-spacing="1">BHARAT</text>
+              <text x="215" y="0" font-family="'Montserrat', 'Inter', sans-serif" font-size="52" font-weight="300" fill="#ebdcb5" letter-spacing="3">ESTATES</text>
+              <text x="5" y="32" font-family="'Playfair Display', serif, sans-serif" font-size="16" font-weight="600" fill="#bda871" letter-spacing="10">PREMIUM REAL ESTATE</text>
             </g>
           </svg>
         </Link>

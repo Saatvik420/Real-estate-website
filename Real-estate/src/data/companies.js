@@ -38,5 +38,75 @@ export const companies = [
         video: '' // Placeholder for video link
       }
     ]
+  },
+  {
+    id: 'comp_2',
+    name: 'Vatika Group',
+    description: 'Vatika Group is one of the leading real estate developers in India, known for creating projects that are a perfect blend of modern architecture and natural beauty.',
+    headquarters: 'Gurugram, Haryana',
+    established: '1986',
+    logo: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=200&q=80',
+    projects: [
+      {
+        id: 'rj_p1',
+        name: 'Jaipur Jewels Residency',
+        status: 'Ready to Move',
+        type: 'Luxury Apartment',
+        location: 'C-Scheme, Jaipur',
+        priceRange: '₹1.8 Cr',
+        areaRange: '2400 sqft',
+        possession: 'Ready',
+        amenities: ['C-Scheme', 'Luxury', '3 BHK'],
+        img: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80',
+        video: 'https://videos.pexels.com/video-files/7577611/7577611-uhd_2560_1440_30fps.mp4'
+      },
+      {
+        id: 'plot_rj_ajmer_1',
+        name: 'Vatika Infotech City - Plots',
+        status: 'Ready',
+        type: 'Residential Plot',
+        location: 'Ajmer Road, Jaipur',
+        priceRange: '₹55 L',
+        areaRange: '200 sq yards',
+        possession: 'Ready',
+        amenities: ['Luxury Township', 'Club Access'],
+        img: 'https://images.pexels.com/photos/20858785/pexels-photo-20858785.jpeg?w=600&q=80'
+      }
+    ]
+  },
+  {
+    id: 'comp_3',
+    name: 'Mahima Group',
+    description: 'Mahima Group is Rajasthan\'s premier real estate developer with a legacy of delivering over 33 years of excellence in residential and commercial spaces.',
+    headquarters: 'Jaipur, Rajasthan',
+    established: '1990',
+    logo: 'https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=200&q=80',
+    projects: [
+      {
+        id: 'rj_p2',
+        name: 'The Royal Palms',
+        status: 'Under Construction',
+        type: 'Independent Villa',
+        location: 'Ajmer Road, Jaipur',
+        priceRange: '₹3.5 Cr',
+        areaRange: '4500 sqft',
+        possession: 'Dec 2026',
+        amenities: ['Private Pool', '5 BHK'],
+        img: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80',
+        video: 'https://videos.pexels.com/video-files/7578552/7578552-uhd_2560_1440_30fps.mp4'
+      },
+      {
+        id: 'rj_p5',
+        name: 'The Amber Estate',
+        status: 'Ready to Move',
+        type: 'Independent Villa',
+        location: 'Vaishali Nagar, Jaipur',
+        priceRange: '₹4.8 Cr',
+        areaRange: '5200 sqft',
+        possession: 'Ready',
+        amenities: ['Vaishali Nagar', 'Private Gym', '5 BHK'],
+        img: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80'
+      }
+    ]
   }
 ];
