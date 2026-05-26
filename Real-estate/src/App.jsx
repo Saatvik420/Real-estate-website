@@ -36,6 +36,7 @@ import PartnerDashboard from './components/PartnerDashboard';
 import AdminDashboard from './components/AdminDashboard';
 import PaymentView from './components/PaymentView';
 import PlansView from './components/PlansView';
+import CityView from './components/CityView';
 import PageLoader from './components/PageLoader';
 
 import './App.css';
@@ -82,6 +83,7 @@ function App() {
           <Route path="/rent" element={<RentalsView />} />
           <Route path="/projects" element={<ProjectsView />} />
           <Route path="/plots" element={<PlotsView />} />
+          <Route path="/city/:cityId" element={<CityView />} />
           <Route path="/insights" element={<Insights />} />
           <Route path="/about" element={<AboutView />} />
           <Route path="/contact" element={<ContactView />} />
