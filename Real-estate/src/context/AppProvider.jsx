@@ -183,7 +183,7 @@ export const AppProvider = ({ children }) => {
     selectedProperty, setSelectedProperty,
     comparisonList, setComparisonList,
     searchFilters, setSearchFilters,
-    states, cities, loading, rentals, contractors, companies, plots,
+    states, cities, allCities: localCities, loading, rentals, contractors, companies, plots,
     currentUser, isLoggedIn, login, logout, register, updateProfileAction,
     allUsers, adminStats, allInquiries, toggleUserStatus, deleteUserAction, approveContractorAction,
     submitInquiryAction, updateInquiryStatusAction, appointContractorAction
