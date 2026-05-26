@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" width="500" height="150">
+  <defs>
+    <!-- Elegant Gold Gradient -->
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C59B3C" />
+      <stop offset="50%" stop-color="#F2DE92" />
+      <stop offset="100%" stop-color="#A57A27" />
+    </linearGradient>
+    
+    <linearGradient id="goldSolid" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#AA8C2C" />
+    </linearGradient>
+  </defs>
+
+  <!-- Geometric Real Estate Emblem -->
+  <g transform="translate(30, 25)">
+    <!-- Outer Diamond / Building Shape -->
+    <path d="M50 0 L90 40 L90 100 L10 100 L10 40 Z" fill="none" stroke="url(#goldGradient)" stroke-width="4" stroke-linejoin="round"/>
+    
+    <!-- Inner Architecture Lines -->
+    <path d="M50 0 L50 100" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.5"/>
+    <path d="M10 40 L90 40" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.5"/>
+    <path d="M30 100 L30 60 L70 60 L70 100" fill="none" stroke="url(#goldGradient)" stroke-width="4" stroke-linejoin="round"/>
+    
+    <!-- Embedded '15' -->
+    <text x="50" y="85" font-family="'Playfair Display', serif, sans-serif" font-size="28" font-weight="900" fill="url(#goldSolid)" text-anchor="middle">15</text>
+  </g>
+
+  <!-- Typography -->
+  <g transform="translate(150, 80)">
+    <!-- Brand Name -->
+    <text x="0" y="0" font-family="'Montserrat', 'Inter', sans-serif" font-size="48" font-weight="800" fill="#0F172A" letter-spacing="1">ONE5</text>
+    <text x="145" y="0" font-family="'Montserrat', 'Inter', sans-serif" font-size="48" font-weight="300" fill="#0F172A" letter-spacing="3">REALTY</text>
+    
+    <!-- Subtitle -->
+    <text x="5" y="30" font-family="'Playfair Display', serif, sans-serif" font-size="14" font-weight="600" fill="#64748B" letter-spacing="9">PREMIUM REAL ESTATE</text>
+  </g>
+</svg>

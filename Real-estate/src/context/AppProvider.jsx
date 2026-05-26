@@ -39,7 +39,7 @@ export const AppProvider = ({ children }) => {
   // ── NAV SETTINGS (admin-controlled) ────────────────────────────────────────
   const [navSettings, setNavSettings] = useState(() => {
     const saved = localStorage.getItem('navSettings');
-    return saved ? JSON.parse(saved) : { showProjects: false };
+    return saved ? JSON.parse(saved) : { showProjects: true };
   });
 
   const updateNavSettings = useCallback((updates) => {
