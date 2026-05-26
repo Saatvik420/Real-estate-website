@@ -36,6 +36,20 @@ export const AppProvider = ({ children }) => {
   const [adminStats, setAdminStats] = useState({ totalGmv: '₹0', growth: '0%' });
   const [allInquiries, setAllInquiries] = useState([]);
 
+  // ── NAV SETTINGS (admin-controlled) ────────────────────────────────────────
+  const [navSettings, setNavSettings] = useState(() => {
+    const saved = localStorage.getItem('navSettings');
+    return saved ? JSON.parse(saved) : { showProjects: false };
+  });
+
+  const updateNavSettings = useCallback((updates) => {
+    setNavSettings(prev => {
+      const next = { ...prev, ...updates };
+      localStorage.setItem('navSettings', JSON.stringify(next));
+      return next;
+    });
+  }, []);
+
   // ── INITIAL DATA BOOTSTRAP ────────────────────────────────────────────────
   useEffect(() => {
     const bootstrap = async () => {
@@ -186,14 +200,16 @@ export const AppProvider = ({ children }) => {
     states, cities, allCities: localCities, loading, rentals, contractors, companies, plots,
     currentUser, isLoggedIn, login, logout, register, updateProfileAction,
     allUsers, adminStats, allInquiries, toggleUserStatus, deleteUserAction, approveContractorAction,
-    submitInquiryAction, updateInquiryStatusAction, appointContractorAction
+    submitInquiryAction, updateInquiryStatusAction, appointContractorAction,
+    navSettings, updateNavSettings
     }), [
     view, selectedState, selectedCity, selectedProperty, comparisonList, searchFilters,
     states, cities, loading, rentals, contractors, companies, plots,
     currentUser, isLoggedIn, allUsers, adminStats, allInquiries,
     login, logout, register, updateProfileAction,
     submitInquiryAction, updateInquiryStatusAction, appointContractorAction,
-    deleteUserAction, toggleUserStatus, approveContractorAction
+    deleteUserAction, toggleUserStatus, approveContractorAction,
+    navSettings, updateNavSettings
     ]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useApp } from '../hooks/useApp';
 
 const Navbar = () => {
-  const { setView, states, allCities, setSelectedState, setSelectedCity, setSearchFilters, isLoggedIn, currentUser, logout } = useApp();
+  const { setView, states, allCities, setSelectedState, setSelectedCity, setSearchFilters, isLoggedIn, currentUser, logout, navSettings } = useApp();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null); // 'corporate' | 'account' | 'partners' | 'state-city' | 'plots' | null
   const [activeNestedDropdown, setActiveNestedDropdown] = useState(null); // stateId | null
@@ -103,7 +103,9 @@ const Navbar = () => {
         </div>
 
         <Link className="nav-link" to="/insights" onClick={() => { setView('insights'); closeMobileMenu(); }}>Insights</Link>
-        <Link className="nav-link" to="/projects" onClick={() => { setView('projects'); closeMobileMenu(); }}>Projects</Link>
+        {navSettings.showProjects && (
+          <Link className="nav-link" to="/projects" onClick={() => { setView('projects'); closeMobileMenu(); }}>Projects</Link>
+        )}
         
         <div className={`professional-dropdown ${activeDropdown === 'state-city' ? 'active' : ''}`} style={{ position: 'relative' }}>
           <span className="nav-link" onClick={(e) => toggleDropdown('state-city', e)} style={{ cursor: 'pointer' }}>State / City ▾</span>
