@@ -103,9 +103,7 @@ const Navbar = () => {
         </div>
 
         <Link className="nav-link" to="/insights" onClick={() => { setView('insights'); closeMobileMenu(); }}>Insights</Link>
-        {navSettings.showProjects && (
-          <Link className="nav-link" to="/projects" onClick={() => { setView('projects'); closeMobileMenu(); }}>Projects</Link>
-        )}
+        <Link className="nav-link" to="/projects" onClick={() => { setView('projects'); closeMobileMenu(); }}>Projects</Link>
         
         <div className={`professional-dropdown ${activeDropdown === 'state-city' ? 'active' : ''}`} style={{ position: 'relative' }}>
           <span className="nav-link" onClick={(e) => toggleDropdown('state-city', e)} style={{ cursor: 'pointer' }}>State / City ▾</span>
