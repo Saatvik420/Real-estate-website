@@ -7,7 +7,8 @@ import LeadFormModal from './LeadFormModal';
 const PlotsView = () => {
   const { 
     selectedCity, setSelectedCity, plots, setView,
-    setSelectedProperty, comparisonList, setComparisonList
+    setSelectedProperty, comparisonList, setComparisonList,
+    searchFilters
   } = useApp();
   const [filteredPlots, setFilteredPlots] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -18,7 +19,7 @@ const PlotsView = () => {
   // Local filter state for sidebar
   const [filters, setFilters] = useState({
     cityId: (selectedCity || 'India') === 'India' ? 'All' : (selectedCity || '').toLowerCase().replace(/\s+/g, '_'),
-    type: 'Any Type',
+    type: searchFilters.listingType === 'Plots / Land' ? searchFilters.type : 'Any Type',
     priceRange: 'Any Price'
   });
 
@@ -84,6 +85,16 @@ const PlotsView = () => {
       }));
     }
   }, [selectedCity]);
+
+  // Sync internal filter when searchFilters.type changes (from navbar)
+  useEffect(() => {
+    if (searchFilters.listingType === 'Plots / Land' && searchFilters.type) {
+      setFilters(prev => ({
+        ...prev,
+        type: searchFilters.type
+      }));
+    }
+  }, [searchFilters.type, searchFilters.listingType]);
 
   const handlePropertyClick = (id) => {
     setSelectedProperty(id);

@@ -113,18 +113,18 @@ const Navbar = () => {
         <div className={`professional-dropdown ${activeDropdown === 'plots' ? 'active' : ''}`} style={{ position: 'relative' }}>
           <span className="nav-link" onClick={(e) => toggleDropdown('plots', e)} style={{ cursor: 'pointer' }}>Plot / Land ▾</span>
           <div className="dropdown-menu">
-            <Link className="nav-link" to="/results" onClick={() => { 
-              setView('results'); 
+            <Link className="nav-link" to="/plots" onClick={() => { 
+              setView('plots'); 
               setSearchFilters({ listingType: 'Plots / Land', type: 'Commercial', budget: 'Any Budget', bhk: 'Any BHK', status: 'Any Status' });
               closeMobileMenu(); 
             }}>Commercial</Link>
-            <Link className="nav-link" to="/results" onClick={() => { 
-              setView('results'); 
+            <Link className="nav-link" to="/plots" onClick={() => { 
+              setView('plots'); 
               setSearchFilters({ listingType: 'Plots / Land', type: 'Residential', budget: 'Any Budget', bhk: 'Any BHK', status: 'Any Status' });
               closeMobileMenu(); 
             }}>Residential</Link>
-            <Link className="nav-link" to="/results" onClick={() => { 
-              setView('results'); 
+            <Link className="nav-link" to="/plots" onClick={() => { 
+              setView('plots'); 
               setSearchFilters({ listingType: 'Plots / Land', type: 'Agriculture', budget: 'Any Budget', bhk: 'Any BHK', status: 'Any Status' });
               closeMobileMenu(); 
             }}>Agriculture</Link>
