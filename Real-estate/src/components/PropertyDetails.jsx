@@ -60,8 +60,7 @@ const PropertyDetails = () => {
             <div className="pd-section">
               <h3 className="pd-sec-title">Estate Overview</h3>
               <p className="pd-desc">
-                This exceptional {property.type} by {property.developer} represents the pinnacle of luxury living in {property.location}. 
-                Carefully curated for the modern connoisseur, it offers an unparalleled blend of sophistication and comfort.
+                {property.extraDescription || `This exceptional ${property.type} by ${property.developer} represents the pinnacle of luxury living in ${property.location}. Carefully curated for the modern connoisseur, it offers an unparalleled blend of sophistication and comfort.`}
               </p>
               <div className="pd-quick-stats">
                 <div className="pd-stat-box">
@@ -81,12 +80,26 @@ const PropertyDetails = () => {
                   <span className="pd-stat-val">{property.status}</span>
                 </div>
               </div>
+
+              {property.pdfUrl && (
+                <div style={{ marginTop: '30px' }}>
+                  <a 
+                    href={property.pdfUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="pd-btn-primary" 
+                    style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '10px', background: 'var(--gold2)', color: 'var(--ink)' }}
+                  >
+                    📄 Download Project Brochure (PDF)
+                  </a>
+                </div>
+              )}
             </div>
 
             <div className="pd-section">
               <h3 className="pd-sec-title">Premium Amenities</h3>
               <div className="pd-amenities">
-                {['Concierge Service', 'Private Infinity Pool', 'Smart Home Integration', 'Forest View Terrace', '24/7 Elite Security', 'Designer Clubhouse'].map((item, i) => (
+                {(property.tags || ['Concierge Service', 'Private Infinity Pool', 'Smart Home Integration', 'Forest View Terrace', '24/7 Elite Security', 'Designer Clubhouse']).map((item, i) => (
                   <div key={i} className="pd-amenity-item">
                     <span className="pd-check">✓</span> {item}
                   </div>
