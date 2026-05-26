@@ -96,7 +96,7 @@ const StateView = () => {
   const cityKeys = Object.keys(stateInfo.cities);
 
   return (
-    <div className="section-full rec-bg reveal" style={{ minHeight: '80vh' }}>
+    <div className="section-full rec-bg" style={{ minHeight: '80vh' }}>
       {/* Hero Section */}
       <div className="city-hero" style={{
         position: 'relative',
