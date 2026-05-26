@@ -48,9 +48,9 @@ const Navbar = () => {
       city: city.name,
       state: states.find(s => s.id === city.stateId)?.name || ''
     }));
-    setView('city');
+    setView('state');
     closeMobileMenu();
-    navigate(`/city/${city.id}`);
+    navigate(`/state/${city.stateId}`);
   };
 
   return (
@@ -113,7 +113,7 @@ const Navbar = () => {
                 <span className="nav-link" onClick={(e) => toggleNestedDropdown(state.id, e)}>{state.name} <span style={{ fontSize: '10px' }}>▶</span></span>
                 <div className="nested-menu">
                   {allCities.filter(c => c.stateId === state.id).map(city => (
-                    <Link key={city.id} className="nav-link" to={`/city/${city.id}`} onClick={() => handleCityClick(city)}>{city.name}</Link>
+                    <Link key={city.id} className="nav-link" to={`/state/${state.id}`} onClick={() => handleCityClick(city)}>{city.name}</Link>
                   ))}
                 </div>
               </div>
