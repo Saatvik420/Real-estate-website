@@ -59,91 +59,81 @@ const PropertyDetails = () => {
       </div>
 
       <div className="section reveal">
-        <div className="pd-main-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: '50px' }}>
+        <div className="pd-main-grid">
           
           {/* Left Side: Media & Descriptions */}
           <div className="pd-left">
-            <div className="pd-section" style={{ marginBottom: '40px' }}>
-              <h3 className="pd-sec-title" style={{ fontFamily: "'Playfair Display', serif", fontSize: '28px', borderBottom: '2px solid var(--gold2)', display: 'inline-block', paddingBottom: '8px', marginBottom: '25px' }}>
-                Project Overview
-              </h3>
-              <p className="pd-desc" style={{ fontSize: '16px', lineHeight: '1.8', color: 'var(--muted)', marginBottom: '30px' }}>
+            <div className="pd-section">
+              <h3 className="pd-sec-title">Project Overview</h3>
+              <p className="pd-desc">
                 {property.extraDescription || `This exceptional ${property.type} represents the pinnacle of luxury living in ${property.location}. Carefully curated for the modern connoisseur, it offers an unparalleled blend of sophistication, comfort, and spiritual harmony. Spanning across vast acres of meticulously planned landscapes, this project is a testament to architectural brilliance and sustainable design.`}
               </p>
               
-              <div className="pd-quick-stats" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', background: 'var(--cream2)', padding: '25px', borderRadius: '15px' }}>
+              <div className="pd-quick-stats">
                 <div className="pd-stat-box">
-                  <span className="pd-stat-lbl" style={{ display: 'block', fontSize: '11px', fontWeight: '700', color: 'var(--muted2)', textTransform: 'uppercase' }}>Price Range</span>
-                  <span className="pd-stat-val" style={{ fontSize: '18px', fontWeight: '800', color: 'var(--ink)' }}>{property.priceStr || property.priceRange}</span>
+                  <span className="pd-stat-lbl">Price Range</span>
+                  <span className="pd-stat-val">{property.priceStr || property.priceRange}</span>
                 </div>
                 <div className="pd-stat-box">
-                  <span className="pd-stat-lbl" style={{ display: 'block', fontSize: '11px', fontWeight: '700', color: 'var(--muted2)', textTransform: 'uppercase' }}>Area Coverage</span>
-                  <span className="pd-stat-val" style={{ fontSize: '18px', fontWeight: '800', color: 'var(--ink)' }}>{property.area || property.areaRange}</span>
+                  <span className="pd-stat-lbl">Area Coverage</span>
+                  <span className="pd-stat-val">{property.area || property.areaRange}</span>
                 </div>
                 <div className="pd-stat-box">
-                  <span className="pd-stat-lbl" style={{ display: 'block', fontSize: '11px', fontWeight: '700', color: 'var(--muted2)', textTransform: 'uppercase' }}>Current Status</span>
-                  <span className="pd-stat-val" style={{ fontSize: '18px', fontWeight: '800', color: 'var(--ink)' }}>{property.status}</span>
+                  <span className="pd-stat-lbl">Current Status</span>
+                  <span className="pd-stat-val">{property.status}</span>
                 </div>
                 <div className="pd-stat-box">
-                  <span className="pd-stat-lbl" style={{ display: 'block', fontSize: '11px', fontWeight: '700', color: 'var(--muted2)', textTransform: 'uppercase' }}>Possession Date</span>
-                  <span className="pd-stat-val" style={{ fontSize: '18px', fontWeight: '800', color: 'var(--ink)' }}>{property.possession || 'Ready to Move'}</span>
+                  <span className="pd-stat-lbl">Possession</span>
+                  <span className="pd-stat-val">{property.possession || 'Ready to Move'}</span>
                 </div>
               </div>
             </div>
 
-            <div className="pd-section" style={{ marginBottom: '40px' }}>
-              <h3 className="pd-sec-title" style={{ fontFamily: "'Playfair Display', serif", fontSize: '24px', marginBottom: '20px' }}>Premium Amenities</h3>
-              <div className="pd-amenities" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
+            <div className="pd-section">
+              <h3 className="pd-sec-title">Premium Amenities</h3>
+              <div className="pd-amenities">
                 {(property.tags || property.amenities || ['Gated Community', '24/7 Security', 'Lush Gardens', 'Modern Infrastructure']).map((item, i) => (
-                  <div key={i} className="pd-amenity-item" style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14px', color: 'var(--muted)' }}>
-                    <span className="pd-check" style={{ color: 'var(--gold)', fontWeight: '900' }}>✓</span> {item}
+                  <div key={i} className="pd-amenity-item">
+                    <span className="pd-check">✓</span> {item}
                   </div>
                 ))}
               </div>
             </div>
 
             <div className="pd-section">
-              <h3 className="pd-sec-title" style={{ fontFamily: "'Playfair Display', serif", fontSize: '24px', marginBottom: '20px' }}>Project Visuals</h3>
-              <div className="pd-gallery" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
-                 <img src={property.img} alt="Main Project View" style={{ width: '100%', borderRadius: '10px', height: '180px', objectFit: 'cover' }} />
-                 <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800" alt="Interior View" style={{ width: '100%', borderRadius: '10px', height: '180px', objectFit: 'cover' }} />
+              <h3 className="pd-sec-title">Project Visuals</h3>
+              <div className="pd-gallery">
+                 <img src={property.img} alt="Main Project View" className="pd-gallery-item" />
+                 <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800" alt="Interior View" className="pd-gallery-item" />
                  {/* Video Placeholder Box */}
-                 <div style={{ width: '100%', height: '180px', background: '#000', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '12px', textAlign: 'center', padding: '20px' }}>
+                 <div className="pd-gallery-item" style={{ background: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '12px', textAlign: 'center', padding: '20px' }}>
                    🎥 Project Walkthrough<br/>(Video Placeholder)
                  </div>
-                 <div style={{ width: '100%', height: '180px', background: 'var(--cream3)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--muted)', fontSize: '12px', textAlign: 'center', padding: '20px' }}>
+                 <div className="pd-gallery-item" style={{ background: 'var(--cream3)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--muted)', fontSize: '12px', textAlign: 'center', padding: '20px' }}>
                    🏗 Architectural Map<br/>(Coming Soon)
                  </div>
               </div>
             </div>
           </div>
 
-          {/* Right Side: Inquiry Form */}
-          <aside className="pd-contact-card" style={{ background: 'var(--white)', padding: '40px', borderRadius: '20px', border: '1px solid var(--cream3)', boxShadow: '0 15px 50px rgba(0,0,0,0.08)', position: 'sticky', top: '100px', height: 'fit-content' }}>
-            <h4 style={{ fontFamily: "'Playfair Display', serif", fontSize: '26px', marginBottom: '10px' }}>Request Private Viewing</h4>
-            <p style={{ color: 'var(--muted)', fontSize: '14px', marginBottom: '30px' }}>Connect with our senior property consultant for a private site visit and portfolio discussion.</p>
+          {/* Right Side: Attractive Black Inquiry Form */}
+          <aside className="pd-contact-card">
+            <h4>Request Private Viewing</h4>
+            <p>Connect with our senior property consultant for a private site visit and portfolio discussion.</p>
             
-            <form className="pd-form" style={{ display: 'flex', flexDirection: 'column', gap: '15px' }} onSubmit={(e) => e.preventDefault()}>
-              <div className="form-group">
-                <input type="text" placeholder="Full Name" required style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid var(--cream3)', background: 'var(--bg-main)', outline: 'none' }} />
-              </div>
-              <div className="form-group">
-                <input type="email" placeholder="Email Address" required style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid var(--cream3)', background: 'var(--bg-main)', outline: 'none' }} />
-              </div>
-              <div className="form-group">
-                <input type="tel" placeholder="Phone Number" required style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid var(--cream3)', background: 'var(--bg-main)', outline: 'none' }} />
-              </div>
-              <div className="form-group">
-                <textarea placeholder="Your Message or Specific Requirements (e.g., preferred floor, budget range...)" style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid var(--cream3)', background: 'var(--bg-main)', minHeight: '120px', outline: 'none', resize: 'vertical' }}></textarea>
-              </div>
-              <button type="submit" className="nav-btn-solid" style={{ width: '100%', padding: '15px', fontSize: '14px', fontWeight: '800' }}>
+            <form className="pd-form" onSubmit={(e) => e.preventDefault()}>
+              <input type="text" placeholder="Full Name" required />
+              <input type="email" placeholder="Email Address" required />
+              <input type="tel" placeholder="Phone Number" required />
+              <textarea placeholder="Your Message or Specific Requirements (e.g., preferred floor, budget range...)"></textarea>
+              <button type="submit" className="pd-btn-primary">
                 SCHEDULE SITE VISIT
               </button>
             </form>
             
-            <div className="pd-contact-footer" style={{ marginTop: '30px', paddingTop: '20px', borderTop: '1px solid var(--cream3)', textAlign: 'center' }}>
-              <div style={{ fontSize: '11px', color: 'var(--muted2)', textTransform: 'uppercase', marginBottom: '8px' }}>Direct Concierge</div>
-              <a href="tel:+919910911650" style={{ fontSize: '18px', fontWeight: '800', color: 'var(--gold)', textDecoration: 'none' }}>+91 99109 11650</a>
+            <div className="pd-contact-footer">
+              <span>Direct Concierge</span>
+              <a href="tel:+919910911650">+91 99109 11650</a>
             </div>
           </aside>
 

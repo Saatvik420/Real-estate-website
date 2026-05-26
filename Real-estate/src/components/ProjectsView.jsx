@@ -20,43 +20,18 @@ const ProjectsView = () => {
         <p className="sec-sub">Discover our portfolio of premium townships and luxury residences across India's most spiritual and thriving cities.</p>
       </div>
 
-      <div className="landscape-projects-list" style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+      <div className="landscape-projects-list">
         {companies.map(comp => comp.projects.map(project => (
           <div 
             key={project.id} 
             className="project-landscape-card" 
-            style={{
-              display: 'flex',
-              background: 'var(--white)',
-              borderRadius: '20px',
-              overflow: 'hidden',
-              boxShadow: '0 10px 40px rgba(0,0,0,0.05)',
-              border: '1px solid var(--cream3)',
-              cursor: 'pointer',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-              minHeight: '350px'
-            }}
             onClick={() => handleProjectClick(project.id)}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-10px)';
-              e.currentTarget.style.boxShadow = '0 20px 60px rgba(0,0,0,0.1)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 10px 40px rgba(0,0,0,0.05)';
-            }}
           >
             {/* Image Section */}
-            <div className="project-image-wrap" style={{ flex: '1.2', position: 'relative' }}>
+            <div className="project-image-wrap">
               <div 
                 className="project-img" 
-                style={{ 
-                  width: '100%', 
-                  height: '100%', 
-                  backgroundImage: `url('${project.img}')`, 
-                  backgroundSize: 'cover', 
-                  backgroundPosition: 'center' 
-                }}
+                style={{ backgroundImage: `url('${project.img}')` }}
               ></div>
               <div className="project-status-badge" style={{
                 position: 'absolute',
@@ -69,18 +44,19 @@ const ProjectsView = () => {
                 fontSize: '11px',
                 fontWeight: '800',
                 textTransform: 'uppercase',
-                letterSpacing: '1px'
+                letterSpacing: '1px',
+                zIndex: 2
               }}>
                 {project.status}
               </div>
             </div>
 
             {/* Content Section */}
-            <div className="project-content-wrap" style={{ flex: '1', padding: '40px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <div className="project-content-wrap">
               <div className="project-type" style={{ fontSize: '11px', fontWeight: '800', color: 'var(--gold)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '2px' }}>
                 {project.type}
               </div>
-              <h3 className="project-name" style={{ fontFamily: "'Playfair Display', serif", fontSize: '32px', color: 'var(--ink)', marginBottom: '15px' }}>
+              <h3 className="project-name" style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(24px, 4vw, 32px)', color: 'var(--ink)', marginBottom: '15px' }}>
                 {project.name}
               </h3>
               <div className="project-location" style={{ fontSize: '14px', color: 'var(--muted)', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
@@ -98,7 +74,7 @@ const ProjectsView = () => {
                 </div>
               </div>
 
-              <div className="project-actions" style={{ display: 'flex', gap: '15px' }}>
+              <div className="project-actions" style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
                 <button 
                   className="nav-btn-solid" 
                   style={{ padding: '12px 25px', fontSize: '13px' }}
