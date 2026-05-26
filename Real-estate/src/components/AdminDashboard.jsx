@@ -5,7 +5,8 @@ const AdminDashboard = () => {
   const { 
     allUsers, logout, 
     adminStats, toggleUserStatus, deleteUserAction, approveContractorAction,
-    allInquiries, updateInquiryStatusAction, appointContractorAction
+    allInquiries, updateInquiryStatusAction, appointContractorAction,
+    navSettings, updateNavSettings
   } = useApp();
   
   const [activeTab, setActiveTab] = useState('Overview');
@@ -101,7 +102,8 @@ const AdminDashboard = () => {
                 { name: 'Developer Partners', icon: '🏢' },
                 { name: 'Service Contractors', icon: '🏗️' },
                 { name: 'Lead & Appointment', icon: '📩' },
-                { name: 'Market Intelligence', icon: '📉' }
+                { name: 'Market Intelligence', icon: '📉' },
+                { name: 'Site Settings', icon: '⚙️' }
             ].map(item => (
                 <div 
                     key={item.name} 
@@ -413,6 +415,55 @@ const AdminDashboard = () => {
                         ))}
                     </tbody>
                 </table>
+            </div>
+        )}
+
+        {/* ── SITE SETTINGS TAB ──────────────────────────────────────────── */}
+        {activeTab === 'Site Settings' && (
+            <div>
+                <h2 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px' }}>Site Settings</h2>
+                <p style={{ color: '#868e96', fontSize: '0.85rem', marginBottom: '30px' }}>Control which sections are visible on the public website.</p>
+
+                <div style={{ background: '#fff', borderRadius: '16px', border: '1px solid #e9ecef', padding: '30px' }}>
+                    <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '20px', color: '#333' }}>Navbar Sections</h3>
+                    
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px', background: '#f8f9fa', borderRadius: '12px', border: '1px solid #e9ecef' }}>
+                        <div>
+                            <div style={{ fontWeight: 700, fontSize: '0.95rem', marginBottom: '4px' }}>Projects Section</div>
+                            <div style={{ fontSize: '0.8rem', color: '#868e96' }}>Show or hide the "Projects" link in the main navigation bar</div>
+                        </div>
+                        <label style={{ position: 'relative', display: 'inline-block', width: '52px', height: '28px', cursor: 'pointer' }}>
+                            <input
+                                type="checkbox"
+                                checked={navSettings.showProjects}
+                                onChange={(e) => updateNavSettings({ showProjects: e.target.checked })}
+                                style={{ opacity: 0, width: 0, height: 0 }}
+                            />
+                            <span style={{
+                                position: 'absolute',
+                                top: 0, left: 0, right: 0, bottom: 0,
+                                borderRadius: '14px',
+                                background: navSettings.showProjects ? 'var(--gold, #C59B3C)' : '#ccc',
+                                transition: '0.3s'
+                            }}>
+                                <span style={{
+                                    position: 'absolute',
+                                    width: '22px', height: '22px',
+                                    borderRadius: '50%',
+                                    background: '#fff',
+                                    top: '3px',
+                                    left: navSettings.showProjects ? '27px' : '3px',
+                                    transition: '0.3s',
+                                    boxShadow: '0 2px 4px rgba(0,0,0,0.15)'
+                                }} />
+                            </span>
+                        </label>
+                    </div>
+
+                    <div style={{ marginTop: '16px', padding: '12px 16px', background: navSettings.showProjects ? '#e7f5ed' : '#fff4e6', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 600, color: navSettings.showProjects ? '#2b8a3e' : '#e67e22' }}>
+                        Status: Projects section is currently <strong>{navSettings.showProjects ? 'VISIBLE' : 'HIDDEN'}</strong> on the website
+                    </div>
+                </div>
             </div>
         )}
       </main>

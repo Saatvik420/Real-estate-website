@@ -951,5 +951,48 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:80px 48px 32px;
   }
 }
 
+/* ── City View Animations ─────────────────────────────── */
+@keyframes cityFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cityCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes highlightSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .city-hero {
+    height: 300px !important;
+  }
+  .results-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 
 
