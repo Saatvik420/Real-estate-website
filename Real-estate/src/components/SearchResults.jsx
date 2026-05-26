@@ -5,12 +5,14 @@ import { apiService } from '../services/apiService';
 
 const SearchResults = () => {
   const { 
-    selectedCity, searchFilters, setSearchFilters, 
+    selectedCity, states, cities, searchFilters, setSearchFilters, 
     setView, setSelectedProperty, comparisonList, setComparisonList 
   } = useApp();
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
+  const cityName = cities.find(c => c.id === selectedCity)?.name || (selectedCity === 'India' ? 'All India' : selectedCity);
 
   useEffect(() => {
     const fetchResults = async () => {
@@ -59,9 +61,9 @@ const SearchResults = () => {
       <div className="section-inner">
         <div className="sec-header">
           <div>
-            <div className="eyebrow" onClick={() => setView('home')} style={{ cursor: 'pointer' }}>← Back to Home</div>
+            <div className="eyebrow" onClick={() => { setView('home'); navigate('/'); }} style={{ cursor: 'pointer' }}>← Back to Home</div>
             <h2 className="sec-title">Premium <span>Search Results</span></h2>
-            <p className="sec-sub">Discover curated properties in <strong>{selectedCity === 'India' ? 'All India' : selectedCity}</strong></p>
+            <p className="sec-sub">Discover curated properties in <strong>{cityName}</strong></p>
           </div>
           {properties.length > 0 && (
             <button className="nav-btn-ghost" onClick={clearFilters}>Clear Filters</button>

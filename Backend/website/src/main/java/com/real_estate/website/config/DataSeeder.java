@@ -148,6 +148,7 @@ public class DataSeeder implements CommandLineRunner {
 
     private void seedLocations() {
         List<State> states = Arrays.asList(
+                new State("st_dl", "Delhi"),
                 new State("st_rj", "Rajasthan"),
                 new State("st_up", "Uttar Pradesh"),
                 new State("st_ut", "Uttarakhand")
@@ -155,6 +156,10 @@ public class DataSeeder implements CommandLineRunner {
         stateRepository.saveAll(states);
 
         List<City> cities = Arrays.asList(
+                // Delhi
+                new City("janakpuri", "st_dl", "Janakpuri"),
+                new City("dwarka", "st_dl", "Dwarka"),
+
                 // Rajasthan
                 new City("khatu_shyam", "st_rj", "Khatu Shyam"),
                 new City("paota", "st_rj", "Paota"),

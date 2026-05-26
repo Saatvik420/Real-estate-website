@@ -3,18 +3,21 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useApp } from '../hooks/useApp';
 
 const Navbar = () => {
-  const { setView, setSelectedCity, setSearchFilters, isLoggedIn, currentUser, logout } = useApp();
+  const { setView, states, cities, setSelectedState, setSelectedCity, setSearchFilters, isLoggedIn, currentUser, logout } = useApp();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null); // 'corporate' | 'account' | 'partners' | null
+  const [activeDropdown, setActiveDropdown] = useState(null); // 'corporate' | 'account' | 'partners' | 'state-city' | 'plots' | null
+  const [activeNestedDropdown, setActiveNestedDropdown] = useState(null); // stateId | null
   const navigate = useNavigate();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
     setActiveDropdown(null);
+    setActiveNestedDropdown(null);
   };
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
     setActiveDropdown(null);
+    setActiveNestedDropdown(null);
   };
 
   const toggleDropdown = (name, e) => {
@@ -24,10 +27,34 @@ const Navbar = () => {
     e.preventDefault();
     e.stopPropagation();
     setActiveDropdown(activeDropdown === name ? null : name);
+    setActiveNestedDropdown(null);
+  };
+
+  const toggleNestedDropdown = (stateId, e) => {
+    const isMobile = window.matchMedia("(max-width: 992px)").matches;
+    if (!isMobile) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+    setActiveNestedDropdown(activeNestedDropdown === stateId ? null : stateId);
+  };
+
+  const handleCityClick = (city) => {
+    setSelectedState(city.stateId);
+    setSelectedCity(city.id);
+    setSearchFilters(prev => ({ 
+      ...prev, 
+      cityId: city.id,
+      city: city.name,
+      state: states.find(s => s.id === city.stateId)?.name || ''
+    }));
+    setView('results');
+    closeMobileMenu();
   };
 
   return (
     <nav className="nav">
+      {/* ... (nav-left-mobile remains unchanged) ... */}
       <div className="nav-left-mobile">
         <button className="hamburger" onClick={toggleMobileMenu}>
           <span className={`bar ${isMobileMenuOpen ? 'active' : ''}`}></span>
@@ -80,33 +107,16 @@ const Navbar = () => {
         <div className={`professional-dropdown ${activeDropdown === 'state-city' ? 'active' : ''}`} style={{ position: 'relative' }}>
           <span className="nav-link" onClick={(e) => toggleDropdown('state-city', e)} style={{ cursor: 'pointer' }}>State / City ▾</span>
           <div className="dropdown-menu">
-            <div className="nested-dropdown">
-              <span className="nav-link">Rajasthan <span style={{ fontSize: '10px' }}>▶</span></span>
-              <div className="nested-menu">
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('khatu_shyam'); closeMobileMenu(); }}>Khatu Shyam</Link>
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('paota'); closeMobileMenu(); }}>Paota</Link>
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('behror'); closeMobileMenu(); }}>Behror</Link>
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('neemrana'); closeMobileMenu(); }}>Neemrana</Link>
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('jaipur'); closeMobileMenu(); }}>Jaipur</Link>
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('ajmer_road'); closeMobileMenu(); }}>Ajmer Road</Link>
+            {states.map(state => (
+              <div key={state.id} className={`nested-dropdown ${activeNestedDropdown === state.id ? 'active' : ''}`}>
+                <span className="nav-link" onClick={(e) => toggleNestedDropdown(state.id, e)}>{state.name} <span style={{ fontSize: '10px' }}>▶</span></span>
+                <div className="nested-menu">
+                  {cities.filter(c => c.stateId === state.id).map(city => (
+                    <Link key={city.id} className="nav-link" to="/results" onClick={() => handleCityClick(city)}>{city.name}</Link>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div className="nested-dropdown">
-              <span className="nav-link">U.P. <span style={{ fontSize: '10px' }}>▶</span></span>
-              <div className="nested-menu">
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('noida'); closeMobileMenu(); }}>Noida</Link>
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('greater_noida'); closeMobileMenu(); }}>Greater Noida</Link>
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('vrindavan'); closeMobileMenu(); }}>Vrindavan</Link>
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('ayodhya'); closeMobileMenu(); }}>Ayodhya</Link>
-              </div>
-            </div>
-            <div className="nested-dropdown">
-              <span className="nav-link">Uttarakhand <span style={{ fontSize: '10px' }}>▶</span></span>
-              <div className="nested-menu">
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('dehradun'); closeMobileMenu(); }}>Dehradun</Link>
-                <Link className="nav-link" to="/results" onClick={() => { setView('results'); setSelectedCity('haridwar'); closeMobileMenu(); }}>Haridwar</Link>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
@@ -133,6 +143,7 @@ const Navbar = () => {
 
         <Link className="nav-link" to="/nri-corner" onClick={() => { setView('nri'); closeMobileMenu(); }}>NRI Corner</Link>
       </div>
+      {/* ... (rest of nav remains unchanged) ... */}
 
       <div className="nav-right">
         {isLoggedIn ? (

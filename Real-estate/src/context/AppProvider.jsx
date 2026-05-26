@@ -41,8 +41,21 @@ export const AppProvider = ({ children }) => {
     const bootstrap = async () => {
       setLoading(true);
       try {
-          // We strictly use the local states for the UI to match the navbar
-          setStates(localStates);
+          // Try to fetch states from API
+          const stateRes = await apiService.getStates();
+          if (stateRes.success && stateRes.data && stateRes.data.length > 0) {
+              setStates(stateRes.data);
+          } else {
+              setStates(localStates);
+          }
+
+          // Try to fetch all cities initially
+          const cityRes = await apiService.getCities();
+          if (cityRes.success && cityRes.data && cityRes.data.length > 0) {
+              setCities(cityRes.data);
+          } else {
+              setCities(localCities);
+          }
 
           setRentals(initialRentals);
           setCompanies(initialCompanies);
@@ -52,6 +65,8 @@ export const AppProvider = ({ children }) => {
           if (savedUser) setCurrentUser(JSON.parse(savedUser));
       } catch (err) {
           console.error("Bootstrap Error:", err);
+          setStates(localStates);
+          setCities(localCities);
       } finally {
           setLoading(false);
       }
@@ -63,11 +78,21 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     const syncCities = async () => {
       if (selectedState) {
-        // Strictly filter from our verified local city list
-        setCities(localCities.filter(c => c.stateId === selectedState));
+        const res = await apiService.getCities(selectedState);
+        if (res.success && res.data && res.data.length > 0) {
+            setCities(res.data);
+        } else {
+            // Strictly filter from our verified local city list
+            setCities(localCities.filter(c => c.stateId === selectedState));
+        }
       } else {
-        // Show all verified cities from our list
-        setCities(localCities);
+        // If no state selected, try to show all cities again
+        const res = await apiService.getCities();
+        if (res.success && res.data && res.data.length > 0) {
+            setCities(res.data);
+        } else {
+            setCities(localCities);
+        }
       }
     };
     syncCities();
