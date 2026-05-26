@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useApp } from '../hooks/useApp';
 
 const Navbar = () => {
-  const { setView, states, cities, setSelectedState, setSelectedCity, setSearchFilters, isLoggedIn, currentUser, logout } = useApp();
+  const { setView, states, allCities, setSelectedState, setSelectedCity, setSearchFilters, isLoggedIn, currentUser, logout } = useApp();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null); // 'corporate' | 'account' | 'partners' | 'state-city' | 'plots' | null
   const [activeNestedDropdown, setActiveNestedDropdown] = useState(null); // stateId | null
@@ -111,7 +111,7 @@ const Navbar = () => {
               <div key={state.id} className={`nested-dropdown ${activeNestedDropdown === state.id ? 'active' : ''}`}>
                 <span className="nav-link" onClick={(e) => toggleNestedDropdown(state.id, e)}>{state.name} <span style={{ fontSize: '10px' }}>▶</span></span>
                 <div className="nested-menu">
-                  {cities.filter(c => c.stateId === state.id).map(city => (
+                  {allCities.filter(c => c.stateId === state.id).map(city => (
                     <Link key={city.id} className="nav-link" to="/results" onClick={() => handleCityClick(city)}>{city.name}</Link>
                   ))}
                 </div>

@@ -41,21 +41,9 @@ export const AppProvider = ({ children }) => {
     const bootstrap = async () => {
       setLoading(true);
       try {
-          // Try to fetch states from API
-          const stateRes = await apiService.getStates();
-          if (stateRes.success && stateRes.data && stateRes.data.length > 0) {
-              setStates(stateRes.data);
-          } else {
-              setStates(localStates);
-          }
-
-          // Try to fetch all cities initially
-          const cityRes = await apiService.getCities();
-          if (cityRes.success && cityRes.data && cityRes.data.length > 0) {
-              setCities(cityRes.data);
-          } else {
-              setCities(localCities);
-          }
+          // Always use local verified states and cities from locations.js
+          setStates(localStates);
+          setCities(localCities);
 
           setRentals(initialRentals);
           setCompanies(initialCompanies);
@@ -76,26 +64,11 @@ export const AppProvider = ({ children }) => {
 
   // ── LOCATION SYNC ─────────────────────────────────────────────────────────
   useEffect(() => {
-    const syncCities = async () => {
-      if (selectedState) {
-        const res = await apiService.getCities(selectedState);
-        if (res.success && res.data && res.data.length > 0) {
-            setCities(res.data);
-        } else {
-            // Strictly filter from our verified local city list
-            setCities(localCities.filter(c => c.stateId === selectedState));
-        }
-      } else {
-        // If no state selected, try to show all cities again
-        const res = await apiService.getCities();
-        if (res.success && res.data && res.data.length > 0) {
-            setCities(res.data);
-        } else {
-            setCities(localCities);
-        }
-      }
-    };
-    syncCities();
+    if (selectedState) {
+      setCities(localCities.filter(c => c.stateId === selectedState));
+    } else {
+      setCities(localCities);
+    }
   }, [selectedState]);
 
   // ── REFRESH DATA ──────────────────────────────────────────────────────────
@@ -210,7 +183,7 @@ export const AppProvider = ({ children }) => {
     selectedProperty, setSelectedProperty,
     comparisonList, setComparisonList,
     searchFilters, setSearchFilters,
-    states, cities, loading, rentals, contractors, companies, plots,
+    states, cities, allCities: localCities, loading, rentals, contractors, companies, plots,
     currentUser, isLoggedIn, login, logout, register, updateProfileAction,
     allUsers, adminStats, allInquiries, toggleUserStatus, deleteUserAction, approveContractorAction,
     submitInquiryAction, updateInquiryStatusAction, appointContractorAction

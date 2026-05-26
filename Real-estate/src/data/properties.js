@@ -61,6 +61,66 @@ export const properties = [
     tags: ['Commercial', 'Investment'], 
     img: 'https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?w=600&q=80'
   },
+  { 
+    id: 'rj_p6', 
+    cityId: 'paota', 
+    type: 'Independent Villa', 
+    title: 'Paota Royal Residency', 
+    price: 22000000, 
+    priceStr: '₹2.2 Cr', 
+    area: '3200 sqft', 
+    location: 'NH-48 Corridor', 
+    developer: 'Highway Infra', 
+    status: 'Ready to Move', 
+    tags: ['Highway Access', 'Gated', '4 BHK'], 
+    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80', 
+    rera: 'RJ/RERA/2024/301' 
+  },
+  { 
+    id: 'rj_p7', 
+    cityId: 'paota', 
+    type: 'Luxury Apartment', 
+    title: 'Paota Heights Premium', 
+    price: 9500000, 
+    priceStr: '₹95 L', 
+    area: '1800 sqft', 
+    location: 'Near Paota Circle', 
+    developer: 'Rajasthan Buildcon', 
+    status: 'Under Construction', 
+    tags: ['Smart Home', '3 BHK'], 
+    img: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80', 
+    rera: 'RJ/RERA/2024/302' 
+  },
+  { 
+    id: 'rj_p8', 
+    cityId: 'behror', 
+    type: 'Service Apartment', 
+    title: 'Behror Gateway Suites', 
+    price: 6500000, 
+    priceStr: '₹65 L', 
+    area: '1200 sqft', 
+    location: 'NH-48 Industrial Belt', 
+    developer: 'Global Infra', 
+    status: 'Ready to Move', 
+    tags: ['Industrial Hub', '2 BHK'], 
+    img: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80', 
+    rera: 'RJ/RERA/2023/401' 
+  },
+  { 
+    id: 'rj_p9', 
+    cityId: 'behror', 
+    type: 'Independent Villa', 
+    title: 'Behror Green Valley Estate', 
+    price: 18000000, 
+    priceStr: '₹1.8 Cr', 
+    area: '2800 sqft', 
+    location: 'RIICO Industrial Area', 
+    developer: 'RIICO Developers', 
+    status: 'New Launch', 
+    tags: ['Eco-Friendly', 'Private Garden', '3 BHK'], 
+    img: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80', 
+    rera: 'RJ/RERA/2024/402' 
+  },
 
   // ── UTTAR PRADESH ───────────────────────────────────────────────────────
   { 
