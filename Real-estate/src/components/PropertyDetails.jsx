@@ -1,17 +1,28 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useApp } from '../hooks/useApp';
 import { apiService } from '../services/apiService';
 
 const PropertyDetails = () => {
-  const { selectedProperty } = useApp();
+  const { propertyId: urlPropertyId } = useParams();
+  const { selectedProperty: contextPropertyId, setSelectedProperty } = useApp();
+  
+  // Prioritize URL parameter (for direct links/refresh), then context
+  const propertyId = urlPropertyId || contextPropertyId;
+
   const [property, setProperty] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchDetails = async () => {
-      if (selectedProperty) {
+      if (propertyId) {
         setLoading(true);
-        const res = await apiService.getPropertyById(selectedProperty);
+        // If we came via direct link, sync the context so other components know what's selected
+        if (urlPropertyId && urlPropertyId !== contextPropertyId) {
+          setSelectedProperty(urlPropertyId);
+        }
+
+        const res = await apiService.getPropertyById(propertyId);
         if (res.success) {
           setProperty(res.data);
         }
@@ -20,7 +31,7 @@ const PropertyDetails = () => {
     };
     fetchDetails();
     window.scrollTo(0, 0);
-  }, [selectedProperty]);
+  }, [propertyId, urlPropertyId, contextPropertyId, setSelectedProperty]);
 
   if (loading) return <div style={{ padding: '100px', textAlign: 'center' }}>Loading Estate Details...</div>;
   if (!property) return <div style={{ padding: '100px', textAlign: 'center' }}>Property not found.</div>;
