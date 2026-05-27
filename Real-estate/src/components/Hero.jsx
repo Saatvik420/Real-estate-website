@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../hooks/useApp';
-import heroVideo from '../assets/13524355_4096_2160_50fps.mp4';
+import heroVideo from '../assets/14308843_3840_2160_30fps.mp4';
 
 const Hero = () => {
   const [activeTab, setActiveTab] = useState('Buy');
