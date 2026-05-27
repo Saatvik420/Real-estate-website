@@ -81,7 +81,7 @@ const TrendingSection = () => {
                 <div className="tc-loc">📍 {prop.location}, {prop.cityId}</div>
                 
                 <div className="tc-bottom">
-                  <div className="tc-price">{prop.priceStr}</div>
+                  <div className="tc-loc">📍 {prop.location}</div>
                   <button 
                     className={`pc-enq ${comparisonList.includes(prop.id) ? 'active' : ''}`} 
                     style={{ padding: '4px 12px', fontSize: '11px', height: 'auto' }}

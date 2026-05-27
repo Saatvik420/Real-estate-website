@@ -88,7 +88,7 @@ const PropertyRecommendations = () => {
                 </div>
                 
                 <div className="pc-footer">
-                  <div className="pc-price">{prop.priceStr}<small>{prop.area}</small></div>
+                  <div className="pc-price"><small>{prop.area}</small></div>
                   <button 
                     className={`pc-enq ${comparisonList.includes(prop.id) ? 'active' : ''}`} 
                     onClick={(e) => {

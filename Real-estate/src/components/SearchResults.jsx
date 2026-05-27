@@ -155,7 +155,7 @@ const SearchResults = () => {
                           {prop.tags && prop.tags.map((tag, i) => <span key={i} className="pc-tag">{tag}</span>)}
                         </div>
                         <div className="pc-footer">
-                          <div className="pc-price">{prop.priceStr}<small>{prop.area}</small></div>
+                          <div className="pc-price"><small>{prop.area}</small></div>
                           <div style={{ display: 'flex', gap: '8px' }}>
                             <button 
                                 className="nav-btn-solid" 

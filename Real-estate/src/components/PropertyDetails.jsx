@@ -79,10 +79,6 @@ const PropertyDetails = () => {
               
               <div className="pd-quick-stats">
                 <div className="pd-stat-box">
-                  <span className="pd-stat-lbl">Price Range</span>
-                  <span className="pd-stat-val">{property.priceStr || property.priceRange}</span>
-                </div>
-                <div className="pd-stat-box">
                   <span className="pd-stat-lbl">Area Coverage</span>
                   <span className="pd-stat-val">{property.area || property.areaRange}</span>
                 </div>
@@ -131,14 +127,32 @@ const PropertyDetails = () => {
             <div className="pd-section">
               <h3 className="pd-sec-title">Project Visuals</h3>
               <div className="pd-gallery">
-                 <img src={property.img} alt="Main Project View" className="pd-gallery-item" />
-                 <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800" alt="Interior View" className="pd-gallery-item" />
-                 {/* Video Placeholder Box */}
-                 <div className="pd-gallery-item" style={{ background: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '12px', textAlign: 'center', padding: '20px' }}>
-                   🎥 Project Walkthrough<br/>(Video Placeholder)
+                 {property.img && (typeof property.img === 'string' && (property.img.endsWith('.mp4') || property.img.includes('media'))) ? (
+                   <video 
+                     src={property.img} 
+                     autoPlay 
+                     muted 
+                     loop 
+                     playsInline 
+                     className="pd-gallery-item" 
+                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                   />
+                 ) : (
+                   <img src={property.img} alt="Main Project View" className="pd-gallery-item" />
+                 )}
+                 <div className="pd-gallery-item" style={{ background: '#0d0e10', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '14px', textAlign: 'center', padding: '20px', flexDirection: 'column', gap: '15px' }}>
+                   <span style={{ fontSize: '32px', color: 'var(--gold2)' }}>🏛️</span>
+                   <div style={{ fontWeight: '800', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '12px' }}>Iconic Land Development</div>
+                   <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '11px' }}>Spiritual Harmony & Luxury Living</div>
                  </div>
-                 <div className="pd-gallery-item" style={{ background: 'var(--cream3)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--muted)', fontSize: '12px', textAlign: 'center', padding: '20px' }}>
-                   🏗 Architectural Map<br/>(Coming Soon)
+                 <div className="pd-gallery-item" style={{ background: 'var(--ink)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '14px', textAlign: 'center', padding: '20px', flexDirection: 'column', gap: '15px' }}>
+                   <span style={{ fontSize: '32px', color: 'var(--gold2)' }}>✨</span>
+                   <div style={{ fontWeight: '800', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '12px' }}>Premium Plotted Enclave</div>
+                   <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '11px' }}>Curated for the Modern Connoisseur</div>
+                 </div>
+                 <div className="pd-gallery-item" style={{ background: 'var(--cream3)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--ink)', fontSize: '14px', textAlign: 'center', padding: '20px', flexDirection: 'column', gap: '10px' }}>
+                   <div style={{ fontWeight: '900', fontSize: '20px', color: 'var(--gold)' }}>{property.possession === 'Ready' ? 'IMMEDIATE' : 'UPCOMING'}</div>
+                   <div style={{ fontWeight: '700', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Possession Milestone</div>
                  </div>
               </div>
             </div>

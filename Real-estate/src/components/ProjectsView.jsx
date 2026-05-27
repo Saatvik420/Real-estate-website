@@ -81,13 +81,9 @@ const ProjectsView = () => {
                 📍 {project.location}
               </div>
               
-              <div className="project-stats-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginBottom: '25px', marginTop: 'auto' }}>
+              <div className="project-stats-grid" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '15px', marginBottom: '25px', marginTop: 'auto' }}>
                 <div className="p-stat">
-                  <div style={{ fontSize: '9px', color: 'var(--muted2)', textTransform: 'uppercase', fontWeight: '700', letterSpacing: '0.5px' }}>Investment From</div>
-                  <div style={{ fontSize: '16px', fontWeight: '800', color: 'var(--ink)' }}>{project.priceRange ? project.priceRange.split(' - ')[0] : 'Contact'}</div>
-                </div>
-                <div className="p-stat">
-                  <div style={{ fontSize: '9px', color: 'var(--muted2)', textTransform: 'uppercase', fontWeight: '700', letterSpacing: '0.5px' }}>Possession</div>
+                  <div style={{ fontSize: '9px', color: 'var(--muted2)', textTransform: 'uppercase', fontWeight: '700', letterSpacing: '0.5px' }}>Registry / Possession</div>
                   <div style={{ fontSize: '16px', fontWeight: '800', color: 'var(--ink)' }}>{project.possession === 'Ready' ? 'Immediate' : project.possession}</div>
                 </div>
               </div>

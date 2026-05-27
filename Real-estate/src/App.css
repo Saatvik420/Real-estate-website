@@ -619,7 +619,7 @@ footer{background:var(--ink);color:rgba(255,255,255,0.6);padding:80px 48px 32px;
 
 .pd-quick-stats { 
   display: grid; 
-  grid-template-columns: repeat(2, 1fr); 
+  grid-template-columns: repeat(3, 1fr); 
   gap: 24px; 
   background: var(--cream2); 
   padding: 32px; 
