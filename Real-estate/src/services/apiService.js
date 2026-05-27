@@ -1,8 +1,7 @@
 import { agents as localAgents } from '../data/agents';
-import { properties as localProperties } from '../data/properties';
+import { plots as localPlots } from '../data/plots';
 import { rentalProperties as localRentals } from '../data/rentals';
 import { marketInsights as localInsights } from '../data/insights';
-import { plots as localPlots } from '../data/plots';
 import { companies as localCompanies } from '../data/companies';
 
 // ── CORE CONFIGURATION ──────────────────────────────────────────────────────
@@ -67,17 +66,13 @@ const safeFetch = async (url, options = {}) => {
 
 // Helper to consolidate ALL local data (Buy, Rent, Plots, Projects)
 const getMergedLocalData = () => {
-    const normalizedProperties = localProperties.map(p => ({ 
+    const normalizedPlots = localPlots.map(p => ({ 
         ...p, 
-        listingType: p.listingType || 'Buy' 
+        listingType: p.listingType || 'Plots / Land' 
     }));
     const normalizedRentals = localRentals.map(p => ({ 
         ...p, 
         listingType: p.listingType || 'Rent' 
-    }));
-    const normalizedPlots = localPlots.map(p => ({ 
-        ...p, 
-        listingType: p.listingType || 'Plots / Land' 
     }));
     
     // Extract projects from companies
@@ -97,7 +92,7 @@ const getMergedLocalData = () => {
         });
     });
 
-    return [...normalizedProperties, ...normalizedRentals, ...normalizedPlots, ...normalizedProjects];
+    return [...normalizedRentals, ...normalizedPlots, ...normalizedProjects];
 };
 
 export const apiService = {
