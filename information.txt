@@ -1,0 +1,27 @@
+restructure navbar section like this 
+Corporate
+Insights
+Projects
+State / City
+- Rajasthan 
+        - Khatu Shyam, Paota, Behror, Neemrana, Jaipur, Ajmer Road
+- U.P. 
+        - Noida, Greater Noida, Vrindavan, Ayodhya
+- Uttarakhand 
+        - Dehradun, Haridwar
+Plot / Land 
+- Commercial
+- Residential
+- Agriculture
+NRI Corner
+
+and remove this section from homepage
+Tailored Excellence
+The One5 Advantage Plans
+Choose a membership tier that aligns with your real estate ambitions and investment scale.
+
+in Trending Right Now section (in homepage)
+show some of the my projects there for now 
+
+remove recommendation section
+

@@ -7,12 +7,10 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ContinueSearch from './components/ContinueSearch';
 import TrendingSection from './components/TrendingSection';
-import PropertyRecommendations from './components/PropertyRecommendations';
 import CompareProperties from './components/CompareProperties';
 import Insights from './components/Insights';
 import PopularCities from './components/PopularCities';
 import Services from './components/Services';
-import HomePlan from './components/HomePlan';
 import Footer from './components/Footer';
 import SearchResults from './components/SearchResults';
 import PropertyDetails from './components/PropertyDetails';
@@ -58,10 +56,8 @@ const AnimationTrigger = () => {
 const Home = () => (
   <>
     <Hero />
-    <HomePlan />
     <ContinueSearch />
     <TrendingSection />
-    <PropertyRecommendations />
     <PopularCities />
     <Services />
   </>

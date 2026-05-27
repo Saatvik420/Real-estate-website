@@ -1,12 +1,20 @@
 export const states = [
   { id: 'st_rj', name: 'Rajasthan' },
-  { id: 'st_up', name: 'Uttar Pradesh' }
+  { id: 'st_up', name: 'U.P.' },
+  { id: 'st_uk', name: 'Uttarakhand' }
 ];
 
 export const cities = [
   { id: 'khatu_shyam', stateId: 'st_rj', name: 'Khatu Shyam' },
-  { id: 'sikar', stateId: 'st_rj', name: 'Sikar' },
+  { id: 'paota', stateId: 'st_rj', name: 'Paota' },
+  { id: 'behror', stateId: 'st_rj', name: 'Behror' },
+  { id: 'neemrana', stateId: 'st_rj', name: 'Neemrana' },
   { id: 'jaipur', stateId: 'st_rj', name: 'Jaipur' },
-  { id: 'dudu', stateId: 'st_rj', name: 'Dudu' },
-  { id: 'vrindavan', stateId: 'st_up', name: 'Vrindavan' }
+  { id: 'ajmer_road', stateId: 'st_rj', name: 'Ajmer Road' },
+  { id: 'noida', stateId: 'st_up', name: 'Noida' },
+  { id: 'greater_noida', stateId: 'st_up', name: 'Greater Noida' },
+  { id: 'vrindavan', stateId: 'st_up', name: 'Vrindavan' },
+  { id: 'ayodhya', stateId: 'st_up', name: 'Ayodhya' },
+  { id: 'dehradun', stateId: 'st_uk', name: 'Dehradun' },
+  { id: 'haridwar', stateId: 'st_uk', name: 'Haridwar' }
 ];
