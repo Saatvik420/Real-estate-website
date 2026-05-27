@@ -8,27 +8,40 @@ const TrendingSection = () => {
     selectedCity, selectedState, states, 
     setView, setSelectedProperty,
     comparisonList, setComparisonList,
-    setSearchFilters
+    setSearchFilters,
+    companies, cities
   } = useApp();
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchTrending = async () => {
-      setLoading(true);
-      const res = await apiService.getProperties({ 
-        trendingOnly: true,
-        cityId: selectedCity === 'India' ? '' : selectedCity,
-        stateId: selectedState
+    // Extract all projects from companies
+    const allProjects = [];
+    companies.forEach(comp => {
+      comp.projects.forEach(proj => {
+        allProjects.push({
+          ...proj,
+          title: proj.name, // Map name to title for JSX compatibility
+          developer: comp.name
+        });
       });
-      if (res.success) {
-        setProperties(res.data.slice(0, 4));
-      }
-      setLoading(false);
-    };
-    fetchTrending();
-  }, [selectedCity, selectedState]);
+    });
+
+    // Filter by location if specified
+    let filtered = allProjects;
+    if (selectedCity && selectedCity !== 'India' && selectedCity !== 'All') {
+      filtered = filtered.filter(p => p.cityId?.toLowerCase() === selectedCity.toLowerCase());
+    } else if (selectedState) {
+      // Basic state filtering if city is not selected
+      const stateCities = cities.filter(c => c.stateId === selectedState).map(c => c.id.toLowerCase());
+      filtered = filtered.filter(p => p.cityId && stateCities.includes(p.cityId.toLowerCase()));
+    }
+
+    // Sort by "Hot" status or just take the latest (for now, taking the first 4/8)
+    setProperties(filtered.slice(0, 8));
+    setLoading(false);
+  }, [selectedCity, selectedState, companies, cities]);
 
   const handlePropertyClick = (id) => {
     setSelectedProperty(id);
