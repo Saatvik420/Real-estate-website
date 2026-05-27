@@ -206,7 +206,7 @@ export const apiService = {
     if (res.success && res.data && res.data.success !== false && res.data.introduction) return res;
     
     console.log(`Falling back to local insights for ${locationId}`);
-    const data = localInsights[locationId] || localInsights['India'];
+    const data = localInsights[locationId] || localInsights['india'];
     return { success: true, data };
   },
 
