@@ -2,6 +2,7 @@ import sss1Img from '../assets/images_project/Shree shyam sarovar.jpeg';
 import sss2Img from '../assets/images_project/Shree Shyam Sarovar II.jpeg';
 import anVid from '../assets/images_project/Aadinath nagar 1.mp4';
 import mvVid from '../assets/images_project/Mayur Vihar.mp4';
+import hvImg from '../assets/images_project/Hanumant_vihar.jpg';
 
 export const companies = [
   {
@@ -84,7 +85,7 @@ export const companies = [
         priceRange: '₹25 L - ₹75 L',
         status: 'Premium',
         possession: '2026',
-        img: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80',
+        img: hvImg,
         pdfUrl: '/projects/hanumant-vihar.pdf',
         description: 'Experience spiritual peace in a luxury gated enclave. Located on the sacred Radha Kund-Ral Road, featuring themed parks and meditation spaces.',
         amenities: ['Spiritual Centers Nearby', 'Gated Security', 'Theme Parks', 'Meditation Zones']

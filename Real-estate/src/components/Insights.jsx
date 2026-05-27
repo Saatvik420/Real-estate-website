@@ -2,14 +2,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useApp } from '../hooks/useApp';
 
-// Asset Imports
-import sss1Img from '../assets/images_project/Shree shyam sarovar.jpeg';
-import sss2Img from '../assets/images_project/Shree Shyam Sarovar II.jpeg';
-import hvImg from '../assets/images_project/Hanumant_vihar.jpg';
-import anVid from '../assets/images_project/Aadinath nagar 1.mp4';
-import mvVid from '../assets/images_project/Mayur Vihar.mp4';
-import heroVid from '../assets/14308843_3840_2160_30fps.mp4';
-
 const Insights = () => {
   const { setView } = useApp();
   const [isVisible, setIsVisible] = useState(false);
@@ -289,9 +281,7 @@ const Insights = () => {
 
       {/* Hero Header */}
       <section className="hero-section">
-        <video autoPlay loop muted playsInline className="hero-video">
-          <source src={heroVid} type="video/mp4" />
-        </video>
+        
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '900px' }}>
           <div className="stat-badge" style={{ background: 'transparent', border: '1px solid var(--gold)', color: 'var(--gold)' }}>Market Intelligence Report 2026</div>
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', lineHeight: '1.1', fontWeight: 900, marginBottom: '30px' }}>
@@ -309,9 +299,7 @@ const Insights = () => {
         <section className={`luxury-card reveal ${isVisible ? 'active' : ''}`}>
           <div className="info-section">
             <p>The Indian real estate sector has emerged as one of the fastest-growing sectors of the economy, driven by rapid urbanization, infrastructure expansion, industrial growth, rising incomes, and increasing investor confidence. Today, real estate is not only considered a lifestyle asset but also one of the most reliable long-term wealth creation tools for investors across the globe.</p>
-            <div className="asset-container">
-               <img src={sss1Img} alt="Real Estate Growth" />
-            </div>
+    
             <div className="quote-box">
               <p style={{ margin: 0, fontStyle: 'italic', fontWeight: 600 }}>According to industry reports, the Indian real estate market was valued between USD 530–600 billion in 2025 and is projected to cross USD 1 trillion by 2033–2034, growing at a strong CAGR of 8–10%. The sector is expected to contribute nearly 15.5% to India’s GDP by 2047, highlighting its massive long-term growth potential.</p>
             </div>
@@ -338,9 +326,7 @@ const Insights = () => {
               <p style={{ color: 'var(--gold2)', fontWeight: 800, borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '20px', marginTop: '20px' }}>Recent land transactions across India have also touched record levels, reflecting strong investor confidence in the sector.</p>
             </div>
           </div>
-          <div className="asset-container" style={{ marginTop: '40px' }}>
-             <img src={sss2Img} alt="Strategic Land Investment" />
-          </div>
+          
         </section>
 
         {/* Rajasthan Deep Dive */}
@@ -354,21 +340,13 @@ const Insights = () => {
               <div className="sub-city">
                 <h4>Jaipur</h4>
                 <p style={{fontSize: '0.95rem'}}>Jaipur continues to dominate Rajasthan’s plotted development market because of: Ring road expansion, Metro connectivity, Smart City projects, IT and education hubs, and a growing tourism and hospitality sector.</p>
-                <div className="asset-container" style={{ margin: '15px 0' }}>
-                   <video autoPlay loop muted playsInline style={{ height: '200px', objectFit: 'cover' }}>
-                      <source src={mvVid} type="video/mp4" />
-                   </video>
-                </div>
+                
                 <p style={{fontSize: '0.9rem'}}>Areas such as Jagatpura, Ajmer Road, Tonk Road, and Ring Road corridors are witnessing significant appreciation in land values.</p>
               </div>
               <div className="sub-city">
                 <h4>Neemrana</h4>
                 <p style={{fontSize: '0.95rem'}}>Neemrana has emerged as a major industrial and investment hotspot because of: Delhi-Mumbai Industrial Corridor (DMIC), Japanese industrial zone, Manufacturing and logistics growth, and excellent Delhi-NCR connectivity.</p>
-                <div className="asset-container" style={{ margin: '15px 0' }}>
-                   <video autoPlay loop muted playsInline style={{ height: '200px', objectFit: 'cover' }}>
-                      <source src={anVid} type="video/mp4" />
-                   </video>
-                </div>
+                
               </div>
             </div>
           </div>
@@ -376,9 +354,7 @@ const Insights = () => {
           <div className="state-card">
             <h3>Khatu Shyam Ji – A Rapidly Emerging Spiritual & Real Estate Hub</h3>
             <p>Khatu Shyam Ji Temple and the surrounding Khatu–Ringas belt have rapidly emerged as one of Rajasthan’s most promising land and plotted development destinations. Traditionally known as one of India’s largest spiritual tourism centers, the region is now witnessing strong real estate momentum driven by increasing tourist footfall, infrastructure upgrades, hospitality demand, and township developments.</p>
-            <div className="asset-container">
-               <img src={sss1Img} alt="Khatu Shyam Ji Hub" />
-            </div>
+            
             <p>Millions of devotees visit Khatu Shyam Ji every year, creating continuous demand for Hotels and hospitality projects, Commercial spaces, Residential townships, Farmhouses and second homes, and Retail and rental infrastructure.</p>
             <p>The Rajasthan government is also actively working on the development of the Khatu Shyam Corridor under the Swadesh Darshan 2.0 scheme, aimed at improving tourism infrastructure, traffic management, parking, and world-class pilgrim facilities. This large-scale development is expected to further accelerate economic and real estate activity in the region.</p>
             <p>Several developers and plotted township projects are already entering the region, reflecting growing investor confidence in the market.</p>
@@ -447,9 +423,7 @@ const Insights = () => {
         <section className={`luxury-card reveal ${isVisible ? 'active' : ''}`}>
           <h2>Uttar Pradesh: One of India’s Fastest Growing Real Estate Markets</h2>
           <p>Uttar Pradesh has transformed into a high-growth real estate destination driven by expressways, airports, industrial corridors, religious tourism, and large-scale government investments.</p>
-          <div className="asset-container">
-             <img src={hvImg} alt="UP Growth Corridor" />
-          </div>
+          
           <div className="quote-box" style={{ background: 'var(--ink)', color: '#fff', borderLeftColor: '#00ffcc' }}>
              <p style={{ margin: 0, fontWeight: 700 }}>UP’s real estate investments surged over 50% recently, reflecting unprecedented market momentum.</p>
           </div>
@@ -503,9 +477,7 @@ const Insights = () => {
         <section className={`luxury-card reveal ${isVisible ? 'active' : ''}`}>
           <h2>Uttarakhand: Lifestyle and Long-Term Appreciation Market</h2>
           <p>Uttarakhand is increasingly becoming a preferred destination for lifestyle investments, retirement homes, eco-tourism projects, and premium land investments.</p>
-          <div className="asset-container">
-             <img src={sss2Img} alt="Uttarakhand Premium Land" />
-          </div>
+          
           <div className="state-card">
             <h3>Key Investment Cities in Uttarakhand</h3>
             <div className="grid-2">
