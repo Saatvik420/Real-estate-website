@@ -1,6 +1,6 @@
 import sss1Img from '../assets/images_project/Shree shyam sarovar.jpeg';
 import sss2Img from '../assets/images_project/Shree Shyam Sarovar II.jpeg';
-import anVid from '../assets/images_project/Aadinath nagar 1.mp4';
+import anImg from '../assets/images_project/Aadinath nagar.jpeg';
 import mvImg from '../assets/images_project/Mayur vihar.jpg';
 import hvImg from '../assets/images_project/Hanumant_vihar.jpg';
 
@@ -55,7 +55,7 @@ export const companies = [
         priceRange: '₹10 L - ₹30 L',
         status: 'Ongoing',
         possession: '2024',
-        img: anVid,
+        img: anImg,
         pdfUrl: '/projects/aadinath nagar.pdf',
         description: 'Strategically located on the thriving Jaipur-Ajmer Expressway. This development offers premium highway-touch land parcels with immediate access to industrial hubs.',
         amenities: ['Highway Proximity', 'Commercial Zone', 'Green Belts', 'Security Gate']
