@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useApp } from '../hooks/useApp';
 import { apiService } from '../services/apiService';
-import { plots as projectData } from '../data/plots';
 
 const TrendingSection = () => {
   const { 
@@ -16,10 +15,19 @@ const TrendingSection = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // For now, we show projects from our static data
-    const projects = projectData.filter(p => p.listingType === 'Projects').slice(0, 4);
-    setProperties(projects);
-    setLoading(false);
+    const fetchTrending = async () => {
+      setLoading(true);
+      const res = await apiService.getProperties({ 
+        trendingOnly: true,
+        cityId: selectedCity === 'India' ? '' : selectedCity,
+        stateId: selectedState
+      });
+      if (res.success) {
+        setProperties(res.data.slice(0, 4));
+      }
+      setLoading(false);
+    };
+    fetchTrending();
   }, [selectedCity, selectedState]);
 
   const handlePropertyClick = (id) => {

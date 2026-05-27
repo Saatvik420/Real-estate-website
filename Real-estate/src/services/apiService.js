@@ -1,6 +1,3 @@
-import { agents as localAgents } from '../data/agents';
-import { plots as localPlots } from '../data/plots';
-import { rentalProperties as localRentals } from '../data/rentals';
 import { marketInsights as localInsights } from '../data/insights';
 import { companies as localCompanies } from '../data/companies';
 import { cities as localCities } from '../data/locations';
@@ -65,17 +62,8 @@ const safeFetch = async (url, options = {}) => {
     }
 };
 
-// Helper to consolidate ALL local data (Buy, Rent, Plots, Projects)
+// Helper to consolidate ALL local data (Projects)
 const getMergedLocalData = () => {
-    const normalizedPlots = localPlots.map(p => ({ 
-        ...p, 
-        listingType: p.listingType || 'Plots / Land' 
-    }));
-    const normalizedRentals = localRentals.map(p => ({ 
-        ...p, 
-        listingType: p.listingType || 'Rent' 
-    }));
-    
     // Extract projects from companies
     const normalizedProjects = [];
     localCompanies.forEach(comp => {
@@ -95,7 +83,7 @@ const getMergedLocalData = () => {
         });
     });
 
-    return [...normalizedRentals, ...normalizedPlots, ...normalizedProjects];
+    return [...normalizedProjects];
 };
 
 export const apiService = {
@@ -199,7 +187,7 @@ export const apiService = {
     return local ? { success: true, data: local } : { success: false, error: 'Property not found.' };
   },
 
-  getRecommendedProperties: async (locationId, type = 'city') => {
+  getRecommendedProperties: async (locationId) => {
     // If no specific location, return a broad set of trending properties
     const res = await apiService.getProperties({ 
         cityId: locationId === 'India' ? '' : locationId 
@@ -320,5 +308,12 @@ export const apiService = {
     return await safeFetch(`${API_BASE_URL}/admin/metrics`, {
         headers: getHeaders()
     });
+  },
+
+  getAgents: async () => {
+    const res = await safeFetch(`${API_BASE_URL}/agents`);
+    if (res.success) return res;
+    // Fallback to empty array since localAgents is removed
+    return { success: true, data: [] };
   }
 };

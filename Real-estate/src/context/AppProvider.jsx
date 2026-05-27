@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { AppContext } from './AppContext';
 import { apiService } from '../services/apiService';
-import { rentalProperties as initialRentals } from '../data/rentals';
 import { companies as initialCompanies } from '../data/companies';
-import { agents as initialAgents } from '../data/agents';
-import { plots as initialPlots } from '../data/plots';
 import { states as localStates, cities as localCities } from '../data/locations';
 
 export const AppProvider = ({ children }) => {
@@ -20,10 +17,8 @@ export const AppProvider = ({ children }) => {
   const [states, setStates] = useState(localStates);
   const [cities, setCities] = useState(localCities);
   
-  const [rentals, setRentals] = useState([]);
   const [contractors, setContractors] = useState([]);
   const [companies, setCompanies] = useState([]);
-  const [plots, setPlots] = useState([]);
   const [loading, setLoading] = useState(false);
 
   // ── AUTHENTICATION STATE ──────────────────────────────────────────────────
@@ -45,9 +40,7 @@ export const AppProvider = ({ children }) => {
           setStates(localStates);
           setCities(localCities);
 
-          setRentals(initialRentals);
           setCompanies(initialCompanies);
-          setPlots(initialPlots);
 
           const savedUser = localStorage.getItem('user');
           if (savedUser) setCurrentUser(JSON.parse(savedUser));
@@ -183,13 +176,13 @@ export const AppProvider = ({ children }) => {
     selectedProperty, setSelectedProperty,
     comparisonList, setComparisonList,
     searchFilters, setSearchFilters,
-    states, cities, allCities: localCities, loading, rentals, contractors, companies, plots,
+    states, cities, allCities: localCities, loading, contractors, companies,
     currentUser, isLoggedIn, login, logout, register, updateProfileAction,
     allUsers, adminStats, allInquiries, toggleUserStatus, deleteUserAction, approveContractorAction,
     submitInquiryAction, updateInquiryStatusAction, appointContractorAction
     }), [
     view, selectedState, selectedCity, selectedProperty, comparisonList, searchFilters,
-    states, cities, loading, rentals, contractors, companies, plots,
+    states, cities, loading, contractors, companies,
     currentUser, isLoggedIn, allUsers, adminStats, allInquiries,
     login, logout, register, updateProfileAction,
     submitInquiryAction, updateInquiryStatusAction, appointContractorAction,

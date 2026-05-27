@@ -6,7 +6,7 @@ import LeadFormModal from './LeadFormModal';
 
 const PlotsView = () => {
   const { 
-    selectedCity, setSelectedCity, plots, setView,
+    selectedCity, setSelectedCity, setView,
     setSelectedProperty, comparisonList, setComparisonList,
     searchFilters
   } = useApp();

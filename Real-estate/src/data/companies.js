@@ -16,7 +16,7 @@ export const companies = [
         type: 'Residential',
         location: 'Abhawas, Ringas Road, Khatu Shyam',
         areaRange: '100 - 300 sq yards',
-        priceRange: '₹15 L - ₹45 L',
+        
         status: 'Completed',
         possession: 'Ready',
         img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80',
@@ -31,7 +31,7 @@ export const companies = [
         type: 'Residential',
         location: 'Kerpura, Teh. Danta Ramgarh, Sikar',
         areaRange: '150 - 350 sq yards',
-        priceRange: '₹20 L - ₹60 L',
+        
         status: 'New Launch',
         possession: '2025',
         img: 'https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=800&q=80',
@@ -46,7 +46,7 @@ export const companies = [
         type: 'Residential',
         location: 'Jaipur-Ajmer Expressway, Dudu',
         areaRange: '100 - 250 sq yards',
-        priceRange: '₹10 L - ₹30 L',
+        
         status: 'Ongoing',
         possession: '2024',
         img: 'https://images.unsplash.com/photo-1464938532347-1e50a8c29f63?w=800&q=80',
@@ -61,7 +61,7 @@ export const companies = [
         type: 'Residential',
         location: 'Village Panwaliya, Sanganer, Jaipur',
         areaRange: '120 - 300 sq yards',
-        priceRange: '₹12 L - ₹35 L',
+        
         status: 'Verified',
         possession: 'Ready',
         img: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80',
@@ -76,7 +76,7 @@ export const companies = [
         type: 'Residential',
         location: 'Radha Kund-Ral Road, Vrindavan, Mathura',
         areaRange: '150 - 400 sq yards',
-        priceRange: '₹25 L - ₹75 L',
+        
         status: 'Premium',
         possession: '2026',
         img: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80',
