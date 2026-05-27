@@ -264,7 +264,7 @@ const Insights = () => {
       {/* Hero Header */}
       <section className="hero-section">
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '900px' }}>
-          <div className="stat-badge" style={{ background: 'transparent', border: '1px solid var(--gold)', color: var(--gold) }}>Market Intelligence Report 2026</div>
+          <div className="stat-badge" style={{ background: 'transparent', border: '1px solid var(--gold)', color: 'var(--gold)' }}>Market Intelligence Report 2026</div>
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', lineHeight: '1.1', fontWeight: 900, marginBottom: '30px' }}>
             India’s Real Estate Market: A Powerful Wealth Creation Opportunity
           </h1>
@@ -363,6 +363,36 @@ const Insights = () => {
             </div>
             <p>Neemrana, in particular, has become one of the strongest industrial and land investment destinations in North India because of multinational manufacturing investments and the growing industrial ecosystem. Strong investor interest in industrial and commercial plots in Rajasthan is visible through increasing applications for industrial land allotments.</p>
           </div>
+
+          <div className="state-card">
+             <h3>Major Growth Drivers & Hotspots (Rajasthan)</h3>
+             <div className="grid-2">
+                <div>
+                   <h5 style={{ fontWeight: 800 }}>Major Growth Drivers</h5>
+                   <ul className="bullet-list">
+                      <li>Delhi–Mumbai Industrial Corridor (DMIC)</li>
+                      <li>Jaipur Smart City expansion</li>
+                      <li>NH-8 / NH-48 development corridor</li>
+                      <li>Khatu Shyam Ji spiritual tourism growth</li>
+                      <li>Industrial and warehousing demand</li>
+                      <li>Rising plotted township developments</li>
+                   </ul>
+                </div>
+                <div>
+                   <h5 style={{ fontWeight: 800 }}>Key Investment Hotspots</h5>
+                   <ul className="bullet-list">
+                      <li>Jaipur</li>
+                      <li>Neemrana</li>
+                      <li>Khatu Shyam Ji</li>
+                      <li>Ringas</li>
+                      <li>Ajmer Road Corridor</li>
+                      <li>Udaipur</li>
+                      <li>Jodhpur</li>
+                   </ul>
+                </div>
+             </div>
+             <p style={{ marginTop: '20px', fontStyle: 'italic' }}>The Rajasthan government’s increasing focus on tourism, industrialization, and infrastructure is expected to continue driving long-term land appreciation.</p>
+          </div>
         </section>
 
         {/* Uttar Pradesh Deep Dive */}
@@ -386,6 +416,36 @@ const Insights = () => {
               </div>
             </div>
           </div>
+
+          <div className="state-card">
+             <h3>Major Growth Drivers & Hotspots (Uttar Pradesh)</h3>
+             <div className="grid-2">
+                <div>
+                   <h5 style={{ fontWeight: 800 }}>Major Growth Drivers</h5>
+                   <ul className="bullet-list">
+                      <li>Noida International Airport (Jewar)</li>
+                      <li>Yamuna Expressway Industrial Development</li>
+                      <li>Ganga Expressway</li>
+                      <li>Religious tourism in Ayodhya & Varanasi</li>
+                      <li>Smart city and metro expansion</li>
+                      <li>Industrial and logistics growth</li>
+                   </ul>
+                </div>
+                <div>
+                   <h5 style={{ fontWeight: 800 }}>Key Investment Hotspots</h5>
+                   <ul className="bullet-list">
+                      <li>Noida</li>
+                      <li>Greater Noida</li>
+                      <li>Jewar</li>
+                      <li>Ayodhya</li>
+                      <li>Lucknow</li>
+                      <li>Varanasi</li>
+                      <li>Prayagraj</li>
+                   </ul>
+                </div>
+             </div>
+             <p style={{ marginTop: '20px', fontStyle: 'italic' }}>UP has seen record property registrations and rapid appreciation in land values around expressways and airport corridors.</p>
+          </div>
         </section>
 
         {/* Uttarakhand Deep Dive */}
@@ -405,6 +465,33 @@ const Insights = () => {
                 <p>Rishikesh is attracting wellness tourism, hospitality investments, spiritual tourism, and luxury second-home buyers.</p>
               </div>
             </div>
+          </div>
+
+          <div className="state-card">
+             <h3>Major Growth Drivers & Hotspots (Uttarakhand)</h3>
+             <div className="grid-2">
+                <div>
+                   <h5 style={{ fontWeight: 800 }}>Major Growth Drivers</h5>
+                   <ul className="bullet-list">
+                      <li>Growing demand for second homes</li>
+                      <li>Tourism and hospitality expansion</li>
+                      <li>Wellness and spiritual tourism</li>
+                      <li>Better road and rail connectivity</li>
+                      <li>Rising villa and plotted development projects</li>
+                   </ul>
+                </div>
+                <div>
+                   <h5 style={{ fontWeight: 800 }}>Key Investment Hotspots</h5>
+                   <ul className="bullet-list">
+                      <li>Dehradun</li>
+                      <li>Rishikesh</li>
+                      <li>Haridwar</li>
+                      <li>Haldwani</li>
+                      <li>Nainital outskirts</li>
+                   </ul>
+                </div>
+             </div>
+             <p style={{ marginTop: '20px', fontStyle: 'italic' }}>Limited land availability in premium hill and gateway cities is expected to support long-term appreciation.</p>
           </div>
         </section>
 
