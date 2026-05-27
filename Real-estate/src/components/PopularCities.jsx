@@ -19,12 +19,34 @@ const PopularCities = () => {
       img: "https://images.unsplash.com/photo-1477587458883-47145ed94245?w=600&q=80"
     },
     {
+      id: "noida",
+      name: "Noida",
+      state: "Uttar Pradesh",
+      price: "₹7,200 / sqft",
+      listings: "Industrial Hub",
+      rank: "#2 GROWTH",
+      badge: "IT Hub",
+      badgeClass: "city-badge-hot",
+      img: "https://images.unsplash.com/photo-1595658658481-d53d3f999875?w=600&q=80"
+    },
+    {
+      id: "greater_noida",
+      name: "Greater Noida",
+      state: "Uttar Pradesh",
+      price: "₹5,800 / sqft",
+      listings: "Planned City",
+      rank: "#3 UPCOMING",
+      badge: "Jewar Airport",
+      badgeClass: "city-badge-rising",
+      img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80"
+    },
+    {
       id: "vrindavan",
       name: "Vrindavan",
       state: "Uttar Pradesh",
       price: "₹4,200 / sqft",
       listings: "Spiritual Hub",
-      rank: "#2 SPIRITUAL",
+      rank: "#4 SPIRITUAL",
       badge: "Holy City",
       badgeClass: "city-badge-rising",
       img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600&q=80"
@@ -35,7 +57,7 @@ const PopularCities = () => {
       state: "Rajasthan",
       price: "₹3,500 / sqft",
       listings: "Rising Demand",
-      rank: "#3 SPIRITUAL",
+      rank: "#5 SPIRITUAL",
       badge: "Temple Town",
       img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80"
     },
@@ -45,7 +67,7 @@ const PopularCities = () => {
       state: "Rajasthan",
       price: "₹2,100 / sqft",
       listings: "Expressway Hub",
-      rank: "#4 INDUSTRIAL",
+      rank: "#6 INDUSTRIAL",
       badge: "High Growth",
       img: "https://images.unsplash.com/photo-1464938532347-1e50a8c29f63?w=600&q=80"
     }

@@ -7,14 +7,12 @@ import { stateDetails } from '../data/stateData';
 const StateView = () => {
   const { stateId } = useParams();
   const navigate = useNavigate();
-  const { setView, setSelectedProperty, comparisonList, setComparisonList, allCities } = useApp();
+  const { setView, setSelectedProperty, comparisonList, setComparisonList, allCities, selectedCity, setSelectedCity } = useApp();
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filterCity, setFilterCity] = useState('All');
   const [filterPrice, setFilterPrice] = useState('Any Price');
   const [filterType, setFilterType] = useState('Any Type');
-  const [visibleSections, setVisibleSections] = useState({});
-  const sectionRefs = useRef({});
 
   const stateInfo = stateDetails[stateId];
   const stateCities = allCities.filter(c => c.stateId === stateId);
@@ -35,29 +33,17 @@ const StateView = () => {
     };
     fetchProperties();
     window.scrollTo(0, 0);
-    setFilterCity('All');
+    
+    // Check if selectedCity from context belongs to this state
+    if (selectedCity && stateCities.find(c => c.id === selectedCity)) {
+      setFilterCity(selectedCity);
+    } else {
+      setFilterCity('All');
+    }
+    
     setFilterPrice('Any Price');
     setFilterType('Any Type');
-  }, [stateId]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setVisibleSections(prev => ({ ...prev, [entry.target.dataset.city]: true }));
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-
-    Object.values(sectionRefs.current).forEach(ref => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => observer.disconnect();
-  }, [stateInfo]);
+  }, [stateId, selectedCity]);
 
   const filteredProperties = properties.filter(p => {
     if (filterCity !== 'All' && p.cityId !== filterCity) return false;
@@ -75,11 +61,12 @@ const StateView = () => {
   const handlePropertyClick = (id) => {
     setSelectedProperty(id);
     setView('details');
-    navigate('/details');
+    navigate(`/property/${id}`);
   };
 
   const clearFilters = () => {
     setFilterCity('All');
+    setSelectedCity('India');
     setFilterPrice('Any Price');
     setFilterType('Any Type');
   };
@@ -93,416 +80,255 @@ const StateView = () => {
     );
   }
 
-  const cityKeys = Object.keys(stateInfo.cities);
-
   return (
-    <div className="section-full rec-bg" style={{ minHeight: '80vh' }}>
-      {/* Hero Section */}
-      <div className="city-hero" style={{
+    <div className="section-full rec-bg" style={{ minHeight: '80vh', background: '#fff' }}>
+      {/* Premium Hero Section */}
+      <div className="state-hero" style={{
         position: 'relative',
-        height: '460px',
+        height: '550px',
         overflow: 'hidden',
-        background: `linear-gradient(135deg, rgba(20,20,20,0.88), rgba(30,30,30,0.7)), url(${stateInfo.heroImage}) center/cover no-repeat`,
+        background: `linear-gradient(135deg, rgba(15,15,15,0.9), rgba(25,25,25,0.6)), url(${stateInfo.heroImage}) center/cover no-repeat`,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        color: '#fff',
+        textAlign: 'center'
       }}>
-        <div style={{
-          textAlign: 'center',
-          maxWidth: '900px',
-          padding: '0 24px',
-          animation: 'cityFadeUp 0.8s ease-out'
-        }}>
-          <div style={{
-            fontSize: '11px',
-            fontWeight: '800',
-            letterSpacing: '4px',
-            textTransform: 'uppercase',
-            color: 'var(--gold)',
-            marginBottom: '12px'
-          }}>Investment Destination</div>
-          <h1 style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: 'clamp(36px, 5vw, 56px)',
-            fontWeight: '700',
-            color: '#fff',
-            margin: '0 0 16px',
-            lineHeight: '1.1'
-          }}>{stateInfo.name}</h1>
-          <p style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: '18px',
-            color: 'var(--gold2)',
-            fontStyle: 'italic',
-            margin: 0
-          }}>{stateInfo.tagline}</p>
+        <div style={{ maxWidth: '1000px', padding: '0 24px', animation: 'fadeInUp 1s ease' }}>
+          <div className="eyebrow" style={{ color: 'var(--gold2)', marginBottom: '16px', letterSpacing: '6px' }}>INVESTMENT OPPORTUNITIES</div>
+          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(40px, 8vw, 72px)', fontWeight: '800', marginBottom: '20px' }}>{stateInfo.name}</h1>
+          <p style={{ fontSize: '22px', fontFamily: "'Playfair Display', serif", fontStyle: 'italic', color: 'var(--gold4)', maxWidth: '700px', margin: '0 auto' }}>{stateInfo.tagline}</p>
         </div>
       </div>
 
-      <div className="section-inner" style={{ padding: '60px 24px' }}>
-        {/* State Overview */}
-        <div style={{
-          maxWidth: '900px',
-          margin: '0 auto 60px',
-          animation: 'cityFadeUp 0.8s ease-out 0.2s both'
-        }}>
-          <p style={{
-            fontSize: '17px',
-            lineHeight: '1.8',
-            color: 'var(--text-dark)',
-            textAlign: 'center',
-            fontWeight: '500'
-          }}>{stateInfo.description}</p>
+      <div className="section-inner" style={{ padding: '80px 24px' }}>
+        {/* Decorative Overview Section */}
+        <div style={{ maxWidth: '900px', margin: '0 auto 100px', textAlign: 'center' }}>
+          <div style={{ width: '60px', height: '2px', background: 'var(--gold2)', margin: '0 auto 30px' }}></div>
+          <p style={{ fontSize: '20px', lineHeight: '1.8', color: '#333', fontWeight: '500', fontFamily: "'Montserrat', sans-serif" }}>
+            {stateInfo.description}
+          </p>
+          <div style={{ width: '60px', height: '2px', background: 'var(--gold2)', margin: '30px auto 0' }}></div>
         </div>
 
-        {/* City Sections */}
-        {cityKeys.map((cityKey, cityIndex) => {
-          const cityInfo = stateInfo.cities[cityKey];
-          const isVisible = visibleSections[cityKey];
+        {/* Dynamic Rich Content Sections */}
+        <div className="state-sections" style={{ display: 'grid', gap: '80px', marginBottom: '100px' }}>
+          {stateInfo.sections.map((section, idx) => (
+            <div key={idx} className="rich-section" style={{ animation: `fadeInUp 1s ease ${idx * 0.2}s both` }}>
+              <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+                <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '36px', color: 'var(--ink)', marginBottom: '16px' }}>{section.title}</h2>
+                {section.text && <p style={{ fontSize: '17px', color: '#666', maxWidth: '800px', margin: '0 auto', lineHeight: '1.7' }}>{section.text}</p>}
+              </div>
 
-          return (
-            <div
-              key={cityKey}
-              ref={el => sectionRefs.current[cityKey] = el}
-              data-city={cityKey}
-              style={{
-                maxWidth: '900px',
-                margin: '0 auto 50px',
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
-                transition: 'all 0.7s cubic-bezier(0.16, 1, 0.3, 1)'
-              }}
-            >
-              {cityInfo.subtitle && cityIndex === 0 && (
-                <div style={{
-                  fontSize: '12px',
-                  fontWeight: '700',
-                  letterSpacing: '3px',
-                  textTransform: 'uppercase',
-                  color: 'var(--gold)',
-                  marginBottom: '10px'
-                }}>{cityInfo.subtitle}</div>
-              )}
-
-              <h2 style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: '28px',
-                fontWeight: '700',
-                color: 'var(--text-dark)',
-                marginBottom: '12px'
-              }}>{cityInfo.name}</h2>
-
-              <p style={{
-                fontSize: '16px',
-                lineHeight: '1.7',
-                color: 'var(--text-dark)',
-                marginBottom: '20px'
-              }}>{cityInfo.description}</p>
-
-              {cityInfo.detailParagraphs && cityInfo.detailParagraphs.map((para, i) => (
-                <p key={i} style={{
-                  fontSize: '15px',
-                  lineHeight: '1.7',
-                  color: '#555',
-                  marginBottom: '14px'
-                }}>{para}</p>
-              ))}
-
-              {/* Highlights */}
-              <div style={{
-                background: 'linear-gradient(135deg, #faf8f2 0%, #f5f0e6 100%)',
-                borderRadius: '16px',
-                padding: '28px',
-                border: '1px solid var(--cream3)',
-                marginBottom: '16px'
-              }}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                  {cityInfo.highlights.map((h, i) => (
-                    <div key={i} style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '12px',
-                      padding: '10px 16px',
-                      background: '#fff',
-                      borderRadius: '10px',
-                      border: '1px solid var(--cream3)',
-                      boxShadow: '0 2px 6px rgba(0,0,0,0.03)',
-                      opacity: isVisible ? 1 : 0,
-                      transform: isVisible ? 'translateX(0)' : 'translateX(-20px)',
-                      transition: `all 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${0.1 * i}s`
+              {section.content && (
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
+                  {section.content.map((item, i) => (
+                    <div key={i} className="info-card" style={{ 
+                      padding: '40px', 
+                      background: '#fff', 
+                      borderRadius: '16px', 
+                      border: '1px solid #f0f0f0',
+                      boxShadow: '0 10px 30px rgba(0,0,0,0.03)',
+                      transition: 'transform 0.3s ease'
                     }}>
-                      <span style={{
-                        width: '28px',
-                        height: '28px',
-                        borderRadius: '50%',
-                        background: 'linear-gradient(135deg, var(--gold), var(--gold2))',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '12px',
-                        color: '#fff',
-                        fontWeight: '700',
-                        flexShrink: 0
-                      }}>✓</span>
-                      <span style={{
-                        fontSize: '14px',
-                        fontWeight: '600',
-                        color: 'var(--text-dark)'
-                      }}>{h}</span>
+                      <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '24px', color: 'var(--gold)', marginBottom: '16px' }}>{item.subtitle}</h3>
+                      <p style={{ fontSize: '15px', color: '#444', marginBottom: '20px', lineHeight: '1.6' }}>{item.text}</p>
+                      
+                      {item.highlights && (
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '20px' }}>
+                          {item.highlights.map((h, hi) => (
+                            <div key={hi} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                              <span style={{ color: 'var(--gold2)', fontWeight: 'bold' }}>•</span>
+                              <span style={{ fontSize: '14px', color: '#555' }}>{h}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      
+                      {item.extra && <p style={{ fontSize: '13px', color: 'var(--muted)', fontStyle: 'italic', borderTop: '1px solid #f0f0f0', paddingTop: '15px' }}>{item.extra}</p>}
                     </div>
                   ))}
                 </div>
-              </div>
-
-              {cityInfo.extraNote && (
-                <p style={{
-                  fontSize: '14px',
-                  lineHeight: '1.7',
-                  color: '#666',
-                  fontStyle: 'italic',
-                  padding: '0 4px'
-                }}>{cityInfo.extraNote}</p>
               )}
-            </div>
-          );
-        })}
 
-        {/* Corridor Section */}
-        {stateInfo.corridors && stateInfo.corridors.map((corridor, idx) => (
-          <div key={idx} style={{
-            maxWidth: '900px',
-            margin: '0 auto 60px',
-            padding: '40px',
-            background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
-            borderRadius: '24px',
-            color: '#fff',
-            animation: 'cityFadeUp 0.8s ease-out 0.4s both'
-          }}>
-            <h3 style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: '22px',
-              fontWeight: '700',
-              color: 'var(--gold2)',
-              marginBottom: '16px'
-            }}>{corridor.title}</h3>
-
-            <p style={{
-              fontSize: '15px',
-              lineHeight: '1.7',
-              color: '#ccc',
-              marginBottom: '20px'
-            }}>{corridor.description}</p>
-
-            {corridor.locations && (
-              <div style={{ marginBottom: '20px' }}>
-                <div style={{
-                  fontSize: '12px',
-                  fontWeight: '700',
-                  letterSpacing: '2px',
-                  textTransform: 'uppercase',
-                  color: 'var(--gold)',
-                  marginBottom: '10px'
-                }}>Key Locations</div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                  {corridor.locations.map((loc, i) => (
-                    <span key={i} style={{
-                      padding: '6px 14px',
-                      background: 'rgba(255,255,255,0.1)',
-                      borderRadius: '20px',
-                      fontSize: '13px',
-                      color: '#e0d6c2',
-                      border: '1px solid rgba(255,255,255,0.15)'
-                    }}>{loc}</span>
-                  ))}
-                </div>
-                {corridor.locationNote && (
-                  <p style={{ fontSize: '13px', color: '#999', marginTop: '8px', fontStyle: 'italic' }}>{corridor.locationNote}</p>
-                )}
-              </div>
-            )}
-
-            {corridor.details && (
-              <p style={{ fontSize: '14px', lineHeight: '1.7', color: '#bbb', marginBottom: '20px' }}>{corridor.details}</p>
-            )}
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              {corridor.highlights.map((h, i) => (
-                <div key={i} style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                  padding: '8px 12px'
+              {section.locations && (
+                <div style={{ 
+                  marginTop: '40px', 
+                  background: 'var(--ink)', 
+                  padding: '50px', 
+                  borderRadius: '24px', 
+                  color: '#fff',
+                  textAlign: 'center'
                 }}>
-                  <span style={{
-                    width: '24px',
-                    height: '24px',
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, var(--gold), var(--gold2))',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '11px',
-                    color: '#fff',
-                    fontWeight: '700',
-                    flexShrink: 0
-                  }}>✓</span>
-                  <span style={{ fontSize: '14px', color: '#ddd' }}>{h}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-
-        {/* Properties Section with Filter */}
-        <div style={{ animation: 'cityFadeUp 0.8s ease-out 0.4s both' }}>
-          <div className="sec-header" style={{ marginBottom: '32px' }}>
-            <div>
-              <div className="eyebrow" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>← Back to Home</div>
-              <h2 className="sec-title">Properties in <span>{stateInfo.name}</span></h2>
-              <p className="sec-sub">
-                {loading ? 'Loading properties...' : `Found ${filteredProperties.length} premium listing${filteredProperties.length !== 1 ? 's' : ''}`}
-              </p>
-            </div>
-          </div>
-
-          <div className="results-layout">
-            {/* Filter Sidebar */}
-            <aside className="filters-sidebar">
-              <div className="filter-header-row">
-                <span className="filter-h" style={{ marginBottom: 0 }}>Filters</span>
-                <button className="filter-clear-btn" onClick={clearFilters}>Clear All</button>
-              </div>
-
-              <div className="filter-sec">
-                <span className="filter-h-sm">City</span>
-                <div className="filter-group">
-                  <select
-                    className="filter-select-box"
-                    value={filterCity}
-                    onChange={(e) => setFilterCity(e.target.value)}
-                  >
-                    <option value="All">All Cities</option>
-                    {stateCities.map(city => (
-                      <option key={city.id} value={city.id}>{city.name}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              {propertyTypes.length > 1 && (
-                <div className="filter-sec">
-                  <span className="filter-h-sm">Property Type</span>
-                  <div className="filter-group">
-                    {['Any Type', ...propertyTypes].map(t => (
-                      <label key={t} className="filter-opt">
-                        <input
-                          type="radio"
-                          name="propType"
-                          checked={filterType === t}
-                          onChange={() => setFilterType(t)}
-                        />
-                        {t}
-                      </label>
+                  <h4 style={{ color: 'var(--gold2)', fontSize: '14px', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '24px' }}>Strategic Growth Corridor Locations</h4>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center', marginBottom: '30px' }}>
+                    {section.locations.map((loc, li) => (
+                      <span key={li} style={{ padding: '8px 24px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '100px', fontSize: '14px' }}>{loc}</span>
                     ))}
                   </div>
+                  {section.highlights && (
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', textAlign: 'left' }}>
+                      {section.highlights.map((h, hi) => (
+                        <div key={hi} style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '13px', color: '#ccc' }}>
+                          <span style={{ color: 'var(--gold2)' }}>✓</span> {h}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
+              
+              {section.extra && (
+                 <div style={{ marginTop: '40px', padding: '30px', background: '#fafafa', borderRadius: '12px', borderLeft: '4px solid var(--gold2)', fontSize: '15px', color: '#555', lineHeight: '1.7' }}>
+                   {section.extra}
+                 </div>
+              )}
+            </div>
+          ))}
+        </div>
 
-              <div className="filter-sec" style={{ borderBottom: 'none' }}>
-                <span className="filter-h-sm">Budget Range</span>
+        {/* Separator */}
+        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+          <div className="eyebrow" style={{ color: 'var(--gold)', marginBottom: '10px' }}>AVAILABLE OPPORTUNITIES</div>
+          <h2 className="sec-title">Premium Plots & Land in <span>{stateInfo.name}</span></h2>
+          <p className="sec-sub">Showing verified land parcels and plotted developments</p>
+        </div>
+
+        {/* Properties Grid with Filters */}
+        <div className="results-layout" style={{ background: 'transparent' }}>
+          {/* Enhanced Filter Sidebar */}
+          <aside className="filters-sidebar" style={{ background: '#fff', padding: '30px', borderRadius: '16px', boxShadow: '0 5px 20px rgba(0,0,0,0.05)' }}>
+            <div className="filter-header-row" style={{ marginBottom: '30px' }}>
+              <span style={{ fontSize: '18px', fontWeight: '800', color: 'var(--ink)' }}>Refine Search</span>
+              <button className="filter-clear-btn" onClick={clearFilters}>Reset</button>
+            </div>
+
+            <div className="filter-sec">
+              <span className="filter-h-sm">Location / City</span>
+              <select className="filter-select-box" value={filterCity} onChange={(e) => setFilterCity(e.target.value)}>
+                <option value="All">All {stateInfo.name} Cities</option>
+                {stateCities.map(city => <option key={city.id} value={city.id}>{city.name}</option>)}
+              </select>
+            </div>
+
+            {propertyTypes.length > 0 && (
+              <div className="filter-sec">
+                <span className="filter-h-sm">Investment Type</span>
                 <div className="filter-group">
-                  <select
-                    className="filter-select-box"
-                    value={filterPrice}
-                    onChange={(e) => setFilterPrice(e.target.value)}
-                  >
-                    <option>Any Price</option>
-                    <option>Below ₹ 1 Cr</option>
-                    <option>₹ 1 Cr - ₹ 3 Cr</option>
-                    <option>Above ₹ 3 Cr</option>
-                  </select>
+                  {['Any Type', ...propertyTypes].map(t => (
+                    <label key={t} className="filter-opt">
+                      <input type="radio" name="propType" checked={filterType === t} onChange={() => setFilterType(t)} />
+                      {t}
+                    </label>
+                  ))}
                 </div>
               </div>
-            </aside>
+            )}
 
-            {/* Properties Grid */}
-            <main className="results-main">
-              <div className="results-top-bar">
-                <div className="results-count">Found <strong>{filteredProperties.length}</strong> premium listings</div>
+            <div className="filter-sec" style={{ borderBottom: 'none' }}>
+              <span className="filter-h-sm">Budget Potential</span>
+              <select className="filter-select-box" value={filterPrice} onChange={(e) => setFilterPrice(e.target.value)}>
+                <option>Any Price</option>
+                <option>Below ₹ 1 Cr</option>
+                <option>₹ 1 Cr - ₹ 3 Cr</option>
+                <option>Above ₹ 3 Cr</option>
+              </select>
+            </div>
+          </aside>
+
+          {/* Properties Grid */}
+          <main className="results-main">
+            {loading ? (
+              <div style={{ textAlign: 'center', padding: '100px 0' }}>
+                <div className="loader-dots"><span></span><span></span><span></span></div>
+                <h3 style={{ marginTop: '20px', color: 'var(--muted)' }}>Curating premium listings...</h3>
               </div>
-
-              {loading ? (
-                <div style={{ textAlign: 'center', padding: '60px 0' }}>
-                  <div className="loader-dots"><span></span><span></span><span></span></div>
-                  <h3 style={{ marginTop: '20px', color: 'var(--muted)' }}>Discovering properties...</h3>
-                </div>
-              ) : filteredProperties.length === 0 ? (
-                <div className="no-results-card">
-                  <div className="no-res-icon">🏘️</div>
-                  <h3>No matching properties found</h3>
-                  <p>Try broadening your filters or choosing a different city.</p>
-                  <button className="nav-btn-solid" onClick={clearFilters} style={{ marginTop: '20px' }}>Reset All Filters</button>
-                </div>
-              ) : (
-                <div className="rec-grid" style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 350px), 1fr))',
-                  gap: '24px'
-                }}>
-                  {filteredProperties.map((property, index) => {
-                    const isComparing = Array.isArray(comparisonList)
-                      ? comparisonList.some(p => (typeof p === 'object' ? p.id : p) === property.id)
-                      : false;
-
-                    return (
-                      <div
-                        key={property.id}
-                        className="prop-card"
-                        style={{ animation: `cityCardIn 0.5s ease-out ${0.08 * index}s both` }}
-                        onClick={() => handlePropertyClick(property.id)}
-                      >
-                        <div className="pc-img" style={{ backgroundImage: `url('${property.img}')` }}>
-                          <span className="pc-status status-nl">{property.status || property.type}</span>
-                          <div className="pc-save" onClick={(e) => {
-                            e.stopPropagation();
-                            if (isComparing) {
-                              setComparisonList(prev => prev.filter(p => (typeof p === 'object' ? p.id : p) !== property.id));
-                            } else if (comparisonList.length < 3) {
-                              setComparisonList(prev => [...prev, property]);
-                            }
-                          }} style={{ color: isComparing ? 'var(--gold)' : '#fff' }}>
-                            {isComparing ? '♥' : '♡'}
-                          </div>
-                        </div>
-                        <div className="pc-body">
-                          <div className="pc-dev">{property.developer}</div>
-                          <div className="pc-name">{property.title}</div>
-                          <div className="pc-loc">📍 {property.location}</div>
-                          <div className="pc-tags" style={{ margin: '12px 0' }}>
-                            {property.tags && property.tags.map((tag, i) => (
-                              <span key={i} className="pc-tag">{tag}</span>
-                            ))}
-                          </div>
-                          <div className="pc-footer">
-                            <div className="pc-price">
-                              {property.priceStr}
-                              <small>{property.area}</small>
-                            </div>
-                            <button
-                              className="pc-enq"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handlePropertyClick(property.id);
-                              }}
-                            >Details</button>
-                          </div>
+            ) : filteredProperties.length === 0 ? (
+              <div className="no-results-card" style={{ padding: '80px 40px', background: '#fff', borderRadius: '16px', border: '1px dashed #ddd' }}>
+                <div style={{ fontSize: '48px', marginBottom: '20px' }}>🏘️</div>
+                <h3>No Plots Found for This Criteria</h3>
+                <p>We are constantly adding new land parcels. Please check back soon or reset your filters.</p>
+                <button className="nav-btn-solid" onClick={clearFilters} style={{ marginTop: '20px' }}>View All Plots</button>
+              </div>
+            ) : (
+              <div className="rec-grid" style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 350px), 1fr))',
+                gap: '30px'
+              }}>
+                {filteredProperties.map((property, index) => {
+                  const isComparing = comparisonList.some(p => (typeof p === 'object' ? p.id : p) === property.id);
+                  return (
+                    <div key={property.id} className="prop-card" style={{ animation: `fadeInUp 0.6s ease ${index * 0.1}s both` }} onClick={() => handlePropertyClick(property.id)}>
+                      <div className="pc-img" style={{ backgroundImage: `url('${property.img}')`, height: '240px' }}>
+                        <span className="pc-status" style={{ background: 'var(--ink)', color: 'var(--gold2)' }}>{property.type}</span>
+                        <div className="pc-save" onClick={(e) => {
+                          e.stopPropagation();
+                          if (isComparing) setComparisonList(prev => prev.filter(p => (typeof p === 'object' ? p.id : p) !== property.id));
+                          else if (comparisonList.length < 3) setComparisonList(prev => [...prev, property]);
+                        }} style={{ color: isComparing ? 'var(--gold)' : '#fff' }}>
+                          {isComparing ? '♥' : '♡'}
                         </div>
                       </div>
-                    );
-                  })}
-                </div>
-              )}
-            </main>
+                      <div className="pc-body" style={{ padding: '25px' }}>
+                        <div className="pc-dev" style={{ letterSpacing: '2px' }}>{property.developer}</div>
+                        <div className="pc-name" style={{ fontSize: '20px', marginBottom: '8px' }}>{property.title}</div>
+                        <div className="pc-loc" style={{ color: '#666' }}>📍 {property.location}</div>
+                        <div className="pc-footer" style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid #f5f5f5' }}>
+                          <div className="pc-price" style={{ fontSize: '18px' }}>
+                            {property.priceStr}
+                            <small style={{ display: 'block', fontSize: '11px', color: '#999', marginTop: '4px' }}>{property.area}</small>
+                          </div>
+                          <button className="pc-enq">DETAILS</button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </main>
+        </div>
+
+        {/* Investment Safety Section */}
+        <div style={{ 
+          marginTop: '100px', 
+          padding: '60px', 
+          background: 'linear-gradient(135deg, #fdfbf7 0%, #f5f0e6 100%)', 
+          borderRadius: '24px', 
+          border: '1px solid var(--gold4)',
+          animation: 'fadeInUp 1s ease'
+        }}>
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '32px', color: 'var(--ink)', marginBottom: '16px' }}>How Safe Are Land and Plot Investments in India?</h2>
+            <p style={{ fontSize: '16px', color: '#666', maxWidth: '700px', margin: '0 auto' }}>Land and plotted developments can be extremely rewarding investments when backed by proper research and due diligence.</p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px' }}>
+            <div>
+              <h4 style={{ color: 'var(--gold)', fontSize: '18px', marginBottom: '20px', borderBottom: '2px solid var(--gold2)', paddingBottom: '10px', display: 'inline-block' }}>Key Factors for Safety</h4>
+              <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: '12px' }}>
+                {['RERA-approved projects', 'Verified land titles', 'Government-approved layouts', 'Reputed developers', 'Infrastructure-backed growth corridors', 'Clear legal documentation', 'Proper zoning and land-use approvals'].map((item, i) => (
+                  <li key={i} style={{ fontSize: '14px', color: '#444', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span style={{ color: 'var(--gold2)' }}>✓</span> {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 style={{ color: 'var(--gold)', fontSize: '18px', marginBottom: '20px', borderBottom: '2px solid var(--gold2)', paddingBottom: '10px', display: 'inline-block' }}>Investor Checklist</h4>
+              <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: '12px' }}>
+                {['Ownership history', 'Encumbrance status', 'Future development plans', 'Connectivity and infrastructure pipeline', 'Market demand and liquidity'].map((item, i) => (
+                  <li key={i} style={{ fontSize: '14px', color: '#444', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span style={{ color: 'var(--gold2)' }}>•</span> {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div style={{ marginTop: '40px', padding: '20px', background: '#fff', borderRadius: '12px', textAlign: 'center', border: '1px solid #eee', fontSize: '14px', color: 'var(--muted)', fontStyle: 'italic' }}>
+            Professional advisory and research-driven investment selection significantly reduce risks and improve long-term returns.
           </div>
         </div>
       </div>
