@@ -3,6 +3,7 @@ import { plots as localPlots } from '../data/plots';
 import { rentalProperties as localRentals } from '../data/rentals';
 import { marketInsights as localInsights } from '../data/insights';
 import { companies as localCompanies } from '../data/companies';
+import { cities as localCities } from '../data/locations';
 
 // ── CORE CONFIGURATION ──────────────────────────────────────────────────────
 const getApiBaseUrl = () => {
@@ -84,7 +85,7 @@ const getMergedLocalData = () => {
                 id: proj.id,
                 cityId: proj.cityId,
                 title: proj.name,
-                listingType: 'Projects',
+                listingType: 'Plots / Land',
                 priceStr: proj.priceRange || 'Contact for Price',
                 area: proj.areaRange,
                 developer: comp.name,
@@ -162,6 +163,12 @@ export const apiService = {
     if (filters.cityId && filters.cityId !== 'India' && filters.cityId !== 'All') {
         filtered = filtered.filter(p => p && p.cityId?.toLowerCase() === filters.cityId.toLowerCase());
     }
+
+    if (filters.stateId) {
+        const stateCities = localCities.filter(c => c.stateId === filters.stateId).map(c => c.id.toLowerCase());
+        filtered = filtered.filter(p => p && p.cityId && stateCities.includes(p.cityId.toLowerCase()));
+    }
+
     if (filters.type && filters.type !== 'Any Type') {
         filtered = filtered.filter(p => p && p.type === filters.type);
     }

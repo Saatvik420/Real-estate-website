@@ -4,6 +4,7 @@ and before making any changes you always ask what changes you are going to do th
 
 second thing i will give the project name according to their location your task is to put the following project into following city section so when user try to search for the following city then show these projects
 
+in https://bharatestates.netlify.app/state/st_rj put 
 Shree shyam sarovar-I 
 Khatu shyam
 
@@ -16,7 +17,24 @@ Ajmer Road
 Mayur Vihar 
 Jaipur
 
+in https://bharatestates.netlify.app/state/st_up put
 Hanumant Vihar
 Vrindavan
 
+
+and in remaining part shows coming soon 
+
+in https://bharatestates.netlify.app/state/st_rj
+starts with showing all rajasthan plots 
+
+in https://bharatestates.netlify.app/state/st_up
+starts with showing all UP plots
+
+in https://bharatestates.netlify.app/state/st_uk
+starts with showing all Uttrakhand plots
+
+change the filters according to the plots described and classify the plots into three types
+commercial 
+agricultural
+residential
 

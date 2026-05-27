@@ -19,19 +19,14 @@ const StateView = () => {
   useEffect(() => {
     const fetchProperties = async () => {
       setLoading(true);
-      const stateCities = allCities.filter(c => c.stateId === stateId);
-      const cityIds = stateCities.map(c => c.id);
-      const allProps = [];
-      for (const cid of cityIds) {
-        const res = await apiService.getProperties({ cityId: cid });
-        if (res.success && Array.isArray(res.data)) {
-          allProps.push(...res.data);
-        }
+      // Fetch all properties for this state using the new stateId filter
+      const res = await apiService.getProperties({ stateId });
+      if (res.success && Array.isArray(res.data)) {
+        setProperties(res.data);
       }
-      setProperties(allProps);
       setLoading(false);
 
-      // Check if selectedCity from context belongs to this state
+      const stateCities = allCities.filter(c => c.stateId === stateId);
       if (selectedCity && stateCities.find(c => c.id === selectedCity)) {
         setFilterCity(selectedCity);
       } else {
@@ -58,7 +53,7 @@ const StateView = () => {
     return true;
   });
 
-  const propertyTypes = [...new Set(properties.map(p => p.type).filter(Boolean))];
+  const propertyTypes = ['Residential', 'Commercial', 'Agricultural'];
 
   const handlePropertyClick = (id) => {
     setSelectedProperty(id);
@@ -350,19 +345,17 @@ const StateView = () => {
               </select>
             </div>
 
-            {propertyTypes.length > 0 && (
-              <div className="filter-sec">
-                <span className="filter-h-sm">Investment Type</span>
-                <div className="filter-group">
-                  {['Any Type', ...propertyTypes].map(t => (
-                    <label key={t} className="filter-opt">
-                      <input type="radio" name="propType" checked={filterType === t} onChange={() => setFilterType(t)} />
-                      {t}
-                    </label>
-                  ))}
-                </div>
+            <div className="filter-sec">
+              <span className="filter-h-sm">Investment Type</span>
+              <div className="filter-group">
+                {['Any Type', ...propertyTypes].map(t => (
+                  <label key={t} className="filter-opt">
+                    <input type="radio" name="propType" checked={filterType === t} onChange={() => setFilterType(t)} />
+                    {t}
+                  </label>
+                ))}
               </div>
-            )}
+            </div>
 
             <div className="filter-sec" style={{ borderBottom: 'none' }}>
               <span className="filter-h-sm">Budget Potential</span>
@@ -383,11 +376,11 @@ const StateView = () => {
                 <h3 style={{ marginTop: '20px', color: 'var(--muted)' }}>Curating premium listings...</h3>
               </div>
             ) : filteredProperties.length === 0 ? (
-              <div className="no-results-card" style={{ padding: '80px 40px', background: '#fff', borderRadius: '16px', border: '1px dashed #ddd' }}>
-                <div style={{ fontSize: '48px', marginBottom: '20px' }}>🏘️</div>
-                <h3>No Plots Found for This Criteria</h3>
-                <p>We are constantly adding new land parcels. Please check back soon or reset your filters.</p>
-                <button className="nav-btn-solid" onClick={clearFilters} style={{ marginTop: '20px' }}>View All Plots</button>
+              <div className="no-results-card" style={{ padding: '80px 40px', background: '#fff', borderRadius: '16px', border: '1px dashed #ddd', textAlign: 'center' }}>
+                <div style={{ fontSize: '48px', marginBottom: '20px' }}>🏜️</div>
+                <h3>Coming Soon to {stateInfo.name}</h3>
+                <p>We are currently verifying premium land parcels in this region. Please stay tuned for iconic developments.</p>
+                <button className="nav-btn-solid" onClick={clearFilters} style={{ marginTop: '20px' }}>Reset All Filters</button>
               </div>
             ) : (
               <div className="rec-grid" style={{

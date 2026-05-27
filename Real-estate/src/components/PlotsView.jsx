@@ -165,7 +165,7 @@ const PlotsView = () => {
             <div className="filter-sec">
               <span className="filter-h-sm">Land Category</span>
               <div className="filter-group">
-                {['Any Type', 'Residential', 'Commercial', 'Agriculture'].map(z => (
+                {['Any Type', 'Residential', 'Commercial', 'Agricultural'].map(z => (
                   <label key={z} className="filter-opt">
                     <input 
                       type="radio" 

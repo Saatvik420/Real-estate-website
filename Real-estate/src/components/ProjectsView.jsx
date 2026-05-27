@@ -66,7 +66,7 @@ const ProjectsView = () => {
               <div className="project-stats-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '30px' }}>
                 <div className="p-stat">
                   <div style={{ fontSize: '10px', color: 'var(--muted2)', textTransform: 'uppercase', fontWeight: '700', letterSpacing: '1px' }}>Starting At</div>
-                  <div style={{ fontSize: '18px', fontWeight: '800', color: 'var(--ink)' }}>{project.priceRange.split(' - ')[0]}</div>
+                  <div style={{ fontSize: '18px', fontWeight: '800', color: 'var(--ink)' }}>{project.priceRange ? project.priceRange.split(' - ')[0] : 'Contact for Price'}</div>
                 </div>
                 <div className="p-stat">
                   <div style={{ fontSize: '10px', color: 'var(--muted2)', textTransform: 'uppercase', fontWeight: '700', letterSpacing: '1px' }}>Possession</div>
