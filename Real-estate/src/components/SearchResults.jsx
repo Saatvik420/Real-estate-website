@@ -32,8 +32,8 @@ const SearchResults = () => {
 
   const handlePropertyClick = (id) => {
     setSelectedProperty(id);
-    setView('details');
-    navigate('/details');
+    setView('property-details');
+    navigate(`/property/${id}`);
   };
 
   const clearFilters = () => {

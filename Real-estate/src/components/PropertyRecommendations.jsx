@@ -38,8 +38,8 @@ const PropertyRecommendations = () => {
 
   const handlePropertyClick = (id) => {
     setSelectedProperty(id);
-    setView('details');
-    navigate('/details');
+    setView('property-details');
+    navigate(`/property/${id}`);
   };
 
   const locationName = selectedCity !== 'India' ? selectedCity : (states.find(s => s.id === selectedState)?.name || 'India');
