@@ -233,6 +233,7 @@ const PlotsView = () => {
 
                         <div className="pc-footer">
                           <div className="pc-price">
+                            <small style={{ display: 'block', fontSize: '10px', color: 'var(--muted2)', textTransform: 'uppercase', fontWeight: '700', marginBottom: '4px' }}>Plot Investment From</small>
                             {plot.priceStr}
                             <small>{plot.pricePerUnit}</small>
                           </div>

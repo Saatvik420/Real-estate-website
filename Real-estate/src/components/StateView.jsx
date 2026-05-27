@@ -19,8 +19,11 @@ const StateView = () => {
   useEffect(() => {
     const fetchProperties = async () => {
       setLoading(true);
-      // Fetch all properties for this state using the new stateId filter
-      const res = await apiService.getProperties({ stateId });
+      // Fetch all plot properties for this state by default
+      const res = await apiService.getProperties({ 
+        stateId, 
+        listingType: 'Plots / Land' 
+      });
       if (res.success && Array.isArray(res.data)) {
         setProperties(res.data);
       }

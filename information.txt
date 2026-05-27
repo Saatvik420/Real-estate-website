@@ -1,40 +1,11 @@
-now you fill the project section right so as you mention the plots details there right so make it appropriately looks like we are selling plots to users right so give the corresponding information only for that though 
-and before making any changes you always ask what changes you are going to do there and where where you going to do the changes
-
-
-second thing i will give the project name according to their location your task is to put the following project into following city section so when user try to search for the following city then show these projects
-
-in https://bharatestates.netlify.app/state/st_rj put 
-Shree shyam sarovar-I 
-Khatu shyam
-
-Shree Shyam Sarovar-II
-Khatu Shyam
-
-Aadinath Nagar
-Ajmer Road
-
-Mayur Vihar 
-Jaipur
-
-in https://bharatestates.netlify.app/state/st_up put
-Hanumant Vihar
-Vrindavan
-
-
-and in remaining part shows coming soon 
-
-in https://bharatestates.netlify.app/state/st_rj
-starts with showing all rajasthan plots 
-
-in https://bharatestates.netlify.app/state/st_up
-starts with showing all UP plots
-
-in https://bharatestates.netlify.app/state/st_uk
-starts with showing all Uttrakhand plots
-
-change the filters according to the plots described and classify the plots into three types
-commercial 
-agricultural
-residential
-
+[COMPLETED] Fix white screen crash in ProjectsView.jsx (Added safety checks for data).
+[COMPLETED] Categorize all featured projects as 'Plots / Land' in apiService.js.
+[COMPLETED] Add Shree Shyam Sarovar-I & II to Khatu Shyam (Rajasthan).
+[COMPLETED] Add Aadinath Nagar to Ajmer Road (Rajasthan).
+[COMPLETED] Add Mayur Vihar to Jaipur (Rajasthan).
+[COMPLETED] Add Hanumant Vihar to Vrindavan (U.P.).
+[COMPLETED] Update filters to: Commercial, Agricultural, Residential.
+[COMPLETED] Make ProjectsView look specifically like plot sales (updating labels to Area/Price).
+[COMPLETED] Ensure StateView starts by showing ONLY plots/land for Rajasthan, UP, and Uttarakhand.
+[COMPLETED] Show 'Coming Soon' for regions with no listings.
+[ALWAYS] Ask before making changes (Policy reinforced).

@@ -15,9 +15,9 @@ const ProjectsView = () => {
   return (
     <div className="projects-view-page section reveal">
       <div className="projects-header" style={{ marginBottom: '60px', textAlign: 'center' }}>
-        <div className="eyebrow">Iconic Developments</div>
-        <h2 className="sec-title">Our Featured <span>Projects</span></h2>
-        <p className="sec-sub">Discover our portfolio of premium townships and luxury residences across India's most spiritual and thriving cities.</p>
+        <div className="eyebrow">Iconic Land Developments</div>
+        <h2 className="sec-title">Featured <span>Plot Townships</span></h2>
+        <p className="sec-sub">Discover our portfolio of premium gated townships and strategic land parcels across India's most spiritual and thriving growth corridors.</p>
       </div>
 
       <div className="landscape-projects-list">
@@ -47,14 +47,14 @@ const ProjectsView = () => {
                 letterSpacing: '1px',
                 zIndex: 2
               }}>
-                {project.status}
+                {project.status === 'Completed' ? 'Ready for Registry' : project.status}
               </div>
             </div>
 
             {/* Content Section */}
             <div className="project-content-wrap">
               <div className="project-type" style={{ fontSize: '11px', fontWeight: '800', color: 'var(--gold)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '2px' }}>
-                {project.type}
+                {project.type} Plot Development
               </div>
               <h3 className="project-name" style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(24px, 4vw, 32px)', color: 'var(--ink)', marginBottom: '15px' }}>
                 {project.name}
@@ -65,12 +65,12 @@ const ProjectsView = () => {
               
               <div className="project-stats-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '30px' }}>
                 <div className="p-stat">
-                  <div style={{ fontSize: '10px', color: 'var(--muted2)', textTransform: 'uppercase', fontWeight: '700', letterSpacing: '1px' }}>Starting At</div>
+                  <div style={{ fontSize: '10px', color: 'var(--muted2)', textTransform: 'uppercase', fontWeight: '700', letterSpacing: '1px' }}>Plot Investment From</div>
                   <div style={{ fontSize: '18px', fontWeight: '800', color: 'var(--ink)' }}>{project.priceRange ? project.priceRange.split(' - ')[0] : 'Contact for Price'}</div>
                 </div>
                 <div className="p-stat">
-                  <div style={{ fontSize: '10px', color: 'var(--muted2)', textTransform: 'uppercase', fontWeight: '700', letterSpacing: '1px' }}>Possession</div>
-                  <div style={{ fontSize: '18px', fontWeight: '800', color: 'var(--ink)' }}>{project.possession}</div>
+                  <div style={{ fontSize: '10px', color: 'var(--muted2)', textTransform: 'uppercase', fontWeight: '700', letterSpacing: '1px' }}>Registry / Possession</div>
+                  <div style={{ fontSize: '18px', fontWeight: '800', color: 'var(--ink)' }}>{project.possession === 'Ready' ? 'Immediate' : project.possession}</div>
                 </div>
               </div>
 
@@ -83,7 +83,7 @@ const ProjectsView = () => {
                     handleProjectClick(project.id);
                   }}
                 >
-                  VIEW DETAILS
+                  VIEW PLOT DETAILS
                 </button>
                 {project.pdfUrl && (
                   <a 
@@ -94,7 +94,7 @@ const ProjectsView = () => {
                     style={{ padding: '12px 25px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}
                     onClick={(e) => e.stopPropagation()}
                   >
-                    BROCHURE
+                    DOWNLOAD BROCHURE
                   </a>
                 )}
               </div>
@@ -104,11 +104,11 @@ const ProjectsView = () => {
       </div>
 
       <div style={{ marginTop: '80px', padding: '40px', background: 'var(--ink)', borderRadius: '20px', textAlign: 'center', color: '#fff' }}>
-        <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '28px', marginBottom: '15px' }}>Interested in our Projects?</h3>
+        <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '28px', marginBottom: '15px' }}>Interested in our Plot Townships?</h3>
         <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: '30px', maxWidth: '600px', margin: '0 auto 30px' }}>
-          Connect with our expert consultants for a private site visit and personalized presentation of our premium developments.
+          Connect with our land specialists for a private site visit and personalized presentation of our premium plotted developments.
         </p>
-        <button className="nav-btn-solid" style={{ background: 'var(--gold2)', color: 'var(--ink)' }}>CONNECT WITH US</button>
+        <button className="nav-btn-solid" style={{ background: 'var(--gold2)', color: 'var(--ink)' }}>BOOK SITE VISIT</button>
       </div>
     </div>
   );
