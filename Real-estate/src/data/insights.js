@@ -1,8 +1,3 @@
-import sss1Img from '../assets/images_project/Shree shyam sarovar.jpeg';
-import sss2Img from '../assets/images_project/Shree Shyam Sarovar II.jpeg';
-import anVid from '../assets/images_project/Aadinath nagar 1.mp4';
-import mvVid from '../assets/images_project/Mayur Vihar.mp4';
-
 export const marketInsights = {
   india: {
     insightsTitle: "India’s Real Estate Market: A Powerful Wealth Creation Opportunity",
