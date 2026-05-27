@@ -62,8 +62,8 @@ const Hero = () => {
       <div className="hero-glow-alt"></div>
       <div className="hero-inner reveal">
         <div className="hero-eyebrow">India's Most Premium Real Estate Platform</div>
-        <h1 className="hero-title">Discover Your <span>Sanctuary</span> in <span>{cityName}</span></h1>
-        <p className="hero-subtitle">Explore 14,327+ curated forest-facing estates, luxury residences and verified projects — tailored for the discerning few.</p>
+        <h1 className="hero-title">Your Gateway to India’s <span>Fastest Growing</span> Investment <span>Destinations  </span></h1>
+        <p className="hero-subtitle">From investment to legacy — discover verified plots and land opportunities across India. RERA-approved projects that help you create wealth, secure your future, and own a lasting asset</p>
         
         <div className="search-card">
           <div className="search-tabs">
