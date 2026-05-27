@@ -15,6 +15,10 @@ export const cities = [
   { id: 'greater_noida', stateId: 'st_up', name: 'Greater Noida' },
   { id: 'vrindavan', stateId: 'st_up', name: 'Vrindavan' },
   { id: 'ayodhya', stateId: 'st_up', name: 'Ayodhya' },
+  { id: 'lucknow', stateId: 'st_up', name: 'Lucknow' },
+  { id: 'kanpur', stateId: 'st_up', name: 'Kanpur' },
   { id: 'dehradun', stateId: 'st_uk', name: 'Dehradun' },
-  { id: 'haridwar', stateId: 'st_uk', name: 'Haridwar' }
+  { id: 'haridwar', stateId: 'st_uk', name: 'Haridwar' },
+  { id: 'rishikesh', stateId: 'st_uk', name: 'Rishikesh' },
+  { id: 'mussoorie', stateId: 'st_uk', name: 'Mussoorie' }
 ];

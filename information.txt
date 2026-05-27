@@ -2,11 +2,11 @@ in most popular investment hub name add some more cities like noida, greater noi
 
 
 when user want to open the cities plots then open it as state wise like
-user hover it to state/cities -> rajasthan -> khatu shyam/any other city of rajasthan (then open it as rajasthan give some details there and just below the details mentioned the plots of the areas)
+user hover it to state/cities -> rajasthan -> khatu shyam/any other city of rajasthan (then open it as rajasthan give some details of all cities of rajasthan location only there and just below the details mentioned the plots of the areas)
 
 
 make the details section beautiful and decorative which is user friendly
-the details of rajasthan
+the details of rajasthan (open all plots of rajasthan specific location only when clicking any of the cities and then user manually filter the cities themselves)
 Rajasthan: Emerging Hub for Strategic Land Investments
 Rajasthan has become one of India’s most promising states for land and plot
 investments due to large-scale infrastructure development, industrial growth, tourism
@@ -100,7 +100,7 @@ through increasing applications for industrial land allotments.
 
 same do it with UP and Uttrakhand i will share the details of Up and Uttrakhand
 
-details of UP 
+details of UP  (same goes here as what happened with rajasthan and same with uttrakhand aswell)
 Uttar Pradesh: One of India’s Fastest Growing Real Estate Markets
 
 Uttar Pradesh has transformed into a high-growth real estate destination driven by

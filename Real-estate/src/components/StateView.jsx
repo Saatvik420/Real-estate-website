@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useApp } from '../hooks/useApp';
 import { apiService } from '../services/apiService';
@@ -15,11 +15,11 @@ const StateView = () => {
   const [filterType, setFilterType] = useState('Any Type');
 
   const stateInfo = stateDetails[stateId];
-  const stateCities = allCities.filter(c => c.stateId === stateId);
 
   useEffect(() => {
     const fetchProperties = async () => {
       setLoading(true);
+      const stateCities = allCities.filter(c => c.stateId === stateId);
       const cityIds = stateCities.map(c => c.id);
       const allProps = [];
       for (const cid of cityIds) {
@@ -30,20 +30,22 @@ const StateView = () => {
       }
       setProperties(allProps);
       setLoading(false);
+
+      // Check if selectedCity from context belongs to this state
+      if (selectedCity && stateCities.find(c => c.id === selectedCity)) {
+        setFilterCity(selectedCity);
+      } else {
+        setFilterCity('All');
+      }
     };
     fetchProperties();
     window.scrollTo(0, 0);
     
-    // Check if selectedCity from context belongs to this state
-    if (selectedCity && stateCities.find(c => c.id === selectedCity)) {
-      setFilterCity(selectedCity);
-    } else {
-      setFilterCity('All');
-    }
-    
     setFilterPrice('Any Price');
     setFilterType('Any Type');
-  }, [stateId, selectedCity]);
+  }, [stateId, selectedCity, allCities]);
+
+  const stateCities = allCities.filter(c => c.stateId === stateId);
 
   const filteredProperties = properties.filter(p => {
     if (filterCity !== 'All' && p.cityId !== filterCity) return false;
@@ -103,49 +105,135 @@ const StateView = () => {
 
       <div className="section-inner" style={{ padding: '80px 24px' }}>
         {/* Decorative Overview Section */}
-        <div style={{ maxWidth: '900px', margin: '0 auto 100px', textAlign: 'center' }}>
-          <div style={{ width: '60px', height: '2px', background: 'var(--gold2)', margin: '0 auto 30px' }}></div>
-          <p style={{ fontSize: '20px', lineHeight: '1.8', color: '#333', fontWeight: '500', fontFamily: "'Montserrat', sans-serif" }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto 100px', textAlign: 'center', position: 'relative' }}>
+          <div style={{ 
+            position: 'absolute', 
+            top: '-40px', 
+            left: '50%', 
+            transform: 'translateX(-50%)',
+            fontSize: '80px',
+            color: 'var(--gold4)',
+            opacity: 0.3,
+            zIndex: -1,
+            fontFamily: "'Playfair Display', serif"
+          }}>“</div>
+          <div style={{ width: '80px', height: '3px', background: 'linear-gradient(to right, transparent, var(--gold2), transparent)', margin: '0 auto 40px' }}></div>
+          <p style={{ 
+            fontSize: '24px', 
+            lineHeight: '1.8', 
+            color: 'var(--ink)', 
+            fontWeight: '600', 
+            fontFamily: "'Playfair Display', serif",
+            fontStyle: 'italic'
+          }}>
             {stateInfo.description}
           </p>
-          <div style={{ width: '60px', height: '2px', background: 'var(--gold2)', margin: '30px auto 0' }}></div>
+          <div style={{ width: '80px', height: '3px', background: 'linear-gradient(to right, transparent, var(--gold2), transparent)', margin: '40px auto 0' }}></div>
         </div>
 
         {/* Dynamic Rich Content Sections */}
-        <div className="state-sections" style={{ display: 'grid', gap: '80px', marginBottom: '100px' }}>
+        <div className="state-sections" style={{ display: 'grid', gap: '100px', marginBottom: '120px' }}>
           {stateInfo.sections.map((section, idx) => (
             <div key={idx} className="rich-section" style={{ animation: `fadeInUp 1s ease ${idx * 0.2}s both` }}>
-              <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-                <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '36px', color: 'var(--ink)', marginBottom: '16px' }}>{section.title}</h2>
-                {section.text && <p style={{ fontSize: '17px', color: '#666', maxWidth: '800px', margin: '0 auto', lineHeight: '1.7' }}>{section.text}</p>}
+              <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+                <h2 style={{ 
+                  fontFamily: "'Playfair Display', serif", 
+                  fontSize: '42px', 
+                  color: 'var(--ink)', 
+                  marginBottom: '20px',
+                  position: 'relative',
+                  display: 'inline-block'
+                }}>
+                  {section.title}
+                  <span style={{ 
+                    position: 'absolute', 
+                    bottom: '-10px', 
+                    left: '10%', 
+                    right: '10%', 
+                    height: '4px', 
+                    background: 'var(--gold4)',
+                    zIndex: -1
+                  }}></span>
+                </h2>
+                {section.text && <p style={{ fontSize: '18px', color: '#555', maxWidth: '850px', margin: '0 auto', lineHeight: '1.8' }}>{section.text}</p>}
               </div>
 
               {section.content && (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '40px' }}>
                   {section.content.map((item, i) => (
                     <div key={i} className="info-card" style={{ 
-                      padding: '40px', 
+                      padding: '50px', 
                       background: '#fff', 
-                      borderRadius: '16px', 
-                      border: '1px solid #f0f0f0',
-                      boxShadow: '0 10px 30px rgba(0,0,0,0.03)',
-                      transition: 'transform 0.3s ease'
+                      borderRadius: '24px', 
+                      border: '1px solid #f2f2f2',
+                      boxShadow: '0 20px 50px rgba(0,0,0,0.04)',
+                      transition: 'all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)',
+                      position: 'relative',
+                      overflow: 'hidden'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-10px)';
+                      e.currentTarget.style.boxShadow = '0 30px 60px rgba(189, 168, 113, 0.15)';
+                      e.currentTarget.style.borderColor = 'var(--gold4)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 20px 50px rgba(0,0,0,0.04)';
+                      e.currentTarget.style.borderColor = '#f2f2f2';
                     }}>
-                      <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '24px', color: 'var(--gold)', marginBottom: '16px' }}>{item.subtitle}</h3>
-                      <p style={{ fontSize: '15px', color: '#444', marginBottom: '20px', lineHeight: '1.6' }}>{item.text}</p>
+                      <div style={{ 
+                        position: 'absolute', 
+                        top: 0, 
+                        right: 0, 
+                        width: '100px', 
+                        height: '100px', 
+                        background: 'radial-gradient(circle at top right, var(--gold4), transparent 70%)',
+                        opacity: 0.5
+                      }}></div>
+                      <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '28px', color: 'var(--ink)', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '15px' }}>
+                        <span style={{ width: '30px', height: '2px', background: 'var(--gold2)' }}></span>
+                        {item.subtitle}
+                      </h3>
+                      <p style={{ fontSize: '16px', color: '#444', marginBottom: '24px', lineHeight: '1.7' }}>{item.text}</p>
                       
                       {item.highlights && (
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '20px' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
                           {item.highlights.map((h, hi) => (
-                            <div key={hi} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                              <span style={{ color: 'var(--gold2)', fontWeight: 'bold' }}>•</span>
-                              <span style={{ fontSize: '14px', color: '#555' }}>{h}</span>
+                            <div key={hi} style={{ display: 'flex', alignItems: 'flex-start', gap: '15px' }}>
+                              <div style={{ 
+                                width: '24px', 
+                                height: '24px', 
+                                background: 'var(--gold4)', 
+                                borderRadius: '50%', 
+                                display: 'flex', 
+                                alignItems: 'center', 
+                                justifyContent: 'center',
+                                flexShrink: 0,
+                                marginTop: '2px'
+                              }}>
+                                <span style={{ color: 'var(--gold)', fontSize: '14px', fontWeight: '900' }}>✓</span>
+                              </div>
+                              <span style={{ fontSize: '15px', color: '#555', fontWeight: '500' }}>{h}</span>
                             </div>
                           ))}
                         </div>
                       )}
                       
-                      {item.extra && <p style={{ fontSize: '13px', color: 'var(--muted)', fontStyle: 'italic', borderTop: '1px solid #f0f0f0', paddingTop: '15px' }}>{item.extra}</p>}
+                      {item.extra && (
+                        <div style={{ 
+                          fontSize: '14px', 
+                          color: 'var(--muted)', 
+                          fontStyle: 'italic', 
+                          borderTop: '1px solid #f5f5f5', 
+                          paddingTop: '20px',
+                          lineHeight: '1.6',
+                          background: 'rgba(250,250,250,0.5)',
+                          margin: '0 -50px -50px',
+                          padding: '20px 50px'
+                        }}>
+                          {item.extra}
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -153,24 +241,61 @@ const StateView = () => {
 
               {section.locations && (
                 <div style={{ 
-                  marginTop: '40px', 
+                  marginTop: '60px', 
                   background: 'var(--ink)', 
-                  padding: '50px', 
-                  borderRadius: '24px', 
+                  padding: '70px 50px', 
+                  borderRadius: '32px', 
                   color: '#fff',
-                  textAlign: 'center'
+                  textAlign: 'center',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  boxShadow: '0 30px 70px rgba(0,0,0,0.2)'
                 }}>
-                  <h4 style={{ color: 'var(--gold2)', fontSize: '14px', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '24px' }}>Strategic Growth Corridor Locations</h4>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center', marginBottom: '30px' }}>
+                  <div style={{ 
+                    position: 'absolute', 
+                    top: '-50px', 
+                    right: '-50px', 
+                    width: '300px', 
+                    height: '300px', 
+                    background: 'radial-gradient(circle, rgba(189,168,113,0.1) 0%, transparent 70%)',
+                    zIndex: 0
+                  }}></div>
+                  <h4 style={{ color: 'var(--gold2)', fontSize: '16px', letterSpacing: '5px', textTransform: 'uppercase', marginBottom: '40px', position: 'relative', zIndex: 1 }}>Strategic Growth Corridor Locations</h4>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px', justifyContent: 'center', marginBottom: '50px', position: 'relative', zIndex: 1 }}>
                     {section.locations.map((loc, li) => (
-                      <span key={li} style={{ padding: '8px 24px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '100px', fontSize: '14px' }}>{loc}</span>
+                      <span key={li} style={{ 
+                        padding: '12px 32px', 
+                        background: 'rgba(255,255,255,0.05)', 
+                        border: '1px solid rgba(255,255,255,0.1)', 
+                        borderRadius: '100px', 
+                        fontSize: '15px',
+                        fontWeight: '600',
+                        transition: 'all 0.3s'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = 'var(--gold2)';
+                        e.currentTarget.style.color = 'var(--ink)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
+                        e.currentTarget.style.color = '#fff';
+                      }}>{loc}</span>
                     ))}
                   </div>
                   {section.highlights && (
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', textAlign: 'left' }}>
+                    <div style={{ 
+                      display: 'grid', 
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
+                      gap: '30px', 
+                      textAlign: 'left',
+                      position: 'relative',
+                      zIndex: 1,
+                      borderTop: '1px solid rgba(255,255,255,0.1)',
+                      paddingTop: '40px'
+                    }}>
                       {section.highlights.map((h, hi) => (
-                        <div key={hi} style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '13px', color: '#ccc' }}>
-                          <span style={{ color: 'var(--gold2)' }}>✓</span> {h}
+                        <div key={hi} style={{ display: 'flex', alignItems: 'center', gap: '15px', fontSize: '15px', color: '#ccc', fontWeight: '500' }}>
+                          <div style={{ color: 'var(--gold2)', fontSize: '20px' }}>✓</div> {h}
                         </div>
                       ))}
                     </div>
@@ -178,8 +303,18 @@ const StateView = () => {
                 </div>
               )}
               
-              {section.extra && (
-                 <div style={{ marginTop: '40px', padding: '30px', background: '#fafafa', borderRadius: '12px', borderLeft: '4px solid var(--gold2)', fontSize: '15px', color: '#555', lineHeight: '1.7' }}>
+              {section.extra && !section.content && (
+                 <div style={{ 
+                   marginTop: '50px', 
+                   padding: '40px', 
+                   background: 'linear-gradient(to right, #fafafa, #f5f5f5)', 
+                   borderRadius: '20px', 
+                   borderLeft: '6px solid var(--gold2)', 
+                   fontSize: '17px', 
+                   color: '#444', 
+                   lineHeight: '1.8',
+                   boxShadow: '0 10px 30px rgba(0,0,0,0.02)'
+                 }}>
                    {section.extra}
                  </div>
               )}
@@ -189,9 +324,13 @@ const StateView = () => {
 
         {/* Separator */}
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-          <div className="eyebrow" style={{ color: 'var(--gold)', marginBottom: '10px' }}>AVAILABLE OPPORTUNITIES</div>
-          <h2 className="sec-title">Premium Plots & Land in <span>{stateInfo.name}</span></h2>
-          <p className="sec-sub">Showing verified land parcels and plotted developments</p>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px', marginBottom: '20px' }}>
+            <div style={{ flex: 1, height: '1px', background: 'linear-gradient(to right, transparent, var(--gold2))', maxWidth: '100px' }}></div>
+            <div className="eyebrow" style={{ color: 'var(--gold)', margin: 0 }}>AVAILABLE OPPORTUNITIES</div>
+            <div style={{ flex: 1, height: '1px', background: 'linear-gradient(to left, transparent, var(--gold2))', maxWidth: '100px' }}></div>
+          </div>
+          <h2 className="sec-title" style={{ fontSize: '48px' }}>Premium Plots & Land in <span>{stateInfo.name}</span></h2>
+          <p className="sec-sub" style={{ fontSize: '18px' }}>Showing verified land parcels and plotted developments</p>
         </div>
 
         {/* Properties Grid with Filters */}
@@ -292,43 +431,92 @@ const StateView = () => {
 
         {/* Investment Safety Section */}
         <div style={{ 
-          marginTop: '100px', 
-          padding: '60px', 
-          background: 'linear-gradient(135deg, #fdfbf7 0%, #f5f0e6 100%)', 
-          borderRadius: '24px', 
-          border: '1px solid var(--gold4)',
-          animation: 'fadeInUp 1s ease'
+          marginTop: '120px', 
+          padding: '80px 60px', 
+          background: 'linear-gradient(135deg, #1a1c20 0%, #26292f 100%)', 
+          borderRadius: '32px', 
+          color: '#fff',
+          position: 'relative',
+          overflow: 'hidden',
+          boxShadow: '0 40px 100px rgba(0,0,0,0.3)'
         }}>
-          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '32px', color: 'var(--ink)', marginBottom: '16px' }}>How Safe Are Land and Plot Investments in India?</h2>
-            <p style={{ fontSize: '16px', color: '#666', maxWidth: '700px', margin: '0 auto' }}>Land and plotted developments can be extremely rewarding investments when backed by proper research and due diligence.</p>
+          <div style={{ 
+            position: 'absolute', 
+            bottom: '-100px', 
+            left: '-100px', 
+            width: '400px', 
+            height: '400px', 
+            background: 'radial-gradient(circle, rgba(189,168,113,0.05) 0%, transparent 70%)',
+            zIndex: 0
+          }}></div>
+          
+          <div style={{ textAlign: 'center', marginBottom: '60px', position: 'relative', zIndex: 1 }}>
+            <div className="eyebrow" style={{ color: 'var(--gold2)', marginBottom: '15px' }}>DUE DILIGENCE & SECURITY</div>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '42px', color: '#fff', marginBottom: '20px' }}>How Safe Are Land and Plot Investments in India?</h2>
+            <p style={{ fontSize: '18px', color: 'rgba(255,255,255,0.6)', maxWidth: '800px', margin: '0 auto', lineHeight: '1.7' }}>
+              Land and plotted developments can be extremely rewarding investments when backed by proper research and due diligence.
+            </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px' }}>
-            <div>
-              <h4 style={{ color: 'var(--gold)', fontSize: '18px', marginBottom: '20px', borderBottom: '2px solid var(--gold2)', paddingBottom: '10px', display: 'inline-block' }}>Key Factors for Safety</h4>
-              <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: '12px' }}>
-                {['RERA-approved projects', 'Verified land titles', 'Government-approved layouts', 'Reputed developers', 'Infrastructure-backed growth corridors', 'Clear legal documentation', 'Proper zoning and land-use approvals'].map((item, i) => (
-                  <li key={i} style={{ fontSize: '14px', color: '#444', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <span style={{ color: 'var(--gold2)' }}>✓</span> {item}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '60px', position: 'relative', zIndex: 1 }}>
+            <div style={{ background: 'rgba(255,255,255,0.03)', padding: '40px', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.08)' }}>
+              <h4 style={{ color: 'var(--gold2)', fontSize: '22px', fontFamily: "'Playfair Display', serif", marginBottom: '30px', display: 'flex', alignItems: 'center', gap: '15px' }}>
+                <span style={{ width: '8px', height: '8px', background: 'var(--gold2)', borderRadius: '50%' }}></span>
+                Key Factors That Make Investments Safer
+              </h4>
+              <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: '18px' }}>
+                {[
+                  'RERA-approved projects', 
+                  'Verified land titles', 
+                  'Government-approved layouts', 
+                  'Reputed developers', 
+                  'Infrastructure-backed growth corridors', 
+                  'Clear legal documentation', 
+                  'Proper zoning and land-use approvals'
+                ].map((item, i) => (
+                  <li key={i} style={{ fontSize: '15px', color: 'rgba(255,255,255,0.8)', display: 'flex', alignItems: 'center', gap: '15px' }}>
+                    <div style={{ color: 'var(--gold2)', fontSize: '18px', fontWeight: '900' }}>✓</div> {item}
                   </li>
                 ))}
               </ul>
             </div>
-            <div>
-              <h4 style={{ color: 'var(--gold)', fontSize: '18px', marginBottom: '20px', borderBottom: '2px solid var(--gold2)', paddingBottom: '10px', display: 'inline-block' }}>Investor Checklist</h4>
-              <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: '12px' }}>
-                {['Ownership history', 'Encumbrance status', 'Future development plans', 'Connectivity and infrastructure pipeline', 'Market demand and liquidity'].map((item, i) => (
-                  <li key={i} style={{ fontSize: '14px', color: '#444', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <span style={{ color: 'var(--gold2)' }}>•</span> {item}
+            
+            <div style={{ background: 'rgba(255,255,255,0.03)', padding: '40px', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.08)' }}>
+              <h4 style={{ color: 'var(--gold2)', fontSize: '22px', fontFamily: "'Playfair Display', serif", marginBottom: '30px', display: 'flex', alignItems: 'center', gap: '15px' }}>
+                <span style={{ width: '8px', height: '8px', background: 'var(--gold2)', borderRadius: '50%' }}></span>
+                Investors should always evaluate:
+              </h4>
+              <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: '18px' }}>
+                {[
+                  'Ownership history', 
+                  'Encumbrance status', 
+                  'Future development plans', 
+                  'Connectivity and infrastructure pipeline', 
+                  'Market demand and liquidity'
+                ].map((item, i) => (
+                  <li key={i} style={{ fontSize: '15px', color: 'rgba(255,255,255,0.8)', display: 'flex', alignItems: 'center', gap: '15px' }}>
+                    <div style={{ width: '6px', height: '6px', background: 'var(--gold2)', borderRadius: '50%' }}></div> {item}
                   </li>
                 ))}
               </ul>
             </div>
           </div>
 
-          <div style={{ marginTop: '40px', padding: '20px', background: '#fff', borderRadius: '12px', textAlign: 'center', border: '1px solid #eee', fontSize: '14px', color: 'var(--muted)', fontStyle: 'italic' }}>
-            Professional advisory and research-driven investment selection significantly reduce risks and improve long-term returns.
+          <div style={{ 
+            marginTop: '60px', 
+            padding: '30px 40px', 
+            background: 'rgba(189, 168, 113, 0.1)', 
+            borderRadius: '16px', 
+            textAlign: 'center', 
+            border: '1px solid rgba(189, 168, 113, 0.2)', 
+            fontSize: '16px', 
+            color: 'var(--gold3)', 
+            fontStyle: 'italic',
+            position: 'relative',
+            zIndex: 1,
+            lineHeight: '1.6'
+          }}>
+            "Professional advisory and research-driven investment selection significantly reduce risks and improve long-term returns."
           </div>
         </div>
       </div>

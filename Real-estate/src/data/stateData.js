@@ -2,9 +2,9 @@ export const stateDetails = {
   st_rj: {
     id: 'st_rj',
     name: 'Rajasthan',
-    tagline: 'The Land of Kings & Strategic Opportunities',
+    tagline: 'Rajasthan: Emerging Hub for Strategic Land Investments',
     heroImage: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?w=1600&q=80',
-    description: 'Rajasthan: Emerging Hub for Strategic Land Investments. Rajasthan has become one of India’s most promising states for land and plot investments due to large-scale infrastructure development, industrial growth, tourism expansion, and increasing connectivity.',
+    description: 'Rajasthan has become one of India’s most promising states for land and plot investments due to large-scale infrastructure development, industrial growth, tourism expansion, and increasing connectivity.',
     sections: [
       {
         title: 'Key Investment Cities in Rajasthan',
@@ -48,30 +48,41 @@ export const stateDetails = {
             ]
           }
         ],
-        extra: 'The Rajasthan government is also actively working on the development of the Khatu Shyam Corridor under the Swadesh Darshan 2.0 scheme, aimed at improving tourism infrastructure, traffic management, parking, and world-class pilgrim facilities. This large-scale development is expected to further accelerate economic and real estate activity in the region.'
+        extra: 'The Rajasthan government is also actively working on the development of the Khatu Shyam Corridor under the Swadesh Darshan 2.0 scheme, aimed at improving tourism infrastructure, traffic management, parking, and world-class pilgrim facilities. This large-scale development is expected to further accelerate economic and real estate activity in the region. Several developers and plotted township projects are already entering the region, reflecting growing investor confidence in the market.'
+      },
+      {
+        title: 'Why Investors Are Attracted to Khatu region',
+        highlights: [
+          'Land prices are still comparatively affordable',
+          'Religious tourism ensures year-round activity',
+          'Infrastructure development is increasing rapidly',
+          'Long-term appreciation potential is strong',
+          'Demand for hospitality and rental properties is rising'
+        ],
+        extra: 'The Khatu–Palsana–Ringas corridor is increasingly being viewed as a long-term wealth creation zone for investors seeking early-stage growth opportunities.'
       },
       {
         title: 'Delhi–Jaipur Highway (NH-8 / NH-48) – Rajasthan’s Growth Corridor',
-        text: 'Delhi–Jaipur Highway, now part of NH-48, has become one of North India’s most strategic real estate and industrial growth corridors. Stretching across key regions connecting Delhi-NCR and Rajasthan, the highway has transformed into a major hub for Industrial development, Warehousing, and Commercial projects.',
-        locations: ['Neemrana', 'Behror', 'Shahpura', 'Kotputli', 'Jaipur outskirts'],
+        text: 'Delhi–Jaipur Highway, now part of NH-48, has become one of North India’s most strategic real estate and industrial growth corridors. Stretching across key regions connecting Delhi-NCR and Rajasthan, the highway has transformed into a major hub for:',
         highlights: [
-          'Excellent connectivity with Delhi-NCR and Jaipur',
-          'Industrial and commercial expansion',
-          'Increasing demand for plotted townships',
-          'Strong warehousing and logistics growth',
-          'Rising demand for hospitality projects',
-          'Future infrastructure-led appreciation',
-          'High investor confidence from domestic and NRI buyers'
-        ]
+          'Industrial development',
+          'Warehousing and logistics',
+          'Commercial projects',
+          'Residential townships',
+          'Hospitality and tourism investments',
+          'Large-scale plotted developments'
+        ],
+        locations: ['Neemrana', 'Behror', 'Shahpura', 'Kotputli', 'Jaipur outskirts'],
+        extra: 'The presence of the Delhi-Mumbai Industrial Corridor (DMIC), Japanese industrial zones, logistics parks, manufacturing hubs, and improved expressway connectivity has significantly increased land demand and appreciation potential along this corridor.'
       }
     ]
   },
   st_up: {
     id: 'st_up',
-    name: 'U.P.',
-    tagline: 'The Engine of New India’s Real Estate Growth',
+    name: 'Uttar Pradesh',
+    tagline: 'Uttar Pradesh: One of India’s Fastest Growing Real Estate Markets',
     heroImage: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1600&q=80',
-    description: 'Uttar Pradesh: One of India’s Fastest Growing Real Estate Markets. Uttar Pradesh has transformed into a high-growth real estate destination driven by expressways, airports, industrial corridors, religious tourism, and large-scale government investments.',
+    description: 'Uttar Pradesh has transformed into a high-growth real estate destination driven by expressways, airports, industrial corridors, religious tourism, and large-scale government investments. UP’s real estate investments surged over 50% recently, reflecting unprecedented market momentum.',
     sections: [
       {
         title: 'Key Investment Cities in Uttar Pradesh',
@@ -99,9 +110,9 @@ export const stateDetails = {
   st_uk: {
     id: 'st_uk',
     name: 'Uttarakhand',
-    tagline: 'Serenity Meets Appreciation',
+    tagline: 'Uttarakhand: Lifestyle and Long-Term Appreciation Market',
     heroImage: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?w=1600&q=80',
-    description: 'Uttarakhand: Lifestyle and Long-Term Appreciation Market. Uttarakhand is increasingly becoming a preferred destination for lifestyle investments, retirement homes, eco-tourism projects, and premium land investments.',
+    description: 'Uttarakhand is increasingly becoming a preferred destination for lifestyle investments, retirement homes, eco-tourism projects, and premium land investments.',
     sections: [
       {
         title: 'Key Investment Cities in Uttarakhand',

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useApp } from '../hooks/useApp';
 
 const Navbar = () => {
-  const { setView, states, allCities, setSelectedState, setSelectedCity, setSearchFilters, isLoggedIn, currentUser, logout, navSettings } = useApp();
+  const { setView, states, allCities, setSelectedState, setSelectedCity, setSearchFilters, isLoggedIn, currentUser, logout } = useApp();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null); // 'corporate' | 'account' | 'partners' | 'state-city' | 'plots' | null
   const [activeNestedDropdown, setActiveNestedDropdown] = useState(null); // stateId | null
@@ -110,7 +110,10 @@ const Navbar = () => {
           <div className="dropdown-menu">
             {states.map(state => (
               <div key={state.id} className={`nested-dropdown ${activeNestedDropdown === state.id ? 'active' : ''}`}>
-                <span className="nav-link" onClick={(e) => toggleNestedDropdown(state.id, e)}>{state.name} <span style={{ fontSize: '10px' }}>▶</span></span>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <Link className="nav-link" to={`/state/${state.id}`} onClick={() => { setView('state'); setSelectedState(state.id); setSelectedCity('All'); closeMobileMenu(); }} style={{ flex: 1 }}>{state.name}</Link>
+                  <span className="nav-link" onClick={(e) => toggleNestedDropdown(state.id, e)} style={{ paddingLeft: '0', cursor: 'pointer' }}> <span style={{ fontSize: '10px' }}>▶</span></span>
+                </div>
                 <div className="nested-menu">
                   {allCities.filter(c => c.stateId === state.id).map(city => (
                     <Link key={city.id} className="nav-link" to={`/state/${state.id}`} onClick={() => handleCityClick(city)}>{city.name}</Link>

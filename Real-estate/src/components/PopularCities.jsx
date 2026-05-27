@@ -52,12 +52,33 @@ const PopularCities = () => {
       img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600&q=80"
     },
     {
+      id: "ayodhya",
+      name: "Ayodhya",
+      state: "Uttar Pradesh",
+      price: "₹8,500 / sqft",
+      listings: "Rapid Growth",
+      rank: "#5 BOOMING",
+      badge: "Temple City",
+      badgeClass: "city-badge-hot",
+      img: "https://images.unsplash.com/photo-1629141065910-47e24a4d6f6e?w=600&q=80"
+    },
+    {
+      id: "dehradun",
+      name: "Dehradun",
+      state: "Uttarakhand",
+      price: "₹5,200 / sqft",
+      listings: "Lifestyle Hub",
+      rank: "#6 LIFESTYLE",
+      badge: "Hill Station",
+      img: "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?w=600&q=80"
+    },
+    {
       id: "khatu_shyam",
       name: "Khatu Shyam",
       state: "Rajasthan",
       price: "₹3,500 / sqft",
       listings: "Rising Demand",
-      rank: "#5 SPIRITUAL",
+      rank: "#7 SPIRITUAL",
       badge: "Temple Town",
       img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80"
     },
@@ -67,9 +88,29 @@ const PopularCities = () => {
       state: "Rajasthan",
       price: "₹2,100 / sqft",
       listings: "Expressway Hub",
-      rank: "#6 INDUSTRIAL",
+      rank: "#8 INDUSTRIAL",
       badge: "High Growth",
       img: "https://images.unsplash.com/photo-1464938532347-1e50a8c29f63?w=600&q=80"
+    },
+    {
+      id: "lucknow",
+      name: "Lucknow",
+      state: "Uttar Pradesh",
+      price: "₹4,800 / sqft",
+      listings: "Growing Capital",
+      rank: "#9 GROWTH",
+      badge: "Smart City",
+      img: "https://images.unsplash.com/photo-1595658658481-d53d3f999875?w=600&q=80"
+    },
+    {
+      id: "rishikesh",
+      name: "Rishikesh",
+      state: "Uttarakhand",
+      price: "₹6,200 / sqft",
+      listings: "Wellness Hub",
+      rank: "#10 SPIRITUAL",
+      badge: "Yoga Capital",
+      img: "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?w=600&q=80"
     }
   ];
 
