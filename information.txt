@@ -1,3 +1,22 @@
-first covert property.js to plots.js 
-put all data of plots.js into projects section 
+now you fill the project section right so as you mention the plots details there right so make it appropriately looks like we are selling plots to users right so give the corresponding information only for that though 
+and before making any changes you always ask what changes you are going to do there and where where you going to do the changes
+
+
+second thing i will give the project name according to their location your task is to put the following project into following city section so when user try to search for the following city then show these projects
+
+Shree shyam sarovar-I 
+Khatu shyam
+
+Shree Shyam Sarovar-II
+Khatu Shyam
+
+Aadinath Nagar
+Ajmer Road
+
+Mayur Vihar 
+Jaipur
+
+Hanumant Vihar
+Vrindavan
+
 

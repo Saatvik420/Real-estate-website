@@ -82,11 +82,13 @@ const getMergedLocalData = () => {
             normalizedProjects.push({
                 ...proj,
                 id: proj.id,
+                cityId: proj.cityId,
                 title: proj.name,
                 listingType: 'Projects',
-                priceStr: proj.priceRange,
+                priceStr: proj.priceRange || 'Contact for Price',
                 area: proj.areaRange,
                 developer: comp.name,
+                description: proj.description,
                 tags: proj.amenities || []
             });
         });
