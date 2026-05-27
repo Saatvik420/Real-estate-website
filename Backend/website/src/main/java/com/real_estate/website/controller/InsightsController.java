@@ -26,26 +26,13 @@ public class InsightsController {
         System.out.println(">>> Insights Request: locationId=" + locationId + ", type=" + type);
 
         Map<String, Object> response = new HashMap<>();
-        response.put("insightsTitle", locationId);
-        response.put("trend", Arrays.asList(20, 35, 45, 70, 95));
-        
-        List<Map<String, Object>> bars = new ArrayList<>();
-        bars.add(createBar("Elite Sector 1", "₹18,500", "85%"));
-        bars.add(createBar("Premium Heights", "₹15,200", "70%"));
-        bars.add(createBar("Luxury Enclave", "₹22,000", "95%"));
-        response.put("bars", bars);
-
-        List<Map<String, Object>> rentals = new ArrayList<>();
-        rentals.add(createRental("Studio", "4.2%", "40%"));
-        rentals.add(createRental("2 BHK", "3.8%", "60%"));
-        rentals.add(createRental("3 BHK", "4.5%", "80%"));
-        rentals.add(createRental("Penthouse", "5.1%", "100%"));
-        response.put("rentals", rentals);
-
-        List<Map<String, Object>> devs = new ArrayList<>();
-        devs.add(createDev("Lodha Group", "Premium", "42", "25", "5000+", "L/101"));
-        devs.add(createDev("Prestige", "Luxury", "35", "30", "4000+", "P/202"));
-        response.put("devs", devs);
+        response.put("insightsTitle", locationId + " Market Insights");
+        response.put("introduction", "Market intelligence report for " + locationId + " is currently being updated.");
+        response.put("trend", new ArrayList<>());
+        response.put("bars", new ArrayList<>());
+        response.put("rentals", new ArrayList<>());
+        response.put("devs", new ArrayList<>());
+        response.put("sections", new ArrayList<>());
         
         return ResponseEntity.ok(response);
     }

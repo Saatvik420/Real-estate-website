@@ -66,7 +66,7 @@ const PropertyDetails = () => {
             <div className="pd-section">
               <h3 className="pd-sec-title">Project Overview</h3>
               <p className="pd-desc">
-                {property.extraDescription || `This exceptional ${property.type} represents the pinnacle of luxury living in ${property.location}. Carefully curated for the modern connoisseur, it offers an unparalleled blend of sophistication, comfort, and spiritual harmony. Spanning across vast acres of meticulously planned landscapes, this project is a testament to architectural brilliance and sustainable design.`}
+                {property.description || property.extraDescription || `This exceptional ${property.type} represents the pinnacle of luxury living in ${property.location}. Carefully curated for the modern connoisseur, it offers an unparalleled blend of sophistication, comfort, and spiritual harmony. Spanning across vast acres of meticulously planned landscapes, this project is a testament to architectural brilliance and sustainable design.`}
               </p>
               
               <div className="pd-quick-stats">
@@ -89,10 +89,30 @@ const PropertyDetails = () => {
               </div>
             </div>
 
+            {property.pdf && (
+              <div className="pd-section" style={{ background: 'var(--cream2)', padding: '30px', borderRadius: '12px', border: '1px solid var(--gold4)' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '20px' }}>
+                  <div>
+                    <h4 style={{ margin: 0, fontSize: '1.2rem', color: 'var(--ink)' }}>Project Brochure</h4>
+                    <p style={{ margin: '5px 0 0', fontSize: '0.9rem', color: 'var(--muted)' }}>Detailed plans and project specifications.</p>
+                  </div>
+                  <a 
+                    href={property.pdf} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="nav-btn-solid" 
+                    style={{ textDecoration: 'none', padding: '12px 30px', display: 'inline-block' }}
+                  >
+                    DOWNLOAD PDF
+                  </a>
+                </div>
+              </div>
+            )}
+
             <div className="pd-section">
               <h3 className="pd-sec-title">Premium Amenities</h3>
               <div className="pd-amenities">
-                {(property.tags || property.amenities || ['Gated Community', '24/7 Security', 'Lush Gardens', 'Modern Infrastructure']).map((item, i) => (
+                {(property.amenities || property.tags || ['Gated Community', '24/7 Security', 'Lush Gardens', 'Modern Infrastructure']).map((item, i) => (
                   <div key={i} className="pd-amenity-item">
                     <span className="pd-check">✓</span> {item}
                   </div>

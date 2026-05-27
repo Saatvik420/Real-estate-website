@@ -11,82 +11,43 @@ const PopularCities = () => {
       id: "jaipur",
       name: "Jaipur",
       state: "Rajasthan",
-      price: "₹8,500 / sqft",
-      listings: "12,400+",
+      price: "₹6,500 / sqft",
+      listings: "Project Hub",
       rank: "#1 PREFERRED",
-      badge: "Cultural Capital",
+      badge: "Pink City",
       badgeClass: "city-badge-hot",
-      img: "https://images.pexels.com/photos/28426012/pexels-photo-28426012.jpeg"
-    },
-    {
-      id: "noida",
-      name: "Noida",
-      state: "Uttar Pradesh",
-      price: "₹12,400 / sqft",
-      listings: "28,700+",
-      rank: "#2 FASTEST GROWING",
-      badge: "Tech Hub",
-      badgeClass: "city-badge-rising",
-      img: "https://images.pexels.com/photos/25466317/pexels-photo-25466317.jpeg"
-    },
-    {
-      id: "dehradun",
-      name: "Dehradun",
-      state: "Uttarakhand",
-      price: "₹7,800 / sqft",
-      listings: "8,200+",
-      rank: "#3 TOP VALUE",
-      badge: "Scenic Living",
-      badgeClass: "city-badge-hot",
-      img: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=600&q=80"
-    },
-    {
-      id: "neemrana",
-      name: "Neemrana",
-      state: "Rajasthan",
-      price: "₹4,200 / sqft",
-      listings: "3,400+",
-      rank: "#4 EMERGING",
-      badge: "Industrial Hub",
-      img: "https://images.pexels.com/photos/33797765/pexels-photo-33797765.jpeg"
+      img: "https://images.unsplash.com/photo-1477587458883-47145ed94245?w=600&q=80"
     },
     {
       id: "vrindavan",
       name: "Vrindavan",
       state: "Uttar Pradesh",
-      price: "₹6,100 / sqft",
-      listings: "5,900+",
-      rank: "#5 SPIRITUAL",
-      img: "https://images.pexels.com/photos/29651458/pexels-photo-29651458.jpeg"
-    },
-    {
-      id: "haridwar",
-      name: "Haridwar",
-      state: "Uttarakhand",
-      price: "₹5,800 / sqft",
-      listings: "4,100+",
-      rank: "#6 HERITAGE",
-      img: "https://images.pexels.com/photos/27418789/pexels-photo-27418789.jpeg"
-    },
-    {
-      id: "ayodhya",
-      name: "Ayodhya",
-      state: "Uttar Pradesh",
-      price: "₹9,600 / sqft",
-      listings: "2,400+",
-      rank: "#7 HIGH POTENTIAL",
-      badge: "Rising Star",
+      price: "₹4,200 / sqft",
+      listings: "Spiritual Hub",
+      rank: "#2 SPIRITUAL",
+      badge: "Holy City",
       badgeClass: "city-badge-rising",
-      img: "https://images.pexels.com/photos/12058309/pexels-photo-12058309.jpeg"
+      img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600&q=80"
     },
     {
-      id: "ajmer_road",
-      name: "Ajmer Road",
+      id: "khatu_shyam",
+      name: "Khatu Shyam",
       state: "Rajasthan",
-      price: "₹6,400 / sqft",
-      listings: "1,700+",
-      rank: "#8 CONNECTIVITY",
-      img: "https://images.pexels.com/photos/9390151/pexels-photo-9390151.jpeg"
+      price: "₹3,500 / sqft",
+      listings: "Rising Demand",
+      rank: "#3 SPIRITUAL",
+      badge: "Temple Town",
+      img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80"
+    },
+    {
+      id: "dudu",
+      name: "Dudu",
+      state: "Rajasthan",
+      price: "₹2,100 / sqft",
+      listings: "Expressway Hub",
+      rank: "#4 INDUSTRIAL",
+      badge: "High Growth",
+      img: "https://images.unsplash.com/photo-1464938532347-1e50a8c29f63?w=600&q=80"
     }
   ];
 

@@ -10,30 +10,7 @@ const HomePlan = () => {
     navigate('/plans');
   };
 
-  const plans = [
-    {
-      name: "Starter",
-      tagline: "For Individual Buyers",
-      price: "Free",
-      features: ["Standard Verification", "Community Support", "Basic Analytics"],
-      color: "var(--muted2)"
-    },
-    {
-      name: "Growth",
-      tagline: "For Aspiring Investors",
-      price: "₹4,999/mo",
-      features: ["Tier-1 Project Access", "Direct Builder Chat", "ROI Analytics"],
-      color: "var(--gold)",
-      highlight: true
-    },
-    {
-      name: "Legacy",
-      tagline: "For Ultra-HNIs",
-      price: "₹14,999/mo",
-      features: ["Private Site Visits", "Legal Concierge", "Priority Allocation"],
-      color: "var(--ink)"
-    }
-  ];
+  const plans = [];
 
   return (
     <div className="section reveal-full reveal" style={{ background: 'var(--cream2)', borderTop: '1px solid var(--cream3)', borderBottom: '1px solid var(--cream3)' }}>

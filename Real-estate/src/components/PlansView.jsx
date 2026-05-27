@@ -6,36 +6,7 @@ const PlansView = () => {
   const navigate = useNavigate();
   const { isLoggedIn } = useApp();
 
-  const plans = [
-    {
-      name: "Starter",
-      tagline: "For Individual Buyers",
-      price: "Free",
-      priceNum: 0,
-      features: ["Standard Verification", "Community Support", "Basic Analytics", "View 5 Properties/day"],
-      color: "var(--muted2)",
-      recommended: false
-    },
-    {
-      name: "Growth",
-      tagline: "For Aspiring Investors",
-      price: "₹4,999/mo",
-      priceNum: 4999,
-      features: ["Tier-1 Project Access", "Direct Builder Chat", "ROI Analytics", "Unlimited Property Views", "Priority Support"],
-      color: "var(--gold)",
-      highlight: true,
-      recommended: true
-    },
-    {
-      name: "Legacy",
-      tagline: "For Ultra-HNIs",
-      price: "₹14,999/mo",
-      priceNum: 14999,
-      features: ["Private Site Visits", "Legal Concierge", "Priority Allocation", "Dedicated Asset Manager", "Tax Optimization"],
-      color: "var(--ink)",
-      recommended: false
-    }
-  ];
+  const plans = [];
 
   const handleProceed = (plan) => {
     if (!isLoggedIn) {

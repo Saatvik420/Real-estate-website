@@ -30,5 +30,8 @@ public class Property {
     private String img;
     private String rera;
     private String agentId;
-    private String listingType; // Sale, Rent
+    private String listingType; // Sale, Rent, Projects, Plots / Land
+    private String pdf;
+    private String description;
+    private List<String> amenities;
 }
