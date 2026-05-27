@@ -20,15 +20,15 @@ const ProjectsView = () => {
         <p className="sec-sub">Discover our portfolio of premium gated townships and strategic land parcels across India's most spiritual and thriving growth corridors.</p>
       </div>
 
-      <div className="landscape-projects-list">
+      <div className="projects-grid-list">
         {companies.map(comp => comp.projects.map(project => (
           <div 
             key={project.id} 
-            className="project-landscape-card" 
+            className="project-grid-card" 
             onClick={() => handleProjectClick(project.id)}
           >
-            {/* Image Section */}
-            <div className="project-image-wrap">
+            {/* Media Section */}
+            <div className="project-media-wrap">
               {project.img && (typeof project.img === 'string' && (project.img.endsWith('.mp4') || project.img.includes('media'))) ? (
                 <video 
                   src={project.img} 
@@ -36,23 +36,30 @@ const ProjectsView = () => {
                   loop 
                   muted 
                   playsInline
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
               ) : (
                 <div 
                   className="project-img" 
-                  style={{ backgroundImage: `url('${project.img}')` }}
+                  style={{ 
+                    width: '100%', 
+                    height: '100%', 
+                    backgroundImage: `url('${project.img}')`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    transition: 'transform 0.8s ease'
+                  }}
                 ></div>
               )}
               <div className="project-status-badge" style={{
                 position: 'absolute',
-                top: '20px',
-                left: '20px',
+                top: '15px',
+                left: '15px',
                 background: project.status === 'Completed' ? 'var(--green)' : 'var(--gold2)',
                 color: project.status === 'Completed' ? '#fff' : 'var(--ink)',
-                padding: '6px 16px',
+                padding: '5px 12px',
                 borderRadius: '50px',
-                fontSize: '11px',
+                fontSize: '10px',
                 fontWeight: '800',
                 textTransform: 'uppercase',
                 letterSpacing: '1px',
@@ -64,37 +71,37 @@ const ProjectsView = () => {
 
             {/* Content Section */}
             <div className="project-content-wrap">
-              <div className="project-type" style={{ fontSize: '11px', fontWeight: '800', color: 'var(--gold)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '2px' }}>
-                {project.type} Plot Development
+              <div className="project-type" style={{ fontSize: '10px', fontWeight: '800', color: 'var(--gold)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1.5px' }}>
+                {project.type} Development
               </div>
-              <h3 className="project-name" style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(24px, 4vw, 32px)', color: 'var(--ink)', marginBottom: '15px' }}>
+              <h3 className="project-name" style={{ fontFamily: "'Playfair Display', serif", fontSize: '22px', color: 'var(--ink)', marginBottom: '10px', lineHeight: '1.3' }}>
                 {project.name}
               </h3>
-              <div className="project-location" style={{ fontSize: '14px', color: 'var(--muted)', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
+              <div className="project-location" style={{ fontSize: '13px', color: 'var(--muted)', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '20px' }}>
                 📍 {project.location}
               </div>
               
-              <div className="project-stats-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '30px' }}>
+              <div className="project-stats-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginBottom: '25px', marginTop: 'auto' }}>
                 <div className="p-stat">
-                  <div style={{ fontSize: '10px', color: 'var(--muted2)', textTransform: 'uppercase', fontWeight: '700', letterSpacing: '1px' }}>Plot Investment From</div>
-                  <div style={{ fontSize: '18px', fontWeight: '800', color: 'var(--ink)' }}>{project.priceRange ? project.priceRange.split(' - ')[0] : 'Contact for Price'}</div>
+                  <div style={{ fontSize: '9px', color: 'var(--muted2)', textTransform: 'uppercase', fontWeight: '700', letterSpacing: '0.5px' }}>Investment From</div>
+                  <div style={{ fontSize: '16px', fontWeight: '800', color: 'var(--ink)' }}>{project.priceRange ? project.priceRange.split(' - ')[0] : 'Contact'}</div>
                 </div>
                 <div className="p-stat">
-                  <div style={{ fontSize: '10px', color: 'var(--muted2)', textTransform: 'uppercase', fontWeight: '700', letterSpacing: '1px' }}>Registry / Possession</div>
-                  <div style={{ fontSize: '18px', fontWeight: '800', color: 'var(--ink)' }}>{project.possession === 'Ready' ? 'Immediate' : project.possession}</div>
+                  <div style={{ fontSize: '9px', color: 'var(--muted2)', textTransform: 'uppercase', fontWeight: '700', letterSpacing: '0.5px' }}>Possession</div>
+                  <div style={{ fontSize: '16px', fontWeight: '800', color: 'var(--ink)' }}>{project.possession === 'Ready' ? 'Immediate' : project.possession}</div>
                 </div>
               </div>
 
-              <div className="project-actions" style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
+              <div className="project-actions" style={{ display: 'flex', gap: '10px' }}>
                 <button 
                   className="nav-btn-solid" 
-                  style={{ padding: '12px 25px', fontSize: '13px' }}
+                  style={{ padding: '10px 15px', fontSize: '11px', flex: 1 }}
                   onClick={(e) => {
                     e.stopPropagation();
                     handleProjectClick(project.id);
                   }}
                 >
-                  VIEW PLOT DETAILS
+                  DETAILS
                 </button>
                 {project.pdfUrl && (
                   <a 
@@ -102,10 +109,10 @@ const ProjectsView = () => {
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="nav-btn-ghost"
-                    style={{ padding: '12px 25px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}
+                    style={{ padding: '10px 15px', fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', flex: 1 }}
                     onClick={(e) => e.stopPropagation()}
                   >
-                    DOWNLOAD BROCHURE
+                    BROCHURE
                   </a>
                 )}
               </div>
