@@ -1,7 +1,7 @@
 import sss1Img from '../assets/images_project/Shree shyam sarovar.jpeg';
 import sss2Img from '../assets/images_project/Shree Shyam Sarovar II.jpeg';
 import anVid from '../assets/images_project/Aadinath nagar 1.mp4';
-import mvVid from '../assets/images_project/Mayur Vihar.mp4';
+import mvImg from '../assets/images_project/Mayur vihar.jpg';
 import hvImg from '../assets/images_project/Hanumant_vihar.jpg';
 
 export const companies = [
@@ -70,7 +70,7 @@ export const companies = [
         priceRange: '₹12 L - ₹35 L',
         status: 'Verified',
         possession: 'Ready',
-        img: mvVid,
+        img: mvImg,
         pdfUrl: '/projects/mayur-vihar.pdf',
         description: 'A boutique plotted development in the heart of Sanganer. Close to educational and healthcare facilities, providing an ideal base for modern home construction.',
         amenities: ['School Proximity', 'Market Access', 'Underground Utilities', 'Community Center']
