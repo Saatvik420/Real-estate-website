@@ -29,10 +29,21 @@ const ProjectsView = () => {
           >
             {/* Image Section */}
             <div className="project-image-wrap">
-              <div 
-                className="project-img" 
-                style={{ backgroundImage: `url('${project.img}')` }}
-              ></div>
+              {project.img && (typeof project.img === 'string' && (project.img.endsWith('.mp4') || project.img.includes('media'))) ? (
+                <video 
+                  src={project.img} 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
+                />
+              ) : (
+                <div 
+                  className="project-img" 
+                  style={{ backgroundImage: `url('${project.img}')` }}
+                ></div>
+              )}
               <div className="project-status-badge" style={{
                 position: 'absolute',
                 top: '20px',

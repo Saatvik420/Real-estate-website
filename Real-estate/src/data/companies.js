@@ -1,3 +1,8 @@
+import sss1Img from '../assets/images_project/Shree shyam sarovar.jpeg';
+import sss2Img from '../assets/images_project/Shree Shyam Sarovar II.jpeg';
+import anVid from '../assets/images_project/Aadinath nagar 1.mp4';
+import mvVid from '../assets/images_project/Mayur Vihar.mp4';
+
 export const companies = [
   {
     id: 'one5-realty',
@@ -16,10 +21,10 @@ export const companies = [
         type: 'Residential',
         location: 'Abhawas, Ringas Road, Khatu Shyam',
         areaRange: '100 - 300 sq yards',
-        
+        priceRange: '₹15 L - ₹45 L',
         status: 'Completed',
         possession: 'Ready',
-        img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80',
+        img: sss1Img,
         pdfUrl: '/projects/shree-shyam-sarovar-1.pdf',
         description: 'A meticulously planned gated township near the holy shrine of Khatu Shyam. Features wide black-top roads, modern drainage, and extensive green belts for a premium lifestyle.',
         amenities: ['24/7 Security', 'Wide Roads', 'Water Supply', 'Lush Green Parks']
@@ -31,10 +36,10 @@ export const companies = [
         type: 'Residential',
         location: 'Kerpura, Teh. Danta Ramgarh, Sikar',
         areaRange: '150 - 350 sq yards',
-        
+        priceRange: '₹20 L - ₹60 L',
         status: 'New Launch',
         possession: '2025',
-        img: 'https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=800&q=80',
+        img: sss2Img,
         pdfUrl: '/projects/shree-shyam-sarovar-2.pdf',
         description: 'The second phase of our landmark township series. Designed with a focus on community living, featuring a dedicated clubhouse and children\'s play zones.',
         amenities: ['Clubhouse', 'Play Area', 'Gated Community', 'Street Lighting']
@@ -46,10 +51,10 @@ export const companies = [
         type: 'Residential',
         location: 'Jaipur-Ajmer Expressway, Dudu',
         areaRange: '100 - 250 sq yards',
-        
+        priceRange: '₹10 L - ₹30 L',
         status: 'Ongoing',
         possession: '2024',
-        img: 'https://images.unsplash.com/photo-1464938532347-1e50a8c29f63?w=800&q=80',
+        img: anVid,
         pdfUrl: '/projects/aadinath nagar.pdf',
         description: 'Strategically located on the thriving Jaipur-Ajmer Expressway. This development offers premium highway-touch land parcels with immediate access to industrial hubs.',
         amenities: ['Highway Proximity', 'Commercial Zone', 'Green Belts', 'Security Gate']
@@ -61,10 +66,10 @@ export const companies = [
         type: 'Residential',
         location: 'Village Panwaliya, Sanganer, Jaipur',
         areaRange: '120 - 300 sq yards',
-        
+        priceRange: '₹12 L - ₹35 L',
         status: 'Verified',
         possession: 'Ready',
-        img: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80',
+        img: mvVid,
         pdfUrl: '/projects/mayur-vihar.pdf',
         description: 'A boutique plotted development in the heart of Sanganer. Close to educational and healthcare facilities, providing an ideal base for modern home construction.',
         amenities: ['School Proximity', 'Market Access', 'Underground Utilities', 'Community Center']
@@ -76,7 +81,7 @@ export const companies = [
         type: 'Residential',
         location: 'Radha Kund-Ral Road, Vrindavan, Mathura',
         areaRange: '150 - 400 sq yards',
-        
+        priceRange: '₹25 L - ₹75 L',
         status: 'Premium',
         possession: '2026',
         img: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80',

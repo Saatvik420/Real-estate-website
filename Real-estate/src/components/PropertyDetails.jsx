@@ -40,9 +40,17 @@ const PropertyDetails = () => {
     <div className="property-details-page">
       {/* Hero Header with Video/Image Placeholder */}
       <div className="pd-header-bg" style={{ position: 'relative', height: '60vh', overflow: 'hidden' }}>
-        {property.video ? (
-          <video autoPlay muted loop playsInline poster={property.img} className="pd-video-bg" style={{ width: '100%', height: '100%', objectFit: 'cover' }}>
-            <source src={property.video} type="video/mp4" />
+        {property.video || (property.img && (typeof property.img === 'string' && (property.img.endsWith('.mp4') || property.img.includes('media')))) ? (
+          <video 
+            autoPlay 
+            muted 
+            loop 
+            playsInline 
+            poster={!property.video ? '' : property.img} 
+            className="pd-video-bg" 
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          >
+            <source src={property.video || property.img} type="video/mp4" />
           </video>
         ) : (
           <div className="pd-image-fallback" style={{ width: '100%', height: '100%', backgroundImage: `url('${property.img}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>

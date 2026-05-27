@@ -1,3 +1,6 @@
+copy paste every single data into https://bharatestates.netlify.app/insights with unique visuals 
+
+
 INSIGHTS
 
 India’s Real Estate Market: A Powerful Wealth Creation Opportunity
@@ -336,3 +339,6 @@ India’s land and plotted development sector is benefiting from:
 For investors seeking long-term wealth creation, strategically selected land
 investments in infrastructure-backed locations continue to remain one of the most
 attractive opportunities in the Indian real estate sector.
+
+
+after doing this i mentioned some images and videos in images_project so i want you to replace the unsplash links with those images and videos respectively according to the project names mentioned 

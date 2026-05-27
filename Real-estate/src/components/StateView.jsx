@@ -395,7 +395,19 @@ const StateView = () => {
                   const isComparing = comparisonList.some(p => (typeof p === 'object' ? p.id : p) === property.id);
                   return (
                     <div key={property.id} className="prop-card" style={{ animation: `fadeInUp 0.6s ease ${index * 0.1}s both` }} onClick={() => handlePropertyClick(property.id)}>
-                      <div className="pc-img" style={{ backgroundImage: `url('${property.img}')`, height: '240px' }}>
+                      <div className="pc-img" style={{ height: '240px', position: 'relative', overflow: 'hidden' }}>
+                        {property.img && (typeof property.img === 'string' && (property.img.endsWith('.mp4') || property.img.includes('media'))) ? (
+                          <video 
+                            src={property.img} 
+                            autoPlay 
+                            loop 
+                            muted 
+                            playsInline
+                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                          />
+                        ) : (
+                          <div style={{ backgroundImage: `url('${property.img}')`, width: '100%', height: '100%', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+                        )}
                         <span className="pc-status" style={{ background: 'var(--ink)', color: 'var(--gold2)' }}>{property.type}</span>
                         <div className="pc-save" onClick={(e) => {
                           e.stopPropagation();

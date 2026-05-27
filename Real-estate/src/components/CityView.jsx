@@ -242,13 +242,24 @@ const CityView = () => {
                   onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
                 >
                   <div style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
-                    <img
-                      src={property.img}
-                      alt={property.title}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
-                      onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.05)'; }}
-                      onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; }}
-                    />
+                    {property.img && (typeof property.img === 'string' && (property.img.endsWith('.mp4') || property.img.includes('media'))) ? (
+                      <video 
+                        src={property.img} 
+                        autoPlay 
+                        loop 
+                        muted 
+                        playsInline
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
+                      />
+                    ) : (
+                      <img
+                        src={property.img}
+                        alt={property.title}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
+                        onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.05)'; }}
+                        onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; }}
+                      />
+                    )}
                     <div style={{
                       position: 'absolute',
                       top: '12px',

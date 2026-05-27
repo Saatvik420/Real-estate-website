@@ -61,7 +61,19 @@ const TrendingSection = () => {
         <div className="trend-grid">
           {properties.map((prop, index) => (
             <div key={index} className="trend-card" onClick={() => handlePropertyClick(prop.id)}>
-              <div className="tc-img" style={{ backgroundImage: `url('${prop.img}')` }}>
+              <div className="tc-img" style={{ position: 'relative', overflow: 'hidden' }}>
+                {prop.img && (typeof prop.img === 'string' && (prop.img.endsWith('.mp4') || prop.img.includes('media'))) ? (
+                  <video 
+                    src={prop.img} 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
+                  />
+                ) : (
+                  <div style={{ backgroundImage: `url('${prop.img}')`, width: '100%', height: '100%', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+                )}
                 <span className={`tc-badge badge-hot`}>🔥 Hot</span>
               </div>
               <div className="tc-body">
