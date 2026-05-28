@@ -658,9 +658,18 @@ const Insights = () => {
           </div>
           <p style={{ fontSize: '1.3rem', lineHeight: '1.8', maxWidth: '800px', margin: '0 auto', color: 'rgba(255,255,255,0.8)' }}>For investors seeking long-term wealth creation, strategically selected land investments in infrastructure-backed locations continue to remain one of the most attractive opportunities in the Indian real estate sector.</p>
           <div style={{ marginTop: '50px' }}>
-            <button className="nav-btn-solid" style={{ padding: '20px 50px', fontSize: '1rem', letterSpacing: '2px' }}>CONSULT AN EXPERT</button>
-          </div>
-        </section>
+            <button 
+              className="nav-btn-solid" 
+              style={{ padding: '20px 50px', fontSize: '1rem', letterSpacing: '2px' }}
+              onClick={() => {
+                const phoneNumber = "919910911650";
+                const message = "Hello One5 Realty, I've been reading your Market Insights and would like to consult an expert regarding strategic real estate investments.";
+                window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`, '_blank');
+              }}
+            >
+              CONSULT AN EXPERT
+            </button>
+          </div>        </section>
 
       </div>
     </div>

@@ -57,7 +57,17 @@ const SupportView = () => {
                         </div>
                     </div>
 
-                    <button className="nav-btn-solid" style={{ width: '100%', marginTop: '40px', padding: '16px' }} onClick={() => setView('contact')}>Raise a Support Ticket</button>
+                    <button 
+                      className="nav-btn-solid" 
+                      style={{ width: '100%', marginTop: '40px', padding: '16px' }} 
+                      onClick={() => {
+                        const phoneNumber = "919910911650";
+                        const message = "Hello One5 Realty Support, I would like to raise a support ticket regarding my inquiry. Could you please assist me?";
+                        window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`, '_blank');
+                      }}
+                    >
+                      Raise a Support Ticket
+                    </button>
                 </div>
             </div>
         </div>
