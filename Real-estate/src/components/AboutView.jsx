@@ -1,15 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useApp } from '../hooks/useApp';
 
 const AboutView = () => {
   const { setView } = useApp();
+  const navigate = useNavigate();
 
   return (
     <div className="section reveal-full reveal" style={{ background: '#fff', minHeight: '100vh' }}>
       <div className="section-inner">
         <div className="sec-header" style={{ marginBottom: '60px' }}>
           <div>
-            <div className="eyebrow" onClick={() => setView('home')} style={{ cursor: 'pointer' }}>← Back to Home</div>
+            <div className="eyebrow" onClick={() => { setView('home'); navigate('/'); }} style={{ cursor: 'pointer' }}>← Back to Home</div>
             <h2 className="sec-title">About <span>One5 Realty Solutions</span></h2>
             <p className="sec-sub">Trusted Real Estate Investment Advisory & Solutions</p>
           </div>
@@ -71,7 +73,7 @@ const AboutView = () => {
             <p style={{ maxWidth: '850px', margin: '0 auto 48px', color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem', lineHeight: '1.8' }}>
               At One5 Realty Solutions, we are not just selling plots or land — we are helping individuals and businesses build secure futures, create wealth, and unlock the true potential of real estate investments in India.
             </p>
-            <button className="nav-btn-solid" style={{ padding: '16px 40px', fontSize: '1rem' }} onClick={() => setView('contact')}>Build Your Future With Us</button>
+            <button className="nav-btn-solid" style={{ padding: '16px 40px', fontSize: '1rem' }} onClick={() => { setView('insights'); navigate('/insights'); }}>Build Your Future With Us</button>
         </div>
       </div>
     </div>
