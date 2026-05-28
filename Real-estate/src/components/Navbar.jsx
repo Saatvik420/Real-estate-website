@@ -4,7 +4,7 @@ import { useApp } from '../hooks/useApp';
 import logoDark from '../../logo/logo-dark.svg';
 
 const Navbar = () => {
-  const { setView, states, allCities, setSelectedState, setSelectedCity, setSearchFilters, isLoggedIn, currentUser, logout } = useApp();
+  const { setView, states, allCities, setSelectedState, setSelectedCity, setSearchFilters, isLoggedIn, currentUser, logout, navSettings } = useApp();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null); // 'corporate' | 'account' | 'partners' | 'state-city' | 'plots' | null
   const [activeNestedDropdown, setActiveNestedDropdown] = useState(null); // stateId | null

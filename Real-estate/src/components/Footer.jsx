@@ -5,7 +5,7 @@ import { FaInstagram, FaFacebookF, FaLinkedinIn, FaYoutube } from 'react-icons/f
 import { FaXTwitter } from 'react-icons/fa6';
 
 const Footer = () => {
-  const { setView, setSearchFilters } = useApp();
+  const { setView, setSearchFilters, navSettings } = useApp();
 
   return (
     <footer className="reveal">
