@@ -5,7 +5,6 @@ import useScrollReveal from './hooks/useScrollReveal';
 
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import ContinueSearch from './components/ContinueSearch';
 import TrendingSection from './components/TrendingSection';
 import CompareProperties from './components/CompareProperties';
 import Insights from './components/Insights';
@@ -56,7 +55,6 @@ const AnimationTrigger = () => {
 const Home = () => (
   <>
     <Hero />
-    <ContinueSearch />
     <TrendingSection />
     <PopularCities />
     <Services />
