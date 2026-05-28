@@ -460,8 +460,41 @@ const AdminDashboard = () => {
                         </label>
                     </div>
 
-                    <div style={{ marginTop: '16px', padding: '12px 16px', background: navSettings.showProjects ? '#e7f5ed' : '#fff4e6', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 600, color: navSettings.showProjects ? '#2b8a3e' : '#e67e22' }}>
-                        Status: Projects section is currently <strong>{navSettings.showProjects ? 'VISIBLE' : 'HIDDEN'}</strong> on the website
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px', background: '#f8f9fa', borderRadius: '12px', border: '1px solid #e9ecef', marginTop: '16px' }}>
+                        <div>
+                            <div style={{ fontWeight: 700, fontSize: '0.95rem', marginBottom: '4px' }}>Press Section</div>
+                            <div style={{ fontSize: '0.8rem', color: '#868e96' }}>Show or hide the "Press" link in the corporate menu</div>
+                        </div>
+                        <label style={{ position: 'relative', display: 'inline-block', width: '52px', height: '28px', cursor: 'pointer' }}>
+                            <input
+                                type="checkbox"
+                                checked={navSettings.showPress}
+                                onChange={(e) => updateNavSettings({ showPress: e.target.checked })}
+                                style={{ opacity: 0, width: 0, height: 0 }}
+                            />
+                            <span style={{
+                                position: 'absolute',
+                                top: 0, left: 0, right: 0, bottom: 0,
+                                borderRadius: '14px',
+                                background: navSettings.showPress ? 'var(--gold, #C59B3C)' : '#ccc',
+                                transition: '0.3s'
+                            }}>
+                                <span style={{
+                                    position: 'absolute',
+                                    width: '22px', height: '22px',
+                                    borderRadius: '50%',
+                                    background: '#fff',
+                                    top: '3px',
+                                    left: navSettings.showPress ? '27px' : '3px',
+                                    transition: '0.3s',
+                                    boxShadow: '0 2px 4px rgba(0,0,0,0.15)'
+                                }} />
+                            </span>
+                        </label>
+                    </div>
+
+                    <div style={{ marginTop: '16px', padding: '12px 16px', background: (navSettings.showProjects && navSettings.showPress) ? '#e7f5ed' : '#fff4e6', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 600, color: (navSettings.showProjects && navSettings.showPress) ? '#2b8a3e' : '#e67e22' }}>
+                        Status: Custom visibility settings are currently <strong>ACTIVE</strong>
                     </div>
                 </div>
             </div>

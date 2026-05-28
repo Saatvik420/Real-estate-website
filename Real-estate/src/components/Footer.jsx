@@ -96,7 +96,7 @@ const Footer = () => {
             <div className="footer-h">Corporate</div>
             <ul className="footer-links">
               <li><Link to="/about" onClick={() => setView('about')}>Our Heritage</Link></li>
-              <li><Link to="/press" onClick={() => setView('press')}>Press Room</Link></li>
+              {navSettings?.showPress !== false && <li><Link to="/press" onClick={() => setView('press')}>Press Room</Link></li>}
               <li><Link to="/contact" onClick={() => setView('contact')}>Global Offices</Link></li>
               <li><Link to="/support" onClick={() => setView('support')}>Client Support</Link></li>
               <li><Link to="/partner" onClick={() => setView('partner')}>Partner Network</Link></li>

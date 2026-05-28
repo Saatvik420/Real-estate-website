@@ -31,6 +31,18 @@ export const AppProvider = ({ children }) => {
   const [adminStats, setAdminStats] = useState({ totalGmv: '₹0', growth: '0%' });
   const [allInquiries, setAllInquiries] = useState([]);
 
+  // ── NAV SETTINGS (Visibility Controls) ──────────────────────────────────
+  const [navSettings, setNavSettings] = useState(() => {
+    const saved = localStorage.getItem('navSettings');
+    return saved ? JSON.parse(saved) : { showProjects: true, showPress: true };
+  });
+
+  const updateNavSettings = (newSettings) => {
+    const updated = { ...navSettings, ...newSettings };
+    setNavSettings(updated);
+    localStorage.setItem('navSettings', JSON.stringify(updated));
+  };
+
   // ── INITIAL DATA BOOTSTRAP ────────────────────────────────────────────────
   useEffect(() => {
     const bootstrap = async () => {

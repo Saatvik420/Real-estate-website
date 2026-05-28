@@ -74,7 +74,7 @@ const Navbar = () => {
           <div className="dropdown-menu">
             <Link className="nav-link" to="/about" onClick={() => { setView('about'); closeMobileMenu(); }}>About Us</Link>
             <Link className="nav-link" to="/contact" onClick={() => { setView('contact'); closeMobileMenu(); }}>Contact</Link>
-            <Link className="nav-link" to="/press" onClick={() => { setView('press'); closeMobileMenu(); }}>Press</Link>
+            {navSettings?.showPress !== false && <Link className="nav-link" to="/press" onClick={() => { setView('press'); closeMobileMenu(); }}>Press</Link>}
             <Link className="nav-link" to="/support" onClick={() => { setView('support'); closeMobileMenu(); }}>Support</Link>
           </div>
         </div>
