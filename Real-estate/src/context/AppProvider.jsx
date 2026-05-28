@@ -34,7 +34,7 @@ export const AppProvider = ({ children }) => {
   // ── NAV SETTINGS (Visibility Controls) ──────────────────────────────────
   const [navSettings, setNavSettings] = useState(() => {
     const saved = localStorage.getItem('navSettings');
-    return saved ? JSON.parse(saved) : { showProjects: true, showPress: true };
+    return saved ? JSON.parse(saved) : { showProjects: true, showPress: false };
   });
 
   const updateNavSettings = (newSettings) => {
