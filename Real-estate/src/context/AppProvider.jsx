@@ -191,14 +191,16 @@ export const AppProvider = ({ children }) => {
     states, cities, allCities: localCities, loading, contractors, companies,
     currentUser, isLoggedIn, login, logout, register, updateProfileAction,
     allUsers, adminStats, allInquiries, toggleUserStatus, deleteUserAction, approveContractorAction,
-    submitInquiryAction, updateInquiryStatusAction, appointContractorAction
+    submitInquiryAction, updateInquiryStatusAction, appointContractorAction,
+    navSettings, updateNavSettings
     }), [
     view, selectedState, selectedCity, selectedProperty, comparisonList, searchFilters,
     states, cities, loading, contractors, companies,
     currentUser, isLoggedIn, allUsers, adminStats, allInquiries,
     login, logout, register, updateProfileAction,
     submitInquiryAction, updateInquiryStatusAction, appointContractorAction,
-    deleteUserAction, toggleUserStatus, approveContractorAction
+    deleteUserAction, toggleUserStatus, approveContractorAction,
+    navSettings
     ]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
