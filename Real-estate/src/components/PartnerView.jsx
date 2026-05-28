@@ -15,7 +15,7 @@ const PartnerView = () => {
             <h2 className="sec-title">Developer <span>Portal</span></h2>
             <p className="sec-sub">Partner with Bharat’s most trusted Luxury Real Estate Ecosystem</p>
           </div>
-          <button className="nav-btn-ghost" onClick={() => navigate('/partner-auth')} style={{ borderColor: 'var(--gold2)', color: 'var(--ink)', padding: '12px 30px', fontWeight: 800 }}>SIGN IN</button>
+          <button className="nav-btn-ghost hide-mobile" onClick={() => navigate('/partner-auth')} style={{ borderColor: 'var(--gold2)', color: 'var(--ink)', padding: '12px 30px', fontWeight: 800 }}>SIGN IN</button>
         </div>
 
         <div className="partner-hero" style={{ background: 'var(--ink)', padding: 'clamp(2rem, 8vw, 5rem) var(--container-pad)', borderRadius: '24px', color: '#fff', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: 'clamp(2rem, 5vw, 5rem)', alignItems: 'center', marginBottom: 'clamp(3rem, 10vw, 6rem)' }}>

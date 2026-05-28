@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useApp } from '../hooks/useApp';
-import { FaInstagram, FaFacebookF, FaLinkedinIn, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { FaInstagram, FaFacebookF, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 
 const Footer = () => {
   const { setView, setSearchFilters } = useApp();
@@ -25,7 +26,7 @@ const Footer = () => {
                 { icon: FaInstagram, label: 'Instagram' },
                 { icon: FaFacebookF, label: 'Facebook' },
                 { icon: FaLinkedinIn, label: 'LinkedIn' },
-                { icon: FaTwitter, label: 'Twitter' },
+                { icon: FaXTwitter, label: 'X (Twitter)' },
                 { icon: FaYoutube, label: 'YouTube' }
               ].map((social, idx) => (
                 <a 
