@@ -51,6 +51,10 @@ const StateView = () => {
       const pCity = (p.cityId || '').toLowerCase();
       if (targetCity === 'mathura' || targetCity === 'vrindavan') {
         if (pCity !== 'mathura' && pCity !== 'vrindavan') return false;
+      } else if (targetCity === 'jaipur' || targetCity === 'dudu' || targetCity === 'ajmer_road') {
+        if (pCity !== 'jaipur' && pCity !== 'dudu' && pCity !== 'ajmer_road') return false;
+      } else if (targetCity === 'noida' || targetCity === 'greater_noida') {
+        if (pCity !== 'noida' && pCity !== 'greater_noida') return false;
       } else if (pCity !== targetCity) {
         return false;
       }

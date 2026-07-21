@@ -156,6 +156,12 @@ export const apiService = {
             if (targetCity === 'mathura' || targetCity === 'vrindavan') {
                 return pCity === 'mathura' || pCity === 'vrindavan';
             }
+            if (targetCity === 'jaipur' || targetCity === 'dudu' || targetCity === 'ajmer_road') {
+                return pCity === 'jaipur' || pCity === 'dudu' || pCity === 'ajmer_road';
+            }
+            if (targetCity === 'noida' || targetCity === 'greater_noida') {
+                return pCity === 'noida' || pCity === 'greater_noida';
+            }
             return pCity === targetCity;
         });
     }

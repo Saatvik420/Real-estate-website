@@ -47,7 +47,7 @@ export const companies = [
       },
       {
         id: 'proj_an',
-        cityId: 'ajmer_road',
+        cityId: 'dudu',
         name: 'Aadinath Nagar',
         type: 'Residential',
         location: 'Jaipur-Ajmer Expressway, Dudu',
@@ -57,7 +57,7 @@ export const companies = [
         possession: '2024',
         img: anImg,
         pdfUrl: '/projects/aadinath nagar.pdf',
-        description: 'Strategically located on the thriving Jaipur-Ajmer Expressway. This development offers premium highway-touch land parcels with immediate access to industrial hubs.',
+        description: 'Strategically located on the thriving Jaipur-Ajmer Expressway in Dudu. This development offers premium highway-touch land parcels with immediate access to industrial hubs.',
         amenities: ['Highway Proximity', 'Commercial Zone', 'Green Belts', 'Security Gate']
       },
       {

@@ -10,6 +10,7 @@ export const cities = [
   { id: 'behror', stateId: 'st_rj', name: 'Behror' },
   { id: 'neemrana', stateId: 'st_rj', name: 'Neemrana' },
   { id: 'jaipur', stateId: 'st_rj', name: 'Jaipur' },
+  { id: 'dudu', stateId: 'st_rj', name: 'Dudu' },
   { id: 'ajmer_road', stateId: 'st_rj', name: 'Ajmer Road' },
   { id: 'noida', stateId: 'st_up', name: 'Noida' },
   { id: 'greater_noida', stateId: 'st_up', name: 'Greater Noida' },

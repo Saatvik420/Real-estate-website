@@ -26,6 +26,7 @@ const PlotsView = () => {
   const plotCities = [
     { id: 'All', name: 'All Cities' },
     { id: 'jaipur', name: 'Jaipur' },
+    { id: 'dudu', name: 'Dudu' },
     { id: 'khatu_shyam', name: 'Khatu Shyam' },
     { id: 'paota', name: 'Paota' },
     { id: 'behror', name: 'Behror' },
