@@ -119,6 +119,21 @@ export const companies = [
         pdfUrl: '/projects/radhe-krishna-ashrama.pdf',
         description: 'A divine spiritual residential plotting township in Village Devi Aatas, Teh. Sadar, Vrindavan (Mathura). Designed for devotees and discerning investors seeking serene living near sacred shrines.',
         amenities: ['Temple Proximity', '24/7 Security', 'Wide Blacktop Roads', 'Gated Community', 'Lush Parks']
+      },
+      {
+        id: 'proj_rkp',
+        cityId: 'mathura',
+        name: 'Radha Krishnapuram',
+        type: 'Residential',
+        location: 'Near Shri Baba Law College at Vill Semari, On NH-2 Highway, Mathura (UP)',
+        areaRange: '120 - 400 sq yards',
+        priceRange: '₹22 L - ₹65 L',
+        status: 'New Launch',
+        possession: '2025',
+        img: 'https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=800&q=80',
+        pdfUrl: '/projects/radha-krishnapuram.pdf',
+        description: 'A prime highway-touch residential plotted development near Shri Baba Law College in Village Semari, directly on NH-2 Highway, Mathura. Offering exceptional highway connectivity and modern township amenities.',
+        amenities: ['Highway Proximity', '24/7 Security', 'Wide Blacktop Roads', 'Gated Community', 'Street Lighting']
       }
     ]
   }
