@@ -84,7 +84,9 @@ public class DataSeeder implements CommandLineRunner {
                 new City("jaipur", "st_rj", "Jaipur"),
                 new City("dudu", "st_rj", "Dudu"),
                 new City("vrindavan", "st_up", "Vrindavan"),
-                new City("mathura", "st_up", "Mathura")
+                new City("mathura", "st_up", "Mathura"),
+                new City("aligarh", "st_up", "Aligarh"),
+                new City("ayodhya", "st_up", "Ayodhya")
         );
         cityRepository.saveAll(cities);
     }
@@ -234,6 +236,42 @@ public class DataSeeder implements CommandLineRunner {
                         .pdf("/projects/radha-krishnapuram.pdf")
                         .description("A prime highway-touch residential plotted development near Shri Baba Law College in Village Semari, directly on NH-2 Highway, Mathura. Offering exceptional highway connectivity and modern township amenities.")
                         .amenities(Arrays.asList("Highway Proximity", "24/7 Security", "Wide Blacktop Roads", "Gated Community", "Street Lighting"))
+                        .build(),
+                Property.builder()
+                        .id("proj_rkv")
+                        .cityId("aligarh")
+                        .listingType("Projects")
+                        .type("Residential Plot")
+                        .title("Radha Krishna Vatika")
+                        .price(1800000L)
+                        .priceStr("₹18 L - ₹50 L")
+                        .area("100 - 300 sq yards")
+                        .location("On Yamuna Express Way Road, at Tappal City, Aligarh (UP)")
+                        .developer("One5 Realty Group")
+                        .status("New Launch")
+                        .tags(Arrays.asList("Aligarh", "Tappal", "Yamuna Expressway", "Jewar Airport"))
+                        .img("https://images.unsplash.com/photo-1595658658481-d53d3f999875?w=800&q=80")
+                        .pdf("/projects/radha-krishna-vatika.pdf")
+                        .description("A strategic expressway-touch plotted township at Tappal City on the Yamuna Expressway, Aligarh. Positioned in the high-appreciation Jewar International Airport investment corridor.")
+                        .amenities(Arrays.asList("Yamuna Expressway Access", "Jewar Airport Proximity", "24/7 Security", "Wide Blacktop Roads", "Gated Township"))
+                        .build(),
+                Property.builder()
+                        .id("proj_ssjad")
+                        .cityId("ayodhya")
+                        .listingType("Projects")
+                        .type("Residential Plot")
+                        .title("Shri Shyam Janki Ayodhya Dham")
+                        .price(2500000L)
+                        .priceStr("₹25 L - ₹85 L")
+                        .area("120 - 450 sq yards")
+                        .location("At Vill. Tihura Manjha Tehsil Sadar Ayodhya, District Ayodhya (UP)")
+                        .developer("One5 Realty Group")
+                        .status("New Launch")
+                        .tags(Arrays.asList("Ayodhya", "Ram Mandir", "Tihura Manjha", "Spiritual Living"))
+                        .img("https://images.unsplash.com/photo-1629141065910-47e24a4d6f6e?w=800&q=80")
+                        .pdf("/projects/shri-shyam-janki-ayodhya-dham.pdf")
+                        .description("A grand spiritual residential plotted township at Village Tihura Manjha, Tehsil Sadar, Ayodhya. Located in the booming Ram Mandir corridor, offering unmatched long-term land appreciation and spiritual living.")
+                        .amenities(Arrays.asList("Ram Mandir Proximity", "24/7 Security", "Wide Blacktop Roads", "Gated Community", "Lush Parks & Gardens"))
                         .build()
         );
         propertyRepository.saveAll(properties);

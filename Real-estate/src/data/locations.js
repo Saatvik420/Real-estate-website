@@ -17,6 +17,7 @@ export const cities = [
   { id: 'mathura', stateId: 'st_up', name: 'Mathura' },
   { id: 'vrindavan', stateId: 'st_up', name: 'Vrindavan' },
   { id: 'ayodhya', stateId: 'st_up', name: 'Ayodhya' },
+  { id: 'aligarh', stateId: 'st_up', name: 'Aligarh' },
   { id: 'lucknow', stateId: 'st_up', name: 'Lucknow' },
   { id: 'kanpur', stateId: 'st_up', name: 'Kanpur' },
   { id: 'dehradun', stateId: 'st_uk', name: 'Dehradun' },

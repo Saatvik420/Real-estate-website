@@ -37,6 +37,7 @@ const PlotsView = () => {
     { id: 'mathura', name: 'Mathura' },
     { id: 'vrindavan', name: 'Vrindavan' },
     { id: 'ayodhya', name: 'Ayodhya' },
+    { id: 'aligarh', name: 'Aligarh / Tappal' },
     { id: 'dehradun', name: 'Dehradun' },
     { id: 'haridwar', name: 'Haridwar' }
   ];

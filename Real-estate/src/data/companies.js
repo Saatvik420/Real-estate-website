@@ -134,6 +134,36 @@ export const companies = [
         pdfUrl: '/projects/radha-krishnapuram.pdf',
         description: 'A prime highway-touch residential plotted development near Shri Baba Law College in Village Semari, directly on NH-2 Highway, Mathura. Offering exceptional highway connectivity and modern township amenities.',
         amenities: ['Highway Proximity', '24/7 Security', 'Wide Blacktop Roads', 'Gated Community', 'Street Lighting']
+      },
+      {
+        id: 'proj_rkv',
+        cityId: 'aligarh',
+        name: 'Radha Krishna Vatika',
+        type: 'Residential',
+        location: 'On Yamuna Express Way Road, at Tappal City, Aligarh (UP)',
+        areaRange: '100 - 300 sq yards',
+        priceRange: '₹18 L - ₹50 L',
+        status: 'New Launch',
+        possession: '2025',
+        img: 'https://images.unsplash.com/photo-1595658658481-d53d3f999875?w=800&q=80',
+        pdfUrl: '/projects/radha-krishna-vatika.pdf',
+        description: 'A strategic expressway-touch plotted township at Tappal City on the Yamuna Expressway, Aligarh. Positioned in the high-appreciation Jewar International Airport investment corridor.',
+        amenities: ['Yamuna Expressway Access', 'Jewar Airport Proximity', '24/7 Security', 'Wide Blacktop Roads', 'Gated Township']
+      },
+      {
+        id: 'proj_ssjad',
+        cityId: 'ayodhya',
+        name: 'Shri Shyam Janki Ayodhya Dham',
+        type: 'Residential',
+        location: 'At Vill. Tihura Manjha Tehsil Sadar Ayodhya, District Ayodhya (UP)',
+        areaRange: '120 - 450 sq yards',
+        priceRange: '₹25 L - ₹85 L',
+        status: 'New Launch',
+        possession: '2025',
+        img: 'https://images.unsplash.com/photo-1629141065910-47e24a4d6f6e?w=800&q=80',
+        pdfUrl: '/projects/shri-shyam-janki-ayodhya-dham.pdf',
+        description: 'A grand spiritual residential plotted township at Village Tihura Manjha, Tehsil Sadar, Ayodhya. Located in the booming Ram Mandir corridor, offering unmatched long-term land appreciation and spiritual living.',
+        amenities: ['Ram Mandir Proximity', '24/7 Security', 'Wide Blacktop Roads', 'Gated Community', 'Lush Parks & Gardens']
       }
     ]
   }

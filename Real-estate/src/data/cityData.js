@@ -130,6 +130,19 @@ export const cityDetails = {
       'Rapid multiplication of commercial and residential property values'
     ]
   },
+  aligarh: {
+    id: 'aligarh',
+    name: 'Aligarh / Tappal',
+    tagline: 'Aligarh & Tappal: Prime Yamuna Expressway & Jewar Airport Hub',
+    heroImage: 'https://images.unsplash.com/photo-1595658658481-d53d3f999875?w=1600&q=80',
+    description: 'Tappal and Aligarh along the Yamuna Expressway have emerged as key real estate hotspots benefiting directly from the upcoming Noida International Airport (Jewar).',
+    highlights: [
+      'Direct touch on Yamuna Expressway corridor',
+      'Proximity to upcoming Jewar International Airport',
+      'Rapid industrial and residential land appreciation',
+      'YEIDA smart infrastructure development'
+    ]
+  },
   dehradun: {
     id: 'dehradun',
     name: 'Dehradun',
