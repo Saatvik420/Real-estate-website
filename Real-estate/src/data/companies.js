@@ -104,6 +104,21 @@ export const companies = [
         pdfUrl: '/projects/hanumant-vihar.pdf',
         description: 'A modern integrated plotted township in Mathura near the Yamuna Expressway. Designed for high appreciation and peaceful living with modern infrastructure.',
         amenities: ['Expressway Access', '24/7 Security', 'Wide Blacktop Roads', 'Green Parks']
+      },
+      {
+        id: 'proj_rka',
+        cityId: 'mathura',
+        name: 'Radhe Krishna Ashrama',
+        type: 'Residential',
+        location: 'Village Devi Aatas, Teh. Sadar, Vrindavan (Mathura)',
+        areaRange: '100 - 350 sq yards',
+        priceRange: '₹20 L - ₹55 L',
+        status: 'New Launch',
+        possession: '2025',
+        img: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80',
+        pdfUrl: '/projects/radhe-krishna-ashrama.pdf',
+        description: 'A divine spiritual residential plotting township in Village Devi Aatas, Teh. Sadar, Vrindavan (Mathura). Designed for devotees and discerning investors seeking serene living near sacred shrines.',
+        amenities: ['Temple Proximity', '24/7 Security', 'Wide Blacktop Roads', 'Gated Community', 'Lush Parks']
       }
     ]
   }
