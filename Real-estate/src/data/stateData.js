@@ -100,10 +100,38 @@ export const stateDetails = {
             extra: 'The airport-led growth is significantly increasing land values in the Yamuna Expressway and Jewar region.'
           },
           {
+            subtitle: 'Mathura',
+            text: 'Mathura is witnessing a massive real estate transformation driven by spiritual tourism, the Braj Corridor development, and its strategic location between Delhi and Agra.',
+            highlights: [
+              'Part of the Braj 84-Kos Parikrama development project',
+              'Strategic location on the Delhi-Agra Yamuna Expressway',
+              'Massive surge in spiritual tourism and hospitality demand',
+              'Proposed heritage city and infrastructure upgrades',
+              'Proximity to the upcoming Jewar International Airport'
+            ]
+          },
+          {
             subtitle: 'Ayodhya',
             text: 'Ayodhya is witnessing extraordinary real estate growth after the Ram Mandir development, new airport, tourism infrastructure, and highway expansion. Property prices in prime locations have multiplied rapidly in recent years.'
           }
         ]
+      },
+      {
+        title: 'Mathura – The Spiritual and Real Estate Frontier',
+        text: 'Mathura, the heart of the Braj region, is rapidly emerging as a primary destination for investors seeking growth in spiritual tourism and residential developments. With the government’s focus on the Braj Corridor and improved connectivity to Delhi-NCR, Mathura offers unique opportunities for long-term appreciation.',
+        content: [
+          {
+            text: 'Key drivers for investment in Mathura include:',
+            highlights: [
+              'Massive spiritual tourism and pilgrimage footfall',
+              'Proximity to Yamuna Expressway and upcoming Jewar Airport',
+              'Braj 84-Kos Parikrama development project',
+              'Rising demand for hospitality and serviced apartments',
+              'Planned industrial and heritage corridors'
+            ]
+          }
+        ],
+        extra: 'The Mathura-Vrindavan region is being developed as a world-class heritage city, ensuring sustainable growth in property values and infrastructure. Investors are increasingly looking at plotted developments and townships in the outskirts of Mathura to capitalize on this spiritual and economic surge.'
       }
     ]
   },

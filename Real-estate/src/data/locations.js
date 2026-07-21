@@ -13,6 +13,7 @@ export const cities = [
   { id: 'ajmer_road', stateId: 'st_rj', name: 'Ajmer Road' },
   { id: 'noida', stateId: 'st_up', name: 'Noida' },
   { id: 'greater_noida', stateId: 'st_up', name: 'Greater Noida' },
+  { id: 'mathura', stateId: 'st_up', name: 'Mathura' },
   { id: 'vrindavan', stateId: 'st_up', name: 'Vrindavan' },
   { id: 'ayodhya', stateId: 'st_up', name: 'Ayodhya' },
   { id: 'lucknow', stateId: 'st_up', name: 'Lucknow' },

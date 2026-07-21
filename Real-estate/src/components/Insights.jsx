@@ -430,10 +430,14 @@ const Insights = () => {
 
           <div className="state-card">
             <h3>Key Investment Cities in Uttar Pradesh</h3>
-            <div className="grid-2">
+            <div className="grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
               <div className="sub-city">
                 <h4>Noida and Greater Noida</h4>
                 <p>Noida remains one of India’s strongest land investment destinations because of: Upcoming Noida International Airport (Jewar Airport), Metro expansion, IT and commercial growth, Expressway connectivity, and strong demand for residential and commercial plots. The airport-led growth is significantly increasing land values in the Yamuna Expressway and Jewar region.</p>
+              </div>
+              <div className="sub-city">
+                <h4>Mathura</h4>
+                <p>Mathura is witnessing a massive real estate transformation driven by spiritual tourism, the Braj Corridor development, and its strategic location on the Delhi-Agra Yamuna Expressway. Key drivers include the Braj 84-Kos Parikrama project, high pilgrimage footfall, and proximity to the upcoming Jewar International Airport.</p>
               </div>
               <div className="sub-city">
                 <h4>Ayodhya</h4>
@@ -450,6 +454,7 @@ const Insights = () => {
                    <ul className="bullet-list">
                       <li>Noida International Airport (Jewar)</li>
                       <li>Yamuna Expressway Industrial Development</li>
+                      <li>Braj Corridor & Spiritual tourism in Mathura & Vrindavan</li>
                       <li>Ganga Expressway</li>
                       <li>Religious tourism in Ayodhya & Varanasi</li>
                       <li>Smart city and metro expansion</li>
@@ -462,6 +467,7 @@ const Insights = () => {
                       <li>Noida</li>
                       <li>Greater Noida</li>
                       <li>Jewar</li>
+                      <li>Mathura</li>
                       <li>Ayodhya</li>
                       <li>Lucknow</li>
                       <li>Varanasi</li>

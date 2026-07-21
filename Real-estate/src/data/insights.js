@@ -188,10 +188,27 @@ export const marketInsights = {
             content: "Noida remains one of India’s strongest land investment destinations because of: Upcoming Noida International Airport (Jewar Airport), Metro expansion, IT and commercial growth, Expressway connectivity, Strong demand for residential and commercial plots. The airport-led growth is significantly increasing land values in the Yamuna Expressway and Jewar region."
           },
           {
+            name: "Mathura",
+            content: "Mathura is witnessing a massive real estate transformation driven by spiritual tourism, the Braj Corridor development, and its strategic location between Delhi and Agra. Key drivers include: Part of the Braj 84-Kos Parikrama development project, Strategic location on the Delhi-Agra Yamuna Expressway, Massive surge in spiritual tourism and hospitality demand, Proposed heritage city and infrastructure upgrades, Proximity to the upcoming Jewar International Airport."
+          },
+          {
             name: "Ayodhya",
             content: "Ayodhya is witnessing extraordinary real estate growth after the Ram Mandir development, new airport, tourism infrastructure, and highway expansion. Property prices in prime locations have multiplied rapidly in recent years."
           }
         ]
+      },
+      {
+        title: "Mathura – The Spiritual and Real Estate Frontier",
+        content: "Mathura, the heart of the Braj region, is rapidly emerging as a primary destination for investors seeking growth in spiritual tourism and residential developments. With the government’s focus on the Braj Corridor and improved connectivity to Delhi-NCR, Mathura offers unique opportunities for long-term appreciation. Millions of devotees visit Mathura-Vrindavan every year, driving continuous demand for plotted townships, serviced apartments, hotels, and retail spaces.",
+        subtitle: "Why Mathura is Attracting High Investment",
+        list: [
+          "Strategic location along the Delhi-Agra Expressway and Yamuna Expressway",
+          "Braj 84-Kos Parikrama development project with world-class infrastructure",
+          "Massive growth in spiritual and heritage tourism footfall",
+          "High appreciation potential for residential and commercial land parcels",
+          "Proximity to the upcoming Jewar International Airport"
+        ],
+        extra: "The Mathura-Vrindavan corridor is being developed as a world-class heritage city, ensuring sustainable long-term value growth for land assets."
       },
       {
         title: "Uttar Pradesh Real Estate Growth Trend",
@@ -212,6 +229,7 @@ export const marketInsights = {
         list: [
           "Noida International Airport (Jewar)",
           "Yamuna Expressway Industrial Development",
+          "Braj Corridor & Spiritual tourism in Mathura & Vrindavan",
           "Ganga Expressway",
           "Religious tourism in Ayodhya & Varanasi",
           "Smart city and metro expansion",
@@ -220,13 +238,14 @@ export const marketInsights = {
       },
       {
         title: "Key Investment Hotspots",
-        list: ["Noida", "Greater Noida", "Jewar", "Ayodhya", "Lucknow", "Varanasi", "Prayagraj"],
+        list: ["Noida", "Greater Noida", "Jewar", "Mathura", "Ayodhya", "Lucknow", "Varanasi", "Prayagraj"],
         extra: "UP has seen record property registrations and rapid appreciation in land values around expressways and airport corridors."
       }
     ],
     bars: [
       { loc: "Noida/Jewar", val: "275", pct: "100%" },
       { loc: "Ayodhya", val: "260", pct: "94%" },
+      { loc: "Mathura", val: "250", pct: "91%" },
       { loc: "Lucknow", val: "235", pct: "85%" }
     ],
     trend: [112, 130, 155, 185, 230, 275, 400],
@@ -301,6 +320,7 @@ marketInsights['behror'] = marketInsights['st_rj'];
 
 marketInsights['noida'] = marketInsights['st_up'];
 marketInsights['greater_noida'] = marketInsights['st_up'];
+marketInsights['mathura'] = marketInsights['st_up'];
 marketInsights['ayodhya'] = marketInsights['st_up'];
 marketInsights['lucknow'] = marketInsights['st_up'];
 

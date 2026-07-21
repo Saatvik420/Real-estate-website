@@ -41,12 +41,23 @@ const PopularCities = () => {
       img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80"
     },
     {
+      id: "mathura",
+      name: "Mathura",
+      state: "Uttar Pradesh",
+      price: "₹4,500 / sqft",
+      listings: "Spiritual & Heritage Hub",
+      rank: "#4 SPIRITUAL",
+      badge: "Braj Corridor",
+      badgeClass: "city-badge-hot",
+      img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600&q=80"
+    },
+    {
       id: "vrindavan",
       name: "Vrindavan",
       state: "Uttar Pradesh",
       price: "₹4,200 / sqft",
       listings: "Spiritual Hub",
-      rank: "#4 SPIRITUAL",
+      rank: "#5 SPIRITUAL",
       badge: "Holy City",
       badgeClass: "city-badge-rising",
       img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600&q=80"

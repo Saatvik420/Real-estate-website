@@ -83,7 +83,8 @@ public class DataSeeder implements CommandLineRunner {
                 new City("sikar", "st_rj", "Sikar"),
                 new City("jaipur", "st_rj", "Jaipur"),
                 new City("dudu", "st_rj", "Dudu"),
-                new City("vrindavan", "st_up", "Vrindavan")
+                new City("vrindavan", "st_up", "Vrindavan"),
+                new City("mathura", "st_up", "Mathura")
         );
         cityRepository.saveAll(cities);
     }

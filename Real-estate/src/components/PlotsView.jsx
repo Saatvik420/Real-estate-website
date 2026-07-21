@@ -33,6 +33,7 @@ const PlotsView = () => {
     { id: 'ajmer_road', name: 'Ajmer Road' },
     { id: 'noida', name: 'Noida' },
     { id: 'greater_noida', name: 'Greater Noida' },
+    { id: 'mathura', name: 'Mathura' },
     { id: 'vrindavan', name: 'Vrindavan' },
     { id: 'ayodhya', name: 'Ayodhya' },
     { id: 'dehradun', name: 'Dehradun' },
