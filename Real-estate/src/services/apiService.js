@@ -149,7 +149,15 @@ export const apiService = {
     }
 
     if (filters.cityId && filters.cityId !== 'India' && filters.cityId !== 'All') {
-        filtered = filtered.filter(p => p && p.cityId?.toLowerCase() === filters.cityId.toLowerCase());
+        const targetCity = filters.cityId.toLowerCase();
+        filtered = filtered.filter(p => {
+            if (!p || !p.cityId) return false;
+            const pCity = p.cityId.toLowerCase();
+            if (targetCity === 'mathura' || targetCity === 'vrindavan') {
+                return pCity === 'mathura' || pCity === 'vrindavan';
+            }
+            return pCity === targetCity;
+        });
     }
 
     if (filters.stateId) {

@@ -46,7 +46,15 @@ const StateView = () => {
   const stateCities = allCities.filter(c => c.stateId === stateId);
 
   const filteredProperties = properties.filter(p => {
-    if (filterCity !== 'All' && p.cityId !== filterCity) return false;
+    if (filterCity !== 'All') {
+      const targetCity = filterCity.toLowerCase();
+      const pCity = (p.cityId || '').toLowerCase();
+      if (targetCity === 'mathura' || targetCity === 'vrindavan') {
+        if (pCity !== 'mathura' && pCity !== 'vrindavan') return false;
+      } else if (pCity !== targetCity) {
+        return false;
+      }
+    }
     if (filterType !== 'Any Type' && p.type !== filterType) return false;
     if (filterPrice !== 'Any Price') {
       if (filterPrice === 'Below ₹ 1 Cr' && p.price >= 10000000) return false;

@@ -31,7 +31,15 @@ const TrendingSection = () => {
     // Filter by location if specified
     let filtered = allProjects;
     if (selectedCity && selectedCity !== 'India' && selectedCity !== 'All') {
-      filtered = filtered.filter(p => p.cityId?.toLowerCase() === selectedCity.toLowerCase());
+      const targetCity = selectedCity.toLowerCase();
+      filtered = filtered.filter(p => {
+        if (!p || !p.cityId) return false;
+        const pCity = p.cityId.toLowerCase();
+        if (targetCity === 'mathura' || targetCity === 'vrindavan') {
+          return pCity === 'mathura' || pCity === 'vrindavan';
+        }
+        return pCity === targetCity;
+      });
     } else if (selectedState) {
       // Basic state filtering if city is not selected
       const stateCities = cities.filter(c => c.stateId === selectedState).map(c => c.id.toLowerCase());

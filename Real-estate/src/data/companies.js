@@ -77,7 +77,7 @@ export const companies = [
       },
       {
         id: 'proj_hv',
-        cityId: 'vrindavan',
+        cityId: 'mathura',
         name: 'Hanumant Vihar',
         type: 'Residential',
         location: 'Radha Kund-Ral Road, Vrindavan, Mathura',
@@ -87,8 +87,23 @@ export const companies = [
         possession: '2026',
         img: hvImg,
         pdfUrl: '/projects/hanumant-vihar.pdf',
-        description: 'Experience spiritual peace in a luxury gated enclave. Located on the sacred Radha Kund-Ral Road, featuring themed parks and meditation spaces.',
+        description: 'Experience spiritual peace in a luxury gated enclave. Located on the sacred Radha Kund-Ral Road, Vrindavan, Mathura, featuring themed parks and meditation spaces.',
         amenities: ['Spiritual Centers Nearby', 'Gated Security', 'Theme Parks', 'Meditation Zones']
+      },
+      {
+        id: 'proj_skg',
+        cityId: 'mathura',
+        name: 'Shree Krishna Green Valley',
+        type: 'Residential',
+        location: 'Yamuna Expressway Corridor, Mathura',
+        areaRange: '100 - 300 sq yards',
+        priceRange: '₹18 L - ₹50 L',
+        status: 'New Launch',
+        possession: '2025',
+        img: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80',
+        pdfUrl: '/projects/hanumant-vihar.pdf',
+        description: 'A modern integrated plotted township in Mathura near the Yamuna Expressway. Designed for high appreciation and peaceful living with modern infrastructure.',
+        amenities: ['Expressway Access', '24/7 Security', 'Wide Blacktop Roads', 'Green Parks']
       }
     ]
   }
