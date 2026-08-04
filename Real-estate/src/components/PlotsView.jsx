@@ -8,7 +8,7 @@ const PlotsView = () => {
   const { 
     selectedCity, setSelectedCity, setView,
     setSelectedProperty, comparisonList, setComparisonList,
-    searchFilters
+    searchFilters, setSearchFilters
   } = useApp();
   const [filteredPlots, setFilteredPlots] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -20,7 +20,8 @@ const PlotsView = () => {
   const [filters, setFilters] = useState({
     cityId: (selectedCity || 'India') === 'India' ? 'All' : (selectedCity || '').toLowerCase().replace(/\s+/g, '_'),
     type: searchFilters.listingType === 'Plots / Land' ? searchFilters.type : 'Any Type',
-    priceRange: 'Any Price'
+    priceRange: 'Any Price',
+    query: searchFilters.query || ''
   });
 
   const plotCities = [
@@ -49,7 +50,8 @@ const PlotsView = () => {
         const res = await apiService.getProperties({
           cityId: filters.cityId === 'All' ? 'India' : filters.cityId,
           listingType: 'Plots / Land',
-          type: filters.type
+          type: filters.type,
+          query: filters.query
         });
         
         if (res.success && Array.isArray(res.data)) {
@@ -89,15 +91,14 @@ const PlotsView = () => {
     }
   }, [selectedCity]);
 
-  // Sync internal filter when searchFilters.type changes (from navbar)
+  // Sync internal filter when searchFilters changes (from navbar or hero)
   useEffect(() => {
-    if (searchFilters.listingType === 'Plots / Land' && searchFilters.type) {
-      setFilters(prev => ({
-        ...prev,
-        type: searchFilters.type
-      }));
-    }
-  }, [searchFilters.type, searchFilters.listingType]);
+    setFilters(prev => ({
+      ...prev,
+      type: (searchFilters.listingType === 'Plots / Land' && searchFilters.type) ? searchFilters.type : prev.type,
+      query: searchFilters.query !== undefined ? searchFilters.query : prev.query
+    }));
+  }, [searchFilters.type, searchFilters.listingType, searchFilters.query]);
 
   const handlePropertyClick = (id) => {
     setSelectedProperty(id);
@@ -116,8 +117,11 @@ const PlotsView = () => {
   };
 
   const clearFilters = () => {
-    setFilters({ cityId: 'All', type: 'Any Type', priceRange: 'Any Price' });
+    setFilters({ cityId: 'All', type: 'Any Type', priceRange: 'Any Price', query: '' });
     setSelectedCity('India');
+    if (setSearchFilters) {
+      setSearchFilters(prev => ({ ...prev, query: '', type: 'Any Type' }));
+    }
   };
 
   if (loading) {
@@ -148,6 +152,20 @@ const PlotsView = () => {
             <div className="filter-header-row">
               <span className="filter-h" style={{ marginBottom: 0 }}>Filters</span>
               <button className="filter-clear-btn" onClick={clearFilters}>Clear All</button>
+            </div>
+
+            <div className="filter-sec">
+              <span className="filter-h-sm">Search Plot / Project</span>
+              <div className="filter-group">
+                <input 
+                  type="text" 
+                  className="filter-select-box"
+                  placeholder="e.g. Shyam Sarovar, Aadinath..."
+                  value={filters.query || ''}
+                  onChange={(e) => setFilters({...filters, query: e.target.value})}
+                  style={{ background: '#fff', border: '1px solid var(--cream3)', padding: '8px 12px', borderRadius: '6px', fontSize: '13px', width: '100%', color: 'var(--ink)' }}
+                />
+              </div>
             </div>
 
             <div className="filter-sec">

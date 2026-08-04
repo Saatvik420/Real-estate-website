@@ -156,13 +156,33 @@ export const apiService = {
             if (targetCity === 'mathura' || targetCity === 'vrindavan') {
                 return pCity === 'mathura' || pCity === 'vrindavan';
             }
-            if (targetCity === 'jaipur' || targetCity === 'dudu' || targetCity === 'ajmer_road') {
-                return pCity === 'jaipur' || pCity === 'dudu' || pCity === 'ajmer_road';
-            }
             if (targetCity === 'noida' || targetCity === 'greater_noida') {
                 return pCity === 'noida' || pCity === 'greater_noida';
             }
             return pCity === targetCity;
+        });
+    }
+
+    // Search query filter (matches plot name, area, location, description, developer, type)
+    if (filters.query && filters.query.trim() !== '') {
+        const rawQ = filters.query.toLowerCase().trim();
+        // Remove parenthetical notes e.g., "Aadinath Nagar (Dudu)" -> "aadinath nagar"
+        const cleanQ = rawQ.replace(/\s*\(.*?\)\s*/g, '').trim();
+        filtered = filtered.filter(p => {
+            if (!p) return false;
+            const title = (p.title || p.name || '').toLowerCase();
+            const location = (p.location || '').toLowerCase();
+            const city = (p.cityId || '').toLowerCase();
+            const dev = (p.developer || '').toLowerCase();
+            const desc = (p.description || '').toLowerCase();
+            const type = (p.type || '').toLowerCase();
+
+            return title.includes(rawQ) || (cleanQ && title.includes(cleanQ)) ||
+                   location.includes(rawQ) || (cleanQ && location.includes(cleanQ)) ||
+                   city.includes(rawQ) || (cleanQ && city.includes(cleanQ)) ||
+                   dev.includes(rawQ) || (cleanQ && dev.includes(cleanQ)) ||
+                   desc.includes(rawQ) || (cleanQ && desc.includes(cleanQ)) ||
+                   type.includes(rawQ) || (cleanQ && type.includes(cleanQ));
         });
     }
 

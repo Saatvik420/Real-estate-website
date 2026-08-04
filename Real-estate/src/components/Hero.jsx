@@ -9,15 +9,28 @@ const Hero = () => {
   const { 
     selectedState, setSelectedState, 
     selectedCity, setSelectedCity, 
-    states, cities, 
+    states, cities, allCities,
     setView, searchFilters, setSearchFilters 
   } = useApp();
 
   const cityName = cities.find(c => c.id === selectedCity)?.name || 'India';
   const tabs = ['Buy', 'Rent', 'Projects', 'Plots / Land', 'Commercial'];
 
+  const availableCities = allCities || cities;
+
+  const handleCityChange = (e) => {
+    const cityVal = e.target.value;
+    setSelectedCity(cityVal);
+    if (cityVal && cityVal !== 'India') {
+      const matchedCity = availableCities.find(c => c.id === cityVal);
+      if (matchedCity && matchedCity.stateId) {
+        setSelectedState(matchedCity.stateId);
+      }
+    }
+  };
+
   const handleSearch = () => {
-    const selectedCityName = cities.find(c => c.id === selectedCity)?.name || 'India';
+    const selectedCityName = availableCities.find(c => c.id === selectedCity)?.name || 'India';
     const selectedStateName = states.find(s => s.id === selectedState)?.name || '';
     
     if (activeTab === 'Plots / Land') {
@@ -26,7 +39,8 @@ const Hero = () => {
             listingType: 'Plots / Land',
             cityId: selectedCity,
             city: selectedCityName,
-            state: selectedStateName
+            state: selectedStateName,
+            query: prev.query || ''
         }));
         setView('plots');
         navigate('/plots');
@@ -39,7 +53,8 @@ const Hero = () => {
       type: prev.type || 'Any Type',
       cityId: selectedCity,
       city: selectedCityName,
-      state: selectedStateName
+      state: selectedStateName,
+      query: prev.query || ''
     }));
     
     setView('results');
@@ -85,11 +100,13 @@ const Hero = () => {
                   value={selectedState} 
                   onChange={(e) => {
                     setSelectedState(e.target.value);
-                    setSelectedCity('India');
+                    if (e.target.value === '') {
+                      setSelectedCity('India');
+                    }
                   }}
                   style={{ cursor: 'pointer', appearance: 'none', width: '100%', background: 'transparent', border: 'none', color: '#fff', fontWeight: '700', fontSize: '15px', outline: 'none' }}
                 >
-                  <option value="" style={{ background: 'var(--ink)' }}>Select State</option>
+                  <option value="" style={{ background: 'var(--ink)' }}>Select State (All)</option>
                   {states.map(s => <option key={s.id} value={s.id} style={{ background: 'var(--ink)' }}>{s.name}</option>)}
                 </select>
                 <span style={{ position: 'absolute', right: '15px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'var(--gold2)', fontSize: '10px' }}>▼</span>
@@ -101,43 +118,62 @@ const Hero = () => {
               <div className="sf-select-custom">
                 <select 
                   value={selectedCity} 
-                  onChange={(e) => setSelectedCity(e.target.value)}
-                  disabled={!selectedState}
-                  style={{ cursor: 'pointer', appearance: 'none', width: '100%', background: 'transparent', border: 'none', color: '#fff', fontWeight: '700', fontSize: '15px', outline: 'none', opacity: selectedState ? 1 : 0.5 }}
+                  onChange={handleCityChange}
+                  style={{ cursor: 'pointer', appearance: 'none', width: '100%', background: 'transparent', border: 'none', color: '#fff', fontWeight: '700', fontSize: '15px', outline: 'none' }}
                 >
                   <option value="India" style={{ background: 'var(--ink)' }}>All Cities</option>
-                  {cities.map(c => <option key={c.id} value={c.id} style={{ background: 'var(--ink)' }}>{c.name}</option>)}
+                  {availableCities.map(c => <option key={c.id} value={c.id} style={{ background: 'var(--ink)' }}>{c.name}</option>)}
                 </select>
                 <span style={{ position: 'absolute', right: '15px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'var(--gold2)', fontSize: '10px' }}>▼</span>
               </div>
             </div>
 
             <div className="sf">
-              <div className="sf-lbl">{activeTab === 'Plots / Land' ? 'LAND CATEGORY' : 'PROPERTY TYPE'}</div>
+              <div className="sf-lbl">{activeTab === 'Plots / Land' ? 'SEARCH PLOT / AREA' : 'PROPERTY TYPE / SEARCH'}</div>
               <div className="sf-select-custom">
-                <select 
-                  onChange={(e) => setSearchFilters(prev => ({ ...prev, type: e.target.value }))}
-                  style={{ cursor: 'pointer', appearance: 'none', width: '100%', background: 'transparent', border: 'none', color: '#fff', fontWeight: '700', fontSize: '15px', outline: 'none' }}
-                >
-                  {activeTab === 'Plots / Land' ? (
-                    <>
-                      <option value="Any Type" style={{ background: 'var(--ink)' }}>Any Category</option>
-                      <option value="Residential" style={{ background: 'var(--ink)' }}>Residential Land</option>
-                      <option value="Commercial" style={{ background: 'var(--ink)' }}>Commercial Land</option>
-                      <option value="Agriculture" style={{ background: 'var(--ink)' }}>Agriculture Land</option>
-                    </>
-                  ) : (
-                    <>
-                      <option value="Any Type" style={{ background: 'var(--ink)' }}>Any Property Type</option>
-                      <option value="Luxury Apartment" style={{ background: 'var(--ink)' }}>Luxury Apartment</option>
-                      <option value="Independent Villa" style={{ background: 'var(--ink)' }}>Independent Villa</option>
-                      <option value="Penthouse" style={{ background: 'var(--ink)' }}>Penthouse</option>
-                      <option value="Premium Plot" style={{ background: 'var(--ink)' }}>Premium Plot</option>
-                      <option value="Commercial" style={{ background: 'var(--ink)' }}>Commercial Space</option>
-                    </>
-                  )}
-                </select>
-                <span style={{ position: 'absolute', right: '15px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'var(--gold2)', fontSize: '10px' }}>▼</span>
+                {activeTab === 'Plots / Land' ? (
+                  <>
+                    <input 
+                      type="text"
+                      placeholder="Search plot, area or category..."
+                      value={searchFilters.query || ''}
+                      onChange={(e) => setSearchFilters(prev => ({ ...prev, query: e.target.value }))}
+                      list="plot-suggestions"
+                      style={{ background: 'transparent', border: 'none', color: '#fff', fontWeight: '700', fontSize: '15px', outline: 'none', width: '100%' }}
+                    />
+                    <datalist id="plot-suggestions">
+                      <option value="Shree Shyam Sarovar-I (Khatu Shyam)" />
+                      <option value="Shree Shyam Sarovar-II (Khatu Shyam)" />
+                      <option value="Aadinath Nagar (Dudu)" />
+                      <option value="Mayur Vihar (Jaipur)" />
+                      <option value="Hanumant Vihar (Vrindavan)" />
+                      <option value="Shree Krishna Green Valley (Mathura)" />
+                      <option value="Radhe Krishna Ashrama (Vrindavan)" />
+                      <option value="Radha Krishnapuram (Mathura)" />
+                      <option value="Radha Krishna Vatika (Tappal, Aligarh)" />
+                      <option value="Shri Shyam Janki Ayodhya Dham (Ayodhya)" />
+                      <option value="Residential Land" />
+                      <option value="Commercial Land" />
+                      <option value="Agriculture Land" />
+                    </datalist>
+                  </>
+                ) : (
+                  <select 
+                    value={searchFilters.type || 'Any Type'}
+                    onChange={(e) => setSearchFilters(prev => ({ ...prev, type: e.target.value }))}
+                    style={{ cursor: 'pointer', appearance: 'none', width: '100%', background: 'transparent', border: 'none', color: '#fff', fontWeight: '700', fontSize: '15px', outline: 'none' }}
+                  >
+                    <option value="Any Type" style={{ background: 'var(--ink)' }}>Any Property Type</option>
+                    <option value="Luxury Apartment" style={{ background: 'var(--ink)' }}>Luxury Apartment</option>
+                    <option value="Independent Villa" style={{ background: 'var(--ink)' }}>Independent Villa</option>
+                    <option value="Penthouse" style={{ background: 'var(--ink)' }}>Penthouse</option>
+                    <option value="Premium Plot" style={{ background: 'var(--ink)' }}>Premium Plot</option>
+                    <option value="Commercial" style={{ background: 'var(--ink)' }}>Commercial Space</option>
+                  </select>
+                )}
+                {activeTab !== 'Plots / Land' && (
+                  <span style={{ position: 'absolute', right: '15px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'var(--gold2)', fontSize: '10px' }}>▼</span>
+                )}
               </div>
             </div>
 
