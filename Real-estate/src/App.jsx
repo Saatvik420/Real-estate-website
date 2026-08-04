@@ -74,6 +74,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/results" element={<SearchResults />} />
           <Route path="/property/:propertyId" element={<PropertyDetails />} />
+          <Route path="/details" element={<PropertyDetails />} />
           <Route path="/compare" element={<CompareProperties />} />
           <Route path="/rent" element={<RentalsView />} />
           <Route path="/projects" element={<ProjectsView />} />

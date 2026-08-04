@@ -167,7 +167,12 @@ export const apiService = {
     if (filters.query && filters.query.trim() !== '') {
         const rawQ = filters.query.toLowerCase().trim();
         // Remove parenthetical notes e.g., "Aadinath Nagar (Dudu)" -> "aadinath nagar"
-        const cleanQ = rawQ.replace(/\s*\(.*?\)\s*/g, '').trim();
+        const cleanQ = rawQ.replace(/\s*\(.*?\)\s*/g, ' ').trim();
+        
+        // Stop words to ignore during multi-word keyword searches
+        const stopWords = new Set(['in', 'at', 'for', 'the', 'of', 'and', 'near', 'plots', 'plot', 'land', 'property', 'properties', 'project', 'projects', 'area']);
+        const tokens = cleanQ.split(/[\s,/-]+/).filter(t => t.length > 0 && !stopWords.has(t));
+
         filtered = filtered.filter(p => {
             if (!p) return false;
             const title = (p.title || p.name || '').toLowerCase();
@@ -176,13 +181,22 @@ export const apiService = {
             const dev = (p.developer || '').toLowerCase();
             const desc = (p.description || '').toLowerCase();
             const type = (p.type || '').toLowerCase();
+            const fullText = `${title} ${location} ${city} ${dev} ${desc} ${type}`;
 
-            return title.includes(rawQ) || (cleanQ && title.includes(cleanQ)) ||
-                   location.includes(rawQ) || (cleanQ && location.includes(cleanQ)) ||
-                   city.includes(rawQ) || (cleanQ && city.includes(cleanQ)) ||
-                   dev.includes(rawQ) || (cleanQ && dev.includes(cleanQ)) ||
-                   desc.includes(rawQ) || (cleanQ && desc.includes(cleanQ)) ||
-                   type.includes(rawQ) || (cleanQ && type.includes(cleanQ));
+            // Check exact substring match first
+            if (title.includes(rawQ) || location.includes(rawQ) || city.includes(rawQ) || dev.includes(rawQ) || desc.includes(rawQ) || type.includes(rawQ)) {
+                return true;
+            }
+            if (cleanQ && fullText.includes(cleanQ)) {
+                return true;
+            }
+
+            // If query contains specific keywords (e.g. "dudu", "shyam"), check if all active tokens match fullText
+            if (tokens.length > 0) {
+                return tokens.every(token => fullText.includes(token));
+            }
+
+            return false;
         });
     }
 
