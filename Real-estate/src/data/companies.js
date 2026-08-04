@@ -3,6 +3,7 @@ import sss2Img from '../assets/images_project/Shree Shyam Sarovar II.jpeg';
 import anImg from '../assets/images_project/Aadinath nagar.jpeg';
 import mvImg from '../assets/images_project/Mayur vihar.jpg';
 import hvImg from '../assets/images_project/Hanumant_vihar.jpg';
+import pgImg from '../assets/images_project/Paranoma greens.jpeg';
 
 export const companies = [
   {
@@ -175,7 +176,7 @@ export const companies = [
         priceRange: '₹15 L - ₹45 L',
         status: 'New Launch',
         possession: '2025',
-        img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80',
+        img: pgImg,
         pdfUrl: '/projects/paranoma_greens.pdf',
         description: 'Paranoma Greens is an exclusive luxury residential plotted township strategically situated on Sikar Road, Jaipur. Designed with wide black-top roads, 24/7 security, lush green parks, underground utilities, and excellent highway connectivity.',
         amenities: ['Sikar Road Proximity', '24/7 Security', 'Wide Blacktop Roads', 'Gated Community', 'Lush Parks & Gardens']
