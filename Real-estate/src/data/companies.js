@@ -164,6 +164,21 @@ export const companies = [
         pdfUrl: '/projects/shri-shyam-janki-ayodhya-dham.pdf',
         description: 'A grand spiritual residential plotted township at Village Tihura Manjha, Tehsil Sadar, Ayodhya. Located in the booming Ram Mandir corridor, offering unmatched long-term land appreciation and spiritual living.',
         amenities: ['Ram Mandir Proximity', '24/7 Security', 'Wide Blacktop Roads', 'Gated Community', 'Lush Parks & Gardens']
+      },
+      {
+        id: 'proj_pg',
+        cityId: 'jaipur',
+        name: 'Paranoma Greens',
+        type: 'Residential',
+        location: 'Main Sikar Road Highway Corridor, Jaipur',
+        areaRange: '100 - 350 sq yards',
+        priceRange: '₹15 L - ₹45 L',
+        status: 'New Launch',
+        possession: '2025',
+        img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80',
+        pdfUrl: '/projects/paranoma_greens.pdf',
+        description: 'Paranoma Greens is an exclusive luxury residential plotted township strategically situated on Sikar Road, Jaipur. Designed with wide black-top roads, 24/7 security, lush green parks, underground utilities, and excellent highway connectivity.',
+        amenities: ['Sikar Road Proximity', '24/7 Security', 'Wide Blacktop Roads', 'Gated Community', 'Lush Parks & Gardens']
       }
     ]
   }

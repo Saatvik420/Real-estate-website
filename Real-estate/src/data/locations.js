@@ -1,3 +1,4 @@
+
 export const states = [
   { id: 'st_rj', name: 'Rajasthan' },
   { id: 'st_up', name: 'U.P.' },
@@ -10,6 +11,7 @@ export const cities = [
   { id: 'behror', stateId: 'st_rj', name: 'Behror' },
   { id: 'neemrana', stateId: 'st_rj', name: 'Neemrana' },
   { id: 'jaipur', stateId: 'st_rj', name: 'Jaipur' },
+  { id: 'sikar_road', stateId: 'st_rj', name: 'Sikar Road' },
   { id: 'dudu', stateId: 'st_rj', name: 'Dudu' },
   { id: 'ajmer_road', stateId: 'st_rj', name: 'Ajmer Road' },
   { id: 'noida', stateId: 'st_up', name: 'Noida' },

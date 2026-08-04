@@ -78,7 +78,8 @@ const getMergedLocalData = () => {
                 area: proj.areaRange,
                 developer: comp.name,
                 description: proj.description,
-                tags: proj.amenities || []
+                tags: proj.amenities || [],
+                pdf: proj.pdfUrl || proj.pdf
             });
         });
     });

@@ -146,6 +146,7 @@ const Hero = () => {
                       <option value="Shree Shyam Sarovar-II (Khatu Shyam)" />
                       <option value="Aadinath Nagar (Dudu)" />
                       <option value="Mayur Vihar (Jaipur)" />
+                      <option value="Paranoma Greens (Sikar Road, Jaipur)" />
                       <option value="Hanumant Vihar (Vrindavan)" />
                       <option value="Shree Krishna Green Valley (Mathura)" />
                       <option value="Radhe Krishna Ashrama (Vrindavan)" />
