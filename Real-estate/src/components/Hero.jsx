@@ -76,7 +76,7 @@ const Hero = () => {
       <div className="hero-glow"></div>
       <div className="hero-glow-alt"></div>
       <div className="hero-inner reveal">
-        <div className="hero-eyebrow">India's Most Premium Real Estate Platform</div>
+        <div className="hero-eyebrow">India's Most Premium Real Estate Platform • December 17 2026</div>
         <h1 className="hero-title">Your Gateway to India’s <span>Fastest Growing</span> Investment <span>Destinations  </span></h1>
         <p className="hero-subtitle">From investment to legacy — discover verified plots and land opportunities across India. RERA-approved projects that help you create wealth, secure your future, and own a lasting asset</p>
         
@@ -145,8 +145,7 @@ const Hero = () => {
                       <option value="Shree Shyam Sarovar-I (Khatu Shyam)" />
                       <option value="Shree Shyam Sarovar-II (Khatu Shyam)" />
                       <option value="Aadinath Nagar (Dudu)" />
-                      <option value="Mayur Vihar (Jaipur)" />
-                      <option value="Paranoma Greens (Sikar Road, Jaipur)" />
+                      <option value="Panorama Greens (Sikar Road, Jaipur)" />
                       <option value="Hanumant Vihar (Vrindavan)" />
                       <option value="Shree Krishna Green Valley (Mathura)" />
                       <option value="Radhe Krishna Ashrama (Vrindavan)" />

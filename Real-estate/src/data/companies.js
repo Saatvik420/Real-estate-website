@@ -3,7 +3,7 @@ import sss2Img from '../assets/images_project/Shree Shyam Sarovar II.jpeg';
 import anImg from '../assets/images_project/Aadinath nagar.jpeg';
 import mvImg from '../assets/images_project/Mayur vihar.jpg';
 import hvImg from '../assets/images_project/Hanumant_vihar.jpg';
-import pgImg from '../assets/images_project/Paranoma greens.jpeg';
+import pgImg from '../assets/images_project/Panorama greens.jpeg';
 
 export const companies = [
   {
@@ -62,19 +62,19 @@ export const companies = [
         amenities: ['Highway Proximity', 'Commercial Zone', 'Green Belts', 'Security Gate']
       },
       {
-        id: 'proj_mv',
+        id: 'proj_pg',
         cityId: 'jaipur',
-        name: 'Mayur Vihar',
+        name: 'Panorama Greens',
         type: 'Residential',
-        location: 'Village Panwaliya, Sanganer, Jaipur',
-        areaRange: '120 - 300 sq yards',
-        priceRange: '₹12 L - ₹35 L',
-        status: 'Verified',
-        possession: 'Ready',
-        img: mvImg,
-        pdfUrl: '/projects/mayur-vihar.pdf',
-        description: 'A boutique plotted development in the heart of Sanganer. Close to educational and healthcare facilities, providing an ideal base for modern home construction.',
-        amenities: ['School Proximity', 'Market Access', 'Underground Utilities', 'Community Center']
+        location: 'Main Sikar Road Highway Corridor, Jaipur',
+        areaRange: '100 - 350 sq yards',
+        priceRange: '₹15 L - ₹45 L',
+        status: 'New Launch',
+        possession: '2025',
+        img: pgImg,
+        pdfUrl: '/projects/panorama_greens.pdf',
+        description: 'Panorama Greens is an exclusive luxury residential plotted township strategically situated on Sikar Road, Jaipur. Designed with wide black-top roads, 24/7 security, lush green parks, underground utilities, and excellent highway connectivity.',
+        amenities: ['Sikar Road Proximity', '24/7 Security', 'Wide Blacktop Roads', 'Gated Community', 'Lush Parks & Gardens']
       },
       {
         id: 'proj_hv',
@@ -165,21 +165,6 @@ export const companies = [
         pdfUrl: '/projects/shri-shyam-janki-ayodhya-dham.pdf',
         description: 'A grand spiritual residential plotted township at Village Tihura Manjha, Tehsil Sadar, Ayodhya. Located in the booming Ram Mandir corridor, offering unmatched long-term land appreciation and spiritual living.',
         amenities: ['Ram Mandir Proximity', '24/7 Security', 'Wide Blacktop Roads', 'Gated Community', 'Lush Parks & Gardens']
-      },
-      {
-        id: 'proj_pg',
-        cityId: 'jaipur',
-        name: 'Paranoma Greens',
-        type: 'Residential',
-        location: 'Main Sikar Road Highway Corridor, Jaipur',
-        areaRange: '100 - 350 sq yards',
-        priceRange: '₹15 L - ₹45 L',
-        status: 'New Launch',
-        possession: '2025',
-        img: pgImg,
-        pdfUrl: '/projects/paranoma_greens.pdf',
-        description: 'Paranoma Greens is an exclusive luxury residential plotted township strategically situated on Sikar Road, Jaipur. Designed with wide black-top roads, 24/7 security, lush green parks, underground utilities, and excellent highway connectivity.',
-        amenities: ['Sikar Road Proximity', '24/7 Security', 'Wide Blacktop Roads', 'Gated Community', 'Lush Parks & Gardens']
       }
     ]
   }
